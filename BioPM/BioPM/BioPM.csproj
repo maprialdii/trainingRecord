@@ -118,6 +118,10 @@
     <Content Include="FormInputLabelSubCategory.aspx" />
     <Content Include="FormInputNVTBuilding.aspx" />
     <Content Include="FormRegisterUserCloned.aspx" />
+    <Content Include="FormRequestTraining.aspx" />
+    <Content Include="FormSuggestTraining.aspx" />
+    <Content Include="FormTrainingExecution.aspx" />
+    <Content Include="FormTrainingSurvey.aspx" />
     <Content Include="FormUpdateBatchTransaction.aspx" />
     <Content Include="FormUpdateLabel.aspx" />
     <Content Include="FormUpdateLabelBatch.aspx" />
@@ -135,6 +139,10 @@
     <Content Include="PageBatchProductQualityControl.aspx" />
     <Content Include="PageBatchProductQualityControlApproval.aspx" />
     <Content Include="PageBatchProductQualityControlReview.aspx" />
+    <Content Include="PageCompetencyDevelopmentEvent.aspx" />
+    <Content Include="PageCompetencyParameter.aspx" />
+    <Content Include="PageEmployeeQualification.aspx" />
+    <Content Include="PageExecutionPlanning.aspx" />
     <Content Include="PageLabel.aspx" />
     <Content Include="PageLabelBatch.aspx" />
     <Content Include="PageLabelCategory.aspx" />
@@ -143,6 +151,8 @@
     <Content Include="FormInputLabelPrintRequest.aspx" />
     <Content Include="PageLabelPrintRequest.aspx" />
     <Content Include="PageLabelSubCategory.aspx" />
+    <Content Include="PageQualificationGap.aspx" />
+    <Content Include="PageQualificationReport.aspx" />
     <Content Include="PageQualityAssuranceTransactionApproval.aspx" />
     <Content Include="PageQualityAssuranceTransactionReviewFirstStage.aspx" />
     <Content Include="PageQualityAssuranceTransactionReviewSecondStage.aspx" />
@@ -269,6 +279,8 @@
     <Content Include="PageSampleAnimalRandom.aspx" />
     <Content Include="PageSampleDilutionRandom.aspx" />
     <Content Include="PageSampleMWGT.aspx" />
+    <Content Include="PageTrainingHours.aspx" />
+    <Content Include="PageTrainingReport.aspx" />
     <Content Include="PageUserActiveAccount.aspx" />
     <Content Include="PageUserAdminReference.aspx" />
     <Content Include="PageUserPanel.aspx" />
@@ -415,6 +427,34 @@
     <Compile Include="FormRegisterUserCloned.aspx.designer.cs">
       <DependentUpon>FormRegisterUserCloned.aspx</DependentUpon>
     </Compile>
+    <Compile Include="FormRequestTraining.aspx.cs">
+      <DependentUpon>FormRequestTraining.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FormRequestTraining.aspx.designer.cs">
+      <DependentUpon>FormRequestTraining.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FormSuggestTraining.aspx.cs">
+      <DependentUpon>FormSuggestTraining.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FormSuggestTraining.aspx.designer.cs">
+      <DependentUpon>FormSuggestTraining.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FormTrainingExecution.aspx.cs">
+      <DependentUpon>FormTrainingExecution.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FormTrainingExecution.aspx.designer.cs">
+      <DependentUpon>FormTrainingExecution.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FormTrainingSurvey.aspx.cs">
+      <DependentUpon>FormTrainingSurvey.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FormTrainingSurvey.aspx.designer.cs">
+      <DependentUpon>FormTrainingSurvey.aspx</DependentUpon>
+    </Compile>
     <Compile Include="FormUpdateBatchTransaction.aspx.cs">
       <DependentUpon>FormUpdateBatchTransaction.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -534,6 +574,34 @@
     <Compile Include="PageBatchProductQualityControlReview.aspx.designer.cs">
       <DependentUpon>PageBatchProductQualityControlReview.aspx</DependentUpon>
     </Compile>
+    <Compile Include="PageCompetencyDevelopmentEvent.aspx.cs">
+      <DependentUpon>PageCompetencyDevelopmentEvent.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageCompetencyDevelopmentEvent.aspx.designer.cs">
+      <DependentUpon>PageCompetencyDevelopmentEvent.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageCompetencyParameter.aspx.cs">
+      <DependentUpon>PageCompetencyParameter.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageCompetencyParameter.aspx.designer.cs">
+      <DependentUpon>PageCompetencyParameter.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageEmployeeQualification.aspx.cs">
+      <DependentUpon>PageEmployeeQualification.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageEmployeeQualification.aspx.designer.cs">
+      <DependentUpon>PageEmployeeQualification.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageExecutionPlanning.aspx.cs">
+      <DependentUpon>PageExecutionPlanning.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageExecutionPlanning.aspx.designer.cs">
+      <DependentUpon>PageExecutionPlanning.aspx</DependentUpon>
+    </Compile>
     <Compile Include="PageLabel.aspx.cs">
       <DependentUpon>PageLabel.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -589,6 +657,20 @@
     </Compile>
     <Compile Include="PageLabelSubCategory.aspx.designer.cs">
       <DependentUpon>PageLabelSubCategory.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageQualificationGap.aspx.cs">
+      <DependentUpon>PageQualificationGap.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageQualificationGap.aspx.designer.cs">
+      <DependentUpon>PageQualificationGap.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageQualificationReport.aspx.cs">
+      <DependentUpon>PageQualificationReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageQualificationReport.aspx.designer.cs">
+      <DependentUpon>PageQualificationReport.aspx</DependentUpon>
     </Compile>
     <Compile Include="PageQualityAssuranceTransactionApproval.aspx.cs">
       <DependentUpon>PageQualityAssuranceTransactionApproval.aspx</DependentUpon>
@@ -1063,6 +1145,20 @@
     </Compile>
     <Compile Include="PageSampleMWGT.aspx.designer.cs">
       <DependentUpon>PageSampleMWGT.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageTrainingHours.aspx.cs">
+      <DependentUpon>PageTrainingHours.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageTrainingHours.aspx.designer.cs">
+      <DependentUpon>PageTrainingHours.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageTrainingReport.aspx.cs">
+      <DependentUpon>PageTrainingReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageTrainingReport.aspx.designer.cs">
+      <DependentUpon>PageTrainingReport.aspx</DependentUpon>
     </Compile>
     <Compile Include="PageUserActiveAccount.aspx.cs">
       <DependentUpon>PageUserActiveAccount.aspx</DependentUpon>
