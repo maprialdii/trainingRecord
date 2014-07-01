@@ -146,3 +146,6 @@ E:\- School -\ITS\KP\DARI AL\BioPM\BioPM\bin\System.Net.Http.xml
 E:\- School -\ITS\KP\DARI AL\BioPM\BioPM\obj\Debug\BioPM.dll
 E:\- School -\ITS\KP\DARI AL\BioPM\BioPM\obj\Debug\BioPM.pdb
 E:\- School -\ITS\KP\DARI AL\BioPM\BioPM\obj\Debug\BioPM.csprojResolveAssemblyReference.cache
+C:\Users\rizaldi\Documents\GitHub\trainingRecord\BioPM\BioPM\obj\Debug\BioPM.csprojResolveAssemblyReference.cache
+C:\Users\rizaldi\Documents\GitHub\trainingRecord\BioPM\BioPM\obj\Debug\BioPM.dll
+C:\Users\rizaldi\Documents\GitHub\trainingRecord\BioPM\BioPM\obj\Debug\BioPM.pdb
