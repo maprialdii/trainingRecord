@@ -10,8 +10,8 @@ namespace BioPM.ClassObjects
     {
         public static void InsertOrganization(string ORGID, string QAOID, string ORGTY, string ORGNM, string USRDT)
         {
-            string date = DateTime.Today.ToString("MM/dd/yyyy");
-            string maxdate = DateTime.MaxValue.ToString("MM/dd/yyyy");
+            string date = DateTime.Now.ToString("MM/dd/yyyy HH:mm");
+            string maxdate = DateTime.MaxValue.ToString("MM/dd/yyyy HH:mm");
             SqlConnection conn = GetConnection();
             string sqlCmd = @"INSERT INTO bioumum.ORGANIZATION (BEGDA, ENDDA, ORGID, QAOID, ORGTY, ORGNM, CHGDT, USRDT)
                             VALUES ('" + date + "','" + maxdate + "','" + ORGID + "','" + QAOID + "','" + ORGTY + "','" + ORGNM + "','" + date + "','" + USRDT + "');";
@@ -31,9 +31,9 @@ namespace BioPM.ClassObjects
 
         public static void UpdateOrganization(string ORGID, string QAOID, string ORGTY, string ORGNM, string USRDT)
         {
-            string date = DateTime.Today.ToString("MM/dd/yyyy");
-            string yesterday = DateTime.Today.AddDays(-1).ToString("MM/dd/yyyy");
-            string maxdate = DateTime.MaxValue.ToString("MM/dd/yyyy");
+            string date = DateTime.Now.ToString("MM/dd/yyyy HH:mm");
+            string maxdate = DateTime.MaxValue.ToString("MM/dd/yyyy HH:mm");
+            string yesterday = DateTime.Now.AddMinutes(-1).ToString("MM/dd/yyyy HH:mm");
             SqlConnection conn = GetConnection();
             string sqlCmd = @"UPDATE bioumum.ORGANIZATION SET ENDDA = '" + yesterday + "', CHGDT = '" + date + "', USRDT = '" + USRDT + "' WHERE (ORGID = '" + ORGID + "' AND BEGDA <= GETDATE() AND ENDDA >= GETDATE()";
 
@@ -52,9 +52,9 @@ namespace BioPM.ClassObjects
         }
         public static void DeleteOrganization(string ORGID, string USRDT)
         {
-            string date = DateTime.Today.ToString("MM/dd/yyyy");
-            string yesterday = DateTime.Today.AddDays(-1).ToString("MM/dd/yyyy");
-            string maxdate = DateTime.MaxValue.ToString("MM/dd/yyyy");
+            string date = DateTime.Now.ToString("MM/dd/yyyy HH:mm");
+            string maxdate = DateTime.MaxValue.ToString("MM/dd/yyyy HH:mm");
+            string yesterday = DateTime.Now.AddMinutes(-1).ToString("MM/dd/yyyy HH:mm");
             SqlConnection conn = GetConnection();
             string sqlCmd = @"UPDATE bioumum.ORGANIZATION SET ENDDA = '" + yesterday + "', CHGDT = '" + date + "', USRDT = '" + USRDT + "' WHERE (ORGID = '" + ORGID + "' AND BEGDA <= GETDATE() AND ENDDA >= GETDATE()";
 
@@ -76,7 +76,7 @@ namespace BioPM.ClassObjects
             SqlConnection conn = GetConnection();
             string sqlCmd = @"SELECT OG.ORGID, OG.ORGTY, OG.ORGNM, OG.QAOID
                             FROM bioumum.ORGANIZATION OG
-                            WHERE OG.BEGDA <= GETDATE() AND OG.ENDDA >= GETDATE() AND OG.ORGID = '" + ORGID +"'";
+                            WHERE OG.BEGDA <= GETDATE() AND OG.ENDDA >= GETDATE() AND OG.ORGID = '" + ORGID + "'";
 
             SqlCommand cmd = GetCommand(conn, sqlCmd);
 
@@ -127,8 +127,8 @@ namespace BioPM.ClassObjects
 
         public static void InsertOrganizationStructure(string STRID, string PRTID, string PRTTY, string CLDID, string CLDTY, string ORGLV, string USRDT)
         {
-            string date = DateTime.Today.ToString("MM/dd/yyyy");
-            string maxdate = DateTime.MaxValue.ToString("MM/dd/yyyy");
+            string date = DateTime.Now.ToString("MM/dd/yyyy HH:mm");
+            string maxdate = DateTime.MaxValue.ToString("MM/dd/yyyy HH:mm");
             SqlConnection conn = GetConnection();
             string sqlCmd = @"INSERT INTO bioumum.ORGANIZATION_STRUCTURE (STRID, PRTID, PRTTY, CLDID, CLDTY, ORGLV, CHGDT, USRDT)
                             VALUES ('" + STRID + "','" + PRTID + "','" + PRTTY + "','" + CLDID + "','" + CLDTY + "','" + ORGLV + "','" + date + "','" + USRDT + "');";
@@ -148,11 +148,11 @@ namespace BioPM.ClassObjects
 
         public static void UpdateOrganizationStructure(string STRID, string PRTID, string PRTTY, string CLDID, string CLDTY, string ORGLV, string USRDT)
         {
-            string date = DateTime.Today.ToString("MM/dd/yyyy");
-            string yesterday = DateTime.Today.AddDays(-1).ToString("MM/dd/yyyy");
-            string maxdate = DateTime.MaxValue.ToString("MM/dd/yyyy");
+            string date = DateTime.Now.ToString("MM/dd/yyyy HH:mm");
+            string maxdate = DateTime.MaxValue.ToString("MM/dd/yyyy HH:mm");
+            string yesterday = DateTime.Now.AddMinutes(-1).ToString("MM/dd/yyyy HH:mm");
             SqlConnection conn = GetConnection();
-            string sqlCmd = @"UPDATE bioumum.ORGANIZATION_STRUCTURE SET CHGDT = '" + date + "', USRDT = '" + USRDT + "' WHERE (PRTID = '" + PRTID + "' AND CLDID = '" + CLDID + "' AND ORGLV = '"+ ORGLV +"' AND BEGDA <= GETDATE() AND ENDDA >= GETDATE()";
+            string sqlCmd = @"UPDATE bioumum.ORGANIZATION_STRUCTURE SET PRTID = '" + PRTID + "', PRTTY = '" + PRTTY + "', CLDID = '" + CLDID + "', CLDTY = '" + CLDTY + "', ORGLV = '" + ORGLV + "', CHGDT = '" + date + "', USRDT = '" + USRDT + "' WHERE STRID = '" + STRID + "'";
 
             SqlCommand cmd = DatabaseFactory.GetCommand(conn, sqlCmd);
 
@@ -173,7 +173,7 @@ namespace BioPM.ClassObjects
             string yesterday = DateTime.Today.AddDays(-1).ToString("MM/dd/yyyy");
             string maxdate = DateTime.MaxValue.ToString("MM/dd/yyyy");
             SqlConnection conn = GetConnection();
-            string sqlCmd = @"UPDATE bioumum.ORGANIZATION_STRUCTURE SET CHGDT = '" + date + "', USRDT = '" + USRDT + "' WHERE (PRTID = '" + STRID + "' AND BEGDA <= GETDATE() AND ENDDA >= GETDATE()";
+            string sqlCmd = @"DELETE FROM bioumum.ORGANIZATION_STRUCTURE WHERE PRTID = '" + STRID + "'";
 
             SqlCommand cmd = DatabaseFactory.GetCommand(conn, sqlCmd);
 
@@ -187,13 +187,15 @@ namespace BioPM.ClassObjects
                 conn.Close();
             }
         }
-        
+
         public static object[] GetOrganizationStructureByID(string STRID)
         {
             SqlConnection conn = GetConnection();
             string sqlCmd = @"SELECT OG1.ORGID, OG1.ORGTY, OG1.ORGNM, OG2.ORGID, OG2.ORGTY, OG2.ORGNM, OS.ORGLV, OS.STRID
                             FROM bioumum.ORGANIZATION OG1, bioumum.ORGANIZATION OG2, bioumum.ORGANIZATION_STRUCTURE OS
-                            WHERE OG1.ORGID = OS.PRTID AND OG2.ORGID = OS.CLDID  
+                            WHERE OG1.ORGID = OS.PRTID AND OG2.ORGID = OS.CLDID 
+                            AND OG1.BEGDA <= GETDATE() AND OG1.ENDDA >= GETDATE() 
+                            AND OG2.BEGDA <= GETDATE() AND OG2.ENDDA >= GETDATE()  
                             AND OS.STRID = '" + STRID + "'";
 
             SqlCommand cmd = GetCommand(conn, sqlCmd);
@@ -221,7 +223,9 @@ namespace BioPM.ClassObjects
             SqlConnection conn = GetConnection();
             string sqlCmd = @"SELECT OG1.ORGID, OG1.ORGTY, OG1.ORGNM, OG2.ORGID, OG2.ORGTY, OG2.ORGNM, OS.ORGLV, OS.STRID
                             FROM bioumum.ORGANIZATION OG1, bioumum.ORGANIZATION OG2, bioumum.ORGANIZATION_STRUCTURE OS
-                            WHERE OG1.ORGID = OS.PRTID AND OG2.ORGID = OS.CLDID";
+                            WHERE OG1.ORGID = OS.PRTID AND OG2.ORGID = OS.CLDID 
+                            AND OG1.BEGDA <= GETDATE() AND OG1.ENDDA >= GETDATE() 
+                            AND OG2.BEGDA <= GETDATE() AND OG2.ENDDA >= GETDATE()";
 
             SqlCommand cmd = GetCommand(conn, sqlCmd);
 

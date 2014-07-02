@@ -82,7 +82,7 @@
                                 <thead>
                                 <tr>
                                     <th>Competency ID</th>
-                                    <th>Competency Name</th>                                   
+                                    <th>Position</th>                                   
                                     <th>Edit</th>
                                     <th>Delete</th>
                                 </tr>
