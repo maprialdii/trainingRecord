@@ -6,13 +6,14 @@ using System.Data.SqlClient;
 
 namespace BioPM.ClassObjects
 {
-    public class CompetencyCatalog : DatabaseFactory
+    public class ComDevEvent:DatabaseFactory
     {
-        public static List<object[]> GetAllCompetency()
+        public static List<object[]> GetComdevEvent()
         {
             SqlConnection conn = GetConnection();
-            string sqlCmd = @"SELECT RK.CPYID, RK.CPYNM
-                            FROM trrcd.REFERENSI_KOMPETENSI RK ORDER BY RK.CPYID ASC;";
+            string sqlCmd = @"SELECT CE.EVTNM, CE.EVTMT
+                            FROM trrcd.COMDEV_EVENT CE 
+                            ORDER BY CE.EVTID ASC;";
             SqlCommand cmd = GetCommand(conn, sqlCmd);
 
             try
@@ -33,12 +34,13 @@ namespace BioPM.ClassObjects
             }
         }
 
-        public static List<object[]> GetCompetencyById(string cpyid)
+        public static List<object[]> GetTargetComdevEvent(string evtid)
         {
             SqlConnection conn = GetConnection();
-            string sqlCmd = @"SELECT RK.CPYID, RK.CPYNM
-                            FROM trrcd.REFERENSI_KOMPETENSI RK 
-                            WHERE RK.CPYID='"+cpyid+"'ORDER BY RK.CPYID ASC;";
+            string sqlCmd = @"SELECT CE.EVTNM, RK.CPYNM, CT.PRLVL
+                            FROM trrcd.COMDEV_EVENT_TARGET CT, trrcd.COMDEV_EVENT CE, trrcd.REFERENSI_KOMPETENSI RK
+                            WHERE CE.EVTID=CT.EVTID AND RK.CPYID=CT.CPYID
+                            AND CT.EVTID='" + evtid +"' ORDER BY CE.EVTID ASC;";
             SqlCommand cmd = GetCommand(conn, sqlCmd);
 
             try
@@ -48,7 +50,7 @@ namespace BioPM.ClassObjects
                 List<object[]> batchs = new List<object[]>();
                 while (reader.Read())
                 {
-                    object[] values = { reader[0].ToString(), reader[1].ToString() };
+                    object[] values = { reader[0].ToString(), reader[1].ToString(), reader[2].ToString() };
                     batchs.Add(values);
                 }
                 return batchs;

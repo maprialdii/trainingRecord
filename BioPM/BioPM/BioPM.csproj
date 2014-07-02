@@ -333,8 +333,11 @@
     <Compile Include="ClassEngines\BinaryConverter.cs" />
     <Compile Include="ClassEngines\DataExportImportAdapter.cs" />
     <Compile Include="ClassEngines\DateFormatFactory.cs" />
+    <Compile Include="ClassObjects\ComDevEvent.cs" />
+    <Compile Include="ClassObjects\ComDevExecution.cs" />
     <Compile Include="ClassObjects\ComDevPlan.cs" />
     <Compile Include="ClassObjects\Competency.cs" />
+    <Compile Include="ClassObjects\Jabatan.cs" />
     <Compile Include="ClassObjects\QC.cs" />
     <Compile Include="ClassScripts\BasicScripts.cs" />
     <Compile Include="ClassScripts\JS.cs" />
