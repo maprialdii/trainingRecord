@@ -10,6 +10,6 @@
 namespace BioPM {
     
     
-    public partial class TestPage {
+    public partial class PageCompetencyRelation {
     }
 }

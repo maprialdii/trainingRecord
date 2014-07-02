@@ -55,7 +55,7 @@ namespace BioPM.ClassObjects
             string date = DateTime.Today.ToString("yyyy-MM-dd");
             string yesterday = DateTime.Today.AddDays(-1).ToString("yyyy-MM-dd");
             SqlConnection conn = GetConnection();
-            string sqlCmd = @"UPDATE trrcd.COMDEV_EVENT SET ENDDA = '" + yesterday + "', CHGDT = '" + date + "', CHUSR = '" + usrdt + "' WHERE (EVTID = '" + EVTID + "' AND BEGDA <= GETDATE() AND ENDDA >= GETDATE()";
+            string sqlCmd = @"UPDATE trrcd.COMDEV_EVENT SET ENDDA = '" + yesterday + "', CHGDT = '" + date + "', CHUSR = '" + usrdt + "' WHERE (EVTID = '" + evtid + "' AND BEGDA <= GETDATE() AND ENDDA >= GETDATE()";
 
             SqlCommand cmd = DatabaseFactory.GetCommand(conn, sqlCmd);
 

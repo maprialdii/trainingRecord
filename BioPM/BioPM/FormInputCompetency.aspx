@@ -1,15 +1,12 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="FormTrainingExecution.aspx.cs" Inherits="BioPM.FormTrainingExecution" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="FormInputCompetency.aspx.cs" Inherits="BioPM.FormInsertCompetency" %>
 
+<!DOCTYPE html>
 <script runat="server">
     protected void Page_Load(object sender, EventArgs e)
     {
         if (Session["username"] == null && Session["password"] == null) Response.Redirect("PageLogin.aspx");
-        if (!IsPostBack)
-        {
-            GetDataSubCategory();
-        }
+        if (!IsPostBack) SetOrganizationType();
     }
-    
     //protected void sessionCreator()
     //{
     //    Session["username"] = "K495";
@@ -18,57 +15,40 @@
     //    Session["role"] = "111111";
     //}
 
-    //protected void GetDataCostCenter()
-    //{
-    //    ddlCostCenter.Items.Clear();
-    //    foreach (object[] data in BioPM.ClassObjects.CostCenterCatalog.GetAllCostCenter())
-    //    {
-    //        ddlCostCenter.Items.Add(new ListItem(data[1].ToString(), data[0].ToString()));
-    //    }
-    //}
-    
-    protected void GetDataSubCategory()
+    protected void SetOrganizationType()
     {
-        //ddlSubCat.Items.Clear();
-        //foreach(object[] data in BioPM.ClassObjects.LabelCatalog.GetLabelSubCategories())
-        //{
-        //    ddlSubCat.Items.Add(new ListItem(data[1].ToString(), data[0].ToString()));
-        //}
+        //ddlOrgType.Items.Clear();
+        //ddlOrgType.Items.Add(new ListItem("Unit", "1"));
+        //ddlOrgType.Items.Add(new ListItem("Position", "2"));
     }
-    
-    protected void InsertDataIntoDatabase()
+
+    protected void InsertOrganizationIntoDatabase()
     {
-        //BioPM.ClassObjects.LabelCatalog.InsertLabel(txtLabelID.Text.ToUpper(), txtLabelName.Text, txtLabelWidth.Text, txtLabelLength.Text, ddlSubCat.SelectedValue, Session["username"].ToString());
+        //string ORGID = (BioPM.ClassObjects.OrganizationCatalog.GetOrganizationMaxID() + 1).ToString();
+        //BioPM.ClassObjects.OrganizationCatalog.InsertOrganization(ORGID, txtOrgID.Text, ddlOrgType.SelectedValue, txtOrgName.Text, Session["username"].ToString());
     }
 
     protected void btnAdd_Click(object sender, EventArgs e)
     {
-        //InsertDataIntoDatabase();
-        //Response.Redirect("PageLabel.aspx");
-    }
-
-    protected void btnAddComp_Click(object sender, EventArgs e)
-    {
-        InsertDataIntoDatabase();
-        Response.Redirect("PageLabel.aspx");
+        //if (IsPostBack) InsertOrganizationIntoDatabase();
+        //Response.Redirect("PageOrganization.aspx");
     }
 
     protected void btnCancel_Click(object sender, EventArgs e)
     {
-        Response.Redirect("PageUserPanel.aspx");
+        //Response.Redirect("PageUserPanel.aspx");
     }
-
 </script>
 
 <html lang="en">
 <head>
     <% Response.Write(BioPM.ClassScripts.BasicScripts.GetMetaScript()); %>
 
-    <title>Training Execution</title>
+    <title>COMPETENCY ENTRY FORM</title>
 
     <% Response.Write(BioPM.ClassScripts.StyleScripts.GetCoreStyle()); %>
-<% Response.Write(BioPM.ClassScripts.StyleScripts.GetFormStyle()); %>
-<% Response.Write(BioPM.ClassScripts.StyleScripts.GetCustomStyle()); %>
+    <% Response.Write(BioPM.ClassScripts.StyleScripts.GetFormStyle()); %>
+    <% Response.Write(BioPM.ClassScripts.StyleScripts.GetCustomStyle()); %>
 </head>
 
 <body>
@@ -92,7 +72,7 @@
             <div class="col-sm-12">
                 <section class="panel">
                     <header class="panel-heading">
-                        Training Execution
+                        Competency Entry Form
                           <span class="tools pull-right">
                             <a class="fa fa-chevron-down" href="javascript:;"></a>
                             <a class="fa fa-times" href="javascript:;"></a>
@@ -100,41 +80,18 @@
                     </header>
                     <div class="panel-body">
                         <form id="Form1" class="form-horizontal " runat="server" >
-                         
-                        <div class="form-group">
-                            <label class="col-sm-3 control-label"> EVENT NAME </label>
-                            <div class="col-lg-3 col-md-4">
-                                <asp:DropDownList ID="ddlEventName" runat="server" class="form-control m-bot15">   
-                                </asp:DropDownList> 
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="col-sm-3 control-label"> EVENT TITLE </label>
-                            <div class="col-lg-3 col-md-4">
-                                <asp:TextBox ID="txtEventTitle" runat="server" class="form-control m-bot15" placeholder="EVENT TITLE" ></asp:TextBox>
-                            </div>
-                        </div>
                         
                         <div class="form-group">
-                            <label class="col-sm-3 control-label"> BATCH </label>
+                            <label class="col-sm-3 control-label"> COMPETENCY ID </label>
                             <div class="col-lg-3 col-md-4">
-                                <asp:TextBox ID="txtBatch" runat="server" class="form-control m-bot15" placeholder="BATCH" ></asp:TextBox>
+                                <asp:TextBox ID="txtOrgID" runat="server" class="form-control m-bot15" placeholder="COMPETENCY ID" ></asp:TextBox>
                             </div>
                         </div>
-
+                             
                         <div class="form-group">
-                            <label class="col-sm-3 control-label"> STATUS </label>
+                            <label class="col-sm-3 control-label"> COMPETENCY NAME </label>
                             <div class="col-lg-3 col-md-4">
-                                <asp:DropDownList ID="ddlStatus" runat="server" class="form-control m-bot15">   
-                                </asp:DropDownList> 
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="col-sm-3 control-label"> SCORE </label>
-                            <div class="col-lg-3 col-md-4">
-                                <asp:TextBox ID="txtScore" runat="server" class="form-control m-bot15" placeholder="SCORE" ></asp:TextBox>
+                                <asp:TextBox ID="txtOrgName" runat="server" class="form-control m-bot15" placeholder="COMPETENCY NAME" ></asp:TextBox>
                             </div>
                         </div>
 
@@ -162,7 +119,8 @@
 </section>
 
 <!-- Placed js at the end of the document so the pages load faster -->
-    <% Response.Write(BioPM.ClassScripts.JS.GetCoreScript()); %>
+   
+<% Response.Write(BioPM.ClassScripts.JS.GetCoreScript()); %>
 <% Response.Write(BioPM.ClassScripts.JS.GetCustomFormScript()); %>
 <% Response.Write(BioPM.ClassScripts.JS.GetInitialisationScript()); %>
 <% Response.Write(BioPM.ClassScripts.JS.GetPieChartScript()); %>

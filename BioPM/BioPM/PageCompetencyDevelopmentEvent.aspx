@@ -65,7 +65,7 @@
                         <div class="adv-table">
                             <div class="clearfix">
                                 <div class="btn-group">
-                                    <button id="editable-sample_new" onclick="document.location.href='#';" class="btn btn-primary"> Add New <i class="fa fa-plus"></i>
+                                    <button id="editable-sample_new" onclick="document.location.href='FormInputEvent.aspx';" class="btn btn-primary"> Add New <i class="fa fa-plus"></i>
                                     </button>
                                 </div>
                                 <div class="btn-group pull-right">

@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="PageCompetencyParameter.aspx.cs" Inherits="BioPM.PageCompetencyParameter" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="PageTrainingExecution.aspx.cs" Inherits="BioPM.PageTrainingExecution" %>
 
 <!DOCTYPE html>
 <script runat="server">
@@ -26,7 +26,7 @@
 <head>
     <% Response.Write(BioPM.ClassScripts.BasicScripts.GetMetaScript()); %>
 
-    <title>Competency Parameter</title>
+    <title>Training Execution</title>
 
     <% Response.Write(BioPM.ClassScripts.StyleScripts.GetCoreStyle()); %>
 <% Response.Write(BioPM.ClassScripts.StyleScripts.GetTableStyle()); %>
