@@ -1,17 +1,36 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="PageReferensiJabatan.aspx.cs" Inherits="BioPM.TestPage" %>
 
 <!DOCTYPE html>
+<script runat="server">
+    protected void Page_Load(object sender, EventArgs e)
+    {
+        if (Session["username"] == null && Session["password"] == null) Response.Redirect("PageLogin.aspx");
+    }
+
+    protected String GenerateDataKompetensi()
+    {
+        string htmlelement = "";
+
+        foreach (object[] data in BioPM.ClassObjects.CompetencyCatalog.GetAllCompetency())
+        {
+            htmlelement += "<tr class=''><td>" + data[0].ToString() + "</td><td>" + data[1].ToString() + "</td><td><a class='edit' href='#.aspx?key=" + data[0].ToString() + "'>Edit</a></td><td><a class='delete' href='#.aspx?key=" + data[0].ToString() + "&type=000'>Delete</a></td></tr>";
+        }
+        
+        return htmlelement;
+    }
+
+   
+</script>
 
 <html lang="en">
 <head>
     <% Response.Write(BioPM.ClassScripts.BasicScripts.GetMetaScript()); %>
 
-    <title></title>
+    <title>Referensi Jabatan</title>
 
     <% Response.Write(BioPM.ClassScripts.StyleScripts.GetCoreStyle()); %>
-    <% Response.Write(BioPM.ClassScripts.StyleScripts.GetTableStyle()); %>
-    <% Response.Write(BioPM.ClassScripts.StyleScripts.GetCustomStyle()); %>
-    
+<% Response.Write(BioPM.ClassScripts.StyleScripts.GetTableStyle()); %>
+<% Response.Write(BioPM.ClassScripts.StyleScripts.GetCustomStyle()); %>
 </head>
 
 <body>
@@ -35,58 +54,62 @@
             <div class="col-sm-12">
                 <section class="panel">
                     <header class="panel-heading">
-                        TEST
-                        <span class="tools pull-right">
-                            <a href="javascript:;" class="fa fa-chevron-down"></a>
-                            <a href="javascript:;" class="fa fa-times"></a>
+                        Employee Detail
+                          <span class="tools pull-right">
+                            <a class="fa fa-chevron-down" href="javascript:;"></a>
+                            <a class="fa fa-times" href="javascript:;"></a>
                          </span>
                     </header>
                     <div class="panel-body">
-                        <h5>Welcome to user page, you can access menu control based on your user privileged (role). </h5>
-                        <br />
-                        <h5>INFORMATION</h5>
-                        <ul>
-                            <li><h6>1. Your password period is <% Response.Write(Session["passwordperiod"].ToString()); %> days. You have to change your password before 90 days.</h6></li>
-                            <li><h6>2. Email to Bio-IT@biofarma.co.id if you want to add user by NIK and Role (operator/reviewer/approver).</h6></li>
-                            <li><h6>3. If you need some help in urgent, contact 500.</h6></li>
-                        </ul>
-                        
-                    </div>
 
-                    <%--<div class="modal fade" id="MdlPasswordWarning" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                    <h4 class="modal-title">Waning Password</h4>
+                        <div class="adv-table">
+                            <div class="clearfix">
+                                <div class="btn-group">
+                                    <button id="editable-sample_new" onclick="document.location.href='#';" class="btn btn-primary"> Add New <i class="fa fa-plus"></i>
+                                    </button>
                                 </div>
-                                <div class="modal-body">
-
-                                    Your password period is <% Response.Write(Session["passwordperiod"].ToString()); %>
-
-                                </div>
-                                <div class="modal-footer">
-                                    <button data-dismiss="modal" class="btn btn-default" type="button">Close</button>
-                                    <button class="btn btn-warning" type="button"> Confirm</button>
+                                <div class="btn-group pull-right">
+                                    <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">Tools <i class="fa fa-angle-down"></i>
+                                    </button>
+                                    <ul class="dropdown-menu pull-right">
+                                        <li><a href="#">Print</a></li>
+                                        <li><a href="#">Save as PDF</a></li>
+                                        <li><a href="#">Export to Excel</a></li>
+                                    </ul>
                                 </div>
                             </div>
+                            <table class="table table-striped table-hover table-bordered" id="dynamic-table" >
+                                <thead>
+                                <tr>
+                                    <th>Competency ID</th>
+                                    <th>Competency Name</th>                                   
+                                    <th>Edit</th>
+                                    <th>Delete</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <% Response.Write(GenerateDataKompetensi()); %>
+                                </tbody>
+                            </table>
                         </div>
-                    </div>--%>
-
+                    </div>
+                    
                 </section>
             </div>
         </div>
+
         <!-- page end-->
         </section>
     </section>
     <!--main content end-->
+<!--right sidebar start-->
+    <%Response.Write( BioPM.ClassScripts.SideBarMenu.RightSidebarMenuElement() ); %> 
+<!--right sidebar end-->
 </section>
 
 <!-- Placed js at the end of the document so the pages load faster -->
-<% Response.Write(BioPM.ClassScripts.JS.GetCoreScript()); %>
+    <% Response.Write(BioPM.ClassScripts.JS.GetCoreScript()); %>
 <% Response.Write(BioPM.ClassScripts.JS.GetDynamicTableScript()); %>
 <% Response.Write(BioPM.ClassScripts.JS.GetInitialisationScript()); %>
-<% Response.Write(BioPM.ClassScripts.JS.GetInitialisationScript()); %>
-
 </body>
 </html>

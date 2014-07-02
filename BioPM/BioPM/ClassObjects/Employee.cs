@@ -87,6 +87,32 @@ namespace BioPM.ClassObjects
             }
         }
 
+        public static List<object[]> GetQualification(string pernr)
+        {
+            SqlConnection conn = GetConnection();
+            string sqlCmd = @"SELECT UD.PERNR, UD.POSID, CG.CPYID, CG.PRLVL, PR.PRLVL
+                            FROM trrcd.COMPETENCY_GAP CG, bioumum.USERDATA UD, trrcd.POSITION_REQ PR 
+                            WHERE CG.PERNR=UD.PERNR and PR.CPYID=CG.CPYID and UD.PERNR='"+pernr+"';";
+            SqlCommand cmd = GetCommand(conn, sqlCmd);
+
+            try
+            {
+                conn.Open();
+                SqlDataReader reader = GetDataReader(cmd);
+                List<object[]> batchs = new List<object[]>();
+                while (reader.Read())
+                {
+                    object[] values = { reader[0].ToString(), reader[1].ToString(), reader[2].ToString(), reader[3].ToString(), reader[4].ToString() };
+                    batchs.Add(values);
+                }
+                return batchs;
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+
     }
 
     public class CostCenterCatalog : DatabaseFactory
@@ -122,6 +148,61 @@ namespace BioPM.ClassObjects
             string sqlCmd = @"SELECT CC.COCTR, CC.COCNM
                             FROM biopm.COST_CENTER CC 
                             WHERE CC.COCTR = '"+ COCTR +"' ORDER BY CC.COCNM;";
+            SqlCommand cmd = GetCommand(conn, sqlCmd);
+
+            try
+            {
+                conn.Open();
+                SqlDataReader reader = GetDataReader(cmd);
+                object[] costcenter = null;
+
+                while (reader.Read())
+                {
+                    object[] values = { reader[0].ToString(), reader[1].ToString() };
+                    costcenter = values;
+                }
+                return costcenter;
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+    }
+
+    public class QualificationCatalog : DatabaseFactory
+    {
+        public static List<object[]> GetQualification()
+        {
+            SqlConnection conn = GetConnection();
+            string sqlCmd = @"SELECT CC.COCTR, CC.COCNM
+                            FROM biopm.COST_CENTER CC ORDER BY CC.COCNM;";
+            SqlCommand cmd = GetCommand(conn, sqlCmd);
+
+            try
+            {
+                conn.Open();
+                SqlDataReader reader = GetDataReader(cmd);
+                List<object[]> costcenters = new List<object[]>();
+                while (reader.Read())
+                {
+                    object[] values = { reader[0].ToString(), reader[1].ToString() };
+                    costcenters.Add(values);
+                }
+                return costcenters;
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+
+        public static object[] GetCostCenter(string COCTR)
+        {
+            SqlConnection conn = GetConnection();
+            string sqlCmd = @"SELECT CC.COCTR, CC.COCNM
+                            FROM biopm.COST_CENTER CC 
+                            WHERE CC.COCTR = '" + COCTR + "' ORDER BY CC.COCNM;";
             SqlCommand cmd = GetCommand(conn, sqlCmd);
 
             try
