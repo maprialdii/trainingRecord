@@ -117,6 +117,8 @@
     <Content Include="FormInputLabelReprintRequest.aspx" />
     <Content Include="FormInputLabelSubCategory.aspx" />
     <Content Include="FormInputNVTBuilding.aspx" />
+    <Content Include="FormInputOrganization.aspx" />
+    <Content Include="FormInputOrganizationStructure.aspx" />
     <Content Include="FormRegisterUserCloned.aspx" />
     <Content Include="FormRequestTraining.aspx" />
     <Content Include="FormSuggestTraining.aspx" />
@@ -130,6 +132,8 @@
     <Content Include="FormUpdateLabelSubCategory.aspx" />
     <Content Include="FormUpdateNVTBuilding.aspx" />
     <Content Include="FormGenerateNVTClonedSecond.aspx" />
+    <Content Include="FormUpdateOrganization.aspx" />
+    <Content Include="FormUpdateOrganizationStructure.aspx" />
     <Content Include="PageBatchProductProduction.aspx" />
     <Content Include="PageBatchProductProductionApproval.aspx" />
     <Content Include="PageBatchProductProductionReview.aspx" />
@@ -151,6 +155,8 @@
     <Content Include="FormInputLabelPrintRequest.aspx" />
     <Content Include="PageLabelPrintRequest.aspx" />
     <Content Include="PageLabelSubCategory.aspx" />
+    <Content Include="PageOrganization.aspx" />
+    <Content Include="PageOrganizationStructure.aspx" />
     <Content Include="PageQualificationGap.aspx" />
     <Content Include="PageQualificationReport.aspx" />
     <Content Include="PageQualityAssuranceTransactionApproval.aspx" />
@@ -338,6 +344,7 @@
     <Compile Include="ClassObjects\ComDevPlan.cs" />
     <Compile Include="ClassObjects\Competency.cs" />
     <Compile Include="ClassObjects\Jabatan.cs" />
+    <Compile Include="ClassObjects\Organization.cs" />
     <Compile Include="ClassObjects\QC.cs" />
     <Compile Include="ClassScripts\BasicScripts.cs" />
     <Compile Include="ClassScripts\JS.cs" />
@@ -424,6 +431,20 @@
     </Compile>
     <Compile Include="FormInputNVTBuilding.aspx.designer.cs">
       <DependentUpon>FormInputNVTBuilding.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FormInputOrganization.aspx.cs">
+      <DependentUpon>FormInputOrganization.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FormInputOrganization.aspx.designer.cs">
+      <DependentUpon>FormInputOrganization.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FormInputOrganizationStructure.aspx.cs">
+      <DependentUpon>FormInputOrganizationStructure.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FormInputOrganizationStructure.aspx.designer.cs">
+      <DependentUpon>FormInputOrganizationStructure.aspx</DependentUpon>
     </Compile>
     <Compile Include="FormRegisterUserCloned.aspx.cs">
       <DependentUpon>FormRegisterUserCloned.aspx</DependentUpon>
@@ -515,6 +536,20 @@
     </Compile>
     <Compile Include="FormGenerateNVTClonedSecond.aspx.designer.cs">
       <DependentUpon>FormGenerateNVTClonedSecond.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FormUpdateOrganization.aspx.cs">
+      <DependentUpon>FormUpdateOrganization.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FormUpdateOrganization.aspx.designer.cs">
+      <DependentUpon>FormUpdateOrganization.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FormUpdateOrganizationStructure.aspx.cs">
+      <DependentUpon>FormUpdateOrganizationStructure.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FormUpdateOrganizationStructure.aspx.designer.cs">
+      <DependentUpon>FormUpdateOrganizationStructure.aspx</DependentUpon>
     </Compile>
     <Compile Include="PageBatchProductProduction.aspx.cs">
       <DependentUpon>PageBatchProductProduction.aspx</DependentUpon>
@@ -662,6 +697,20 @@
     </Compile>
     <Compile Include="PageLabelSubCategory.aspx.designer.cs">
       <DependentUpon>PageLabelSubCategory.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageOrganization.aspx.cs">
+      <DependentUpon>PageOrganization.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageOrganization.aspx.designer.cs">
+      <DependentUpon>PageOrganization.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageOrganizationStructure.aspx.cs">
+      <DependentUpon>PageOrganizationStructure.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageOrganizationStructure.aspx.designer.cs">
+      <DependentUpon>PageOrganizationStructure.aspx</DependentUpon>
     </Compile>
     <Compile Include="PageQualificationGap.aspx.cs">
       <DependentUpon>PageQualificationGap.aspx</DependentUpon>
