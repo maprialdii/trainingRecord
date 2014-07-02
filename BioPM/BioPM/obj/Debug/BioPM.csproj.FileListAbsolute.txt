@@ -24,6 +24,5 @@ C:\Users\rizaldi\Documents\GitHub\trainingRecord\BioPM\BioPM\bin\DotNetOpenAuth.
 C:\Users\rizaldi\Documents\GitHub\trainingRecord\BioPM\BioPM\bin\Microsoft.AspNet.Membership.OpenAuth.xml
 C:\Users\rizaldi\Documents\GitHub\trainingRecord\BioPM\BioPM\bin\Microsoft.AspNet.FriendlyUrls.xml
 C:\Users\rizaldi\Documents\GitHub\trainingRecord\BioPM\BioPM\bin\System.Net.Http.xml
-C:\Users\rizaldi\Documents\GitHub\trainingRecord\BioPM\BioPM\obj\Debug\BioPM.csprojResolveAssemblyReference.cache
 C:\Users\rizaldi\Documents\GitHub\trainingRecord\BioPM\BioPM\obj\Debug\BioPM.dll
 C:\Users\rizaldi\Documents\GitHub\trainingRecord\BioPM\BioPM\obj\Debug\BioPM.pdb
