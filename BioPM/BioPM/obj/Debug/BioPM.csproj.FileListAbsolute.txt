@@ -27,3 +27,32 @@ E:\KP\COMDEV\History Sistem\trainingRecord\BioPM\BioPM\bin\System.Net.Http.xml
 E:\KP\COMDEV\History Sistem\trainingRecord\BioPM\BioPM\obj\Debug\BioPM.csprojResolveAssemblyReference.cache
 E:\KP\COMDEV\History Sistem\trainingRecord\BioPM\BioPM\obj\Debug\BioPM.dll
 E:\KP\COMDEV\History Sistem\trainingRecord\BioPM\BioPM\obj\Debug\BioPM.pdb
+C:\Users\rizaldi\Documents\GitHub\trainingRecord\BioPM\BioPM\bin\BioPM.dll
+C:\Users\rizaldi\Documents\GitHub\trainingRecord\BioPM\BioPM\bin\BioPM.pdb
+C:\Users\rizaldi\Documents\GitHub\trainingRecord\BioPM\BioPM\bin\AspNet.ScriptManager.jQuery.dll
+C:\Users\rizaldi\Documents\GitHub\trainingRecord\BioPM\BioPM\bin\AspNet.ScriptManager.jQuery.UI.Combined.dll
+C:\Users\rizaldi\Documents\GitHub\trainingRecord\BioPM\BioPM\bin\DotNetOpenAuth.AspNet.dll
+C:\Users\rizaldi\Documents\GitHub\trainingRecord\BioPM\BioPM\bin\DotNetOpenAuth.Core.dll
+C:\Users\rizaldi\Documents\GitHub\trainingRecord\BioPM\BioPM\bin\DotNetOpenAuth.OAuth.Consumer.dll
+C:\Users\rizaldi\Documents\GitHub\trainingRecord\BioPM\BioPM\bin\DotNetOpenAuth.OAuth.dll
+C:\Users\rizaldi\Documents\GitHub\trainingRecord\BioPM\BioPM\bin\DotNetOpenAuth.OpenId.dll
+C:\Users\rizaldi\Documents\GitHub\trainingRecord\BioPM\BioPM\bin\DotNetOpenAuth.OpenId.RelyingParty.dll
+C:\Users\rizaldi\Documents\GitHub\trainingRecord\BioPM\BioPM\bin\EntityFramework.dll
+C:\Users\rizaldi\Documents\GitHub\trainingRecord\BioPM\BioPM\bin\Microsoft.AspNet.FriendlyUrls.dll
+C:\Users\rizaldi\Documents\GitHub\trainingRecord\BioPM\BioPM\bin\Microsoft.AspNet.Membership.OpenAuth.dll
+C:\Users\rizaldi\Documents\GitHub\trainingRecord\BioPM\BioPM\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\rizaldi\Documents\GitHub\trainingRecord\BioPM\BioPM\bin\System.Web.Providers.dll
+C:\Users\rizaldi\Documents\GitHub\trainingRecord\BioPM\BioPM\bin\System.Net.Http.dll
+C:\Users\rizaldi\Documents\GitHub\trainingRecord\BioPM\BioPM\bin\EntityFramework.xml
+C:\Users\rizaldi\Documents\GitHub\trainingRecord\BioPM\BioPM\bin\DotNetOpenAuth.Core.xml
+C:\Users\rizaldi\Documents\GitHub\trainingRecord\BioPM\BioPM\bin\DotNetOpenAuth.OAuth.xml
+C:\Users\rizaldi\Documents\GitHub\trainingRecord\BioPM\BioPM\bin\DotNetOpenAuth.OAuth.Consumer.xml
+C:\Users\rizaldi\Documents\GitHub\trainingRecord\BioPM\BioPM\bin\DotNetOpenAuth.OpenId.xml
+C:\Users\rizaldi\Documents\GitHub\trainingRecord\BioPM\BioPM\bin\DotNetOpenAuth.OpenId.RelyingParty.xml
+C:\Users\rizaldi\Documents\GitHub\trainingRecord\BioPM\BioPM\bin\DotNetOpenAuth.AspNet.xml
+C:\Users\rizaldi\Documents\GitHub\trainingRecord\BioPM\BioPM\bin\Microsoft.AspNet.Membership.OpenAuth.xml
+C:\Users\rizaldi\Documents\GitHub\trainingRecord\BioPM\BioPM\bin\Microsoft.AspNet.FriendlyUrls.xml
+C:\Users\rizaldi\Documents\GitHub\trainingRecord\BioPM\BioPM\bin\System.Net.Http.xml
+C:\Users\rizaldi\Documents\GitHub\trainingRecord\BioPM\BioPM\obj\Debug\BioPM.csprojResolveAssemblyReference.cache
+C:\Users\rizaldi\Documents\GitHub\trainingRecord\BioPM\BioPM\obj\Debug\BioPM.dll
+C:\Users\rizaldi\Documents\GitHub\trainingRecord\BioPM\BioPM\obj\Debug\BioPM.pdb

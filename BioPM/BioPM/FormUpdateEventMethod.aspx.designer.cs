@@ -10,7 +10,7 @@
 namespace BioPM {
     
     
-    public partial class FormInsertEvent {
+    public partial class FormUpdateEventMethod {
         
         /// <summary>
         /// Form1 control.
@@ -22,22 +22,13 @@ namespace BioPM {
         protected global::System.Web.UI.HtmlControls.HtmlForm Form1;
         
         /// <summary>
-        /// txtEvtName control.
+        /// txtMtdName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtEvtName;
-        
-        /// <summary>
-        /// ddlEventMethod control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlEventMethod;
+        protected global::System.Web.UI.WebControls.TextBox txtMtdName;
         
         /// <summary>
         /// btnAdd control.

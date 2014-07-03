@@ -73,10 +73,10 @@ namespace BioPM.ClassObjects
         public static List<object[]> GetAllComdevEvent()
         {
             SqlConnection conn = GetConnection();
-            string sqlCmd = @"SELECT CE.EVTID, CE.EVTNM, EM.EMTNM
+            string sqlCmd = @"SELECT CE.EVTID, CE.EVTNM, EM.EVTMT
                             FROM trrcd.COMDEV_EVENT CE, trrcd.EVENT_METHOD EM
                             WHERE CE.EMTID = EM.EMTID
-                            AND CM.BEGDA <= GETDATE() AND CM.ENDDA >= GETDATE()
+                            AND EM.BEGDA <= GETDATE() AND EM.ENDDA >= GETDATE()
                             AND CE.BEGDA <= GETDATE() AND CE.ENDDA >= GETDATE()
                             ORDER BY CE.EVTID ASC;";
             SqlCommand cmd = GetCommand(conn, sqlCmd);

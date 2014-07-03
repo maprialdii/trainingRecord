@@ -13,7 +13,7 @@ namespace BioPM.ClassObjects
             string date = DateTime.Now.ToString("MM/dd/yyyy HH:mm");
             string maxdate = DateTime.MaxValue.ToString("MM/dd/yyyy HH:mm");
             SqlConnection conn = GetConnection();
-            string sqlCmd = @"INSERT INTO trrcd.EVENT_METHOD (BEGDA, ENDDA, EMTID, EMTNM, CHGDT, CHUSR)
+            string sqlCmd = @"INSERT INTO trrcd.EVENT_METHOD (BEGDA, ENDDA, EMTID, EVTMT, CHGDT, CHUSR)
                             VALUES ('" + date + "','" + maxdate + "'," + EMTID + ",'" + EMTNM + "','" + date + "','" + CHUSR + "');";
 
             SqlCommand cmd = DatabaseFactory.GetCommand(conn, sqlCmd);
@@ -34,7 +34,7 @@ namespace BioPM.ClassObjects
             string date = DateTime.Now.ToString("MM/dd/yyyy HH:mm");
             string yesterday = DateTime.Now.AddMinutes(-1).ToString("MM/dd/yyyy HH:mm");
             SqlConnection conn = GetConnection();
-            string sqlCmd = @"UPDATE trrcd.EVENT_METHOD SET ENDDA = '" + yesterday + "', CHGDT = '" + date + "', CHUSR = '" + CHUSR + "' WHERE (EMTID = " + EMTID + " AND BEGDA <= GETDATE() AND ENDDA >= GETDATE()";
+            string sqlCmd = @"UPDATE trrcd.EVENT_METHOD SET ENDDA = '" + yesterday + "', CHGDT = '" + date + "', CHUSR = '" + CHUSR + "' WHERE (EMTID = " + EMTID + " AND BEGDA <= GETDATE() AND ENDDA >= GETDATE())";
 
             SqlCommand cmd = DatabaseFactory.GetCommand(conn, sqlCmd);
 
@@ -55,7 +55,7 @@ namespace BioPM.ClassObjects
             string date = DateTime.Now.ToString("MM/dd/yyyy HH:mm");
             string yesterday = DateTime.Now.AddMinutes(-1).ToString("MM/dd/yyyy HH:mm");
             SqlConnection conn = GetConnection();
-            string sqlCmd = @"UPDATE trrcd.EVENT_METHOD SET ENDDA = '" + yesterday + "', CHGDT = '" + date + "', CHUSR = '" + usrdt + "' WHERE (EMTID = " + emtid + " AND BEGDA <= GETDATE() AND ENDDA >= GETDATE()";
+            string sqlCmd = @"UPDATE trrcd.EVENT_METHOD SET ENDDA = '" + yesterday + "', CHGDT = '" + date + "', CHUSR = '" + usrdt + "' WHERE (EMTID = " + emtid + " AND BEGDA <= GETDATE() AND ENDDA >= GETDATE())";
 
             SqlCommand cmd = DatabaseFactory.GetCommand(conn, sqlCmd);
 
@@ -72,7 +72,7 @@ namespace BioPM.ClassObjects
         public static List<object[]> GetAllEventMethod()
         {
             SqlConnection conn = GetConnection();
-            string sqlCmd = @"SELECT EM.EMTID, EM.EMTNM
+            string sqlCmd = @"SELECT EM.EMTID, EM.EVTMT
                             FROM trrcd.EVENT_METHOD EM
                             WHERE EM.BEGDA <= GETDATE() AND EM.ENDDA >= GETDATE()
                             ORDER BY EM.EMTID ASC;";
@@ -99,7 +99,7 @@ namespace BioPM.ClassObjects
         public static List<object[]> GetEventMethodById(string emtid)
         {
             SqlConnection conn = GetConnection();
-            string sqlCmd = @"SELECT EM.EMTID, EM.EMTNM
+            string sqlCmd = @"SELECT EM.EMTID, EM.EVTMT
                             FROM trrcd.EVENT_METHOD EM
                             WHERE EM.BEGDA <= GETDATE() AND EM.ENDDA >= GETDATE()
                             AND EM.EMTID='" + emtid + "' ORDER BY EM.EMTID ASC;";
@@ -116,6 +116,28 @@ namespace BioPM.ClassObjects
                     batchs.Add(values);
                 }
                 return batchs;
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+
+        public static int GetMethodMaxID()
+        {
+            SqlConnection conn = GetConnection();
+            string sqlCmd = @"SELECT MAX(EMTID) FROM trrcd.EVENT_METHOD";
+            SqlCommand cmd = GetCommand(conn, sqlCmd);
+            string id = "0";
+            try
+            {
+                conn.Open();
+                SqlDataReader reader = GetDataReader(cmd);
+                while (reader.Read())
+                {
+                    if (!reader.IsDBNull(0)) id = reader[0].ToString() + "";
+                }
+                return Convert.ToInt16(id);
             }
             finally
             {
