@@ -1,54 +1,49 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="FormUpdateCompetency.aspx.cs" Inherits="BioPM.FormUpdateCompetency" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="FormInputEmployeeQualification.aspx.cs" Inherits="BioPM.FormInputEmployeeQualification" %>
 
 <!DOCTYPE html>
 <script runat="server">
     protected void Page_Load(object sender, EventArgs e)
     {
         if (Session["username"] == null && Session["password"] == null) Response.Redirect("PageLogin.aspx");
-        if (!IsPostBack)
-        {
-            SetOrganizationType();
-            SetDataToForm();
-        }
+        if (!IsPostBack) SetOrganizationType();
     }
-    
-    protected void sessionCreator()
-    {
-        Session["username"] = "K495";
-        Session["name"] = "ALLAN PRAKOSA";
-        Session["password"] = "admin1234";
-        Session["role"] = "111111";
-    }
-    
+    //protected void sessionCreator()
+    //{
+    //    Session["username"] = "K495";
+    //    Session["name"] = "ALLAN PRAKOSA";
+    //    Session["password"] = "admin1234";
+    //    Session["role"] = "111111";
+    //}
+
     protected void SetOrganizationType()
     {
-        ddlOrgType.Items.Clear();
-        ddlOrgType.Items.Add(new ListItem("Unit", "1"));
-        ddlOrgType.Items.Add(new ListItem("Position", "2"));
+        //ddlOrgType.Items.Clear();
+        //ddlOrgType.Items.Add(new ListItem("Unit", "1"));
+        //ddlOrgType.Items.Add(new ListItem("Position", "2"));
     }
-    
-    protected void SetDataToForm()
+
+    protected void InsertOrganizationIntoDatabase()
     {
-        object[] values = BioPM.ClassObjects.OrganizationCatalog.GetOrganizationByID(BioPM.ClassEngines.CryptographFactory.Encrypt(Request.QueryString["key"], true));
-        txtOrgID.Text = values[3].ToString();
-        txtOrgName.Text = values[2].ToString();
-        ddlOrgType.SelectedValue = values[1].ToString();
-    }
-    
-    protected void UpdateorganizationOnDatabase()
-    {
-        BioPM.ClassObjects.OrganizationCatalog.UpdateOrganization(BioPM.ClassEngines.CryptographFactory.Encrypt(Request.QueryString["key"], true), txtOrgID.Text, ddlOrgType.SelectedValue, txtOrgName.Text, Session["username"].ToString());
+        //string ORGID = (BioPM.ClassObjects.OrganizationCatalog.GetOrganizationMaxID() + 1).ToString();
+        //BioPM.ClassObjects.OrganizationCatalog.InsertOrganization(ORGID, txtOrgID.Text, ddlOrgType.SelectedValue, txtOrgName.Text, Session["username"].ToString());
     }
 
     protected void btnAdd_Click(object sender, EventArgs e)
     {
-        if (IsPostBack) UpdateorganizationOnDatabase();
-        Response.Redirect("PageOrganization.aspx");
+        //if (IsPostBack) InsertOrganizationIntoDatabase();
+        Response.Redirect("PageCompetencyDevelopmentEvent.aspx");
     }
 
     protected void btnCancel_Click(object sender, EventArgs e)
     {
-        Response.Redirect("PageUserPanel.aspx");
+        Response.Redirect("FormInputEvent.aspx");
+    }
+
+    protected String GenerateDataKompetensi()
+    {
+        string htmlelement = " ";
+
+        return htmlelement;
     }
 </script>
 
@@ -56,7 +51,7 @@
 <head>
     <% Response.Write(BioPM.ClassScripts.BasicScripts.GetMetaScript()); %>
 
-    <title>COMPETENCY ENTRY</title>
+    <title>EMPLOYEE QUALIFICATION ENTRY FORM</title>
 
     <% Response.Write(BioPM.ClassScripts.StyleScripts.GetCoreStyle()); %>
     <% Response.Write(BioPM.ClassScripts.StyleScripts.GetFormStyle()); %>
@@ -84,7 +79,7 @@
             <div class="col-sm-12">
                 <section class="panel">
                     <header class="panel-heading">
-                        COMPETENCY ENTRY FORM
+                        Competency Development Event Entry Form
                           <span class="tools pull-right">
                             <a class="fa fa-chevron-down" href="javascript:;"></a>
                             <a class="fa fa-times" href="javascript:;"></a>
@@ -92,25 +87,42 @@
                     </header>
                     <div class="panel-body">
                         <form id="Form1" class="form-horizontal " runat="server" >
-                         
+
                         <div class="form-group">
-                            <label class="col-sm-3 control-label"> COMPETENCY ID </label>
+                            <label class="col-sm-3 control-label"> NIK </label>
                             <div class="col-lg-3 col-md-4">
-                                <asp:TextBox ID="txtCompID" runat="server" class="form-control m-bot15" placeholder="COMPETENCY ID" ></asp:TextBox>
+                                <asp:DropDownList ID="ddlNik" runat="server" class="form-control m-bot15">   
+                                </asp:DropDownList> 
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label"> POSITION </label>
+                            <div class="col-lg-3 col-md-4">
+                                <asp:DropDownList ID="ddlPosition" runat="server" class="form-control m-bot15">   
+                                </asp:DropDownList> 
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label class="col-sm-3 control-label"> COMPETENCY NAME </label>
                             <div class="col-lg-3 col-md-4">
-                                <asp:TextBox ID="txtCompName" runat="server" class="form-control m-bot15" placeholder="COMPETENCY NAME" ></asp:TextBox>
+                                <asp:DropDownList ID="ddlCompName" runat="server" class="form-control m-bot15">   
+                                </asp:DropDownList> 
                             </div>
                         </div>
-                        
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label"> PROFICIENCY LEVEL </label>
+                            <div class="col-lg-3 col-md-4">
+                                <asp:TextBox ID="txtLevel" runat="server" class="form-control m-bot15" placeholder="PROFICIENCY LEVEL TARGET" ></asp:TextBox>
+                            </div>
+                        </div>
+
                         <div class="form-group">
                             <label class="col-sm-3 control-label"> </label>
                             <div class="col-lg-3 col-md-3">
-                                <asp:Button class="btn btn-round btn-primary" ID="btnAdd" runat="server" Text="Update" OnClick="btnAdd_Click"/>
+                                <asp:Button class="btn btn-round btn-primary" ID="btnAdd" runat="server" Text="Add" OnClick="btnAdd_Click"/>
                                 <asp:Button class="btn btn-round btn-primary" ID="btnCancel" runat="server" Text="Cancel" OnClick="btnCancel_Click"/>
                             </div>
                         </div>

@@ -122,7 +122,7 @@
                         <div class="form-group">
                             <label class="col-sm-3 control-label"> </label>
                             <div class="col-lg-3 col-md-3">
-                                <asp:Button class="btn btn-round btn-primary" ID="btnAdd" runat="server" Text="Add" OnClick="btnAdd_Click"/>
+                                <asp:Button class="btn btn-round btn-primary" ID="btnAdd" runat="server" Text="Update" OnClick="btnAdd_Click"/>
                                 <asp:Button class="btn btn-round btn-primary" ID="btnCancel" runat="server" Text="Cancel" OnClick="btnCancel_Click"/>
                             </div>
                         </div>

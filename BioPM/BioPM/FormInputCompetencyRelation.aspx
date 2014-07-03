@@ -102,7 +102,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label class="col-sm-3 control-label"> STRUCTURE LEVEL </label>
+                            <label class="col-sm-3 control-label"> LEVEL </label>
                             <div class="col-lg-3 col-md-4">
                                 <asp:TextBox ID="txtOrgLevel" runat="server" class="form-control m-bot15" placeholder="e.g : 1, 2, .., n" ></asp:TextBox>
                             </div>
