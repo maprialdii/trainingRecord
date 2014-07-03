@@ -8,11 +8,74 @@ namespace BioPM.ClassObjects
 {
     public class CompetencyCatalog : DatabaseFactory
     {
+        public static void InsertCompetency(string CPYID, string CPYNM, string CHUSR)
+        {
+            string date = DateTime.Now.ToString("MM/dd/yyyy HH:mm");
+            string maxdate = DateTime.MaxValue.ToString("MM/dd/yyyy HH:mm");
+            SqlConnection conn = GetConnection();
+            string sqlCmd = @"INSERT INTO trrcd.REFERENSI_KOMPETENSI (BEGDA, ENDDA, CPYID, CPYNM, CHGDT, CHUSR)
+                            VALUES ('" + date + "','" + maxdate + "','" + CPYID + "','" + CPYNM +  "','" + date + "','" + CHUSR + "');";
+
+            SqlCommand cmd = DatabaseFactory.GetCommand(conn, sqlCmd);
+
+            try
+            {
+                conn.Open();
+                cmd.ExecuteNonQuery();
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+
+        public static void UpdateCompetency(string CPYID, string CPYNM, string CHUSR)
+        {
+            string date = DateTime.Now.ToString("MM/dd/yyyy HH:mm");
+            string yesterday = DateTime.Now.AddMinutes(-1).ToString("MM/dd/yyyy HH:mm");
+            SqlConnection conn = GetConnection();
+            string sqlCmd = @"UPDATE trrcd.REFERENSI_KOMPETENSI SET ENDDA = '" + yesterday + "', CHGDT = '" + date + "', CHUSR = '" + CHUSR + "' WHERE (CPYID = '" + CPYID + "' AND BEGDA <= GETDATE() AND ENDDA >= GETDATE()";
+
+            SqlCommand cmd = DatabaseFactory.GetCommand(conn, sqlCmd);
+
+            try
+            {
+                conn.Open();
+                cmd.ExecuteNonQuery();
+            }
+            finally
+            {
+                conn.Close();
+                InsertCompetency(CPYID, CPYNM, CHUSR);
+            }
+        }
+
+        public static void DeleteCompetency(string cpyid, string usrdt)
+        {
+            string date = DateTime.Now.ToString("MM/dd/yyyy HH:mm");
+            string yesterday = DateTime.Now.AddMinutes(-1).ToString("MM/dd/yyyy HH:mm");
+            SqlConnection conn = GetConnection();
+            string sqlCmd = @"UPDATE trrcd.REFERENSI_KOMPETENSI SET ENDDA = '" + yesterday + "', CHGDT = '" + date + "', CHUSR = '" + usrdt + "' WHERE (CPYID = '" + cpyid + "' AND BEGDA <= GETDATE() AND ENDDA >= GETDATE()";
+
+            SqlCommand cmd = DatabaseFactory.GetCommand(conn, sqlCmd);
+
+            try
+            {
+                conn.Open();
+                cmd.ExecuteNonQuery();
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
         public static List<object[]> GetAllCompetency()
         {
             SqlConnection conn = GetConnection();
             string sqlCmd = @"SELECT RK.CPYID, RK.CPYNM
-                            FROM trrcd.REFERENSI_KOMPETENSI RK ORDER BY RK.CPYID ASC;";
+                            FROM trrcd.REFERENSI_KOMPETENSI RK 
+                            WHERE RK.BEGDA <= GETDATE() AND RK.ENDDA >= GETDATE()
+                            ORDER BY RK.CPYID ASC;";
             SqlCommand cmd = GetCommand(conn, sqlCmd);
 
             try
@@ -38,7 +101,8 @@ namespace BioPM.ClassObjects
             SqlConnection conn = GetConnection();
             string sqlCmd = @"SELECT RK.CPYID, RK.CPYNM
                             FROM trrcd.REFERENSI_KOMPETENSI RK 
-                            WHERE RK.CPYID='"+cpyid+"'ORDER BY RK.CPYID ASC;";
+                            WHERE RK.BEGDA <= GETDATE() AND RK.ENDDA >= GETDATE()
+                            AND RK.CPYID='" + cpyid + "'ORDER BY RK.CPYID ASC;";
             SqlCommand cmd = GetCommand(conn, sqlCmd);
 
             try
@@ -58,5 +122,127 @@ namespace BioPM.ClassObjects
                 conn.Close();
             }
         }
+
+        public static void InsertCompetencyStructure(string RLSID, string HCPID, string LCPID, string LEVEL, string CHUSR)
+        {
+            string date = DateTime.Now.ToString("MM/dd/yyyy HH:mm");
+            string maxdate = DateTime.MaxValue.ToString("MM/dd/yyyy HH:mm");
+            SqlConnection conn = GetConnection();
+            string sqlCmd = @"INSERT INTO trrcd.RELASI_COMPETENCY (RLSID, BEGDA, ENDDA, HCPID, LCPID, LEVEL, CHUSR, CHGDT)
+                            VALUES ('" + date + "','" + maxdate + "','" + RLSID + "','" + HCPID + "','" + LCPID + "'," + LEVEL + "'," + date + "','" + CHUSR + "');";
+
+            SqlCommand cmd = DatabaseFactory.GetCommand(conn, sqlCmd);
+
+            try
+            {
+                conn.Open();
+                cmd.ExecuteNonQuery();
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+
+        public static void UpdateCompetencyStructure(string RLSID, string HCPID, string LCPID, string LEVEL, string CHUSR)
+        {
+            string date = DateTime.Now.ToString("MM/dd/yyyy HH:mm");
+            string yesterday = DateTime.Now.AddMinutes(-1).ToString("MM/dd/yyyy HH:mm");
+            SqlConnection conn = GetConnection();
+            string sqlCmd = @"UPDATE trrcd.RELASI_COMPETENCY SET ENDDA = '" + yesterday + "', CHGDT = '" + date + "', CHUSR = '" + CHUSR + "' WHERE (RLSID = '" + RLSID + "' AND BEGDA <= GETDATE() AND ENDDA >= GETDATE()";
+
+            SqlCommand cmd = DatabaseFactory.GetCommand(conn, sqlCmd);
+
+            try
+            {
+                conn.Open();
+                cmd.ExecuteNonQuery();
+            }
+            finally
+            {
+                conn.Close();
+                InsertCompetencyStructure(RLSID, HCPID, LCPID, LEVEL, CHUSR);
+            }
+        }
+        public static void DeleteCompetencyStructure(string RLSID, string CHUSR)
+        {
+            string date = DateTime.Now.ToString("MM/dd/yyyy HH:mm");
+            string yesterday = DateTime.Now.AddMinutes(-1).ToString("MM/dd/yyyy HH:mm");
+            SqlConnection conn = GetConnection();
+            string sqlCmd = @"UPDATE trrcd.RELASI_COMPETENCY SET ENDDA = '" + yesterday + "', CHGDT = '" + date + "', CHUSR = '" + CHUSR + "' WHERE (RLSID = '" + RLSID + "' AND BEGDA <= GETDATE() AND ENDDA >= GETDATE()";
+
+            SqlCommand cmd = DatabaseFactory.GetCommand(conn, sqlCmd);
+
+            try
+            {
+                conn.Open();
+                cmd.ExecuteNonQuery();
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+
+        public static object[] GetCompetencyStructureByID(string RLSID)
+        {
+            SqlConnection conn = GetConnection();
+            string sqlCmd = @"SELECT CP1.CPYNM, CP2.CPYNM, RC.LEVEL, RC.RLSID
+                            FROM trrcd.COMPETENCY CP1, trrcd.COMPETENCY CP2, trrcd.RELASI_COMPETENCY RC
+                            WHERE CP1.CPYID = RC.HCPID AND CP2.CPYID = RC.LCPID 
+                            AND CP1.BEGDA <= GETDATE() AND CP1.ENDDA >= GETDATE() 
+                            AND CP2.BEGDA <= GETDATE() AND CP2.ENDDA >= GETDATE()  
+                            AND RC.BEGDA <= GETDATE() AND RC.ENDDA >= GETDATE()
+                            AND RC.RLSID = " + RLSID + ";";
+
+            SqlCommand cmd = GetCommand(conn, sqlCmd);
+
+            try
+            {
+                conn.Open();
+                SqlDataReader reader = GetDataReader(cmd);
+                object[] data = null;
+                while (reader.Read())
+                {
+                    object[] values = { reader[0].ToString(), reader[1].ToString(), reader[2].ToString(), reader[3].ToString() };
+                    data = values;
+                }
+                return data;
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+
+        public static List<object[]> GetOrganizationStructures()
+        {
+            SqlConnection conn = GetConnection();
+            string sqlCmd = @"SELECT CP1.CPYNM, CP2.CPYNM, RC.LEVEL, RC.RLSID
+                            FROM trrcd.COMPETENCY CP1, trrcd.COMPETENCY CP2, trrcd.RELASI_COMPETENCY RC
+                            WHERE CP1.CPYID = RC.HCPID AND CP2.CPYID = RC.LCPID 
+                            AND CP1.BEGDA <= GETDATE() AND CP1.ENDDA >= GETDATE() 
+                            AND CP2.BEGDA <= GETDATE() AND CP2.ENDDA >= GETDATE()  
+                            AND RC.BEGDA <= GETDATE() AND RC.ENDDA >= GETDATE();";
+
+            SqlCommand cmd = GetCommand(conn, sqlCmd);
+
+            try
+            {
+                conn.Open();
+                SqlDataReader reader = GetDataReader(cmd);
+                List<object[]> data = new List<object[]>();
+                while (reader.Read())
+                {
+                    object[] values = { reader[0].ToString(), reader[1].ToString(), reader[2].ToString(), reader[3].ToString(), reader[4].ToString(), reader[5].ToString(), reader[6].ToString(), reader[7].ToString() };
+                    data.Add(values);
+                }
+                return data;
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }        
     }
 }

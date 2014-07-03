@@ -11,10 +11,10 @@
     {
         string htmlelement = "";
 
-        /*foreach (object[] data in BioPM.ClassObjects.CompetencyCatalog.GetAllCompetency())
+        foreach (object[] data in BioPM.ClassObjects.ComDevEvent.GetAllComdevEvent())
         {
             htmlelement += "<tr class=''><td>" + data[0].ToString() + "</td><td>" + data[1].ToString() + "</td><td><a class='edit' href='#.aspx?key=" + data[0].ToString() + "'>Edit</a></td><td><a class='delete' href='#.aspx?key=" + data[0].ToString() + "&type=000'>Delete</a></td></tr>";
-        }*/
+        }
         
         return htmlelement;
     }
@@ -81,7 +81,6 @@
                             <table class="table table-striped table-hover table-bordered" id="dynamic-table" >
                                 <thead>
                                 <tr>
-                                    <th>Event ID</th>
                                     <th>Event Name</th>                                   
                                     <th>Event Method</th>
                                     <th>Edit</th>

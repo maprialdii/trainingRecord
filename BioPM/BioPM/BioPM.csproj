@@ -343,6 +343,7 @@
     <Compile Include="ClassObjects\ComDevExecution.cs" />
     <Compile Include="ClassObjects\ComDevPlan.cs" />
     <Compile Include="ClassObjects\Competency.cs" />
+    <Compile Include="ClassObjects\EventMethod.cs" />
     <Compile Include="ClassObjects\Jabatan.cs" />
     <Compile Include="ClassObjects\Organization.cs" />
     <Compile Include="ClassObjects\QC.cs" />

@@ -6,15 +6,15 @@ using System.Data.SqlClient;
 
 namespace BioPM.ClassObjects
 {
-    public class Jabatan:DatabaseFactory
+    public class EventMethod:DatabaseFactory
     {
-        public static void InsertJabatan(string PRQID, string POSID, string CPYID, string PRLVL, string CHUSR)
+        public static void InsertEventMethod(string EMTID, string EMTNM, string CHUSR)
         {
             string date = DateTime.Now.ToString("MM/dd/yyyy HH:mm");
             string maxdate = DateTime.MaxValue.ToString("MM/dd/yyyy HH:mm");
             SqlConnection conn = GetConnection();
-            string sqlCmd = @"INSERT INTO trrcd.POSITION_REQ (BEGDA, ENDDA, PRQID, POSID, CPYID, PRLVL, CHGDT, CHUSR)
-                            VALUES ('" + date + "','" + maxdate + "','" + PRQID + "','" + POSID + "'," + CPYID + ",'" + PRLVL + "','" + date + "','" + CHUSR + "');";
+            string sqlCmd = @"INSERT INTO trrcd.EVENT_METHOD (BEGDA, ENDDA, EMTID, EMTNM, CHGDT, CHUSR)
+                            VALUES ('" + date + "','" + maxdate + "'," + EMTID + ",'" + EMTNM + "','" + date + "','" + CHUSR + "');";
 
             SqlCommand cmd = DatabaseFactory.GetCommand(conn, sqlCmd);
 
@@ -29,12 +29,12 @@ namespace BioPM.ClassObjects
             }
         }
 
-        public static void UpdateJabatan(string PRQID, string POSID, string CPYID, string PRLVL, string CHUSR)
+        public static void UpdateEventMethod(string EMTID, string EMTNM, string CHUSR)
         {
             string date = DateTime.Now.ToString("MM/dd/yyyy HH:mm");
             string yesterday = DateTime.Now.AddMinutes(-1).ToString("MM/dd/yyyy HH:mm");
             SqlConnection conn = GetConnection();
-            string sqlCmd = @"UPDATE trrcd.POSITION_REQ SET ENDDA = '" + yesterday + "', CHGDT = '" + date + "', CHUSR = '" + CHUSR + "' WHERE (PRQID = '" + PRQID + "' AND BEGDA <= GETDATE() AND ENDDA >= GETDATE()";
+            string sqlCmd = @"UPDATE trrcd.EVENT_METHOD SET ENDDA = '" + yesterday + "', CHGDT = '" + date + "', CHUSR = '" + CHUSR + "' WHERE (EMTID = " + EMTID + " AND BEGDA <= GETDATE() AND ENDDA >= GETDATE()";
 
             SqlCommand cmd = DatabaseFactory.GetCommand(conn, sqlCmd);
 
@@ -46,16 +46,16 @@ namespace BioPM.ClassObjects
             finally
             {
                 conn.Close();
-                InsertJabatan(PRQID, POSID, CPYID, PRLVL, CHUSR);
+                InsertEventMethod(EMTID, EMTNM, CHUSR);
             }
         }
 
-        public static void DeleteJabatan(string prqid, string usrdt)
+        public static void DeleteEventMethod(string emtid, string usrdt)
         {
             string date = DateTime.Now.ToString("MM/dd/yyyy HH:mm");
             string yesterday = DateTime.Now.AddMinutes(-1).ToString("MM/dd/yyyy HH:mm");
             SqlConnection conn = GetConnection();
-            string sqlCmd = @"UPDATE trrcd.POSITION_REQ SET ENDDA = '" + yesterday + "', CHGDT = '" + date + "', CHUSR = '" + usrdt + "' WHERE (PRQID = '" + prqid + "' AND BEGDA <= GETDATE() AND ENDDA >= GETDATE()";
+            string sqlCmd = @"UPDATE trrcd.EVENT_METHOD SET ENDDA = '" + yesterday + "', CHGDT = '" + date + "', CHUSR = '" + usrdt + "' WHERE (EMTID = " + emtid + " AND BEGDA <= GETDATE() AND ENDDA >= GETDATE()";
 
             SqlCommand cmd = DatabaseFactory.GetCommand(conn, sqlCmd);
 
@@ -69,15 +69,13 @@ namespace BioPM.ClassObjects
                 conn.Close();
             }
         }
-
-        public static List<object[]> GetAllKualifikasiJabatan()
+        public static List<object[]> GetAllEventMethod()
         {
             SqlConnection conn = GetConnection();
-            string sqlCmd = @"SELECT PR.POSID, RK.CPYNM, PR.PRLVL
-                            FROM trrcd.REFERENSI_KOMPETENSI RK, trrcd.POSITION_REQ PR 
-                            WHERE RK.BEGDA <= GETDATE() AND RK.ENDDA >= GETDATE()
-                            AND PR.BEGDA <= GETDATE() AND PR.ENDDA >= GETDATE()
-                            ORDER BY PR.POSID ASC;";
+            string sqlCmd = @"SELECT EM.EMTID, EM.EMTNM
+                            FROM trrcd.EVENT_METHOD EM
+                            WHERE EM.BEGDA <= GETDATE() AND EM.ENDDA >= GETDATE()
+                            ORDER BY EM.EMTID ASC;";
             SqlCommand cmd = GetCommand(conn, sqlCmd);
 
             try
@@ -87,7 +85,7 @@ namespace BioPM.ClassObjects
                 List<object[]> batchs = new List<object[]>();
                 while (reader.Read())
                 {
-                    object[] values = { reader[0].ToString(), reader[1].ToString(), reader[2].ToString() };
+                    object[] values = { reader[0].ToString(), reader[1].ToString() };
                     batchs.Add(values);
                 }
                 return batchs;
@@ -98,14 +96,13 @@ namespace BioPM.ClassObjects
             }
         }
 
-        public static List<object[]> GetKualifikasiJabatanById(string posid, string cpyid)
+        public static List<object[]> GetEventMethodById(string emtid)
         {
             SqlConnection conn = GetConnection();
-            string sqlCmd = @"SELECT PR.POSID, RK.CPYNM, PR.PRLVL
-                            FROM trrcd.REFERENSI_KOMPETENSI RK, trrcd.POSITION_REQ PR 
-                            WHERE RK.BEGDA <= GETDATE() AND RK.ENDDA >= GETDATE()
-                            AND PR.BEGDA <= GETDATE() AND PR.ENDDA >= GETDATE()
-                            AND PR.POSID='"+posid+"' AND PR.CPYID='"+cpyid+"' ORDER BY PR.POSID ASC;";
+            string sqlCmd = @"SELECT EM.EMTID, EM.EMTNM
+                            FROM trrcd.EVENT_METHOD EM
+                            WHERE EM.BEGDA <= GETDATE() AND EM.ENDDA >= GETDATE()
+                            AND EM.EMTID='" + emtid + "' ORDER BY EM.EMTID ASC;";
             SqlCommand cmd = GetCommand(conn, sqlCmd);
 
             try
@@ -115,7 +112,7 @@ namespace BioPM.ClassObjects
                 List<object[]> batchs = new List<object[]>();
                 while (reader.Read())
                 {
-                    object[] values = { reader[0].ToString(), reader[1].ToString(), reader[2].ToString() };
+                    object[] values = { reader[0].ToString(), reader[1].ToString() };
                     batchs.Add(values);
                 }
                 return batchs;
