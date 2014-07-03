@@ -22,22 +22,22 @@ namespace BioPM {
         protected global::System.Web.UI.HtmlControls.HtmlForm Form1;
         
         /// <summary>
-        /// txtOrgID control.
+        /// txtCpyID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtOrgID;
+        protected global::System.Web.UI.WebControls.TextBox txtCpyID;
         
         /// <summary>
-        /// txtOrgName control.
+        /// txtCpyName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtOrgName;
+        protected global::System.Web.UI.WebControls.TextBox txtCpyName;
         
         /// <summary>
         /// btnAdd control.

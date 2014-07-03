@@ -5,7 +5,7 @@
     protected void Page_Load(object sender, EventArgs e)
     {
         if (Session["username"] == null && Session["password"] == null) Response.Redirect("PageLogin.aspx");
-        if (!IsPostBack) SetExistingOrganization();
+        if (!IsPostBack) SetExistingCompetencyRelation();
     }
     protected void sessionCreator()
     {
@@ -15,26 +15,26 @@
         Session["role"] = "111111";
     }
 
-    protected void SetExistingOrganization()
+    protected void SetExistingCompetencyRelation()
     {
-        ddlOrgParent.Items.Clear();
-        ddlOrgChild.Items.Clear();
-        foreach(object[] data in BioPM.ClassObjects.OrganizationCatalog.GetOrganizations())
+        ddlCompParent.Items.Clear();
+        ddlCompChild.Items.Clear();
+        foreach(object[] data in BioPM.ClassObjects.CompetencyCatalog.GetAllCompetency())
         {
-            ddlOrgParent.Items.Add(new ListItem(data[2].ToString() + " - " + (data[1].ToString() == "1" ? "Unit" : "Position"), data[0].ToString() + "|" + data[1].ToString() ));
-            ddlOrgChild.Items.Add(new ListItem(data[2].ToString() + " - " + (data[1].ToString() == "1" ? "Unit" : "Position"), data[0].ToString() + "|" + data[1].ToString()));
+            ddlCompParent.Items.Add(new ListItem(data[1].ToString(), data[0].ToString()));
+            ddlCompChild.Items.Add(new ListItem(data[1].ToString() , data[0].ToString()));
         }
     }
 
-    protected void InsertOrganizationIntoDatabase()
+    protected void InsertRelationIntoDatabase()
     {
         string STRID = (BioPM.ClassObjects.OrganizationCatalog.GetOrganizationStructureMaxID() + 1).ToString();
-        BioPM.ClassObjects.OrganizationCatalog.InsertOrganizationStructure(STRID, ddlOrgParent.SelectedValue.Split('|')[0], ddlOrgParent.SelectedValue.Split('|')[1], ddlOrgChild.SelectedValue.Split('|')[0], ddlOrgChild.SelectedValue.Split('|')[1], txtOrgLevel.Text, Session["username"].ToString());
+        BioPM.ClassObjects.OrganizationCatalog.InsertOrganizationStructure(STRID, ddlCompParent.SelectedValue.Split('|')[0], ddlCompParent.SelectedValue.Split('|')[1], ddlOrgChild.SelectedValue.Split('|')[0], ddlOrgChild.SelectedValue.Split('|')[1], txtOrgLevel.Text, Session["username"].ToString());
     }
 
     protected void btnAdd_Click(object sender, EventArgs e)
     {
-        if (IsPostBack) InsertOrganizationIntoDatabase();
+        if (IsPostBack) InsertRelationIntoDatabase();
         Response.Redirect("PageOrganizationStructure.aspx");
     }
 

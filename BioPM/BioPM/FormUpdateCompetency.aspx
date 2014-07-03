@@ -7,7 +7,6 @@
         if (Session["username"] == null && Session["password"] == null) Response.Redirect("PageLogin.aspx");
         if (!IsPostBack)
         {
-            SetOrganizationType();
             SetDataToForm();
         }
     }
@@ -20,30 +19,23 @@
         Session["role"] = "111111";
     }
     
-    protected void SetOrganizationType()
-    {
-        ddlOrgType.Items.Clear();
-        ddlOrgType.Items.Add(new ListItem("Unit", "1"));
-        ddlOrgType.Items.Add(new ListItem("Position", "2"));
-    }
     
     protected void SetDataToForm()
     {
-        object[] values = BioPM.ClassObjects.OrganizationCatalog.GetOrganizationByID(BioPM.ClassEngines.CryptographFactory.Encrypt(Request.QueryString["key"], true));
-        txtOrgID.Text = values[3].ToString();
-        txtOrgName.Text = values[2].ToString();
-        ddlOrgType.SelectedValue = values[1].ToString();
+        object[] values = BioPM.ClassObjects.CompetencyCatalog.GetCompetencyById(BioPM.ClassEngines.CryptographFactory.Decrypt(Request.QueryString["key"], true));
+        txtCompID.Text = values[0].ToString();
+        txtCompName.Text = values[1].ToString();
     }
     
-    protected void UpdateorganizationOnDatabase()
+    protected void UpdateCompetencyOnDatabase()
     {
-        BioPM.ClassObjects.OrganizationCatalog.UpdateOrganization(BioPM.ClassEngines.CryptographFactory.Encrypt(Request.QueryString["key"], true), txtOrgID.Text, ddlOrgType.SelectedValue, txtOrgName.Text, Session["username"].ToString());
+        BioPM.ClassObjects.CompetencyCatalog.UpdateCompetency(txtCompID.Text, txtCompName.Text, Session["username"].ToString());
     }
 
     protected void btnAdd_Click(object sender, EventArgs e)
     {
-        if (IsPostBack) UpdateorganizationOnDatabase();
-        Response.Redirect("PageOrganization.aspx");
+        if (IsPostBack) UpdateCompetencyOnDatabase();
+        Response.Redirect("PageCompetencyParameter.aspx");
     }
 
     protected void btnCancel_Click(object sender, EventArgs e)
@@ -96,7 +88,7 @@
                         <div class="form-group">
                             <label class="col-sm-3 control-label"> COMPETENCY ID </label>
                             <div class="col-lg-3 col-md-4">
-                                <asp:TextBox ID="txtCompID" runat="server" class="form-control m-bot15" placeholder="COMPETENCY ID" ></asp:TextBox>
+                                <asp:TextBox ID="txtCompID" runat="server" class="form-control m-bot15" placeholder="COMPETENCY ID" ReadOnly="true"></asp:TextBox>
                             </div>
                         </div>
 

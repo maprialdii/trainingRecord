@@ -6,7 +6,11 @@
     protected void Page_Load(object sender, EventArgs e)
     {
         if (Session["username"] == null && Session["password"] == null) Response.Redirect("PageLogin.aspx");
-        if (!IsPostBack) DeleteDataOnDatabase(Request.QueryString["key"], Request.QueryString["type"]);
+        if (!IsPostBack)
+        {
+            string id = BioPM.ClassEngines.CryptographFactory.Decrypt(Request.QueryString["key"], true);
+            DeleteDataOnDatabase(id, Request.QueryString["type"]);
+        }
     }
     protected void sessionCreator()
     {
@@ -25,6 +29,7 @@
                     //USER
                     break;
                 }
+                /*
             case "1":
                 {
                     BioPM.ClassObjects.ProductCatalog.DeleteProduct(ID);
@@ -138,6 +143,34 @@
                     //PRINT LABEL
                     break;
                 }
+                 * */
+            case "21":
+                {
+                    BioPM.ClassObjects.CompetencyCatalog.DeleteCompetency(ID,Session["username"].ToString());
+                    message = "DELETE SUCCESS! COMPETENCY ID " + ID + " HAS BEEN DELETED. <a href='PageCompetencyParameter.aspx'>BACK</a>.";
+                    break;
+                }
+            case "22":
+                {
+                    //LABEL
+                    break;
+                }
+            case "23":
+                {
+                    //LABEL CATEGORY
+                    break;
+                }
+            case "24":
+                {
+                    //LABEL SUB CATEGORY
+                    break;
+                }
+            case "25":
+                {
+                    //PRINT LABEL
+                    break;
+                }
+
             default :
                 {
                     break;

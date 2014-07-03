@@ -15,13 +15,13 @@
         Session["role"] = "111111";
     }
 
-    protected String GenerateDataOrganizationStructure()
+    protected String GenerateDataCompetencyRelation()
     {
         string htmlelement = "";
 
-        foreach (object[] data in BioPM.ClassObjects.OrganizationCatalog.GetOrganizationStructures())
+        foreach (object[] data in BioPM.ClassObjects.CompetencyCatalog.GetCompetencyStructures())
         {
-            htmlelement += "<tr class=''><td>" + data[1].ToString() + "</td><td>" + data[2].ToString() + "</td><td>" + data[4].ToString() + "</td><td>" + data[5].ToString() + "</td><td>" + data[6].ToString() + "</td><td><a class='edit' href='FormUpdateBatchTransaction.aspx?key=" + BioPM.ClassEngines.CryptographFactory.Encrypt(data[0].ToString() + "|" + data[3].ToString() + "|" + data[7].ToString(), true) + "'>Edit</a></td><td><a class='delete' href='PageInformation.aspx?key=" + BioPM.ClassEngines.CryptographFactory.Encrypt(data[7].ToString(), true) + "&type=7'>Delete</a></td></tr>";
+            htmlelement += "<tr class=''><td>" + data[0].ToString() + "</td><td>" + data[1].ToString() + "</td><td>" + data[2].ToString() + "</td><td><a class='edit' href='FormUpdateOrganizationStructure.aspx?key=" + BioPM.ClassEngines.CryptographFactory.Encrypt(data[3].ToString(), true) + "'>Edit</a></td><td><a class='delete' href='PageInformation.aspx?key=" + BioPM.ClassEngines.CryptographFactory.Encrypt(data[3].ToString(), true) + "&type=7'>Delete</a></td></tr>";
         }
         
         return htmlelement;
@@ -89,9 +89,7 @@
                             <table class="table table-striped table-hover table-bordered" id="dynamic-table" >
                                 <thead>
                                 <tr>
-                                    <th>PARENT TYPE</th>
                                     <th>PARENT NAME</th>
-                                    <th>CHILD TYPE</th>
                                     <th>CHILD NAME</th>
                                     <th>RELATION LEVEL</th>
                                     <th>Edit</th>
@@ -99,7 +97,7 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <% Response.Write(GenerateDataOrganizationStructure()); %>
+                                <% Response.Write(GenerateDataCompetencyRelation()); %>
                                 </tbody>
                             </table>
                         </div>

@@ -13,7 +13,7 @@
 
         foreach (object[] data in BioPM.ClassObjects.CompetencyCatalog.GetAllCompetency())
         {
-            htmlelement += "<tr class=''><td>" + data[0].ToString() + "</td><td>" + data[1].ToString() + "</td><td><a class='edit' href='#.aspx?key=" + data[0].ToString() + "'>Edit</a></td><td><a class='delete' href='#.aspx?key=" + data[0].ToString() + "&type=000'>Delete</a></td></tr>";
+            htmlelement += "<tr class=''><td>" + data[1].ToString() + "</td><td><a class='edit' href='FormUpdateCompetency.aspx?key=" + BioPM.ClassEngines.CryptographFactory.Encrypt(data[0].ToString(), true) + "'>Edit</a></td><td><a class='delete' href='PageInformation.aspx?key=" + BioPM.ClassEngines.CryptographFactory.Encrypt(data[0].ToString(), true) + "&type=21'>Delete</a></td></tr>";
         }
         
         return htmlelement;
@@ -81,7 +81,6 @@
                             <table class="table table-striped table-hover table-bordered" id="dynamic-table" >
                                 <thead>
                                 <tr>
-                                    <th>Competency ID</th>
                                     <th>Competency Name</th>                                   
                                     <th>Edit</th>
                                     <th>Delete</th>

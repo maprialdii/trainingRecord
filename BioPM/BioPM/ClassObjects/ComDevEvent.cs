@@ -73,42 +73,12 @@ namespace BioPM.ClassObjects
         public static List<object[]> GetAllComdevEvent()
         {
             SqlConnection conn = GetConnection();
-            string sqlCmd = @"SELECT CE.EVTNM, EM.EMTNM
+            string sqlCmd = @"SELECT CE.EVTID, CE.EVTNM, EM.EMTNM
                             FROM trrcd.COMDEV_EVENT CE, trrcd.EVENT_METHOD EM
                             WHERE CE.EMTID = EM.EMTID
                             AND CM.BEGDA <= GETDATE() AND CM.ENDDA >= GETDATE()
                             AND CE.BEGDA <= GETDATE() AND CE.ENDDA >= GETDATE()
                             ORDER BY CE.EVTID ASC;";
-            SqlCommand cmd = GetCommand(conn, sqlCmd);
-
-            try
-            {
-                conn.Open();
-                SqlDataReader reader = GetDataReader(cmd);
-                List<object[]> batchs = new List<object[]>();
-                while (reader.Read())
-                {
-                    object[] values = { reader[0].ToString(), reader[1].ToString() };
-                    batchs.Add(values);
-                }
-                return batchs;
-            }
-            finally
-            {
-                conn.Close();
-            }
-        }
-
-        public static List<object[]> GetTargetComdevEvent(string evtid)
-        {
-            SqlConnection conn = GetConnection();
-            string sqlCmd = @"SELECT CE.EVTNM, RK.CPYNM, CT.PRLVL
-                            FROM trrcd.COMDEV_EVENT_TARGET CT, trrcd.COMDEV_EVENT CE, trrcd.REFERENSI_KOMPETENSI RK
-                            WHERE CE.EVTID=CT.EVTID AND RK.CPYID=CT.CPYID
-                            AND CT.BEGDA <= GETDATE() AND CT.ENDDA >= GETDATE()
-                            AND CE.BEGDA <= GETDATE() AND CE.ENDDA >= GETDATE()
-                            AND RK.BEGDA <= GETDATE() AND RK.ENDDA >= GETDATE()
-                            AND CT.EVTID='" + evtid +"' ORDER BY CE.EVTID ASC;";
             SqlCommand cmd = GetCommand(conn, sqlCmd);
 
             try
@@ -129,10 +99,40 @@ namespace BioPM.ClassObjects
             }
         }
 
+        public static List<object[]> GetTargetComdevEvent(string evtid)
+        {
+            SqlConnection conn = GetConnection();
+            string sqlCmd = @"SELECT CE.EVTID, CE.EVTNM, RK.CPYNM, CT.PRLVL
+                            FROM trrcd.COMDEV_EVENT_TARGET CT, trrcd.COMDEV_EVENT CE, trrcd.REFERENSI_KOMPETENSI RK
+                            WHERE CE.EVTID=CT.EVTID AND RK.CPYID=CT.CPYID
+                            AND CT.BEGDA <= GETDATE() AND CT.ENDDA >= GETDATE()
+                            AND CE.BEGDA <= GETDATE() AND CE.ENDDA >= GETDATE()
+                            AND RK.BEGDA <= GETDATE() AND RK.ENDDA >= GETDATE()
+                            AND CT.EVTID='" + evtid +"' ORDER BY CE.EVTID ASC;";
+            SqlCommand cmd = GetCommand(conn, sqlCmd);
+
+            try
+            {
+                conn.Open();
+                SqlDataReader reader = GetDataReader(cmd);
+                List<object[]> batchs = new List<object[]>();
+                while (reader.Read())
+                {
+                    object[] values = { reader[0].ToString(), reader[1].ToString(), reader[2].ToString(), reader[3].ToString() };
+                    batchs.Add(values);
+                }
+                return batchs;
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+
         public static List<object[]> GetComdevEventById(string evtid)
         {
             SqlConnection conn = GetConnection();
-            string sqlCmd = @"SELECT CE.EVTNM, EM.EMTNM
+            string sqlCmd = @"SELECT CE.EVTID, CE.EVTNM, EM.EMTNM
                             FROM trrcd.COMDEV_EVENT CE, trrcd.EVENT_METHOD EM
                             WHERE CE.EMTID = EM.EMTID
                             AND CM.BEGDA <= GETDATE() AND CM.ENDDA >= GETDATE()
@@ -147,10 +147,32 @@ namespace BioPM.ClassObjects
                 List<object[]> batchs = new List<object[]>();
                 while (reader.Read())
                 {
-                    object[] values = { reader[0].ToString(), reader[1].ToString() };
+                    object[] values = { reader[0].ToString(), reader[1].ToString(), reader[2].ToString() };
                     batchs.Add(values);
                 }
                 return batchs;
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+
+        public static int GetComDevEventMaxID()
+        {
+            SqlConnection conn = GetConnection();
+            string sqlCmd = @"SELECT MAX(EVTID) FROM trrcd.COMDEV_EVENT";
+            SqlCommand cmd = GetCommand(conn, sqlCmd);
+            string id = "0";
+            try
+            {
+                conn.Open();
+                SqlDataReader reader = GetDataReader(cmd);
+                while (reader.Read())
+                {
+                    if (!reader.IsDBNull(0)) id = reader[0].ToString() + "";
+                }
+                return Convert.ToInt16(id);
             }
             finally
             {
