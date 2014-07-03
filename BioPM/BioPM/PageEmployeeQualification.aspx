@@ -81,7 +81,7 @@
                             <table class="table table-striped table-hover table-bordered" id="dynamic-table" >
                                 <thead>
                                 <tr>
-                                    <th>NIP</th>
+                                    <th>NIK</th>
                                     <th>Position</th>
                                     <th>Competency Name</th>
                                     <th>Your Proficiency Level</th>

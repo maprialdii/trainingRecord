@@ -10,7 +10,7 @@
 namespace BioPM {
     
     
-    public partial class FormRequestTraining {
+    public partial class FormInputEmployeeQualification {
         
         /// <summary>
         /// Form1 control.
@@ -22,22 +22,40 @@ namespace BioPM {
         protected global::System.Web.UI.HtmlControls.HtmlForm Form1;
         
         /// <summary>
-        /// ddlEventMethod control.
+        /// ddlNik control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlEventMethod;
+        protected global::System.Web.UI.WebControls.DropDownList ddlNik;
         
         /// <summary>
-        /// txtEventName control.
+        /// ddlPosition control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtEventName;
+        protected global::System.Web.UI.WebControls.DropDownList ddlPosition;
+        
+        /// <summary>
+        /// ddlCompName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlCompName;
+        
+        /// <summary>
+        /// txtLevel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtLevel;
         
         /// <summary>
         /// btnAdd control.

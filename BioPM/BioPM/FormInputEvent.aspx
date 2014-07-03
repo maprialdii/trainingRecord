@@ -1,16 +1,12 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="FormRequestTraining.aspx.cs" Inherits="BioPM.FormRequestTraining" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="FormInputEvent.aspx.cs" Inherits="BioPM.FormInsertEvent" %>
 
 <!DOCTYPE html>
 <script runat="server">
     protected void Page_Load(object sender, EventArgs e)
     {
         if (Session["username"] == null && Session["password"] == null) Response.Redirect("PageLogin.aspx");
-        if (!IsPostBack)
-        {
-            GetDataSubCategory();
-        }
+        if (!IsPostBack) SetOrganizationType();
     }
-    
     //protected void sessionCreator()
     //{
     //    Session["username"] = "K495";
@@ -19,50 +15,40 @@
     //    Session["role"] = "111111";
     //}
 
-    //protected void GetDataCostCenter()
-    //{
-    //    ddlCostCenter.Items.Clear();
-    //    foreach (object[] data in BioPM.ClassObjects.CostCenterCatalog.GetAllCostCenter())
-    //    {
-    //        ddlCostCenter.Items.Add(new ListItem(data[1].ToString(), data[0].ToString()));
-    //    }
-    //}
-    
-    protected void GetDataSubCategory()
+    protected void SetOrganizationType()
     {
-        //ddlSubCat.Items.Clear();
-        //foreach(object[] data in BioPM.ClassObjects.LabelCatalog.GetLabelSubCategories())
-        //{
-        //    ddlSubCat.Items.Add(new ListItem(data[1].ToString(), data[0].ToString()));
-        //}
+        //ddlOrgType.Items.Clear();
+        //ddlOrgType.Items.Add(new ListItem("Unit", "1"));
+        //ddlOrgType.Items.Add(new ListItem("Position", "2"));
     }
-    
-    protected void InsertDataIntoDatabase()
+
+    protected void InsertOrganizationIntoDatabase()
     {
-        //BioPM.ClassObjects.LabelCatalog.InsertLabel(txtLabelID.Text.ToUpper(), txtLabelName.Text, txtLabelWidth.Text, txtLabelLength.Text, ddlSubCat.SelectedValue, Session["username"].ToString());
+        //string ORGID = (BioPM.ClassObjects.OrganizationCatalog.GetOrganizationMaxID() + 1).ToString();
+        //BioPM.ClassObjects.OrganizationCatalog.InsertOrganization(ORGID, txtOrgID.Text, ddlOrgType.SelectedValue, txtOrgName.Text, Session["username"].ToString());
     }
 
     protected void btnAdd_Click(object sender, EventArgs e)
     {
-        //InsertDataIntoDatabase();
-        Response.Redirect("FormInputTargetTraining.aspx");
+        //if (IsPostBack) InsertOrganizationIntoDatabase();
+        Response.Redirect("FormInputTargetCompetency.aspx");
     }
 
     protected void btnAddComp_Click(object sender, EventArgs e)
     {
-        InsertDataIntoDatabase();
-        Response.Redirect("PageLabel.aspx");
+        //if (IsPostBack) InsertOrganizationIntoDatabase();
+        //Response.Redirect("PageOrganization.aspx");
     }
 
     protected void btnCancel_Click(object sender, EventArgs e)
     {
-        Response.Redirect("PageUserPanel.aspx");
+        //Response.Redirect("PageUserPanel.aspx");
     }
 
     protected String GenerateDataKompetensi()
     {
         string htmlelement = " ";
-        
+
         return htmlelement;
     }
 </script>
@@ -71,11 +57,11 @@
 <head>
     <% Response.Write(BioPM.ClassScripts.BasicScripts.GetMetaScript()); %>
 
-    <title>Training Request</title>
+    <title>COMPETENCY DEVELOPMENT EVENT ENTRY FORM</title>
 
     <% Response.Write(BioPM.ClassScripts.StyleScripts.GetCoreStyle()); %>
-<% Response.Write(BioPM.ClassScripts.StyleScripts.GetFormStyle()); %>
-<% Response.Write(BioPM.ClassScripts.StyleScripts.GetCustomStyle()); %>
+    <% Response.Write(BioPM.ClassScripts.StyleScripts.GetFormStyle()); %>
+    <% Response.Write(BioPM.ClassScripts.StyleScripts.GetCustomStyle()); %>
 </head>
 
 <body>
@@ -99,7 +85,7 @@
             <div class="col-sm-12">
                 <section class="panel">
                     <header class="panel-heading">
-                        Training Request
+                        Competency Development Event Entry Form
                           <span class="tools pull-right">
                             <a class="fa fa-chevron-down" href="javascript:;"></a>
                             <a class="fa fa-times" href="javascript:;"></a>
@@ -107,19 +93,26 @@
                     </header>
                     <div class="panel-body">
                         <form id="Form1" class="form-horizontal " runat="server" >
-                         
+                        
                         <div class="form-group">
-                            <label class="col-sm-3 control-label"> EVENT METHOD </label>
+                            <label class="col-sm-3 control-label"> EVENT ID </label>
                             <div class="col-lg-3 col-md-4">
-                                <asp:DropDownList ID="ddlEventMethod" runat="server" class="form-control m-bot15">   
-                                </asp:DropDownList> 
+                                <asp:TextBox ID="txtOrgID" runat="server" class="form-control m-bot15" placeholder="COMPETENCY ID" ></asp:TextBox>
+                            </div>
+                        </div>
+                             
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label"> EVENT NAME </label>
+                            <div class="col-lg-3 col-md-4">
+                                <asp:TextBox ID="txtOrgName" runat="server" class="form-control m-bot15" placeholder="COMPETENCY NAME" ></asp:TextBox>
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label class="col-sm-3 control-label"> EVENT NAME </label>
+                            <label class="col-sm-3 control-label"> EVENT TYPE </label>
                             <div class="col-lg-3 col-md-4">
-                                <asp:TextBox ID="txtEventName" runat="server" class="form-control m-bot15" placeholder="EVENT NAME" ></asp:TextBox>
+                                <asp:DropDownList ID="ddlEventType" runat="server" class="form-control m-bot15">   
+                                </asp:DropDownList> 
                             </div>
                         </div>
 
@@ -147,7 +140,8 @@
 </section>
 
 <!-- Placed js at the end of the document so the pages load faster -->
-    <% Response.Write(BioPM.ClassScripts.JS.GetCoreScript()); %>
+   
+<% Response.Write(BioPM.ClassScripts.JS.GetCoreScript()); %>
 <% Response.Write(BioPM.ClassScripts.JS.GetCustomFormScript()); %>
 <% Response.Write(BioPM.ClassScripts.JS.GetInitialisationScript()); %>
 <% Response.Write(BioPM.ClassScripts.JS.GetPieChartScript()); %>

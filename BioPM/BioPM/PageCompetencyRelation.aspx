@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="PageCompetencyDevelopmentEvent.aspx.cs" Inherits="BioPM.PageCompetencyDevelopmentEvent" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="PageCompetencyRelation.aspx.cs" Inherits="BioPM.PageCompetencyRelation" %>
 
 <!DOCTYPE html>
 <script runat="server">
@@ -6,14 +6,22 @@
     {
         if (Session["username"] == null && Session["password"] == null) Response.Redirect("PageLogin.aspx");
     }
+    
+    protected void sessionCreator()
+    {     
+        Session["username"] = "K495";
+        Session["name"] = "ALLAN PRAKOSA";
+        Session["password"] = "admin1234";
+        Session["role"] = "111111";
+    }
 
-    protected String GenerateDataKompetensi()
+    protected String GenerateDataOrganizationStructure()
     {
         string htmlelement = "";
 
-        foreach (object[] data in BioPM.ClassObjects.ComDevEvent.GetAllComdevEvent())
+        foreach (object[] data in BioPM.ClassObjects.OrganizationCatalog.GetOrganizationStructures())
         {
-            htmlelement += "<tr class=''><td>" + data[0].ToString() + "</td><td>" + data[1].ToString() + "</td><td><a class='edit' href='#.aspx?key=" + data[0].ToString() + "'>Edit</a></td><td><a class='delete' href='#.aspx?key=" + data[0].ToString() + "&type=000'>Delete</a></td></tr>";
+            htmlelement += "<tr class=''><td>" + data[1].ToString() + "</td><td>" + data[2].ToString() + "</td><td>" + data[4].ToString() + "</td><td>" + data[5].ToString() + "</td><td>" + data[6].ToString() + "</td><td><a class='edit' href='FormUpdateBatchTransaction.aspx?key=" + BioPM.ClassEngines.CryptographFactory.Encrypt(data[0].ToString() + "|" + data[3].ToString() + "|" + data[7].ToString(), true) + "'>Edit</a></td><td><a class='delete' href='PageInformation.aspx?key=" + BioPM.ClassEngines.CryptographFactory.Encrypt(data[7].ToString(), true) + "&type=7'>Delete</a></td></tr>";
         }
         
         return htmlelement;
@@ -24,11 +32,11 @@
 
 <html lang="en">
 <head>
-    <% Response.Write(BioPM.ClassScripts.BasicScripts.GetMetaScript()); %>
+<% Response.Write(BioPM.ClassScripts.BasicScripts.GetMetaScript()); %>
 
-    <title>Competency Development Event</title>
-
-    <% Response.Write(BioPM.ClassScripts.StyleScripts.GetCoreStyle()); %>
+    <title>COMPETENCY RELATION</title>
+    
+<% Response.Write(BioPM.ClassScripts.StyleScripts.GetCoreStyle()); %>
 <% Response.Write(BioPM.ClassScripts.StyleScripts.GetTableStyle()); %>
 <% Response.Write(BioPM.ClassScripts.StyleScripts.GetCustomStyle()); %>
 </head>
@@ -54,7 +62,7 @@
             <div class="col-sm-12">
                 <section class="panel">
                     <header class="panel-heading">
-                        Competency Development Event
+                        Competency Relation
                           <span class="tools pull-right">
                             <a class="fa fa-chevron-down" href="javascript:;"></a>
                             <a class="fa fa-times" href="javascript:;"></a>
@@ -65,7 +73,7 @@
                         <div class="adv-table">
                             <div class="clearfix">
                                 <div class="btn-group">
-                                    <button id="editable-sample_new" onclick="document.location.href='FormInputEvent.aspx';" class="btn btn-primary"> Add New <i class="fa fa-plus"></i>
+                                    <button id="editable-sample_new" onclick="document.location.href='FormInputOrganizationStructure.aspx';" class="btn btn-primary"> Create New <i class="fa fa-plus"></i>
                                     </button>
                                 </div>
                                 <div class="btn-group pull-right">
@@ -81,14 +89,17 @@
                             <table class="table table-striped table-hover table-bordered" id="dynamic-table" >
                                 <thead>
                                 <tr>
-                                    <th>Event Name</th>                                   
-                                    <th>Event Method</th>
+                                    <th>PARENT TYPE</th>
+                                    <th>PARENT NAME</th>
+                                    <th>CHILD TYPE</th>
+                                    <th>CHILD NAME</th>
+                                    <th>RELATION LEVEL</th>
                                     <th>Edit</th>
                                     <th>Delete</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <% Response.Write(GenerateDataKompetensi()); %>
+                                <% Response.Write(GenerateDataOrganizationStructure()); %>
                                 </tbody>
                             </table>
                         </div>
@@ -108,7 +119,7 @@
 </section>
 
 <!-- Placed js at the end of the document so the pages load faster -->
-    <% Response.Write(BioPM.ClassScripts.JS.GetCoreScript()); %>
+<% Response.Write(BioPM.ClassScripts.JS.GetCoreScript()); %>
 <% Response.Write(BioPM.ClassScripts.JS.GetDynamicTableScript()); %>
 <% Response.Write(BioPM.ClassScripts.JS.GetInitialisationScript()); %>
 </body>

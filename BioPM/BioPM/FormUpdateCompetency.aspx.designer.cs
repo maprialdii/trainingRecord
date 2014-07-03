@@ -10,7 +10,7 @@
 namespace BioPM {
     
     
-    public partial class FormRequestTraining {
+    public partial class FormUpdateCompetency {
         
         /// <summary>
         /// Form1 control.
@@ -22,22 +22,22 @@ namespace BioPM {
         protected global::System.Web.UI.HtmlControls.HtmlForm Form1;
         
         /// <summary>
-        /// ddlEventMethod control.
+        /// txtCompID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlEventMethod;
+        protected global::System.Web.UI.WebControls.TextBox txtCompID;
         
         /// <summary>
-        /// txtEventName control.
+        /// txtCompName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtEventName;
+        protected global::System.Web.UI.WebControls.TextBox txtCompName;
         
         /// <summary>
         /// btnAdd control.
