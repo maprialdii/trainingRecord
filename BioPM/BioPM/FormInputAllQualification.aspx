@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="FormEditAllQualification.aspx.cs" Inherits="BioPM.FormEditAllQualification" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="FormInputAllQualification.aspx.cs" Inherits="BioPM.FormEditAllQualification" %>
 
 <!DOCTYPE html>
 
