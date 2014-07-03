@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="FormTrainingExecution.aspx.cs" Inherits="BioPM.FormTrainingExecution" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="FormInputTrainingExecution.aspx.cs" Inherits="BioPM.FormTrainingExecution" %>
 
 <script runat="server">
     protected void Page_Load(object sender, EventArgs e)

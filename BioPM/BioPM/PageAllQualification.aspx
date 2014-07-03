@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="PageQualificationGap.aspx.cs" Inherits="BioPM.PageQualificationGap" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="PageAllQualification.aspx.cs" Inherits="BioPM.PageQualificationGap" %>
 
 <!DOCTYPE html>
 
