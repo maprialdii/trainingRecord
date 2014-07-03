@@ -105,20 +105,25 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="FormInputAllQualification.aspx" />
     <Content Include="FormInputCompetencyRelation.aspx" />
+    <Content Include="FormInputEmployeeQualification.aspx" />
     <Content Include="FormInputOrganization.aspx" />
     <Content Include="FormInputOrganizationStructure.aspx" />
     <Content Include="FormInputCompetency.aspx" />
     <Content Include="FormInputEvent.aspx" />
+    <Content Include="FormInputQualificationReport.aspx" />
     <Content Include="FormInputTargetCompetency.aspx" />
     <Content Include="FormInputTargetTraining.aspx" />
     <Content Include="FormRegisterUserCloned.aspx" />
     <Content Include="FormRequestTraining.aspx" />
     <Content Include="FormSuggestTraining.aspx" />
-    <Content Include="FormTrainingExecution.aspx" />
-    <Content Include="FormTrainingSurvey.aspx" />
+    <Content Include="FormInputTrainingExecution.aspx" />
+    <Content Include="FormInputTrainingSurvey.aspx" />
+    <Content Include="FormUpdateAllQualification.aspx" />
     <Content Include="FormUpdateCompetency.aspx" />
     <Content Include="FormUpdateCompetencyRelation.aspx" />
+    <Content Include="FormUpdateEmployeeQualification.aspx" />
     <Content Include="FormUpdateEvent.aspx" />
     <Content Include="FormUpdateOrganization.aspx" />
     <Content Include="FormUpdateOrganizationStructure.aspx" />
@@ -130,7 +135,7 @@
     <Content Include="PageOrganization.aspx" />
     <Content Include="PageOrganizationStructure.aspx" />
     <Content Include="PagePositionRequirements.aspx" />
-    <Content Include="PageQualificationGap.aspx" />
+    <Content Include="PageAllQualification.aspx" />
     <Content Include="PageQualificationReport.aspx" />
     <Content Include="PageLoginCloned.aspx" />
     <Content Include="PageLoginCTI.aspx" />
@@ -266,12 +271,26 @@
     <Compile Include="ClassObjects\QC.cs" />
     <Compile Include="ClassScripts\BasicScripts.cs" />
     <Compile Include="ClassScripts\JS.cs" />
+    <Compile Include="FormInputAllQualification.aspx.cs">
+      <DependentUpon>FormInputAllQualification.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FormInputAllQualification.aspx.designer.cs">
+      <DependentUpon>FormInputAllQualification.aspx</DependentUpon>
+    </Compile>
     <Compile Include="FormInputCompetencyRelation.aspx.cs">
       <DependentUpon>FormInputCompetencyRelation.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="FormInputCompetencyRelation.aspx.designer.cs">
       <DependentUpon>FormInputCompetencyRelation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FormInputEmployeeQualification.aspx.cs">
+      <DependentUpon>FormInputEmployeeQualification.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FormInputEmployeeQualification.aspx.designer.cs">
+      <DependentUpon>FormInputEmployeeQualification.aspx</DependentUpon>
     </Compile>
     <Compile Include="FormInputOrganization.aspx.cs">
       <DependentUpon>FormInputOrganization.aspx</DependentUpon>
@@ -300,6 +319,13 @@
     </Compile>
     <Compile Include="FormInputEvent.aspx.designer.cs">
       <DependentUpon>FormInputEvent.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FormInputQualificationReport.aspx.cs">
+      <DependentUpon>FormInputQualificationReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FormInputQualificationReport.aspx.designer.cs">
+      <DependentUpon>FormInputQualificationReport.aspx</DependentUpon>
     </Compile>
     <Compile Include="FormInputTargetCompetency.aspx.cs">
       <DependentUpon>FormInputTargetCompetency.aspx</DependentUpon>
@@ -336,19 +362,26 @@
     <Compile Include="FormSuggestTraining.aspx.designer.cs">
       <DependentUpon>FormSuggestTraining.aspx</DependentUpon>
     </Compile>
-    <Compile Include="FormTrainingExecution.aspx.cs">
-      <DependentUpon>FormTrainingExecution.aspx</DependentUpon>
+    <Compile Include="FormInputTrainingExecution.aspx.cs">
+      <DependentUpon>FormInputTrainingExecution.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="FormTrainingExecution.aspx.designer.cs">
-      <DependentUpon>FormTrainingExecution.aspx</DependentUpon>
+    <Compile Include="FormInputTrainingExecution.aspx.designer.cs">
+      <DependentUpon>FormInputTrainingExecution.aspx</DependentUpon>
     </Compile>
-    <Compile Include="FormTrainingSurvey.aspx.cs">
-      <DependentUpon>FormTrainingSurvey.aspx</DependentUpon>
+    <Compile Include="FormInputTrainingSurvey.aspx.cs">
+      <DependentUpon>FormInputTrainingSurvey.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="FormTrainingSurvey.aspx.designer.cs">
-      <DependentUpon>FormTrainingSurvey.aspx</DependentUpon>
+    <Compile Include="FormInputTrainingSurvey.aspx.designer.cs">
+      <DependentUpon>FormInputTrainingSurvey.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FormUpdateAllQualification.aspx.cs">
+      <DependentUpon>FormUpdateAllQualification.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FormUpdateAllQualification.aspx.designer.cs">
+      <DependentUpon>FormUpdateAllQualification.aspx</DependentUpon>
     </Compile>
     <Compile Include="FormUpdateCompetency.aspx.cs">
       <DependentUpon>FormUpdateCompetency.aspx</DependentUpon>
@@ -363,6 +396,13 @@
     </Compile>
     <Compile Include="FormUpdateCompetencyRelation.aspx.designer.cs">
       <DependentUpon>FormUpdateCompetencyRelation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FormUpdateEmployeeQualification.aspx.cs">
+      <DependentUpon>FormUpdateEmployeeQualification.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FormUpdateEmployeeQualification.aspx.designer.cs">
+      <DependentUpon>FormUpdateEmployeeQualification.aspx</DependentUpon>
     </Compile>
     <Compile Include="FormUpdateEvent.aspx.cs">
       <DependentUpon>FormUpdateEvent.aspx</DependentUpon>
@@ -441,12 +481,12 @@
     <Compile Include="PagePositionRequirements.aspx.designer.cs">
       <DependentUpon>PagePositionRequirements.aspx</DependentUpon>
     </Compile>
-    <Compile Include="PageQualificationGap.aspx.cs">
-      <DependentUpon>PageQualificationGap.aspx</DependentUpon>
+    <Compile Include="PageAllQualification.aspx.cs">
+      <DependentUpon>PageAllQualification.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="PageQualificationGap.aspx.designer.cs">
-      <DependentUpon>PageQualificationGap.aspx</DependentUpon>
+    <Compile Include="PageAllQualification.aspx.designer.cs">
+      <DependentUpon>PageAllQualification.aspx</DependentUpon>
     </Compile>
     <Compile Include="PageQualificationReport.aspx.cs">
       <DependentUpon>PageQualificationReport.aspx</DependentUpon>
