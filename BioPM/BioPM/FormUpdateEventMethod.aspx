@@ -5,22 +5,19 @@
     protected void Page_Load(object sender, EventArgs e)
     {
         if (Session["username"] == null && Session["password"] == null) Response.Redirect("PageLogin.aspx");
-        if (!IsPostBack)
-        {
-            SetDataToForm();
-        }
     }
-
-    protected void SetDataToForm()
-    {
-        object[] values = BioPM.ClassObjects.EventMethod.GetEventMethodById(BioPM.ClassEngines.CryptographFactory.Decrypt(Request.QueryString["key"], true));
-        txtMtdId.Text = values[0].ToString();
-        txtMtdName.Text = values[1].ToString();
-    }
+    //protected void sessionCreator()
+    //{
+    //    Session["username"] = "K495";
+    //    Session["name"] = "ALLAN PRAKOSA";
+    //    Session["password"] = "admin1234";
+    //    Session["role"] = "111111";
+    //}
     
     protected void UpdateMethodInDatabase()
     {
-         BioPM.ClassObjects.EventMethod.UpdateEventMethod(txtMtdId.Text, txtMtdName.Text, Session["username"].ToString());
+        string EMTID = (BioPM.ClassObjects.EventMethod.GetMethodMaxID()).ToString();
+        BioPM.ClassObjects.EventMethod.UpdateEventMethod(EMTID, txtMtdName.Text, Session["username"].ToString());
     }
 
     protected void btnAdd_Click(object sender, EventArgs e)
@@ -76,13 +73,6 @@
                     </header>
                     <div class="panel-body">
                         <form id="Form1" class="form-horizontal " runat="server" >
-
-                        <div class="form-group">
-                            <label class="col-sm-3 control-label"> METHOD ID </label>
-                            <div class="col-lg-3 col-md-4">
-                                <asp:TextBox ID="txtMtdId" runat="server" class="form-control m-bot15" placeholder="METHOD ID" ReadOnly="true" ></asp:TextBox>
-                            </div>
-                        </div>
                              
                         <div class="form-group">
                             <label class="col-sm-3 control-label"> METHOD NAME </label>

@@ -23,7 +23,7 @@
     protected void InsertDataIntoDatabase()
     {
         string RECID = (BioPM.ClassObjects.ComDevPlan.GetComDevPlanMaxID() + 1).ToString();
-        BioPM.ClassObjects.ComDevPlan.InsertComDevPlan(RECID, Session["username"].ToString(), ddlEventName.SelectedValue, " ", " ", Session["username"].ToString());
+        BioPM.ClassObjects.ComDevPlan.InsertComDevPlan(RECID, Session["username"].ToString(), ddlEventName.SelectedValue, txtMonth.Text, txtCost.Text, Session["username"].ToString());
         BioPM.ClassObjects.ComDevPlan.InsertComDevPlanStatus(RECID, "Belum Disetujui", " ", Session["username"].ToString());
     }
 
@@ -106,6 +106,22 @@
                             <div class="col-lg-3 col-md-4">
                                 <asp:DropDownList ID="ddlEmployeeName" runat="server" class="form-control m-bot15">   
                                 </asp:DropDownList> 
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label"> EVENT MONTH </label>
+                            <div class="col-lg-3 col-md-4">
+                                <asp:TextBox ID="txtMonth" runat="server" class="form-control m-bot15">   
+                                </asp:TextBox> 
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label"> COST ETIMATION </label>
+                            <div class="col-lg-3 col-md-4">
+                                <asp:TextBox ID="txtCost" runat="server" class="form-control m-bot15">   
+                                </asp:TextBox> 
                             </div>
                         </div>
 

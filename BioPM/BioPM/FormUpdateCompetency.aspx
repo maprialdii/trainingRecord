@@ -9,8 +9,16 @@
         {
             SetDataToForm();
         }
-    }    
-   
+    }
+    
+    protected void sessionCreator()
+    {
+        Session["username"] = "K495";
+        Session["name"] = "ALLAN PRAKOSA";
+        Session["password"] = "admin1234";
+        Session["role"] = "111111";
+    }
+    
     
     protected void SetDataToForm()
     {
