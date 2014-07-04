@@ -40,6 +40,15 @@ namespace BioPM {
         protected global::System.Web.UI.WebControls.TextBox txtLevelTarget;
         
         /// <summary>
+        /// addComp control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button addComp;
+        
+        /// <summary>
         /// btnAdd control.
         /// </summary>
         /// <remarks>

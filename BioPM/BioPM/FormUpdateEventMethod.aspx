@@ -1,11 +1,10 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="FormInputEvent.aspx.cs" Inherits="BioPM.FormInsertEvent" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="FormUpdateEventMethod.aspx.cs" Inherits="BioPM.FormUpdateEventMethod" %>
 
 <!DOCTYPE html>
 <script runat="server">
     protected void Page_Load(object sender, EventArgs e)
     {
         if (Session["username"] == null && Session["password"] == null) Response.Redirect("PageLogin.aspx");
-        if (!IsPostBack) SetExistingMethod();
     }
     //protected void sessionCreator()
     //{
@@ -14,28 +13,19 @@
     //    Session["password"] = "admin1234";
     //    Session["role"] = "111111";
     //}
-
-    protected void SetExistingMethod()
-    {
-        ddlEventMethod.Items.Clear();
-        foreach (object[] data in BioPM.ClassObjects.EventMethod.GetAllEventMethod())
-        {
-            ddlEventMethod.Items.Add(new ListItem(data[1].ToString(), data[0].ToString()));
-        }
-    }
     
-    protected void InsertEventIntoDatabase()
+    protected void UpdateMethodInDatabase()
     {
-        string EVTID = (BioPM.ClassObjects.ComDevEvent.GetComDevEventMaxID() + 1).ToString();
-        BioPM.ClassObjects.ComDevEvent.InsertComDevEvent(EVTID, txtEvtName.Text, ddlEventMethod.SelectedValue, Session["username"].ToString());
+        string EMTID = (BioPM.ClassObjects.EventMethod.GetMethodMaxID()).ToString();
+        BioPM.ClassObjects.EventMethod.UpdateEventMethod(EMTID, txtMtdName.Text, Session["username"].ToString());
     }
 
     protected void btnAdd_Click(object sender, EventArgs e)
     {
-        if (IsPostBack) InsertEventIntoDatabase();
-        Response.Redirect("FormInputTargetTraining.aspx");
+        if (IsPostBack) UpdateMethodInDatabase();
+        Response.Redirect("PageEventMethod.aspx");
     }
-
+    
     protected void btnCancel_Click(object sender, EventArgs e)
     {
         Response.Redirect("PageUserPanel.aspx");
@@ -47,7 +37,7 @@
 <head>
     <% Response.Write(BioPM.ClassScripts.BasicScripts.GetMetaScript()); %>
 
-    <title>COMPETENCY DEVELOPMENT EVENT ENTRY FORM</title>
+    <title>EVENT METHOD UPDATE FORM</title>
 
     <% Response.Write(BioPM.ClassScripts.StyleScripts.GetCoreStyle()); %>
     <% Response.Write(BioPM.ClassScripts.StyleScripts.GetFormStyle()); %>
@@ -75,7 +65,7 @@
             <div class="col-sm-12">
                 <section class="panel">
                     <header class="panel-heading">
-                        Competency Development Event Entry Form
+                        Event Method Update Form
                           <span class="tools pull-right">
                             <a class="fa fa-chevron-down" href="javascript:;"></a>
                             <a class="fa fa-times" href="javascript:;"></a>
@@ -85,24 +75,16 @@
                         <form id="Form1" class="form-horizontal " runat="server" >
                              
                         <div class="form-group">
-                            <label class="col-sm-3 control-label"> EVENT NAME </label>
+                            <label class="col-sm-3 control-label"> METHOD NAME </label>
                             <div class="col-lg-3 col-md-4">
-                                <asp:TextBox ID="txtEvtName" runat="server" class="form-control m-bot15" placeholder="EVENT NAME" ></asp:TextBox>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="col-sm-3 control-label"> EVENT METHOD </label>
-                            <div class="col-lg-3 col-md-4">
-                                <asp:DropDownList ID="ddlEventMethod" runat="server" class="form-control m-bot15">   
-                                </asp:DropDownList> 
+                                <asp:TextBox ID="txtMtdName" runat="server" class="form-control m-bot15" placeholder="METHOD NAME" ></asp:TextBox>
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label class="col-sm-3 control-label"> </label>
                             <div class="col-lg-3 col-md-3">
-                                <asp:Button class="btn btn-round btn-primary" ID="btnAdd" runat="server" Text="Add" OnClick="btnAdd_Click"/>
+                                <asp:Button class="btn btn-round btn-primary" ID="btnAdd" runat="server" Text="Update" OnClick="btnAdd_Click"/>
                                 <asp:Button class="btn btn-round btn-primary" ID="btnCancel" runat="server" Text="Cancel" OnClick="btnCancel_Click"/>
                             </div>
                         </div>

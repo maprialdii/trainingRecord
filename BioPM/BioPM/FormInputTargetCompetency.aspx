@@ -5,7 +5,7 @@
     protected void Page_Load(object sender, EventArgs e)
     {
         if (Session["username"] == null && Session["password"] == null) Response.Redirect("PageLogin.aspx");
-        if (!IsPostBack) SetOrganizationType();
+        if (!IsPostBack) SetCompetencyList();
     }
     //protected void sessionCreator()
     //{
@@ -15,11 +15,13 @@
     //    Session["role"] = "111111";
     //}
 
-    protected void SetOrganizationType()
+    protected void SetCompetencyList()
     {
-        //ddlOrgType.Items.Clear();
-        //ddlOrgType.Items.Add(new ListItem("Unit", "1"));
-        //ddlOrgType.Items.Add(new ListItem("Position", "2"));
+        ddlCompetency.Items.Clear();
+        foreach (object[] data in BioPM.ClassObjects.CompetencyCatalog.GetAllCompetency())
+        {
+            ddlCompetency.Items.Add(new ListItem(data[1].ToString(), data[0].ToString()));
+        }
     }
 
     protected void InsertOrganizationIntoDatabase()
@@ -31,12 +33,12 @@
     protected void btnAdd_Click(object sender, EventArgs e)
     {
         //if (IsPostBack) InsertOrganizationIntoDatabase();
-        Response.Redirect("PageCompetencyDevelopmentEvent.aspx");
+        Response.Redirect("PageSuggestTraining.aspx");
     }
 
     protected void btnCancel_Click(object sender, EventArgs e)
     {
-        Response.Redirect("FormInputEvent.aspx");
+        Response.Redirect("FormSuggestTraining.aspx");
     }
 
     protected String GenerateDataKompetensi()

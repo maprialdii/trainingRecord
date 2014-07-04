@@ -7,45 +7,30 @@
         if (Session["username"] == null && Session["password"] == null) Response.Redirect("PageLogin.aspx");
         if (!IsPostBack)
         {
-            GetDataSubCategory();
+            GetDataEvent();
         }
     }
     
-    //protected void sessionCreator()
-    //{
-    //    Session["username"] = "K495";
-    //    Session["name"] = "ALLAN PRAKOSA";
-    //    Session["password"] = "admin1234";
-    //    Session["role"] = "111111";
-    //}
-
-    //protected void GetDataCostCenter()
-    //{
-    //    ddlCostCenter.Items.Clear();
-    //    foreach (object[] data in BioPM.ClassObjects.CostCenterCatalog.GetAllCostCenter())
-    //    {
-    //        ddlCostCenter.Items.Add(new ListItem(data[1].ToString(), data[0].ToString()));
-    //    }
-    //}
-    
-    protected void GetDataSubCategory()
+    protected void GetDataEvent()
     {
-        //ddlSubCat.Items.Clear();
-        //foreach(object[] data in BioPM.ClassObjects.LabelCatalog.GetLabelSubCategories())
-        //{
-        //    ddlSubCat.Items.Add(new ListItem(data[1].ToString(), data[0].ToString()));
-        //}
+        ddlEventName.Items.Clear();
+        foreach (object[] data in BioPM.ClassObjects.ComDevEvent.GetAllComdevEvent())
+        {
+            ddlEventName.Items.Add(new ListItem(data[1].ToString(), data[0].ToString()));
+        }
     }
     
     protected void InsertDataIntoDatabase()
     {
-        //BioPM.ClassObjects.LabelCatalog.InsertLabel(txtLabelID.Text.ToUpper(), txtLabelName.Text, txtLabelWidth.Text, txtLabelLength.Text, ddlSubCat.SelectedValue, Session["username"].ToString());
+        string RECID = (BioPM.ClassObjects.ComDevPlan.GetComDevPlanMaxID() + 1).ToString();
+        BioPM.ClassObjects.ComDevPlan.InsertComDevPlan(RECID, Session["username"].ToString(), ddlEventName.SelectedValue, " ", " ", Session["username"].ToString());
+        BioPM.ClassObjects.ComDevPlan.InsertComDevPlanStatus(RECID, "Belum Disetujui", " ", Session["username"].ToString());
     }
 
     protected void btnAdd_Click(object sender, EventArgs e)
     {
         //InsertDataIntoDatabase();
-        //Response.Redirect("PageLabel.aspx");
+        Response.Redirect("PageRequestTraining.aspx");
     }
 
     protected void btnAddComp_Click(object sender, EventArgs e)
@@ -71,7 +56,7 @@
 <head>
     <% Response.Write(BioPM.ClassScripts.BasicScripts.GetMetaScript()); %>
 
-    <title>Suggest Training</title>
+    <title>Training Request</title>
 
     <% Response.Write(BioPM.ClassScripts.StyleScripts.GetCoreStyle()); %>
 <% Response.Write(BioPM.ClassScripts.StyleScripts.GetFormStyle()); %>
@@ -107,60 +92,22 @@
                     </header>
                     <div class="panel-body">
                         <form id="Form1" class="form-horizontal " runat="server" >
-                         
-                        <div class="form-group">
-                            <label class="col-sm-3 control-label"> NIK </label>
-                            <div class="col-lg-3 col-md-4">
-                                <asp:DropDownList ID="ddlNik" runat="server" class="form-control m-bot15">   
-                                </asp:DropDownList> 
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="col-sm-3 control-label"> EVENT METHOD </label>
-                            <div class="col-lg-3 col-md-4">
-                                <asp:DropDownList ID="ddlEventMethod" runat="server" class="form-control m-bot15">   
-                                </asp:DropDownList> 
-                            </div>
-                        </div>
 
                         <div class="form-group">
                             <label class="col-sm-3 control-label"> EVENT NAME </label>
                             <div class="col-lg-3 col-md-4">
-                                <asp:TextBox ID="txtEventName" runat="server" class="form-control m-bot15" placeholder="EVENT NAME" ></asp:TextBox>
-                            </div>
-                        </div>
-
-                        COMPETENCY TO DEVELOP
-
-                        <div class="form-group">
-                            <label class="col-sm-3 control-label"> COMPETENCY NAME </label>
-                            <div class="col-lg-3 col-md-4">
-                                <asp:DropDownList ID="ddlCompetency" runat="server" class="form-control m-bot15">   
+                                <asp:DropDownList ID="ddlEventName" runat="server" class="form-control m-bot15">   
                                 </asp:DropDownList> 
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label class="col-sm-3 control-label"> PROFICIENCY LEVEL TARGET </label>
+                            <label class="col-sm-3 control-label"> EMPLOYEE NAME </label>
                             <div class="col-lg-3 col-md-4">
-                                <asp:TextBox ID="txtLevelTarget" runat="server" class="form-control m-bot15" placeholder="PROFICIENCY LEVEL TARGET" ></asp:TextBox>
+                                <asp:DropDownList ID="ddlEmployeeName" runat="server" class="form-control m-bot15">   
+                                </asp:DropDownList> 
                             </div>
-                            <asp:Button class="btn btn-round btn-primary" ID="btnAddComp" runat="server" Text="Add Competency" OnClick="btnAddComp_Click"/>
                         </div>
-
-                        <table class="table table-striped table-hover table-bordered" id="dynamic-table" >
-                                <thead>
-                                <tr>
-                                    <th>Competency Name</th>
-                                    <th>Proficiency Level Target</th>
-                                    <th>Delete</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <% Response.Write(GenerateDataKompetensi()); %>
-                                </tbody>
-                        </table>
 
                         <div class="form-group">
                             <label class="col-sm-3 control-label"> </label>

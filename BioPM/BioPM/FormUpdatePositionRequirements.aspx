@@ -1,11 +1,11 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="FormInputEvent.aspx.cs" Inherits="BioPM.FormInsertEvent" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="FormUpdatePositionRequirements.aspx.cs" Inherits="BioPM.FormUpdatePositionRequirements" %>
 
 <!DOCTYPE html>
 <script runat="server">
     protected void Page_Load(object sender, EventArgs e)
     {
         if (Session["username"] == null && Session["password"] == null) Response.Redirect("PageLogin.aspx");
-        if (!IsPostBack) SetExistingMethod();
+        if (!IsPostBack) SetPositionAndCompetencyList();
     }
     //protected void sessionCreator()
     //{
@@ -15,39 +15,45 @@
     //    Session["role"] = "111111";
     //}
 
-    protected void SetExistingMethod()
+    protected void SetPositionAndCompetencyList()
     {
-        ddlEventMethod.Items.Clear();
-        foreach (object[] data in BioPM.ClassObjects.EventMethod.GetAllEventMethod())
+        //ddlJabatan.Items.Clear();
+        //foreach (object[] data in BioPM.ClassObjects.Jabatan.GetAllKualifikasiJabatan())
+        //{
+        //    ddlJabatan.Items.Add(new ListItem(data[1].ToString(), data[0].ToString()));
+        //}
+
+        ddlCompetency.Items.Clear();
+        foreach (object[] data in BioPM.ClassObjects.CompetencyCatalog.GetAllCompetency())
         {
-            ddlEventMethod.Items.Add(new ListItem(data[1].ToString(), data[0].ToString()));
+            ddlCompetency.Items.Add(new ListItem(data[1].ToString(), data[0].ToString()));
         }
     }
-    
-    protected void InsertEventIntoDatabase()
+
+    protected void UpdatePositionReqIntoDatabase()
     {
-        string EVTID = (BioPM.ClassObjects.ComDevEvent.GetComDevEventMaxID() + 1).ToString();
-        BioPM.ClassObjects.ComDevEvent.InsertComDevEvent(EVTID, txtEvtName.Text, ddlEventMethod.SelectedValue, Session["username"].ToString());
+        string PRQID = (BioPM.ClassObjects.OrganizationCatalog.GetOrganizationMaxID()).ToString();
+        BioPM.ClassObjects.Jabatan.UpdateJabatan(PRQID, ddlJabatan.SelectedValue, ddlCompetency.SelectedValue, txtLevel.Text, Session["username"].ToString());
     }
 
     protected void btnAdd_Click(object sender, EventArgs e)
     {
-        if (IsPostBack) InsertEventIntoDatabase();
-        Response.Redirect("FormInputTargetTraining.aspx");
+        if (IsPostBack) UpdatePositionReqIntoDatabase();
+        Response.Redirect("PagePositionRequirements.aspx");
     }
 
     protected void btnCancel_Click(object sender, EventArgs e)
     {
         Response.Redirect("PageUserPanel.aspx");
     }
-    
+
 </script>
 
 <html lang="en">
 <head>
     <% Response.Write(BioPM.ClassScripts.BasicScripts.GetMetaScript()); %>
 
-    <title>COMPETENCY DEVELOPMENT EVENT ENTRY FORM</title>
+    <title>POSITION REQUIREMENTS UPDATE FORM</title>
 
     <% Response.Write(BioPM.ClassScripts.StyleScripts.GetCoreStyle()); %>
     <% Response.Write(BioPM.ClassScripts.StyleScripts.GetFormStyle()); %>
@@ -75,27 +81,35 @@
             <div class="col-sm-12">
                 <section class="panel">
                     <header class="panel-heading">
-                        Competency Development Event Entry Form
+                        POSITION REQUIREMENTS UPDATE FORM
                           <span class="tools pull-right">
                             <a class="fa fa-chevron-down" href="javascript:;"></a>
                             <a class="fa fa-times" href="javascript:;"></a>
                          </span>
                     </header>
                     <div class="panel-body">
-                        <form id="Form1" class="form-horizontal " runat="server" >
-                             
+                        <form id="Form2" class="form-horizontal " runat="server" >
+
                         <div class="form-group">
-                            <label class="col-sm-3 control-label"> EVENT NAME </label>
+                            <label class="col-sm-3 control-label"> POSITION NAME </label>
                             <div class="col-lg-3 col-md-4">
-                                <asp:TextBox ID="txtEvtName" runat="server" class="form-control m-bot15" placeholder="EVENT NAME" ></asp:TextBox>
+                                <asp:DropDownList ID="ddlJabatan" runat="server" class="form-control m-bot15">   
+                                </asp:DropDownList> 
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label class="col-sm-3 control-label"> EVENT METHOD </label>
+                            <label class="col-sm-3 control-label"> COMPETENCY NAME </label>
                             <div class="col-lg-3 col-md-4">
-                                <asp:DropDownList ID="ddlEventMethod" runat="server" class="form-control m-bot15">   
+                                <asp:DropDownList ID="ddlCompetency" runat="server" class="form-control m-bot15">   
                                 </asp:DropDownList> 
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label"> REQUIRED LEVEL </label>
+                            <div class="col-lg-3 col-md-4">
+                                <asp:TextBox ID="txtLevel" runat="server" class="form-control m-bot15" placeholder="PROFICIENCY LEVEL TARGET" ></asp:TextBox>
                             </div>
                         </div>
 

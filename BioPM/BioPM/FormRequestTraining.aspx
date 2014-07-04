@@ -7,45 +7,30 @@
         if (Session["username"] == null && Session["password"] == null) Response.Redirect("PageLogin.aspx");
         if (!IsPostBack)
         {
-            GetDataSubCategory();
+            GetDataEvent();
         }
     }
     
-    //protected void sessionCreator()
-    //{
-    //    Session["username"] = "K495";
-    //    Session["name"] = "ALLAN PRAKOSA";
-    //    Session["password"] = "admin1234";
-    //    Session["role"] = "111111";
-    //}
-
-    //protected void GetDataCostCenter()
-    //{
-    //    ddlCostCenter.Items.Clear();
-    //    foreach (object[] data in BioPM.ClassObjects.CostCenterCatalog.GetAllCostCenter())
-    //    {
-    //        ddlCostCenter.Items.Add(new ListItem(data[1].ToString(), data[0].ToString()));
-    //    }
-    //}
-    
-    protected void GetDataSubCategory()
+    protected void GetDataEvent()
     {
-        //ddlSubCat.Items.Clear();
-        //foreach(object[] data in BioPM.ClassObjects.LabelCatalog.GetLabelSubCategories())
-        //{
-        //    ddlSubCat.Items.Add(new ListItem(data[1].ToString(), data[0].ToString()));
-        //}
+        ddlEventName.Items.Clear();
+        foreach (object[] data in BioPM.ClassObjects.ComDevEvent.GetAllComdevEvent())
+        {
+            ddlEventName.Items.Add(new ListItem(data[1].ToString(), data[0].ToString()));
+        }
     }
     
     protected void InsertDataIntoDatabase()
     {
-        //BioPM.ClassObjects.LabelCatalog.InsertLabel(txtLabelID.Text.ToUpper(), txtLabelName.Text, txtLabelWidth.Text, txtLabelLength.Text, ddlSubCat.SelectedValue, Session["username"].ToString());
+        string RECID = (BioPM.ClassObjects.ComDevPlan.GetComDevPlanMaxID() + 1).ToString();
+        BioPM.ClassObjects.ComDevPlan.InsertComDevPlan(RECID, Session["username"].ToString(), ddlEventName.SelectedValue, " ", " ", Session["username"].ToString());
+        BioPM.ClassObjects.ComDevPlan.InsertComDevPlanStatus(RECID, "Belum Disetujui", " ", Session["username"].ToString());
     }
 
     protected void btnAdd_Click(object sender, EventArgs e)
     {
         //InsertDataIntoDatabase();
-        Response.Redirect("FormInputTargetTraining.aspx");
+        Response.Redirect("PageRequestTraining.aspx");
     }
 
     protected void btnAddComp_Click(object sender, EventArgs e)
@@ -107,19 +92,12 @@
                     </header>
                     <div class="panel-body">
                         <form id="Form1" class="form-horizontal " runat="server" >
-                         
-                        <div class="form-group">
-                            <label class="col-sm-3 control-label"> EVENT METHOD </label>
-                            <div class="col-lg-3 col-md-4">
-                                <asp:DropDownList ID="ddlEventMethod" runat="server" class="form-control m-bot15">   
-                                </asp:DropDownList> 
-                            </div>
-                        </div>
 
                         <div class="form-group">
                             <label class="col-sm-3 control-label"> EVENT NAME </label>
                             <div class="col-lg-3 col-md-4">
-                                <asp:TextBox ID="txtEventName" runat="server" class="form-control m-bot15" placeholder="EVENT NAME" ></asp:TextBox>
+                                <asp:DropDownList ID="ddlEventName" runat="server" class="form-control m-bot15">   
+                                </asp:DropDownList> 
                             </div>
                         </div>
 

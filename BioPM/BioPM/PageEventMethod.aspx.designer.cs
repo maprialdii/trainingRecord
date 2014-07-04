@@ -10,6 +10,6 @@
 namespace BioPM {
     
     
-    public partial class PageRequestTraining {
+    public partial class PageEventMethod {
     }
 }

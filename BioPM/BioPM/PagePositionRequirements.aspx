@@ -11,9 +11,13 @@
     {
         string htmlelement = "";
 
-        foreach (object[] data in BioPM.ClassObjects.CompetencyCatalog.GetAllCompetency())
+        foreach (object[] data in BioPM.ClassObjects.Jabatan.GetAllKualifikasiJabatan())
         {
+<<<<<<< HEAD
             htmlelement += "<tr class=''><td>" + data[1].ToString() + "</td><td>" + data[2].ToString() + "</td><td>" + data[3].ToString() + "</td><td><a class='edit' href='FormUpdate.aspx?key=" + data[0].ToString() + "'>Edit</a></td><td><a class='delete' href='#.aspx?key=" + data[0].ToString() + "&type=000'>Delete</a></td></tr>";
+=======
+            htmlelement += "<tr class=''><td>" + data[1].ToString() + "</td><td>" + data[2].ToString() + "</td><td><a class='edit' href='FormUpdatePositionRequirements.aspx?key=" + data[0].ToString() + "'>Edit</a></td><td><a class='delete' href='#.aspx?key=" + data[0].ToString() + "&type=000'>Delete</a></td></tr>";
+>>>>>>> origin/master
         }
         
         return htmlelement;
@@ -54,7 +58,7 @@
             <div class="col-sm-12">
                 <section class="panel">
                     <header class="panel-heading">
-                        Competency Parameter
+                        Position Requirements
                           <span class="tools pull-right">
                             <a class="fa fa-chevron-down" href="javascript:;"></a>
                             <a class="fa fa-times" href="javascript:;"></a>
@@ -65,7 +69,7 @@
                         <div class="adv-table">
                             <div class="clearfix">
                                 <div class="btn-group">
-                                    <button id="editable-sample_new" onclick="document.location.href='FormInputCompetency.aspx';" class="btn btn-primary"> Add New <i class="fa fa-plus"></i>
+                                    <button id="editable-sample_new" onclick="document.location.href='FormInputPositionRequirements.aspx';" class="btn btn-primary"> Add New <i class="fa fa-plus"></i>
                                     </button>
                                 </div>
                                 <div class="btn-group pull-right">
@@ -81,9 +85,14 @@
                             <table class="table table-striped table-hover table-bordered" id="dynamic-table" >
                                 <thead>
                                 <tr>
+<<<<<<< HEAD
                                     <th>Pos ID</th>
                                     <th>Competency Name</th>
                                     <th>Profficiency Level</th>                                      
+=======
+                                    <th>Competency Name</th>
+                                    <th>Required Level</th>                                   
+>>>>>>> origin/master
                                     <th>Edit</th>
                                     <th>Delete</th>
                                 </tr>

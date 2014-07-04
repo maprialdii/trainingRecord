@@ -10,34 +10,43 @@
 namespace BioPM {
     
     
-    public partial class FormSuggestTraining {
+    public partial class FormUpdatePositionRequirements {
         
         /// <summary>
-        /// Form1 control.
+        /// Form2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm Form1;
+        protected global::System.Web.UI.HtmlControls.HtmlForm Form2;
         
         /// <summary>
-        /// ddlEventName control.
+        /// ddlJabatan control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlEventName;
+        protected global::System.Web.UI.WebControls.DropDownList ddlJabatan;
         
         /// <summary>
-        /// ddlEmployeeName control.
+        /// ddlCompetency control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlEmployeeName;
+        protected global::System.Web.UI.WebControls.DropDownList ddlCompetency;
+        
+        /// <summary>
+        /// txtLevel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtLevel;
         
         /// <summary>
         /// btnAdd control.

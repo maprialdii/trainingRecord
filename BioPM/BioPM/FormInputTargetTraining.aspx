@@ -5,21 +5,16 @@
     protected void Page_Load(object sender, EventArgs e)
     {
         if (Session["username"] == null && Session["password"] == null) Response.Redirect("PageLogin.aspx");
-        if (!IsPostBack) SetOrganizationType();
+        if (!IsPostBack) SetCompetencyList();
     }
-    //protected void sessionCreator()
-    //{
-    //    Session["username"] = "K495";
-    //    Session["name"] = "ALLAN PRAKOSA";
-    //    Session["password"] = "admin1234";
-    //    Session["role"] = "111111";
-    //}
 
-    protected void SetOrganizationType()
+    protected void SetCompetencyList()
     {
-        //ddlOrgType.Items.Clear();
-        //ddlOrgType.Items.Add(new ListItem("Unit", "1"));
-        //ddlOrgType.Items.Add(new ListItem("Position", "2"));
+        ddlCompetency.Items.Clear();
+        foreach (object[] data in BioPM.ClassObjects.CompetencyCatalog.GetAllCompetency())
+        {
+            ddlCompetency.Items.Add(new ListItem(data[1].ToString(), data[0].ToString()));
+        }
     }
 
     protected void InsertOrganizationIntoDatabase()
@@ -32,6 +27,12 @@
     {
         //if (IsPostBack) InsertOrganizationIntoDatabase();
         Response.Redirect("PageRequestTraining.aspx");
+    }
+
+    protected void btnAddComp_Click(object sender, EventArgs e)
+    {
+        //if (IsPostBack) InsertOrganizationIntoDatabase();
+        Response.Redirect("FormInputTargetTraining.aspx");
     }
 
     protected void btnCancel_Click(object sender, EventArgs e)
@@ -105,6 +106,8 @@
                             </div>
                         </div>
 
+                        <asp:Button class="btn btn-round btn-primary" ID="addComp" runat="server" Text="Add Competency" OnClick="btnAddComp_Click"/>
+
                         <table class="table table-striped table-hover table-bordered" id="dynamic-table" >
                                 <thead>
                                 <tr>
@@ -121,7 +124,7 @@
                         <div class="form-group">
                             <label class="col-sm-3 control-label"> </label>
                             <div class="col-lg-3 col-md-3">
-                                <asp:Button class="btn btn-round btn-primary" ID="btnAdd" runat="server" Text="Add" OnClick="btnAdd_Click"/>
+                                <asp:Button class="btn btn-round btn-primary" ID="btnAdd" runat="server" Text="Finish" OnClick="btnAdd_Click"/>
                                 <asp:Button class="btn btn-round btn-primary" ID="btnCancel" runat="server" Text="Cancel" OnClick="btnCancel_Click"/>
                             </div>
                         </div>

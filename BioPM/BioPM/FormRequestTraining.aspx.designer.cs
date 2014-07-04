@@ -22,22 +22,13 @@ namespace BioPM {
         protected global::System.Web.UI.HtmlControls.HtmlForm Form1;
         
         /// <summary>
-        /// ddlEventMethod control.
+        /// ddlEventName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlEventMethod;
-        
-        /// <summary>
-        /// txtEventName control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtEventName;
+        protected global::System.Web.UI.WebControls.DropDownList ddlEventName;
         
         /// <summary>
         /// btnAdd control.
