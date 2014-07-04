@@ -105,6 +105,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="FormApproveRequest.aspx" />
     <Content Include="FormInputAllQualification.aspx" />
     <Content Include="FormInputCompetencyRelation.aspx" />
     <Content Include="FormInputEmployeeQualification.aspx" />
@@ -276,6 +277,13 @@
     <Compile Include="ClassObjects\QC.cs" />
     <Compile Include="ClassScripts\BasicScripts.cs" />
     <Compile Include="ClassScripts\JS.cs" />
+    <Compile Include="FormApproveRequest.aspx.cs">
+      <DependentUpon>FormApproveRequest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FormApproveRequest.aspx.designer.cs">
+      <DependentUpon>FormApproveRequest.aspx</DependentUpon>
+    </Compile>
     <Compile Include="FormInputAllQualification.aspx.cs">
       <DependentUpon>FormInputAllQualification.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
