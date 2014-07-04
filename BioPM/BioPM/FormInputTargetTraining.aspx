@@ -7,13 +7,6 @@
         if (Session["username"] == null && Session["password"] == null) Response.Redirect("PageLogin.aspx");
         if (!IsPostBack) SetCompetencyList();
     }
-    //protected void sessionCreator()
-    //{
-    //    Session["username"] = "K495";
-    //    Session["name"] = "ALLAN PRAKOSA";
-    //    Session["password"] = "admin1234";
-    //    Session["role"] = "111111";
-    //}
 
     protected void SetCompetencyList()
     {
@@ -26,20 +19,20 @@
 
     protected void InsertOrganizationIntoDatabase()
     {
-        string ORGID = (BioPM.ClassObjects.OrganizationCatalog.GetOrganizationMaxID() + 1).ToString();
-        BioPM.ClassObjects.OrganizationCatalog.InsertOrganization(ORGID, txtOrgID.Text, ddlOrgType.SelectedValue, txtOrgName.Text, Session["username"].ToString());
+        //string ORGID = (BioPM.ClassObjects.OrganizationCatalog.GetOrganizationMaxID() + 1).ToString();
+        //BioPM.ClassObjects.OrganizationCatalog.InsertOrganization(ORGID, txtOrgID.Text, ddlOrgType.SelectedValue, txtOrgName.Text, Session["username"].ToString());
     }
 
     protected void btnAdd_Click(object sender, EventArgs e)
     {
-        if (IsPostBack) InsertOrganizationIntoDatabase();
+        //if (IsPostBack) InsertOrganizationIntoDatabase();
         Response.Redirect("PageRequestTraining.aspx");
     }
 
     protected void btnAddComp_Click(object sender, EventArgs e)
     {
-        if (IsPostBack) InsertOrganizationIntoDatabase();
-        Response.Redirect("PageRequestTraining.aspx");
+        //if (IsPostBack) InsertOrganizationIntoDatabase();
+        Response.Redirect("FormInputTargetTraining.aspx");
     }
 
     protected void btnCancel_Click(object sender, EventArgs e)
@@ -131,7 +124,7 @@
                         <div class="form-group">
                             <label class="col-sm-3 control-label"> </label>
                             <div class="col-lg-3 col-md-3">
-                                <asp:Button class="btn btn-round btn-primary" ID="btnAdd" runat="server" Text="Add" OnClick="btnAdd_Click"/>
+                                <asp:Button class="btn btn-round btn-primary" ID="btnAdd" runat="server" Text="Finish" OnClick="btnAdd_Click"/>
                                 <asp:Button class="btn btn-round btn-primary" ID="btnCancel" runat="server" Text="Cancel" OnClick="btnCancel_Click"/>
                             </div>
                         </div>
