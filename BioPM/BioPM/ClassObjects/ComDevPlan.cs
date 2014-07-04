@@ -117,7 +117,7 @@ namespace BioPM.ClassObjects
         {
             SqlConnection conn = GetConnection();
             string sqlCmd = @"SELECT CP.RECID, CP.EVTNM, CP.EVTMH, CP.EVTCO, CS.APVST
-                            FROM trrcd.COMDEV_PLAN CP, trrcd.COMDEV_PLAN_STATUS CS 
+                            FROM trrcd.COMDEV_PLAN CP WITH(INDEX(COMDEV_PLAN_IDX_BEGDA_ENDDA_ID)), trrcd.COMDEV_PLAN_STATUS CS WITH(INDEX(COMDEV_PLAN_STATUS_IDX_BEGDA_ENDDA_ID))
                             WHERE CP.BEGDA <= GETDATE() AND CP.ENDDA >= GETDATE()
                             AND CS.BEGDA <= GETDATE() AND CS.ENDDA >= GETDATE()
                             AND CP.RECID=CS.RECID AND CP.PERNR='" + pernr +"' ORDER BY CP.RECID DESC;";
@@ -145,7 +145,7 @@ namespace BioPM.ClassObjects
         {
             SqlConnection conn = GetConnection();
             string sqlCmd = @"SELECT CP.RECID, CP.EVTNM, CP.EVTMH, CP.EVTCO, CS.APVST
-                            FROM trrcd.COMDEV_PLAN CP, trrcd.COMDEV_PLAN_STATUS CS 
+                            FROM trrcd.COMDEV_PLAN CP WITH(INDEX(COMDEV_PLAN_IDX_BEGDA_ENDDA_ID)), trrcd.COMDEV_PLAN_STATUS CS WITH(INDEX(COMDEV_PLAN_STATUS_IDX_BEGDA_ENDDA_ID))
                             WHERE CP.BEGDA <= GETDATE() AND CP.ENDDA >= GETDATE()
                             AND CS.BEGDA <= GETDATE() AND CS.ENDDA >= GETDATE()
                             AND CP.RECID=CS.RECID AND CS.APVST='" + status + "' ORDER BY CP.RECID DESC;";
@@ -173,7 +173,7 @@ namespace BioPM.ClassObjects
         {
             SqlConnection conn = GetConnection();
             string sqlCmd = @"SELECT CP.RECID, CP.EVTNM, CP.EVTMH, CP.EVTCO, CS.APVST
-                            FROM trrcd.COMDEV_PLAN CP, trrcd.COMDEV_PLAN_STATUS CS 
+                            FROM trrcd.COMDEV_PLAN CP WITH(INDEX(COMDEV_PLAN_IDX_BEGDA_ENDDA_ID)), trrcd.COMDEV_PLAN_STATUS CS WITH(INDEX(COMDEV_PLAN_STATUS_IDX_BEGDA_ENDDA_ID))
                             WHERE CP.BEGDA <= GETDATE() AND CP.ENDDA >= GETDATE()
                             AND CS.BEGDA <= GETDATE() AND CS.ENDDA >= GETDATE()
                             AND CP.RECID=CS.RECID AND CP.RECID='" + recid + "' ORDER BY CP.RECID DESC;";
@@ -201,7 +201,7 @@ namespace BioPM.ClassObjects
         {
             SqlConnection conn = GetConnection();
             string sqlCmd = @"SELECT CS.APVID, CS.RECID, CS.APVPR, CS.APVST, CP.EVTMH, CP.EVTCO
-                            FROM trrcd.COMDEV_PLAN_STATUS CS, trrcd.COMDEV_PLAN CP 
+                            FROM trrcd.COMDEV_PLAN_STATUS CS WITH(INDEX(COMDEV_PLAN_STATUS_IDX_BEGDA_ENDDA_ID)), trrcd.COMDEV_PLAN CP WITH(INDEX(COMDEV_PLAN_IDX_BEGDA_ENDDA_ID))
                             WHERE CS.BEGDA <= GETDATE() AND CS.ENDDA >= GETDATE()
                             AND CS.BEGDA <= GETDATE() AND CS.ENDDA >= GETDATE()
                             AND CP.RECID=CS.RECID AND CS.RECID='" + recid + "' ORDER BY CP.RECID DESC;";

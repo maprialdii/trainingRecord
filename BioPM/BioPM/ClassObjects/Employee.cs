@@ -85,7 +85,62 @@ namespace BioPM.ClassObjects
             {
                 conn.Close();
             }
-        }        
+        }
+
+        public static object[] GetPosID(string pernr)
+        {
+            SqlConnection conn = GetConnection();
+            string sqlCmd = @"SELECT US.PERNR, US.POSID
+                            FROM bioumum.USER_DATA US 
+                            WHERE US.BEGDA <= GETDATE() AND US.ENDDA >= GETDATE()
+                            AND US.PERNR='" + pernr + "';";
+            SqlCommand cmd = GetCommand(conn, sqlCmd);
+
+            try
+            {
+                conn.Open();
+                SqlDataReader reader = GetDataReader(cmd);
+                object[] data = null;
+                while (reader.Read())
+                {
+                    object[] values = { reader[0].ToString(), reader[1].ToString(), reader[2].ToString(), reader[3].ToString(), reader[4].ToString(), reader[5].ToString(), reader[6].ToString() };
+                    data = values;
+                }
+                return data;
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+
+        public static List<object[]> GetEmployeeByPosition(string posid)
+        {
+            SqlConnection conn = GetConnection();
+            string sqlCmd = @"SELECT US.PERNR, US.CNAME
+                            FROM bioumum.USER_DATA US 
+                            WHERE US.BEGDA <= GETDATE() AND US.ENDDA >= GETDATE()
+                            AND US.POSID='" + posid + "' ORDER BY US.PERNR;";
+            SqlCommand cmd = GetCommand(conn, sqlCmd);
+
+            try
+            {
+                conn.Open();
+                SqlDataReader reader = GetDataReader(cmd);
+                List<object[]> batchs = new List<object[]>();
+                while (reader.Read())
+                {
+                    object[] values = { reader[0].ToString(), reader[1].ToString() };
+                    batchs.Add(values);
+                }
+                return batchs;
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+        
     }
 
     public class CostCenterCatalog : DatabaseFactory
@@ -149,7 +204,7 @@ namespace BioPM.ClassObjects
         {
             SqlConnection conn = GetConnection();
             string sqlCmd = @"SELECT CG.GAPID, UD.PERNR, UD.POSID, CG.CPYID, CG.PRLVL, PR.PRLVL, PR.LVL-CG.PRLVL AS GAP
-                            FROM trrcd.COMPETENCY_GAP CG, bioumum.USERDATA UD, trrcd.POSITION_REQ PR 
+                            FROM trrcd.COMPETENCY_GAP CG WITH(INDEX(COMPETENCY_GAP_IDX_BEGDA_ENDDA_ID)), bioumum.USERDATA UD, trrcd.POSITION_REQ PR WITH(INDEX(POSITION_REQ_IDX_BEGDA_ENDDA_ID))
                             WHERE CG.BEGDA <= GETDATE() AND CG.ENDDA >= GETDATE()
                             AND PR.BEGDA <= GETDATE() AND PR.ENDDA >= GETDATE()
                             AND UD.BEGDA <= GETDATE() AND UD.ENDDA >= GETDATE()
@@ -262,7 +317,7 @@ namespace BioPM.ClassObjects
         {
             SqlConnection conn = GetConnection();
             string sqlCmd = @"SELECT CG.GAPID, UD.PERNR, UD.POSID, CG.CPYID, CG.PRLVL, PR.PRLVL, PR.LVL-CG.PRLVL AS GAP
-                            FROM trrcd.COMPETENCY_GAP CG, bioumum.USERDATA UD, trrcd.POSITION_REQ PR 
+                            FROM trrcd.COMPETENCY_GAP CG WITH(INDEX(COMPETENCY_GAP_IDX_BEGDA_ENDDA_ID)), bioumum.USERDATA UD, trrcd.POSITION_REQ PR WITH(INDEX(POSITION_REQ_IDX_BEGDA_ENDDA_ID)) 
                             WHERE CG.BEGDA <= GETDATE() AND CG.ENDDA >= GETDATE()
                             AND PR.BEGDA <= GETDATE() AND PR.ENDDA >= GETDATE()
                             AND UD.BEGDA <= GETDATE() AND UD.ENDDA >= GETDATE()
@@ -285,6 +340,6 @@ namespace BioPM.ClassObjects
             {
                 conn.Close();
             }
-        }
+        }        
     }
 }

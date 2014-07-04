@@ -73,7 +73,7 @@ namespace BioPM.ClassObjects
         {
             SqlConnection conn = GetConnection();
             string sqlCmd = @"SELECT RK.CPYID, RK.CPYNM
-                            FROM trrcd.REFERENSI_KOMPETENSI RK 
+                            FROM trrcd.REFERENSI_KOMPETENSI RK WITH(INDEX(REFERENSI_KOMPETENSI_IDX_BEGDA_ENDDA_ID))
                             WHERE RK.BEGDA <= GETDATE() AND RK.ENDDA >= GETDATE()
                             ORDER BY RK.CPYID ASC;";
             SqlCommand cmd = GetCommand(conn, sqlCmd);
@@ -100,7 +100,7 @@ namespace BioPM.ClassObjects
         {
             SqlConnection conn = GetConnection();
             string sqlCmd = @"SELECT RK.CPYID, RK.CPYNM
-                            FROM trrcd.REFERENSI_KOMPETENSI RK 
+                            FROM trrcd.REFERENSI_KOMPETENSI RK WITH(INDEX(REFERENSI_KOMPETENSI_IDX_BEGDA_ENDDA_ID))
                             WHERE RK.BEGDA <= GETDATE() AND RK.ENDDA >= GETDATE()
                             AND RK.CPYID='" + cpyid + "'ORDER BY RK.CPYID ASC;";
             SqlCommand cmd = GetCommand(conn, sqlCmd);

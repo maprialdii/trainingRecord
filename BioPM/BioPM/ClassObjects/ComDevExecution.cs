@@ -74,7 +74,7 @@ namespace BioPM.ClassObjects
         {
             SqlConnection conn = GetConnection();
             string sqlCmd = @"SELECT CE.EXCID, CV.EVTNM, CE.TITLE, CE.BATCH, CE.INSTI, CE.BEGDA, CE.ENDDA, CE.CRTFL, CE.SCORE
-                            FROM trrcd.COMDEV_EVENT_EXECUTION CE, trrcd.COMDEV_EVENT CV 
+                            FROM trrcd.COMDEV_EVENT_EXECUTION CE WITH(INDEX(COMDEV_EVENT_EXECUTION_IDX_BEGDA_ENDDA_ID)), trrcd.COMDEV_EVENT CV WITH(INDEX(COMDEV_EVENT_IDX_BEGDA_ENDDA_ID))
                             WHERE CV.EVTID=CE.EVTID 
                             AND CV.BEGDA <= GETDATE() AND CV.ENDDA >= GETDATE()
                             AND CE.BEGDA <= GETDATE() AND CE.ENDDA >= GETDATE()
@@ -103,7 +103,7 @@ namespace BioPM.ClassObjects
         {
             SqlConnection conn = GetConnection();
             string sqlCmd = @"SELECT CE.EXCID, CE.EVTID, CV.EVTNM, CE.TITLE, CE.BATCH, CE.INSTI, CE.BEGDA, CE.ENDDA, CE.CRTFL, CE.SCORE
-                            FROM trrcd.COMDEV_EVENT_EXECUTION CE, trrcd.COMDEV_EVENT CV 
+                            FROM trrcd.COMDEV_EVENT_EXECUTION CE WITH(INDEX(COMDEV_EVENT_EXECUTION_IDX_BEGDA_ENDDA_ID)), trrcd.COMDEV_EVENT CV WITH(INDEX(COMDEV_EVENT_IDX_BEGDA_ENDDA_ID))
                             WHERE CV.EVTID=CE.EVTID 
                             AND CV.BEGDA <= GETDATE() AND CV.ENDDA >= GETDATE()
                             AND CE.BEGDA <= GETDATE() AND CE.ENDDA >= GETDATE()
@@ -132,7 +132,7 @@ namespace BioPM.ClassObjects
         {
             SqlConnection conn = GetConnection();
             string sqlCmd = @"SELECT CE.INSTI, CE.ADRIN, CE.CITIN, CE.COUIN
-                            FROM trrcd.COMDEV_EVENT_EXECUTION CE 
+                            FROM trrcd.COMDEV_EVENT_EXECUTION CE WITH(INDEX(COMDEV_EVENT_EXECUTION_IDX_BEGDA_ENDDA_ID))
                             WHERE CE.BEGDA <= GETDATE() AND CM.ENDDA >= GETDATE()
                             AND CE.EXCID=" + excid + " ORDER BY CE.EXCID DESC;";
             SqlCommand cmd = GetCommand(conn, sqlCmd);

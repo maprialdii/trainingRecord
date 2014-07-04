@@ -134,7 +134,7 @@ namespace BioPM.ClassObjects
         {
             SqlConnection conn = GetConnection();
             string sqlCmd = @"SELECT CE.EVTID, CE.EVTNM, EM.EVTMT
-                            FROM trrcd.COMDEV_EVENT CE, trrcd.EVENT_METHOD EM
+                            FROM trrcd.COMDEV_EVENT CE WITH(INDEX(COMDEV_EVENT_IDX_BEGDA_ENDDA_ID)), trrcd.EVENT_METHOD EM WITH(INDEX(EVENT_METHOD_IDX_BEGDA_ENDDA_ID))
                             WHERE CE.EMTID = EM.EMTID
                             AND EM.BEGDA <= GETDATE() AND EM.ENDDA >= GETDATE()
                             AND CE.BEGDA <= GETDATE() AND CE.ENDDA >= GETDATE()
@@ -163,7 +163,7 @@ namespace BioPM.ClassObjects
         {
             SqlConnection conn = GetConnection();
             string sqlCmd = @"SELECT CE.TRGID, CE.EVTNM, RK.CPYNM, CT.PRLVL
-                            FROM trrcd.COMDEV_EVENT_TARGET CT, trrcd.COMDEV_EVENT CE, trrcd.REFERENSI_KOMPETENSI RK
+                            FROM trrcd.COMDEV_EVENT_TARGET CT WITH(INDEX(COMDEV_EVENT_TARGET_IDX_BEGDA_ENDDA_ID)), trrcd.COMDEV_EVENT CE WITH(INDEX(COMDEV_EVENT_IDX_BEGDA_ENDDA_ID)), trrcd.REFERENSI_KOMPETENSI RK WITH(INDEX(REFERENSI_KOMPETENSI_IDX_BEGDA_ENDDA_ID))
                             WHERE CE.EVTID=CT.EVTID AND RK.CPYID=CT.CPYID
                             AND CT.BEGDA <= GETDATE() AND CT.ENDDA >= GETDATE()
                             AND CE.BEGDA <= GETDATE() AND CE.ENDDA >= GETDATE()
@@ -193,7 +193,7 @@ namespace BioPM.ClassObjects
         {
             SqlConnection conn = GetConnection();
             string sqlCmd = @"SELECT CE.EVTID, CE.EVTNM, CE.EMTID, EM.EMTNM
-                            FROM trrcd.COMDEV_EVENT CE, trrcd.EVENT_METHOD EM
+                            FROM trrcd.COMDEV_EVENT CE WITH(INDEX(COMDEV_EVENT_IDX_BEGDA_ENDDA_ID)), trrcd.EVENT_METHOD EM WITH(INDEX(EVENT_METHOD_IDX_BEGDA_ENDDA_ID))
                             WHERE CE.EMTID = EM.EMTID
                             AND CM.BEGDA <= GETDATE() AND CM.ENDDA >= GETDATE()
                             AND CE.BEGDA <= GETDATE() AND CE.ENDDA >= GETDATE()
@@ -244,7 +244,7 @@ namespace BioPM.ClassObjects
         {
             SqlConnection conn = GetConnection();
             string sqlCmd = @"SELECT CE.TRGID, CE.EVTID, CE.EVTNM, CE.CPYID, RK.CPYNM, CT.PRLVL
-                            FROM trrcd.COMDEV_EVENT_TARGET CT, trrcd.COMDEV_EVENT CE, trrcd.REFERENSI_KOMPETENSI RK
+                            FROM trrcd.COMDEV_EVENT_TARGET CT WITH(INDEX(COMDEV_EVENT_TARGET_IDX_BEGDA_ENDDA_ID)), trrcd.COMDEV_EVENT CE WITH(INDEX(COMDEV_EVENT_IDX_BEGDA_ENDDA_ID)), trrcd.REFERENSI_KOMPETENSI RK WITH(INDEX(REFERENSI_KOMPETENSI_IDX_BEGDA_ENDDA_ID))
                             WHERE CE.EVTID=CT.EVTID AND RK.CPYID=CT.CPYID
                             AND CT.BEGDA <= GETDATE() AND CT.ENDDA >= GETDATE()
                             AND CE.BEGDA <= GETDATE() AND CE.ENDDA >= GETDATE()
@@ -274,7 +274,7 @@ namespace BioPM.ClassObjects
         {
             SqlConnection conn = GetConnection();
             string sqlCmd = @"SELECT CE.TRGID, CE.EVTID, CE.EVTNM, RK.CPYNM, CT.PRLVL
-                            FROM trrcd.COMDEV_EVENT_TARGET CT, trrcd.COMDEV_EVENT CE, trrcd.REFERENSI_KOMPETENSI RK
+                            FROM trrcd.COMDEV_EVENT_TARGET CT WITH(INDEX(COMDEV_EVENT_TARGET_IDX_BEGDA_ENDDA_ID)), trrcd.COMDEV_EVENT CE WITH(INDEX(COMDEV_EVENT_IDX_BEGDA_ENDDA_ID)), trrcd.REFERENSI_KOMPETENSI RK WITH(INDEX(REFERENSI_KOMPETENSI_IDX_BEGDA_ENDDA_ID))
                             WHERE CE.EVTID=CT.EVTID AND RK.CPYID=CT.CPYID
                             AND CT.BEGDA <= GETDATE() AND CT.ENDDA >= GETDATE()
                             AND CE.BEGDA <= GETDATE() AND CE.ENDDA >= GETDATE()

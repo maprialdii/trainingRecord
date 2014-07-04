@@ -73,7 +73,7 @@ namespace BioPM.ClassObjects
         {
             SqlConnection conn = GetConnection();
             string sqlCmd = @"SELECT EM.EMTID, EM.EVTMT
-                            FROM trrcd.EVENT_METHOD EM
+                            FROM trrcd.EVENT_METHOD EM WITH(INDEX(EVENT_METHOD_IDX_BEGDA_ENDDA_ID))
                             WHERE EM.BEGDA <= GETDATE() AND EM.ENDDA >= GETDATE()
                             ORDER BY EM.EMTID ASC;";
             SqlCommand cmd = GetCommand(conn, sqlCmd);
@@ -100,7 +100,7 @@ namespace BioPM.ClassObjects
         {
             SqlConnection conn = GetConnection();
             string sqlCmd = @"SELECT EM.EMTID, EM.EVTMT
-                            FROM trrcd.EVENT_METHOD EM
+                            FROM trrcd.EVENT_METHOD EM WITH(INDEX(EVENT_METHOD_IDX_BEGDA_ENDDA_ID))
                             WHERE EM.BEGDA <= GETDATE() AND EM.ENDDA >= GETDATE()
                             AND EM.EMTID='" + emtid + "' ORDER BY EM.EMTID ASC;";
             SqlCommand cmd = GetCommand(conn, sqlCmd);
