@@ -153,12 +153,13 @@
             case "22":
                 {
                     BioPM.ClassObjects.CompetencyCatalog.DeleteCompetencyStructure(ID, Session["username"].ToString());
-                    message = "DELETE SUCCESS! COMPETENCY ID " + ID + " HAS BEEN DELETED. <a href='PageCompetencyRelation.aspx'>BACK</a>.";
+                    message = "DELETE SUCCESS! COMPETENCY STRUCTURE ID " + ID + " HAS BEEN DELETED. <a href='PageCompetencyRelation.aspx'>BACK</a>.";
                     break;
                 }
             case "23":
                 {
-                    //LABEL CATEGORY
+                    BioPM.ClassObjects.EventMethod.DeleteEventMethod(ID, Session["username"].ToString());
+                    message = "DELETE SUCCESS! EVENT METHOD ID " + ID + " HAS BEEN DELETED. <a href='PageEventMethod.aspx'>BACK</a>.";
                     break;
                 }
             case "24":

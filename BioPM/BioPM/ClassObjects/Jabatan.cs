@@ -98,14 +98,14 @@ namespace BioPM.ClassObjects
             }
         }
 
-        public static object[] GetKualifikasiJabatanById(string posid, string cpyid)
+        public static object[] GetKualifikasiJabatanById(string prqid)
         {
             SqlConnection conn = GetConnection();
-            string sqlCmd = @"SELECT PR.PRQID, PR.POSID, RK.CPYNM, PR.PRLVL
+            string sqlCmd = @"SELECT PR.PRQID, PR.POSID, PR.CPYID RK.CPYNM, PR.PRLVL
                             FROM trrcd.REFERENSI_KOMPETENSI RK, trrcd.POSITION_REQ PR 
                             WHERE RK.BEGDA <= GETDATE() AND RK.ENDDA >= GETDATE()
                             AND PR.BEGDA <= GETDATE() AND PR.ENDDA >= GETDATE()
-                            AND PR.POSID='" +posid+"' AND PR.CPYID='"+cpyid+"' ORDER BY PR.POSID ASC;";
+                            AND PR.POSID='" +prqid+"'  ORDER BY PR.POSID ASC;";
             SqlCommand cmd = GetCommand(conn, sqlCmd);
 
             try
@@ -115,7 +115,7 @@ namespace BioPM.ClassObjects
                 object[] data = null;
                 while (reader.Read())
                 {
-                    object[] values = { reader[0].ToString(), reader[1].ToString(), reader[2].ToString(), reader[3].ToString() };
+                    object[] values = { reader[0].ToString(), reader[1].ToString(), reader[2].ToString(), reader[3].ToString(), reader[4].ToString() };
                     values = data;
                 }
                 return data;

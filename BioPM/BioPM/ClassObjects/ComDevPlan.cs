@@ -29,13 +29,13 @@ namespace BioPM.ClassObjects
             }
         }
 
-        public static void InsertComDevPlanStatus(string RECID, string APVST, string APVPR, string CHUSR)
+        public static void InsertComDevPlanStatus(string APVID, string RECID, string APVST, string APVPR, string CHUSR)
         {
             string date = DateTime.Now.ToString("MM/dd/yyyy HH:mm");
             string maxdate = DateTime.MaxValue.ToString("MM/dd/yyyy HH:mm");
             SqlConnection conn = GetConnection();
-            string sqlCmd = @"INSERT INTO trrcd.COMDEV_PLAN_STATUS (BEGDA, ENDDA, RECID, APVST, APVPR, CHUSR, CHGDT)
-                            VALUES ('" + date + "','" + maxdate + "'," + RECID + ",'" + APVST + "','" + APVPR + "','" + date + "','" + CHUSR + "');";
+            string sqlCmd = @"INSERT INTO trrcd.COMDEV_PLAN_STATUS (BEGDA, ENDDA, APVID, RECID, APVST, APVPR, CHUSR, CHGDT)
+                            VALUES ('" + date + "','" + maxdate + "'," + APVID + "," + RECID + ",'" + APVST + "','" + APVPR + "','" + date + "','" + CHUSR + "');";
 
             SqlCommand cmd = DatabaseFactory.GetCommand(conn, sqlCmd);
 
@@ -55,7 +55,7 @@ namespace BioPM.ClassObjects
             string date = DateTime.Now.ToString("MM/dd/yyyy HH:mm");
             string yesterday = DateTime.Now.AddMinutes(-1).ToString("MM/dd/yyyy HH:mm");
             SqlConnection conn = GetConnection();
-            string sqlCmd = @"UPDATE trrcd.COMDEV_PLAN SET ENDDA = '" + yesterday + "', CHGDT = '" + date + "', CHUSR = '" + CHUSR + "' WHERE (RECID = " + RECID + " AND BEGDA <= GETDATE() AND ENDDA >= GETDATE()";
+            string sqlCmd = @"UPDATE trrcd.COMDEV_PLAN SET ENDDA = '" + yesterday + "', CHGDT = '" + date + "', CHUSR = '" + CHUSR + "' WHERE (RECID = " + RECID + " AND BEGDA <= GETDATE() AND ENDDA >= GETDATE())";
 
             SqlCommand cmd = DatabaseFactory.GetCommand(conn, sqlCmd);
 
@@ -71,12 +71,12 @@ namespace BioPM.ClassObjects
             }
         }
 
-        public static void UpdateComDevPlanStatus(string RECID, string APVST, string APVPR, string CHUSR)
+        public static void UpdateComDevPlanStatus(string APVID, string RECID, string APVST, string APVPR, string CHUSR)
         {
             string date = DateTime.Now.ToString("MM/dd/yyyy HH:mm");
             string yesterday = DateTime.Now.AddMinutes(-1).ToString("MM/dd/yyyy HH:mm");
             SqlConnection conn = GetConnection();
-            string sqlCmd = @"UPDATE trrcd.COMDEV_PLAN_STATUS SET CHGDT = '" + date + "', APVST = '" + APVST + "', APVPR = '" + APVPR +  "', CHUSR = '" + CHUSR + "' WHERE (RECID = " + RECID + " AND BEGDA <= GETDATE() AND ENDDA >= GETDATE()";
+            string sqlCmd = @"UPDATE trrcd.COMDEV_PLAN_STATUS SET ENDDA = '" + yesterday + "', CHGDT = '" + date +  "', CHUSR = '" + CHUSR + "' WHERE (APVID = " + APVID + " AND BEGDA <= GETDATE() AND ENDDA >= GETDATE())";
 
             SqlCommand cmd = DatabaseFactory.GetCommand(conn, sqlCmd);
 
@@ -88,6 +88,7 @@ namespace BioPM.ClassObjects
             finally
             {
                 conn.Close();
+                InsertComDevPlan(APVID, RECID, RECID, APVST, APVPR, CHUSR);
             }
         }
 
@@ -96,7 +97,7 @@ namespace BioPM.ClassObjects
             string date = DateTime.Now.ToString("MM/dd/yyyy HH:mm");
             string yesterday = DateTime.Now.AddMinutes(-1).ToString("MM/dd/yyyy HH:mm");
             SqlConnection conn = GetConnection();
-            string sqlCmd = @"UPDATE trrcd.COMDEV_PLAN SET ENDDA = '" + yesterday + "', CHGDT = '" + date + "', CHUSR = '" + chusr+ "' WHERE (RECID = " + recid + " AND BEGDA <= GETDATE() AND ENDDA >= GETDATE()";
+            string sqlCmd = @"UPDATE trrcd.COMDEV_PLAN SET ENDDA = '" + yesterday + "', CHGDT = '" + date + "', CHUSR = '" + chusr+ "' WHERE (RECID = " + recid + " AND BEGDA <= GETDATE() AND ENDDA >= GETDATE())";
 
             SqlCommand cmd = DatabaseFactory.GetCommand(conn, sqlCmd);
 
@@ -115,7 +116,7 @@ namespace BioPM.ClassObjects
         public static List<object[]> GetComdevPlanByUsername(string pernr)
         {
             SqlConnection conn = GetConnection();
-            string sqlCmd = @"SELECT CP.EVTNM, CP.EVTMH, CP.EVTCO, CS.APVST
+            string sqlCmd = @"SELECT CP.RECID, CP.EVTNM, CP.EVTMH, CP.EVTCO, CS.APVST
                             FROM trrcd.COMDEV_PLAN CP, trrcd.COMDEV_PLAN_STATUS CS 
                             WHERE CP.BEGDA <= GETDATE() AND CP.ENDDA >= GETDATE()
                             AND CS.BEGDA <= GETDATE() AND CS.ENDDA >= GETDATE()
@@ -143,7 +144,7 @@ namespace BioPM.ClassObjects
         public static List<object[]> GetComdevPlanByStatus(string status)
         {
             SqlConnection conn = GetConnection();
-            string sqlCmd = @"SELECT CP.EVTNM, CP.EVTMH, CP.EVTCO, CS.APVST
+            string sqlCmd = @"SELECT CP.RECID, CP.EVTNM, CP.EVTMH, CP.EVTCO, CS.APVST
                             FROM trrcd.COMDEV_PLAN CP, trrcd.COMDEV_PLAN_STATUS CS 
                             WHERE CP.BEGDA <= GETDATE() AND CP.ENDDA >= GETDATE()
                             AND CS.BEGDA <= GETDATE() AND CS.ENDDA >= GETDATE()
@@ -168,12 +169,40 @@ namespace BioPM.ClassObjects
             }
         }
 
-        public static List<object[]> GetComdevPlanById(string recid)
+        public static object[] GetComdevPlanById(string recid)
         {
             SqlConnection conn = GetConnection();
-            string sqlCmd = @"SELECT CP.EVTNM, CP.EVTMH, CP.EVTCO, CS.APVST
+            string sqlCmd = @"SELECT CP.RECID, CP.EVTNM, CP.EVTMH, CP.EVTCO, CS.APVST
                             FROM trrcd.COMDEV_PLAN CP, trrcd.COMDEV_PLAN_STATUS CS 
                             WHERE CP.BEGDA <= GETDATE() AND CP.ENDDA >= GETDATE()
+                            AND CS.BEGDA <= GETDATE() AND CS.ENDDA >= GETDATE()
+                            AND CP.RECID=CS.RECID AND CP.RECID='" + recid + "' ORDER BY CP.RECID DESC;";
+            SqlCommand cmd = GetCommand(conn, sqlCmd);
+
+            try
+            {
+                conn.Open();
+                SqlDataReader reader = GetDataReader(cmd);
+                object[] data = null;
+                while (reader.Read())
+                {
+                    object[] values = { reader[0].ToString(), reader[1].ToString(), reader[2].ToString(), reader[3].ToString() };
+                    data=values;
+                }
+                return data;
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+
+        public static object[] GetComdevPlanStatusById(string recid)
+        {
+            SqlConnection conn = GetConnection();
+            string sqlCmd = @"SELECT CS.APVID, CS.RECID, CS.APVPR, CS.APVST, CP.EVTMH, CP.EVTCO
+                            FROM trrcd.COMDEV_PLAN_STATUS CS, trrcd.COMDEV_PLAN CP 
+                            WHERE CS.BEGDA <= GETDATE() AND CS.ENDDA >= GETDATE()
                             AND CS.BEGDA <= GETDATE() AND CS.ENDDA >= GETDATE()
                             AND CP.RECID=CS.RECID AND CS.RECID='" + recid + "' ORDER BY CP.RECID DESC;";
             SqlCommand cmd = GetCommand(conn, sqlCmd);
@@ -182,13 +211,13 @@ namespace BioPM.ClassObjects
             {
                 conn.Open();
                 SqlDataReader reader = GetDataReader(cmd);
-                List<object[]> batchs = new List<object[]>();
+                object[] data = null;
                 while (reader.Read())
                 {
                     object[] values = { reader[0].ToString(), reader[1].ToString(), reader[2].ToString(), reader[3].ToString() };
-                    batchs.Add(values);
+                    data = values;
                 }
-                return batchs;
+                return data;
             }
             finally
             {
@@ -217,6 +246,28 @@ namespace BioPM.ClassObjects
                 conn.Close();
             }
         }
-        
+
+        public static int GetComDevPlanStatusMaxID()
+        {
+            SqlConnection conn = GetConnection();
+            string sqlCmd = @"SELECT MAX(APVID) FROM trrcd.COMDEV_PLAN_STATUS";
+            SqlCommand cmd = GetCommand(conn, sqlCmd);
+            string id = "0";
+            try
+            {
+                conn.Open();
+                SqlDataReader reader = GetDataReader(cmd);
+                while (reader.Read())
+                {
+                    if (!reader.IsDBNull(0)) id = reader[0].ToString() + "";
+                }
+                return Convert.ToInt16(id);
+            }
+            finally
+            {
+                conn.Close();
+            }
+        } 
+
     }
 }
