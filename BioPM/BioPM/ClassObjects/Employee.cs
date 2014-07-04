@@ -148,7 +148,7 @@ namespace BioPM.ClassObjects
         public static List<object[]> GetQualification(string pernr)
         {
             SqlConnection conn = GetConnection();
-            string sqlCmd = @"SELECT UD.PERNR, UD.POSID, CG.CPYID, CG.PRLVL, PR.PRLVL, PR.LVL-CG.PRLVL AS GAP
+            string sqlCmd = @"SELECT CG.GAPID, UD.PERNR, UD.POSID, CG.CPYID, CG.PRLVL, PR.PRLVL, PR.LVL-CG.PRLVL AS GAP
                             FROM trrcd.COMPETENCY_GAP CG, bioumum.USERDATA UD, trrcd.POSITION_REQ PR 
                             WHERE CG.BEGDA <= GETDATE() AND CG.ENDDA >= GETDATE()
                             AND PR.BEGDA <= GETDATE() AND PR.ENDDA >= GETDATE()
@@ -163,7 +163,7 @@ namespace BioPM.ClassObjects
                 List<object[]> batchs = new List<object[]>();
                 while (reader.Read())
                 {
-                    object[] values = { reader[0].ToString(), reader[1].ToString(), reader[2].ToString(), reader[3].ToString(), reader[4].ToString(), reader[5].ToString() };
+                    object[] values = { reader[0].ToString(), reader[1].ToString(), reader[2].ToString(), reader[3].ToString(), reader[4].ToString(), reader[5].ToString(), reader[6].ToString() };
                     batchs.Add(values);
                 }
                 return batchs;
@@ -174,13 +174,13 @@ namespace BioPM.ClassObjects
             }
         }
 
-        public static void InsertQualification(string PERNR, string CPYID, string PRLVL, string CHUSR)
+        public static void InsertQualification(string GAPID, string PERNR, string CPYID, string PRLVL, string CHUSR)
         {
             string date = DateTime.Now.ToString("MM/dd/yyyy HH:mm");
             string maxdate = DateTime.MaxValue.ToString("MM/dd/yyyy HH:mm");
             SqlConnection conn = GetConnection();
-            string sqlCmd = @"INSERT INTO trrcd.COMPETENCY_GAP (BEGDA, ENDDA, PERNR, CPYID, PRLVL, CHGDT, CHUSR)
-                            VALUES ('" + date + "','" + maxdate + "','" + PERNR + "'," + CPYID + ",'" + PRLVL + "','" + date + "','" + CHUSR + "');";
+            string sqlCmd = @"INSERT INTO trrcd.COMPETENCY_GAP (BEGDA, ENDDA, GAPID, PERNR, CPYID, PRLVL, CHGDT, CHUSR)
+                            VALUES ('" + date + "','" + maxdate + "'," + GAPID + "," + PERNR + "," + CPYID + ",'" + PRLVL + "','" + date + "','" + CHUSR + "');";
 
             SqlCommand cmd = DatabaseFactory.GetCommand(conn, sqlCmd);
 
@@ -195,12 +195,12 @@ namespace BioPM.ClassObjects
             }
         }
 
-        public static void UpdateQualification(string PERNR, string CPYID, string PRLVL, string CHUSR)
+        public static void UpdateQualification(string GAPID, string PERNR, string CPYID, string PRLVL, string CHUSR)
         {
             string date = DateTime.Now.ToString("MM/dd/yyyy HH:mm");
             string yesterday = DateTime.Now.AddMinutes(-1).ToString("MM/dd/yyyy HH:mm");
             SqlConnection conn = GetConnection();
-            string sqlCmd = @"UPDATE trrcd.COMPETENCY_GAP SET ENDDA = '" + yesterday + "', CHGDT = '" + date + "', CHUSR = '" + CHUSR + "' WHERE (PERNR = '" + PERNR + "' AND CPYID = '" + CPYID + "'+ AND BEGDA <= GETDATE() AND ENDDA >= GETDATE()";
+            string sqlCmd = @"UPDATE trrcd.COMPETENCY_GAP SET ENDDA = '" + yesterday + "', CHGDT = '" + date + "', CHUSR = '" + CHUSR + "' WHERE (GAPID = " + GAPID + " AND BEGDA <= GETDATE() AND ENDDA >= GETDATE())";
 
             SqlCommand cmd = DatabaseFactory.GetCommand(conn, sqlCmd);
 
@@ -212,16 +212,16 @@ namespace BioPM.ClassObjects
             finally
             {
                 conn.Close();
-                InsertQualification(PERNR, CPYID, PRLVL, CHUSR);
+                InsertQualification(GAPID, PERNR, CPYID, PRLVL, CHUSR);
             }
         }
 
-        public static void DeleteQualification(string pernr, string usrdt, string cpyid)
+        public static void DeleteQualification(string gapid, string usrdt)
         {
             string date = DateTime.Now.ToString("MM/dd/yyyy HH:mm");
             string yesterday = DateTime.Now.AddMinutes(-1).ToString("MM/dd/yyyy HH:mm");
             SqlConnection conn = GetConnection();
-            string sqlCmd = @"UPDATE trrcd.COMPETENCY_GAP SET ENDDA = '" + yesterday + "', CHGDT = '" + date + "', CHUSR = '" + usrdt + "' WHERE (PERNR = '" + pernr + "' AND CPYID=" + cpyid + " AND BEGDA <= GETDATE() AND ENDDA >= GETDATE()";
+            string sqlCmd = @"UPDATE trrcd.COMPETENCY_GAP SET ENDDA = '" + yesterday + "', CHGDT = '" + date + "', CHUSR = '" + usrdt + "' WHERE (GAPID = " + gapid + " AND BEGDA <= GETDATE() AND ENDDA >= GETDATE())";
 
             SqlCommand cmd = DatabaseFactory.GetCommand(conn, sqlCmd);
 
@@ -229,6 +229,57 @@ namespace BioPM.ClassObjects
             {
                 conn.Open();
                 cmd.ExecuteNonQuery();
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+
+        public static int GetQualificationMaxID()
+        {
+            SqlConnection conn = GetConnection();
+            string sqlCmd = @"SELECT MAX(GAPID) FROM trrcd.COMPETENCY_GAP";
+            SqlCommand cmd = GetCommand(conn, sqlCmd);
+            string id = "0";
+            try
+            {
+                conn.Open();
+                SqlDataReader reader = GetDataReader(cmd);
+                while (reader.Read())
+                {
+                    if (!reader.IsDBNull(0)) id = reader[0].ToString() + "";
+                }
+                return Convert.ToInt16(id);
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+
+        public static object[] GetQualificationById(string gapid)
+        {
+            SqlConnection conn = GetConnection();
+            string sqlCmd = @"SELECT CG.GAPID, UD.PERNR, UD.POSID, CG.CPYID, CG.PRLVL, PR.PRLVL, PR.LVL-CG.PRLVL AS GAP
+                            FROM trrcd.COMPETENCY_GAP CG, bioumum.USERDATA UD, trrcd.POSITION_REQ PR 
+                            WHERE CG.BEGDA <= GETDATE() AND CG.ENDDA >= GETDATE()
+                            AND PR.BEGDA <= GETDATE() AND PR.ENDDA >= GETDATE()
+                            AND UD.BEGDA <= GETDATE() AND UD.ENDDA >= GETDATE()
+                            AND CG.PERNR=UD.PERNR and PR.CPYID=CG.CPYID and CG.GAPID='" + gapid + "';";
+            SqlCommand cmd = GetCommand(conn, sqlCmd);
+
+            try
+            {
+                conn.Open();
+                SqlDataReader reader = GetDataReader(cmd);
+                object[] data = null;
+                while (reader.Read())
+                {
+                    object[] values = { reader[0].ToString(), reader[1].ToString(), reader[2].ToString() };
+                    data = values;
+                }
+                return data;
             }
             finally
             {

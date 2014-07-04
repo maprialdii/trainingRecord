@@ -40,13 +40,13 @@ namespace BioPM {
         protected global::System.Web.UI.WebControls.DropDownList ddlCompChild;
         
         /// <summary>
-        /// txtOrgLevel control.
+        /// txtCompLevel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtOrgLevel;
+        protected global::System.Web.UI.WebControls.TextBox txtCompLevel;
         
         /// <summary>
         /// btnAdd control.

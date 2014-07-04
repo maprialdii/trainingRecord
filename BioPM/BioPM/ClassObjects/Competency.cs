@@ -128,8 +128,8 @@ namespace BioPM.ClassObjects
             string date = DateTime.Now.ToString("MM/dd/yyyy HH:mm");
             string maxdate = DateTime.MaxValue.ToString("MM/dd/yyyy HH:mm");
             SqlConnection conn = GetConnection();
-            string sqlCmd = @"INSERT INTO trrcd.RELASI_COMPETENCY (RLSID, BEGDA, ENDDA, HCPID, LCPID, LEVEL, CHUSR, CHGDT)
-                            VALUES ('" + date + "','" + maxdate + "','" + RLSID + "','" + HCPID + "','" + LCPID + "'," + LEVEL + "'," + date + "','" + CHUSR + "');";
+            string sqlCmd = @"INSERT INTO trrcd.RELASI_COMPETENCY (BEGDA, ENDDA, RLSID, HCPID, LCPID, LEVEL, CHUSR, CHGDT)
+                            VALUES ('" + date + "','" + maxdate + "'," + RLSID + "," + HCPID + "," + LCPID + "," + LEVEL + ",'" + CHUSR + "','" + date + "');";
 
             SqlCommand cmd = DatabaseFactory.GetCommand(conn, sqlCmd);
 
@@ -219,7 +219,7 @@ namespace BioPM.ClassObjects
         {
             SqlConnection conn = GetConnection();
             string sqlCmd = @"SELECT CP1.CPYNM, CP2.CPYNM, RC.LEVEL, RC.RLSID
-                            FROM trrcd.REFERENSI_KOMPETENSI CP1, trrcd.REFERENSI_KOMPETENSI CP2, trrcd.RELASI_COMPETENCY RC
+                            FROM biofarma.trrcd.REFERENSI_KOMPETENSI CP1, biofarma.trrcd.REFERENSI_KOMPETENSI CP2, biofarma.trrcd.RELASI_COMPETENCY RC
                             WHERE CP1.CPYID = RC.HCPID AND CP2.CPYID = RC.LCPID 
                             AND CP1.BEGDA <= GETDATE() AND CP1.ENDDA >= GETDATE() 
                             AND CP2.BEGDA <= GETDATE() AND CP2.ENDDA >= GETDATE()  

@@ -96,7 +96,7 @@ namespace BioPM.ClassObjects
             }
         }
 
-        public static List<object[]> GetEventMethodById(string emtid)
+        public static object[] GetEventMethodById(string emtid)
         {
             SqlConnection conn = GetConnection();
             string sqlCmd = @"SELECT EM.EMTID, EM.EVTMT
@@ -109,13 +109,35 @@ namespace BioPM.ClassObjects
             {
                 conn.Open();
                 SqlDataReader reader = GetDataReader(cmd);
-                List<object[]> batchs = new List<object[]>();
+                object[] data = null;
                 while (reader.Read())
                 {
                     object[] values = { reader[0].ToString(), reader[1].ToString() };
-                    batchs.Add(values);
+                    data = values;
                 }
-                return batchs;
+                return data;
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+
+        public static int GetEventMethodMaxID()
+        {
+            SqlConnection conn = GetConnection();
+            string sqlCmd = @"SELECT MAX(EMTID) FROM trrcd.EVENT_METHOD";
+            SqlCommand cmd = GetCommand(conn, sqlCmd);
+            string id = "0";
+            try
+            {
+                conn.Open();
+                SqlDataReader reader = GetDataReader(cmd);
+                while (reader.Read())
+                {
+                    if (!reader.IsDBNull(0)) id = reader[0].ToString() + "";
+                }
+                return Convert.ToInt16(id);
             }
             finally
             {

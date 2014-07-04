@@ -24,9 +24,11 @@ E:\KP\COMDEV\History Sistem\trainingRecord\BioPM\BioPM\bin\DotNetOpenAuth.AspNet
 E:\KP\COMDEV\History Sistem\trainingRecord\BioPM\BioPM\bin\Microsoft.AspNet.Membership.OpenAuth.xml
 E:\KP\COMDEV\History Sistem\trainingRecord\BioPM\BioPM\bin\Microsoft.AspNet.FriendlyUrls.xml
 E:\KP\COMDEV\History Sistem\trainingRecord\BioPM\BioPM\bin\System.Net.Http.xml
-E:\KP\COMDEV\History Sistem\trainingRecord\BioPM\BioPM\obj\Debug\BioPM.csprojResolveAssemblyReference.cache
 E:\KP\COMDEV\History Sistem\trainingRecord\BioPM\BioPM\obj\Debug\BioPM.dll
 E:\KP\COMDEV\History Sistem\trainingRecord\BioPM\BioPM\obj\Debug\BioPM.pdb
+<<<<<<< HEAD
+E:\KP\COMDEV\History Sistem\trainingRecord\BioPM\BioPM\obj\Debug\BioPM.csprojResolveAssemblyReference.cache
+=======
 C:\Users\rizaldi\Documents\GitHub\trainingRecord\BioPM\BioPM\bin\BioPM.dll
 C:\Users\rizaldi\Documents\GitHub\trainingRecord\BioPM\BioPM\bin\BioPM.pdb
 C:\Users\rizaldi\Documents\GitHub\trainingRecord\BioPM\BioPM\bin\AspNet.ScriptManager.jQuery.dll
@@ -56,3 +58,4 @@ C:\Users\rizaldi\Documents\GitHub\trainingRecord\BioPM\BioPM\bin\System.Net.Http
 C:\Users\rizaldi\Documents\GitHub\trainingRecord\BioPM\BioPM\obj\Debug\BioPM.csprojResolveAssemblyReference.cache
 C:\Users\rizaldi\Documents\GitHub\trainingRecord\BioPM\BioPM\obj\Debug\BioPM.dll
 C:\Users\rizaldi\Documents\GitHub\trainingRecord\BioPM\BioPM\obj\Debug\BioPM.pdb
+>>>>>>> origin/master
