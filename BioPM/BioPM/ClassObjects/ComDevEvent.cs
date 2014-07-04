@@ -14,7 +14,7 @@ namespace BioPM.ClassObjects
             string maxdate = DateTime.MaxValue.ToString("MM/dd/yyyy HH:mm");
             SqlConnection conn = GetConnection();
             string sqlCmd = @"INSERT INTO trrcd.COMDEV_EVENT (BEGDA, ENDDA, EVTID, EVTNM, EMTID, CHUSR, CHGDT)
-                            VALUES ('" + date + "','" + maxdate + "','" + EVTID + "','" + EVTNM + "','" + EMTID + "','" + date + "','" + CHUSR + "');";
+                            VALUES ('" + date + "','" + maxdate + "','" + EVTID + "','" + EVTNM + "','" + EMTID + "','" + CHUSR + "','" + date + "');";
 
             SqlCommand cmd = DatabaseFactory.GetCommand(conn, sqlCmd);
 
@@ -34,7 +34,7 @@ namespace BioPM.ClassObjects
             string date = DateTime.Now.ToString("MM/dd/yyyy HH:mm");
             string yesterday = DateTime.Now.AddMinutes(-1).ToString("MM/dd/yyyy HH:mm");
             SqlConnection conn = GetConnection();
-            string sqlCmd = @"UPDATE trrcd.COMDEV_EVENT SET ENDDA = '" + yesterday + "', CHGDT = '" + date + "', CHUSR = '" + USRDT + "' WHERE (EVTID = '" + EVTID + "' AND BEGDA <= GETDATE() AND ENDDA >= GETDATE()";
+            string sqlCmd = @"UPDATE trrcd.COMDEV_EVENT SET ENDDA = '" + yesterday + "', CHGDT = '" + date + "', CHUSR = '" + USRDT + "' WHERE (EVTID = '" + EVTID + "' AND BEGDA <= GETDATE() AND ENDDA >= GETDATE())";
 
             SqlCommand cmd = DatabaseFactory.GetCommand(conn, sqlCmd);
 
@@ -55,7 +55,7 @@ namespace BioPM.ClassObjects
             string date = DateTime.Now.ToString("MM/dd/yyyy HH:mm");
             string yesterday = DateTime.Now.AddMinutes(-1).ToString("MM/dd/yyyy HH:mm");
             SqlConnection conn = GetConnection();
-            string sqlCmd = @"UPDATE trrcd.COMDEV_EVENT SET ENDDA = '" + yesterday + "', CHGDT = '" + date + "', CHUSR = '" + usrdt + "' WHERE (EVTID = '" + evtid + "' AND BEGDA <= GETDATE() AND ENDDA >= GETDATE()";
+            string sqlCmd = @"UPDATE trrcd.COMDEV_EVENT SET ENDDA = '" + yesterday + "', CHGDT = '" + date + "', CHUSR = '" + usrdt + "' WHERE (EVTID = '" + evtid + "' AND BEGDA <= GETDATE() AND ENDDA >= GETDATE())";
 
             SqlCommand cmd = DatabaseFactory.GetCommand(conn, sqlCmd);
 

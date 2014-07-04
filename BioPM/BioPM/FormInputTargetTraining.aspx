@@ -5,7 +5,7 @@
     protected void Page_Load(object sender, EventArgs e)
     {
         if (Session["username"] == null && Session["password"] == null) Response.Redirect("PageLogin.aspx");
-        if (!IsPostBack) SetOrganizationType();
+        if (!IsPostBack) SetCompetencyList();
     }
     //protected void sessionCreator()
     //{
@@ -15,22 +15,30 @@
     //    Session["role"] = "111111";
     //}
 
-    protected void SetOrganizationType()
+    protected void SetCompetencyList()
     {
-        //ddlOrgType.Items.Clear();
-        //ddlOrgType.Items.Add(new ListItem("Unit", "1"));
-        //ddlOrgType.Items.Add(new ListItem("Position", "2"));
+        ddlCompetency.Items.Clear();
+        foreach (object[] data in BioPM.ClassObjects.CompetencyCatalog.GetAllCompetency())
+        {
+            ddlCompetency.Items.Add(new ListItem(data[1].ToString(), data[0].ToString()));
+        }
     }
 
     protected void InsertOrganizationIntoDatabase()
     {
-        //string ORGID = (BioPM.ClassObjects.OrganizationCatalog.GetOrganizationMaxID() + 1).ToString();
-        //BioPM.ClassObjects.OrganizationCatalog.InsertOrganization(ORGID, txtOrgID.Text, ddlOrgType.SelectedValue, txtOrgName.Text, Session["username"].ToString());
+        string ORGID = (BioPM.ClassObjects.OrganizationCatalog.GetOrganizationMaxID() + 1).ToString();
+        BioPM.ClassObjects.OrganizationCatalog.InsertOrganization(ORGID, txtOrgID.Text, ddlOrgType.SelectedValue, txtOrgName.Text, Session["username"].ToString());
     }
 
     protected void btnAdd_Click(object sender, EventArgs e)
     {
-        //if (IsPostBack) InsertOrganizationIntoDatabase();
+        if (IsPostBack) InsertOrganizationIntoDatabase();
+        Response.Redirect("PageRequestTraining.aspx");
+    }
+
+    protected void btnAddComp_Click(object sender, EventArgs e)
+    {
+        if (IsPostBack) InsertOrganizationIntoDatabase();
         Response.Redirect("PageRequestTraining.aspx");
     }
 
@@ -104,6 +112,8 @@
                                 <asp:TextBox ID="txtLevelTarget" runat="server" class="form-control m-bot15" placeholder="PROFICIENCY LEVEL TARGET" ></asp:TextBox>
                             </div>
                         </div>
+
+                        <asp:Button class="btn btn-round btn-primary" ID="addComp" runat="server" Text="Add Competency" OnClick="btnAddComp_Click"/>
 
                         <table class="table table-striped table-hover table-bordered" id="dynamic-table" >
                                 <thead>

@@ -33,12 +33,12 @@
     protected void btnAdd_Click(object sender, EventArgs e)
     {
         //if (IsPostBack) InsertOrganizationIntoDatabase();
-        Response.Redirect("PageCompetencyDevelopmentEvent.aspx");
+        Response.Redirect("PageSuggestTraining.aspx");
     }
 
     protected void btnCancel_Click(object sender, EventArgs e)
     {
-        Response.Redirect("FormInputEvent.aspx");
+        Response.Redirect("FormSuggestTraining.aspx");
     }
 
     protected String GenerateDataKompetensi()

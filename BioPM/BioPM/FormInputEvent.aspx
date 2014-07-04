@@ -18,7 +18,7 @@
     protected void SetExistingMethod()
     {
         ddlEventMethod.Items.Clear();
-        foreach (object[] data in BioPM.ClassObjects.ComDevEvent.GetAllComdevEvent())
+        foreach (object[] data in BioPM.ClassObjects.EventMethod.GetAllEventMethod())
         {
             ddlEventMethod.Items.Add(new ListItem(data[1].ToString(), data[0].ToString()));
         }
@@ -33,7 +33,7 @@
     protected void btnAdd_Click(object sender, EventArgs e)
     {
         if (IsPostBack) InsertEventIntoDatabase();
-        Response.Redirect("FormInputTargetCompetency.aspx");
+        Response.Redirect("FormInputTargetTraining.aspx");
     }
 
     protected void btnCancel_Click(object sender, EventArgs e)
@@ -87,7 +87,7 @@
                         <div class="form-group">
                             <label class="col-sm-3 control-label"> EVENT NAME </label>
                             <div class="col-lg-3 col-md-4">
-                                <asp:TextBox ID="txtEvtName" runat="server" class="form-control m-bot15" placeholder="COMPETENCY NAME" ></asp:TextBox>
+                                <asp:TextBox ID="txtEvtName" runat="server" class="form-control m-bot15" placeholder="EVENT NAME" ></asp:TextBox>
                             </div>
                         </div>
 
