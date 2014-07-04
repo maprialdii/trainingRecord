@@ -82,14 +82,11 @@
                             <table class="table table-striped table-hover table-bordered" id="dynamic-table" >
                                 <thead>
                                 <tr>
-<<<<<<< HEAD
                                     <th>Pos ID</th>
                                     <th>Competency Name</th>
-                                    <th>Profficiency Level</th>                                      
-=======
+                                    <th>Profficiency Level</th>
                                     <th>Competency Name</th>
-                                    <th>Required Level</th>                                   
->>>>>>> origin/master
+                                    <th>Required Level</th>
                                     <th>Edit</th>
                                     <th>Delete</th>
                                 </tr>

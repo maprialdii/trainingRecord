@@ -35,8 +35,7 @@ namespace BioPM.ClassObjects
             string maxdate = DateTime.MaxValue.ToString("MM/dd/yyyy HH:mm");
             SqlConnection conn = GetConnection();
             string sqlCmd = @"INSERT INTO trrcd.COMDEV_EVENT_TARGET (BEGDA, ENDDA, TRGID, EVTID, CPYID, PRLVL, CHUSR, CHGDT)
-                            VALUES ('" + date + "','" + maxdate + "'," + TRGID + "," + EVTID + "," + CPYID + "," + PRLVL + ",'" + CHUSR + "','" + date + "');";
-                            VALUES ('" + date + "','" + maxdate + "','" + EVTID + "','" + EVTNM + "','" + EMTID + "','" + CHUSR + "','" + date + "');";
+                            VALUES ('" + date + "','" + maxdate + "','" + TRGID + "','" + EVTID + "','" + CPYID + "','" + PRLVL + "','" + CHUSR + "','" + date + "');";
 
 
             SqlCommand cmd = DatabaseFactory.GetCommand(conn, sqlCmd);
@@ -100,7 +99,6 @@ namespace BioPM.ClassObjects
             string yesterday = DateTime.Now.AddMinutes(-1).ToString("MM/dd/yyyy HH:mm");
             SqlConnection conn = GetConnection();
             string sqlCmd = @"UPDATE trrcd.COMDEV_EVENT SET ENDDA = '" + yesterday + "', CHGDT = '" + date + "', CHUSR = '" + usrdt + "' WHERE (EVTID = '" + evtid + "' AND BEGDA <= GETDATE() AND ENDDA >= GETDATE())";
-<<<<<<< HEAD
 
             SqlCommand cmd = DatabaseFactory.GetCommand(conn, sqlCmd);
 
@@ -121,8 +119,6 @@ namespace BioPM.ClassObjects
             string yesterday = DateTime.Now.AddMinutes(-1).ToString("MM/dd/yyyy HH:mm");
             SqlConnection conn = GetConnection();
             string sqlCmd = @"UPDATE trrcd.COMDEV_EVENT_TARGET SET ENDDA = '" + yesterday + "', CHGDT = '" + date + "', CHUSR = '" + usrdt + "' WHERE (TRGID = " + trgid + " AND BEGDA <= GETDATE() AND ENDDA >= GETDATE())";
-=======
->>>>>>> origin/master
 
             SqlCommand cmd = DatabaseFactory.GetCommand(conn, sqlCmd);
 
