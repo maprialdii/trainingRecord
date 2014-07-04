@@ -195,6 +195,28 @@ namespace BioPM.ClassObjects
                 conn.Close();
             }
         }
+
+        public static int GetComDevPlanMaxID()
+        {
+            SqlConnection conn = GetConnection();
+            string sqlCmd = @"SELECT MAX(RECID) FROM trrcd.COMDEV_PLAN";
+            SqlCommand cmd = GetCommand(conn, sqlCmd);
+            string id = "0";
+            try
+            {
+                conn.Open();
+                SqlDataReader reader = GetDataReader(cmd);
+                while (reader.Read())
+                {
+                    if (!reader.IsDBNull(0)) id = reader[0].ToString() + "";
+                }
+                return Convert.ToInt16(id);
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
         
     }
 }

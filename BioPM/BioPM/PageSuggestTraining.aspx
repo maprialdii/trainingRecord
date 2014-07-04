@@ -7,18 +7,53 @@
         if (Session["username"] == null && Session["password"] == null) Response.Redirect("PageLogin.aspx");
     }
 
-    protected String GenerateDataKompetensi()
+    protected String GenerateRequestedPlan()
     {
         string htmlelement = "";
 
-        foreach (object[] data in BioPM.ClassObjects.CompetencyCatalog.GetAllCompetency())
+        foreach (object[] data in BioPM.ClassObjects.ComDevPlan.GetComdevPlanByStatus("Belum Disetujui") )
         {
-            htmlelement += "<tr class=''><td>" + data[0].ToString() + "</td><td>" + data[1].ToString() + "</td><td><a class='edit' href='#.aspx?key=" + data[0].ToString() + "'>Edit</a></td><td><a class='delete' href='#.aspx?key=" + data[0].ToString() + "&type=000'>Delete</a></td></tr>";
+            //htmlelement += "<tr class=''><td>" + data[0].ToString() + "</td><td>" + data[1].ToString() + "</td><td><a class='edit' href='#.aspx?key=" + data[0].ToString() + "'>Edit</a></td><td><a class='delete' href='#.aspx?key=" + data[0].ToString() + "&type=000'>Delete</a></td></tr>";
         }
         
         return htmlelement;
     }
 
+    protected String GenerateApprovedPlan()
+    {
+        string htmlelement = "";
+
+        foreach (object[] data in BioPM.ClassObjects.ComDevPlan.GetComdevPlanByStatus("Disetujui"))
+        {
+            //htmlelement += "<tr class=''><td>" + data[0].ToString() + "</td><td>" + data[1].ToString() + "</td><td><a class='edit' href='#.aspx?key=" + data[0].ToString() + "'>Edit</a></td><td><a class='delete' href='#.aspx?key=" + data[0].ToString() + "&type=000'>Delete</a></td></tr>";
+        }
+
+        return htmlelement;
+    }
+
+    protected String GenerateRejectedPlan()
+    {
+        string htmlelement = "";
+
+        foreach (object[] data in BioPM.ClassObjects.ComDevPlan.GetComdevPlanByStatus("Ditolak"))
+        {
+            //htmlelement += "<tr class=''><td>" + data[0].ToString() + "</td><td>" + data[1].ToString() + "</td><td><a class='edit' href='#.aspx?key=" + data[0].ToString() + "'>Edit</a></td><td><a class='delete' href='#.aspx?key=" + data[0].ToString() + "&type=000'>Delete</a></td></tr>";
+        }
+
+        return htmlelement;
+    }
+
+    protected String GenerateSuggestedPlan()
+    {
+        string htmlelement = "";
+
+        foreach (object[] data in BioPM.ClassObjects.ComDevPlan.GetComdevPlanByStatus("Diusulkan"))
+        {
+            //htmlelement += "<tr class=''><td>" + data[0].ToString() + "</td><td>" + data[1].ToString() + "</td><td><a class='edit' href='#.aspx?key=" + data[0].ToString() + "'>Edit</a></td><td><a class='delete' href='#.aspx?key=" + data[0].ToString() + "&type=000'>Delete</a></td></tr>";
+        }
+
+        return htmlelement;
+    }
    
 </script>
 
@@ -26,7 +61,7 @@
 <head>
     <% Response.Write(BioPM.ClassScripts.BasicScripts.GetMetaScript()); %>
 
-    <title>Competency Parameter</title>
+    <title>Training Suggest & Request From Employee</title>
 
     <% Response.Write(BioPM.ClassScripts.StyleScripts.GetCoreStyle()); %>
 <% Response.Write(BioPM.ClassScripts.StyleScripts.GetTableStyle()); %>
@@ -54,7 +89,7 @@
             <div class="col-sm-12">
                 <section class="panel">
                     <header class="panel-heading">
-                        Competency Parameter
+                        Training Request From Employee
                           <span class="tools pull-right">
                             <a class="fa fa-chevron-down" href="javascript:;"></a>
                             <a class="fa fa-times" href="javascript:;"></a>
@@ -78,17 +113,94 @@
                                     </ul>
                                 </div>
                             </div>
+                            New Request
                             <table class="table table-striped table-hover table-bordered" id="dynamic-table" >
                                 <thead>
                                 <tr>
-                                    <th>Competency ID</th>
-                                    <th>Competency Name</th>                                   
+                                    <th>Employee Name</th>
+                                    <th>Requested Competency Development Event</th>                                   
+                                    <th>Approve</th>
+                                    <th>Reject</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <% Response.Write(GenerateRequestedPlan()); %>
+                                </tbody>
+                            </table>
+
+                            Approved Request
+                            <table class="table table-striped table-hover table-bordered" id="Table2" >
+                                <thead>
+                                <tr>
+                                    <th>Employee Name</th>
+                                    <th>Competency Development Event</th>                                   
+                                    <th>Edit</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <% Response.Write(GenerateApprovedPlan()); %>
+                                </tbody>
+                            </table>
+
+                            Rejected Request
+                            <table class="table table-striped table-hover table-bordered" id="Table3" >
+                                <thead>
+                                <tr>
+                                    <th>Employee Name</th>
+                                    <th>Competency Development Event</th>                                   
+                                    <th>Edit</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <% Response.Write(GenerateRejectedPlan()); %>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    
+                </section>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12">
+                <section class="panel">
+                    <header class="panel-heading">
+                        Your Training Suggestion
+                          <span class="tools pull-right">
+                            <a class="fa fa-chevron-down" href="javascript:;"></a>
+                            <a class="fa fa-times" href="javascript:;"></a>
+                         </span>
+                    </header>
+                    <div class="panel-body">
+
+                        <div class="adv-table">
+                            <div class="clearfix">
+                                <div class="btn-group">
+                                    <button id="Button1" onclick="document.location.href='FormSuggestTraining.aspx';" class="btn btn-primary"> Add New <i class="fa fa-plus"></i>
+                                    </button>
+                                </div>
+                                <div class="btn-group pull-right">
+                                    <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">Tools <i class="fa fa-angle-down"></i>
+                                    </button>
+                                    <ul class="dropdown-menu pull-right">
+                                        <li><a href="#">Print</a></li>
+                                        <li><a href="#">Save as PDF</a></li>
+                                        <li><a href="#">Export to Excel</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <table class="table table-striped table-hover table-bordered" id="Table1" >
+                                <thead>
+                                <tr>
+                                    <th>Employee Name</th>
+                                    <th>Suggested Competency Development Event</th>                                   
                                     <th>Edit</th>
                                     <th>Delete</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <% Response.Write(GenerateDataKompetensi()); %>
+                                <% Response.Write(GenerateSuggestedPlan()); %>
                                 </tbody>
                             </table>
                         </div>

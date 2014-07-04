@@ -33,6 +33,11 @@
     <% Response.Write(BioPM.ClassScripts.StyleScripts.GetCoreStyle()); %>
 <% Response.Write(BioPM.ClassScripts.StyleScripts.GetTableStyle()); %>
 <% Response.Write(BioPM.ClassScripts.StyleScripts.GetCustomStyle()); %>
+    <style type="text/css">
+        .auto-style1 {
+            width: 27px;
+        }
+    </style>
 </head>
 
 <body>
@@ -84,7 +89,7 @@
                                 <thead>
                                 <tr>
                                     <th>Event Name</th>
-                                    <th>Edit</th>
+                                    <th class="auto-style1">Edit</th>
                                     <th>Delete</th>
                                 </tr>
                                 </thead>

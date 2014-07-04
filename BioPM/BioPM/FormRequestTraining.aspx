@@ -7,22 +7,24 @@
         if (Session["username"] == null && Session["password"] == null) Response.Redirect("PageLogin.aspx");
         if (!IsPostBack)
         {
-            GetDataSubCategory();
+            GetDataEvent();
         }
     }
     
-    protected void GetDataSubCategory()
+    protected void GetDataEvent()
     {
-        //ddlSubCat.Items.Clear();
-        //foreach(object[] data in BioPM.ClassObjects.LabelCatalog.GetLabelSubCategories())
-        //{
-        //    ddlSubCat.Items.Add(new ListItem(data[1].ToString(), data[0].ToString()));
-        //}
+        ddlEventName.Items.Clear();
+        foreach (object[] data in BioPM.ClassObjects.ComDevEvent.GetAllComdevEvent())
+        {
+            ddlEventName.Items.Add(new ListItem(data[1].ToString(), data[0].ToString()));
+        }
     }
     
     protected void InsertDataIntoDatabase()
     {
-        //BioPM.ClassObjects.LabelCatalog.InsertLabel(txtLabelID.Text.ToUpper(), txtLabelName.Text, txtLabelWidth.Text, txtLabelLength.Text, ddlSubCat.SelectedValue, Session["username"].ToString());
+        string RECID = (BioPM.ClassObjects.ComDevPlan.GetComDevPlanMaxID() + 1).ToString();
+        BioPM.ClassObjects.ComDevPlan.InsertComDevPlan(RECID, Session["username"].ToString(), ddlEventName.SelectedValue, " ", " ", Session["username"].ToString());
+        BioPM.ClassObjects.ComDevPlan.InsertComDevPlanStatus(RECID, "Belum Disetujui", " ", Session["username"].ToString());
     }
 
     protected void btnAdd_Click(object sender, EventArgs e)
