@@ -40,6 +40,24 @@ namespace BioPM {
         protected global::System.Web.UI.WebControls.DropDownList ddlEmployeeName;
         
         /// <summary>
+        /// txtMonth control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtMonth;
+        
+        /// <summary>
+        /// txtCost control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtCost;
+        
+        /// <summary>
         /// btnAdd control.
         /// </summary>
         /// <remarks>

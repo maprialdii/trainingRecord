@@ -14,7 +14,6 @@ namespace BioPM.ClassObjects
             string maxdate = DateTime.MaxValue.ToString("MM/dd/yyyy HH:mm");
             SqlConnection conn = GetConnection();
             string sqlCmd = @"INSERT INTO trrcd.COMDEV_EVENT (BEGDA, ENDDA, EVTID, EVTNM, EMTID, CHUSR, CHGDT)
-<<<<<<< HEAD
                             VALUES ('" + date + "','" + maxdate + "'," + EVTID + ",'" + EVTNM + "'," + EMTID + ",'" + CHUSR + "','" + date + "');";
 
             SqlCommand cmd = DatabaseFactory.GetCommand(conn, sqlCmd);
@@ -37,9 +36,8 @@ namespace BioPM.ClassObjects
             SqlConnection conn = GetConnection();
             string sqlCmd = @"INSERT INTO trrcd.COMDEV_EVENT_TARGET (BEGDA, ENDDA, TRGID, EVTID, CPYID, PRLVL, CHUSR, CHGDT)
                             VALUES ('" + date + "','" + maxdate + "'," + TRGID + "," + EVTID + "," + CPYID + "," + PRLVL + ",'" + CHUSR + "','" + date + "');";
-=======
                             VALUES ('" + date + "','" + maxdate + "','" + EVTID + "','" + EVTNM + "','" + EMTID + "','" + CHUSR + "','" + date + "');";
->>>>>>> origin/master
+
 
             SqlCommand cmd = DatabaseFactory.GetCommand(conn, sqlCmd);
 
