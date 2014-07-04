@@ -28,14 +28,14 @@
 
     protected void InsertRelationIntoDatabase()
     {
-        string STRID = (BioPM.ClassObjects.OrganizationCatalog.GetOrganizationStructureMaxID() + 1).ToString();
-        BioPM.ClassObjects.OrganizationCatalog.InsertOrganizationStructure(STRID, ddlCompParent.SelectedValue.Split('|')[0], ddlCompParent.SelectedValue.Split('|')[1], ddlOrgChild.SelectedValue.Split('|')[0], ddlOrgChild.SelectedValue.Split('|')[1], txtOrgLevel.Text, Session["username"].ToString());
+        string RLSID = (BioPM.ClassObjects.CompetencyCatalog.GetCompetencyRelationMaxID() + 1).ToString();
+        BioPM.ClassObjects.CompetencyCatalog.InsertCompetencyStructure(RLSID, ddlCompParent.SelectedValue, ddlCompChild.SelectedValue, txtCompLevel.Text, Session["username"].ToString());
     }
 
     protected void btnAdd_Click(object sender, EventArgs e)
     {
         if (IsPostBack) InsertRelationIntoDatabase();
-        Response.Redirect("PageOrganizationStructure.aspx");
+        Response.Redirect("PageCompetencyRelation.aspx");
     }
 
     protected void btnCancel_Click(object sender, EventArgs e)
@@ -104,7 +104,7 @@
                         <div class="form-group">
                             <label class="col-sm-3 control-label"> LEVEL </label>
                             <div class="col-lg-3 col-md-4">
-                                <asp:TextBox ID="txtOrgLevel" runat="server" class="form-control m-bot15" placeholder="e.g : 1, 2, .., n" ></asp:TextBox>
+                                <asp:TextBox ID="txtCompLevel" runat="server" class="form-control m-bot15" placeholder="e.g : 1, 2, .., n" ></asp:TextBox>
                             </div>
                         </div>
 

@@ -14,7 +14,7 @@ namespace BioPM.ClassObjects
             string maxdate = DateTime.MaxValue.ToString("MM/dd/yyyy HH:mm");
             SqlConnection conn = GetConnection();
             string sqlCmd = @"INSERT INTO trrcd.COMDEV_EVENT_EXECUTION (BEGDA, ENDDA, EXCID, PERNR, EVTID, TITLE, BATCH, INSTI, ADRIN, CITIN, COUIN, CRTFL, SCORE, CHGDT, CHUSR)
-                            VALUES ('" + date + "','" + maxdate + "','" + EXCID + "'," + PERNR + ",'" + EVTID + "','" + TITLE + "','" + BATCH + "','" + INSTI + "','" + ADRIN + "','" + CITIN + "','" + COUIN + "','" + CRTFL + "','" + SCORE + "','" + date + "','" + CHUSR + "');";
+                            VALUES ('" + date + "','" + maxdate + "'," + EXCID + "," + PERNR + "," + EVTID + ",'" + TITLE + "','" + BATCH + "','" + INSTI + "','" + ADRIN + "','" + CITIN + "','" + COUIN + "','" + CRTFL + "'," + SCORE + ",'" + date + "','" + CHUSR + "');";
 
             SqlCommand cmd = DatabaseFactory.GetCommand(conn, sqlCmd);
 
@@ -34,7 +34,7 @@ namespace BioPM.ClassObjects
             string date = DateTime.Now.ToString("MM/dd/yyyy HH:mm");
             string yesterday = DateTime.Now.AddMinutes(-1).ToString("MM/dd/yyyy HH:mm");
             SqlConnection conn = GetConnection();
-            string sqlCmd = @"UPDATE trrcd.COMDEV_EVENT_EXECUTION SET ENDDA = '" + yesterday + "', CHGDT = '" + date + "', CHUSR = '" + CHUSR + "' WHERE (EXCID = '" + EXCID + "' AND BEGDA <= GETDATE() AND ENDDA >= GETDATE()";
+            string sqlCmd = @"UPDATE trrcd.COMDEV_EVENT_EXECUTION SET ENDDA = '" + yesterday + "', CHGDT = '" + date + "', CHUSR = '" + CHUSR + "' WHERE (EXCID = " + EXCID + " AND BEGDA <= GETDATE() AND ENDDA >= GETDATE())";
 
             SqlCommand cmd = DatabaseFactory.GetCommand(conn, sqlCmd);
 
@@ -55,7 +55,7 @@ namespace BioPM.ClassObjects
             string date = DateTime.Now.ToString("MM/dd/yyyy HH:mm");
             string yesterday = DateTime.Now.AddMinutes(-1).ToString("MM/dd/yyyy HH:mm");
             SqlConnection conn = GetConnection();
-            string sqlCmd = @"UPDATE trrcd.COMDEV_EVENT_EXECUTION SET ENDDA = '" + yesterday + "', CHGDT = '" + date + "', CHUSR = '" + chusr + "' WHERE (EXCID = '" + excid + "' AND BEGDA <= GETDATE() AND ENDDA >= GETDATE()";
+            string sqlCmd = @"UPDATE trrcd.COMDEV_EVENT_EXECUTION SET ENDDA = '" + yesterday + "', CHGDT = '" + date + "', CHUSR = '" + chusr + "' WHERE (EXCID = " + excid + " AND BEGDA <= GETDATE() AND ENDDA >= GETDATE())";
 
             SqlCommand cmd = DatabaseFactory.GetCommand(conn, sqlCmd);
 
@@ -73,12 +73,12 @@ namespace BioPM.ClassObjects
         public static List<object[]> GetComdevExecutionByUserId(string pernr)
         {
             SqlConnection conn = GetConnection();
-            string sqlCmd = @"SELECT CV.EVTNM, CE.TITLE, CE.BATCH, CE.INSTI, CE.BEGDA, CE.ENDDA, CE.CRTFL, CE.SCORE
+            string sqlCmd = @"SELECT CE.EXCID, CV.EVTNM, CE.TITLE, CE.BATCH, CE.INSTI, CE.BEGDA, CE.ENDDA, CE.CRTFL, CE.SCORE
                             FROM trrcd.COMDEV_EVENT_EXECUTION CE, trrcd.COMDEV_EVENT CV 
                             WHERE CV.EVTID=CE.EVTID 
                             AND CV.BEGDA <= GETDATE() AND CV.ENDDA >= GETDATE()
                             AND CE.BEGDA <= GETDATE() AND CE.ENDDA >= GETDATE()
-                            AND CE.PERNR='" + pernr + "' ORDER BY CE.EVTID DESC;";
+                            AND CE.PERNR='" + pernr + "' ORDER BY CE.EXCID DESC;";
             SqlCommand cmd = GetCommand(conn, sqlCmd);
 
             try
@@ -88,7 +88,7 @@ namespace BioPM.ClassObjects
                 List<object[]> batchs = new List<object[]>();
                 while (reader.Read())
                 {
-                    object[] values = { reader[0].ToString(), reader[1].ToString(), reader[2].ToString(), reader[3].ToString(), reader[4].ToString(), reader[5].ToString(), reader[6].ToString(), reader[7].ToString() };
+                    object[] values = { reader[0].ToString(), reader[1].ToString(), reader[2].ToString(), reader[3].ToString(), reader[4].ToString(), reader[5].ToString(), reader[6].ToString(), reader[7].ToString(), reader[8].ToString() };
                     batchs.Add(values);
                 }
                 return batchs;
@@ -99,26 +99,55 @@ namespace BioPM.ClassObjects
             }
         }
 
-        public static List<object[]> GetDetailInstitution(string evtid, string pernr)
+        public static object[] GetComdevExecutionById(string excid)
         {
             SqlConnection conn = GetConnection();
-            string sqlCmd = @"SELECT CE.INSTI, CE.ADRIN, CE.CITIN, CE.COUIN
-                            FROM trrcd.COMDEV_EVENT_EXECUTION CE 
-                            WHERE CE.BEGDA <= GETDATE() AND CM.ENDDA >= GETDATE()
-                            AND CE.PERNR='" + pernr + "' AND CE.EVTID='"+ evtid +"' ORDER BY CE.EVTID DESC;";
+            string sqlCmd = @"SELECT CE.EXCID, CE.EVTID, CV.EVTNM, CE.TITLE, CE.BATCH, CE.INSTI, CE.BEGDA, CE.ENDDA, CE.CRTFL, CE.SCORE
+                            FROM trrcd.COMDEV_EVENT_EXECUTION CE, trrcd.COMDEV_EVENT CV 
+                            WHERE CV.EVTID=CE.EVTID 
+                            AND CV.BEGDA <= GETDATE() AND CV.ENDDA >= GETDATE()
+                            AND CE.BEGDA <= GETDATE() AND CE.ENDDA >= GETDATE()
+                            AND CE.EXCID=" + excid + ";";
             SqlCommand cmd = GetCommand(conn, sqlCmd);
 
             try
             {
                 conn.Open();
                 SqlDataReader reader = GetDataReader(cmd);
-                List<object[]> batchs = new List<object[]>();
+                object[] data = null;
+                while (reader.Read())
+                {
+                    object[] values = { reader[0].ToString(), reader[1].ToString(), reader[2].ToString(), reader[3].ToString(), reader[4].ToString(), reader[5].ToString(), reader[6].ToString(), reader[7].ToString(), reader[8].ToString() };
+                    data = values;
+                }
+                return data;
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+
+        public static object[] GetDetailInstitution(string excid)
+        {
+            SqlConnection conn = GetConnection();
+            string sqlCmd = @"SELECT CE.INSTI, CE.ADRIN, CE.CITIN, CE.COUIN
+                            FROM trrcd.COMDEV_EVENT_EXECUTION CE 
+                            WHERE CE.BEGDA <= GETDATE() AND CM.ENDDA >= GETDATE()
+                            AND CE.EXCID=" + excid + " ORDER BY CE.EXCID DESC;";
+            SqlCommand cmd = GetCommand(conn, sqlCmd);
+
+            try
+            {
+                conn.Open();
+                SqlDataReader reader = GetDataReader(cmd);
+                object[] data = null;
                 while (reader.Read())
                 {
                     object[] values = { reader[0].ToString(), reader[1].ToString(), reader[2].ToString(), reader[3].ToString() };
-                    batchs.Add(values);
+                    data = values;
                 }
-                return batchs;
+                return data;
             }
             finally
             {

@@ -7,7 +7,7 @@
         if (Session["username"] == null && Session["password"] == null) Response.Redirect("PageLogin.aspx");
         if (!IsPostBack)
         {
-            SetExistingOrganization();
+            SetExistingCompetencyRelation(); ;
             SetDataToForm();
         }
     }
@@ -21,32 +21,32 @@
     
     protected void SetDataToForm()
     {
-        object[] values = BioPM.ClassObjects.OrganizationCatalog.GetOrganizationStructureByID(BioPM.ClassEngines.CryptographFactory.Decrypt(Request.QueryString["key"], true));
-        ddlOrgParent.SelectedValue = values[0].ToString() + "|" + values[1].ToString();
-        ddlOrgChild.SelectedValue = values[3].ToString() + "|" + values[4].ToString();
-        txtOrgLevel.Text = values[6].ToString();
+        object[] values = BioPM.ClassObjects.CompetencyCatalog.GetCompetencyStructureByID(BioPM.ClassEngines.CryptographFactory.Decrypt(Request.QueryString["key"], true));
+        ddlCompParent.SelectedValue = values[0].ToString();
+        ddlCompChild.SelectedValue = values[1].ToString();
+        txtCompLevel.Text = values[2].ToString();
     }
 
-    protected void SetExistingOrganization()
+    protected void SetExistingCompetencyRelation()
     {
-        ddlOrgParent.Items.Clear();
-        ddlOrgChild.Items.Clear();
-        foreach(object[] data in BioPM.ClassObjects.OrganizationCatalog.GetOrganizations())
+        ddlCompParent.Items.Clear();
+        ddlCompChild.Items.Clear();
+        foreach (object[] data in BioPM.ClassObjects.CompetencyCatalog.GetAllCompetency())
         {
-            ddlOrgParent.Items.Add(new ListItem(data[2].ToString() + " - " + data[1].ToString() == "1" ? "unit" : "Position", data[0].ToString() + "|" + data[1].ToString() ));
-            ddlOrgChild.Items.Add(new ListItem(data[2].ToString() + " - " + data[1].ToString() == "1" ? "unit" : "Position", data[0].ToString() + "|" + data[1].ToString()));
+            ddlCompParent.Items.Add(new ListItem(data[1].ToString(), data[0].ToString()));
+            ddlCompChild.Items.Add(new ListItem(data[1].ToString(), data[0].ToString()));
         }
     }
 
-    protected void InsertOrganizationIntoDatabase()
+    protected void UpdateCompetencyRelationIntoDatabase()
     {
-        BioPM.ClassObjects.OrganizationCatalog.UpdateOrganizationStructure(BioPM.ClassEngines.CryptographFactory.Decrypt(Request.QueryString["key"], true), ddlOrgParent.SelectedValue.Split('|')[0], ddlOrgParent.SelectedValue.Split('|')[1], ddlOrgChild.SelectedValue.Split('|')[0], ddlOrgChild.SelectedValue.Split('|')[1], txtOrgLevel.Text, Session["username"].ToString());
+        BioPM.ClassObjects.CompetencyCatalog.UpdateCompetencyStructure(BioPM.ClassEngines.CryptographFactory.Decrypt(Request.QueryString["key"], true), ddlCompParent.SelectedValue, ddlCompChild.SelectedValue, txtCompLevel.Text, Session["username"].ToString());
     }
 
     protected void btnAdd_Click(object sender, EventArgs e)
     {
-        if (IsPostBack) InsertOrganizationIntoDatabase();
-        Response.Redirect("PageOrganizationStructure.aspx");
+        if (IsPostBack) UpdateCompetencyRelationIntoDatabase();
+        Response.Redirect("PageCompetencyRelation.aspx");
     }
 
     protected void btnCancel_Click(object sender, EventArgs e)
@@ -99,7 +99,7 @@
                         <div class="form-group">
                             <label class="col-sm-3 control-label"> COMPETENCY PARENT </label>
                             <div class="col-lg-3 col-md-4">
-                                <asp:DropDownList ID="ddlOrgParent" runat="server" class="form-control m-bot15">   
+                                <asp:DropDownList ID="ddlCompParent" runat="server" class="form-control m-bot15">   
                                 </asp:DropDownList> 
                             </div>
                         </div>
@@ -107,7 +107,7 @@
                         <div class="form-group">
                             <label class="col-sm-3 control-label"> COMPETENCY CHILD </label>
                             <div class="col-lg-3 col-md-4">
-                                <asp:DropDownList ID="ddlOrgChild" runat="server" class="form-control m-bot15">   
+                                <asp:DropDownList ID="ddlCompChild" runat="server" class="form-control m-bot15">   
                                 </asp:DropDownList> 
                             </div>
                         </div>
@@ -115,7 +115,7 @@
                         <div class="form-group">
                             <label class="col-sm-3 control-label"> STRUCTURE LEVEL </label>
                             <div class="col-lg-3 col-md-4">
-                                <asp:TextBox ID="txtOrgLevel" runat="server" class="form-control m-bot15" placeholder="e.g : 1, 2, .., n" ></asp:TextBox>
+                                <asp:TextBox ID="txtCompLevel" runat="server" class="form-control m-bot15" placeholder="e.g : 1, 2, .., n" ></asp:TextBox>
                             </div>
                         </div>
 

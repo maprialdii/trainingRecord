@@ -10,12 +10,12 @@ namespace BioPM.ClassEngines
 {
     public class DataImportFactory
     {
-        public static DataSet ImportDataFromExcel(string filepath, string sheet)
+        public static DataSet ImportDataFromExcel(string filepath)
         {
             if (System.IO.File.Exists(filepath))
             {
                 string connectionString = String.Format(@"Provider=Microsoft.Jet.OLEDB.4.0;Data Source={0};Extended Properties=""Excel 8.0;HDR=YES;IMEX=1"";", filepath);
-                string query = String.Format("select * from [{0}$]", sheet);
+                string query = String.Format("select * from [{0}$]", "Sheet1");
                 OleDbDataAdapter dataAdapter = new OleDbDataAdapter(query, connectionString);
                 DataSet dataSet = new DataSet();
                 dataAdapter.Fill(dataSet);
@@ -32,14 +32,14 @@ namespace BioPM.ClassEngines
 
     public class DataExportFactory : DatabaseFactory
     {
-        public static void ExportDataToSqlServerForUserRole(DataSet data)
+        public static void ExportDataToSqlServerForUserPosition(DataSet data)
         {
             for (int i = 0; i < data.Tables[0].Rows.Count; i++)
             {
                 string date = DateTime.Today.ToString("MM/dd/yyyy");
                 SqlConnection conn = GetConnection();
-                string sqlCmd = @"INSERT INTO bioumum.USER_ROLE (BEGDA, ENDDA, APPID, ROLID, ROLNM, MENID, ACCID, CHGDT, USRDT) 
-                                VALUES('" + "01/01/2014" + "','" + "12/31/2014" + "','" + data.Tables[0].Rows[i][1].ToString() + "','" + data.Tables[0].Rows[i][2].ToString() + "','" + data.Tables[0].Rows[i][3].ToString() + "','" + data.Tables[0].Rows[i][4].ToString() + "','" + data.Tables[0].Rows[i][5].ToString() + "', GETDATE(), 'K495')";
+                string sqlCmd = @"INSERT INTO bioumum.POSISI (PERNR, POSID) 
+                                VALUES('" + data.Tables[0].Rows[i][0].ToString() + "','" + data.Tables[0].Rows[i][1].ToString() + "')";
                 SqlCommand cmd = DatabaseFactory.GetCommand(conn, sqlCmd);
 
                 try

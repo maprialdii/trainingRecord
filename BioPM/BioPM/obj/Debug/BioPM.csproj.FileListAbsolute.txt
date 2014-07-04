@@ -24,6 +24,6 @@ E:\KP\COMDEV\History Sistem\trainingRecord\BioPM\BioPM\bin\DotNetOpenAuth.AspNet
 E:\KP\COMDEV\History Sistem\trainingRecord\BioPM\BioPM\bin\Microsoft.AspNet.Membership.OpenAuth.xml
 E:\KP\COMDEV\History Sistem\trainingRecord\BioPM\BioPM\bin\Microsoft.AspNet.FriendlyUrls.xml
 E:\KP\COMDEV\History Sistem\trainingRecord\BioPM\BioPM\bin\System.Net.Http.xml
-E:\KP\COMDEV\History Sistem\trainingRecord\BioPM\BioPM\obj\Debug\BioPM.csprojResolveAssemblyReference.cache
 E:\KP\COMDEV\History Sistem\trainingRecord\BioPM\BioPM\obj\Debug\BioPM.dll
 E:\KP\COMDEV\History Sistem\trainingRecord\BioPM\BioPM\obj\Debug\BioPM.pdb
+E:\KP\COMDEV\History Sistem\trainingRecord\BioPM\BioPM\obj\Debug\BioPM.csprojResolveAssemblyReference.cache
