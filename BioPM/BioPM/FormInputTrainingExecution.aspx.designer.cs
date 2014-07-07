@@ -58,6 +58,24 @@ namespace BioPM {
         protected global::System.Web.UI.WebControls.TextBox txtBatch;
         
         /// <summary>
+        /// txtBegda control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtBegda;
+        
+        /// <summary>
+        /// txtEndda control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtEndda;
+        
+        /// <summary>
         /// txtInsti control.
         /// </summary>
         /// <remarks>

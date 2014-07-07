@@ -8,13 +8,13 @@ namespace BioPM.ClassObjects
 {
     public class ComDevExecution:DatabaseFactory
     {
-        public static void InsertComDevExecution(string EXCID, string PERNR, string EVTID, string TITLE, string BATCH, string INSTI, string ADRIN, string CITIN, string COUIN, string CRTFL, string SCORE, string CHUSR)
+        public static void InsertComDevExecution(string EXCID, string PERNR, string EVTID, string TITLE, string BATCH, string INSTI, string ADRIN, string CITIN, string COUIN, string CRTFL, string SCORE, string CHUSR, string BEGDA, string ENDDA)
         {
             string date = DateTime.Now.ToString("MM/dd/yyyy HH:mm");
             string maxdate = DateTime.MaxValue.ToString("MM/dd/yyyy HH:mm");
             SqlConnection conn = GetConnection();
             string sqlCmd = @"INSERT INTO trrcd.COMDEV_EVENT_EXECUTION (BEGDA, ENDDA, EXCID, PERNR, EVTID, TITLE, BATCH, INSTI, ADRIN, CITIN, COUIN, CRTFL, SCORE, CHGDT, CHUSR)
-                            VALUES ('" + date + "','" + maxdate + "'," + EXCID + "," + PERNR + "," + EVTID + ",'" + TITLE + "','" + BATCH + "','" + INSTI + "','" + ADRIN + "','" + CITIN + "','" + COUIN + "','" + CRTFL + "'," + SCORE + ",'" + date + "','" + CHUSR + "');";
+                            VALUES ('" + BEGDA + "','" + ENDDA + "'," + EXCID + "," + PERNR + "," + EVTID + ",'" + TITLE + "','" + BATCH + "','" + INSTI + "','" + ADRIN + "','" + CITIN + "','" + COUIN + "','" + CRTFL + "'," + SCORE + ",'" + date + "','" + CHUSR + "');";
 
             SqlCommand cmd = DatabaseFactory.GetCommand(conn, sqlCmd);
 
@@ -29,12 +29,12 @@ namespace BioPM.ClassObjects
             }
         }
 
-        public static void UpdateComDevExecution(string EXCID, string PERNR, string EVTID, string TITLE, string BATCH, string INSTI, string ADRIN, string CITIN, string COUIN, string CRTFL, string SCORE, string CHUSR)
+        public static void UpdateComDevExecution(string EXCID, string PERNR, string EVTID, string TITLE, string BATCH, string INSTI, string ADRIN, string CITIN, string COUIN, string CRTFL, string SCORE, string CHUSR, string BEGDA, string ENDDA)
         {
             string date = DateTime.Now.ToString("MM/dd/yyyy HH:mm");
             string yesterday = DateTime.Now.AddMinutes(-1).ToString("MM/dd/yyyy HH:mm");
             SqlConnection conn = GetConnection();
-            string sqlCmd = @"UPDATE trrcd.COMDEV_EVENT_EXECUTION SET ENDDA = '" + yesterday + "', CHGDT = '" + date + "', CHUSR = '" + CHUSR + "' WHERE (EXCID = " + EXCID + " AND BEGDA <= GETDATE() AND ENDDA >= GETDATE())";
+            string sqlCmd = @"UPDATE trrcd.COMDEV_EVENT_EXECUTION SET CHGDT = '" + date + "', CHUSR = '" + CHUSR + "' WHERE (EXCID = " + EXCID + ")";
 
             SqlCommand cmd = DatabaseFactory.GetCommand(conn, sqlCmd);
 
@@ -46,7 +46,7 @@ namespace BioPM.ClassObjects
             finally
             {
                 conn.Close();
-                InsertComDevExecution(EXCID, PERNR, EVTID, TITLE, BATCH, INSTI, ADRIN, CITIN, COUIN, CRTFL, SCORE, CHUSR);
+                InsertComDevExecution(EXCID, PERNR, EVTID, TITLE, BATCH, INSTI, ADRIN, CITIN, COUIN, CRTFL, SCORE, CHUSR, BEGDA, ENDDA);
             }
         }
 
@@ -77,7 +77,6 @@ namespace BioPM.ClassObjects
                             FROM trrcd.COMDEV_EVENT_EXECUTION CE WITH(INDEX(COMDEV_EVENT_EXECUTION_IDX_BEGDA_ENDDA_ID)), trrcd.COMDEV_EVENT CV WITH(INDEX(COMDEV_EVENT_IDX_BEGDA_ENDDA_ID))
                             WHERE CV.EVTID=CE.EVTID 
                             AND CV.BEGDA <= GETDATE() AND CV.ENDDA >= GETDATE()
-                            AND CE.BEGDA <= GETDATE() AND CE.ENDDA >= GETDATE()
                             AND CE.PERNR='" + pernr + "' ORDER BY CE.EXCID DESC;";
             SqlCommand cmd = GetCommand(conn, sqlCmd);
 
@@ -106,7 +105,6 @@ namespace BioPM.ClassObjects
                             FROM trrcd.COMDEV_EVENT_EXECUTION CE WITH(INDEX(COMDEV_EVENT_EXECUTION_IDX_BEGDA_ENDDA_ID)), trrcd.COMDEV_EVENT CV WITH(INDEX(COMDEV_EVENT_IDX_BEGDA_ENDDA_ID))
                             WHERE CV.EVTID=CE.EVTID 
                             AND CV.BEGDA <= GETDATE() AND CV.ENDDA >= GETDATE()
-                            AND CE.BEGDA <= GETDATE() AND CE.ENDDA >= GETDATE()
                             AND CE.EXCID=" + excid + ";";
             SqlCommand cmd = GetCommand(conn, sqlCmd);
 
@@ -133,8 +131,7 @@ namespace BioPM.ClassObjects
             SqlConnection conn = GetConnection();
             string sqlCmd = @"SELECT CE.INSTI, CE.ADRIN, CE.CITIN, CE.COUIN
                             FROM trrcd.COMDEV_EVENT_EXECUTION CE WITH(INDEX(COMDEV_EVENT_EXECUTION_IDX_BEGDA_ENDDA_ID))
-                            WHERE CE.BEGDA <= GETDATE() AND CM.ENDDA >= GETDATE()
-                            AND CE.EXCID=" + excid + " ORDER BY CE.EXCID DESC;";
+                            WHERE CE.EXCID=" + excid + " ORDER BY CE.EXCID DESC;";
             SqlCommand cmd = GetCommand(conn, sqlCmd);
 
             try

@@ -126,6 +126,22 @@
                         </div>
 
                         <div class="form-group">
+                            <label class="col-sm-3 control-label"> BEGIN DATE </label>
+                            <div class="col-md-4 col-lg-3">
+                                <asp:TextBox ID="txtBegda" value="" size="16" class="form-control form-control-inline input-medium default-date-picker" runat="server"></asp:TextBox>
+                                <span class="help-block">Begin Date Format : month-day-year e.g. 01-31-2014</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label"> END DATE </label>
+                            <div class="col-md-4 col-lg-3">
+                                <asp:TextBox ID="txtEndda" value="" size="16" class="form-control form-control-inline input-medium default-date-picker" runat="server"></asp:TextBox>
+                                <span class="help-block">End Date Format : month-day-year e.g. 01-31-2014</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
                             <label class="col-sm-3 control-label"> INSTITUTION </label>
                             <div class="col-lg-3 col-md-4">
                                 <asp:TextBox ID="txtInsti" runat="server" class="form-control m-bot15" placeholder="INSTITUTION" ></asp:TextBox>

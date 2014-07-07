@@ -11,9 +11,9 @@
     {
         string htmlelement = "";
 
-        foreach (object[] data in BioPM.ClassObjects.CompetencyCatalog.GetAllCompetency())
+        foreach (object[] data in BioPM.ClassObjects.QualificationCatalog.GetQualification(Session["username"].ToString()))
         {
-            htmlelement += "<tr class=''><td>" + data[0].ToString() + "</td><td>" + data[1].ToString() + "</td><td><a class='edit' href='#.aspx?key=" + data[0].ToString() + "'>Edit</a></td><td><a class='delete' href='#.aspx?key=" + data[0].ToString() + "&type=000'>Delete</a></td></tr>";
+            htmlelement += "<tr class=''><td>" + data[1].ToString() + "</td><td>" + data[4].ToString() + "</td><td>" + data[5].ToString() + "</td><td>" + data[6].ToString() + "</td><td>" + data[7].ToString() + "</td><td><a class='edit' href='FormUpdateEmployeeQualification.aspx?key=" + data[0].ToString() + "'>Edit</a></td><td><a class='delete' href='PageInformation.aspx?key=" + data[0].ToString() + "&type=000'>Delete</a></td></tr>";
         }
         
         return htmlelement;
@@ -82,9 +82,8 @@
                                 <thead>
                                 <tr>
                                     <th>NIK</th>
-                                    <th>Position</th>
                                     <th>Competency Name</th>
-                                    <th>Your Proficiency Level</th>
+                                    <th>Proficiency Level</th>
                                     <th>Required Proficiency Level</th>
                                     <th>Gap</th>
                                     <th>Edit</th>

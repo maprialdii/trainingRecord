@@ -203,12 +203,13 @@ namespace BioPM.ClassObjects
         public static List<object[]> GetQualification(string pernr)
         {
             SqlConnection conn = GetConnection();
-            string sqlCmd = @"SELECT CG.GAPID, UD.PERNR, UD.POSID, CG.CPYID, CG.PRLVL, PR.PRLVL, PR.LVL-CG.PRLVL AS GAP
-                            FROM trrcd.COMPETENCY_GAP CG WITH(INDEX(COMPETENCY_GAP_IDX_BEGDA_ENDDA_ID)), bioumum.USERDATA UD, trrcd.POSITION_REQ PR WITH(INDEX(POSITION_REQ_IDX_BEGDA_ENDDA_ID))
+            string sqlCmd = @"SELECT CG.GAPID, UD.PERNR, UD.POSID, CG.CPYID, RK.CPYNM, CG.PRLVL, PR.PRLVL, PR.PRLVL-CG.PRLVL AS GAP
+                            FROM trrcd.COMPETENCY_GAP CG WITH(INDEX(COMPETENCY_GAP_IDX_BEGDA_ENDDA_ID)), bioumum.USER_DATA UD, trrcd.POSITION_REQ PR WITH(INDEX(POSITION_REQ_IDX_BEGDA_ENDDA_ID)), trrcd.REFERENSI_KOMPETENSI RK WITH(INDEX(REFERENSI_KOMPETENSI_IDX_BEGDA_ENDDA_ID))
                             WHERE CG.BEGDA <= GETDATE() AND CG.ENDDA >= GETDATE()
                             AND PR.BEGDA <= GETDATE() AND PR.ENDDA >= GETDATE()
+                            AND RK.BEGDA <= GETDATE() AND RK.ENDDA >= GETDATE()
                             AND UD.BEGDA <= GETDATE() AND UD.ENDDA >= GETDATE()
-                            AND CG.PERNR=UD.PERNR and PR.CPYID=CG.CPYID and UD.PERNR='" + pernr + "';";
+                            AND CG.PERNR=UD.PERNR and PR.CPYID=CG.CPYID and CG.CPYID=RK.CPYID and UD.PERNR='" + pernr + "';";
             SqlCommand cmd = GetCommand(conn, sqlCmd);
 
             try
@@ -218,7 +219,7 @@ namespace BioPM.ClassObjects
                 List<object[]> batchs = new List<object[]>();
                 while (reader.Read())
                 {
-                    object[] values = { reader[0].ToString(), reader[1].ToString(), reader[2].ToString(), reader[3].ToString(), reader[4].ToString(), reader[5].ToString(), reader[6].ToString() };
+                    object[] values = { reader[0].ToString(), reader[1].ToString(), reader[2].ToString(), reader[3].ToString(), reader[4].ToString(), reader[5].ToString(), reader[6].ToString(), reader[7].ToString() };
                     batchs.Add(values);
                 }
                 return batchs;

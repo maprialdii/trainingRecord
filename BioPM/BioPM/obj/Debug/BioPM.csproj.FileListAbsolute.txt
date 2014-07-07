@@ -1,32 +1,3 @@
-E:\KP\COMDEV\History Sistem\trainingRecord\BioPM\BioPM\obj\Debug\BioPM.csprojResolveAssemblyReference.cache
-E:\KP\COMDEV\History Sistem\trainingRecord\BioPM\BioPM\bin\BioPM.dll
-E:\KP\COMDEV\History Sistem\trainingRecord\BioPM\BioPM\bin\BioPM.pdb
-E:\KP\COMDEV\History Sistem\trainingRecord\BioPM\BioPM\bin\AspNet.ScriptManager.jQuery.dll
-E:\KP\COMDEV\History Sistem\trainingRecord\BioPM\BioPM\bin\AspNet.ScriptManager.jQuery.UI.Combined.dll
-E:\KP\COMDEV\History Sistem\trainingRecord\BioPM\BioPM\bin\DotNetOpenAuth.AspNet.dll
-E:\KP\COMDEV\History Sistem\trainingRecord\BioPM\BioPM\bin\DotNetOpenAuth.Core.dll
-E:\KP\COMDEV\History Sistem\trainingRecord\BioPM\BioPM\bin\DotNetOpenAuth.OAuth.Consumer.dll
-E:\KP\COMDEV\History Sistem\trainingRecord\BioPM\BioPM\bin\DotNetOpenAuth.OAuth.dll
-E:\KP\COMDEV\History Sistem\trainingRecord\BioPM\BioPM\bin\DotNetOpenAuth.OpenId.dll
-E:\KP\COMDEV\History Sistem\trainingRecord\BioPM\BioPM\bin\DotNetOpenAuth.OpenId.RelyingParty.dll
-E:\KP\COMDEV\History Sistem\trainingRecord\BioPM\BioPM\bin\EntityFramework.dll
-E:\KP\COMDEV\History Sistem\trainingRecord\BioPM\BioPM\bin\Microsoft.AspNet.FriendlyUrls.dll
-E:\KP\COMDEV\History Sistem\trainingRecord\BioPM\BioPM\bin\Microsoft.AspNet.Membership.OpenAuth.dll
-E:\KP\COMDEV\History Sistem\trainingRecord\BioPM\BioPM\bin\Microsoft.Web.Infrastructure.dll
-E:\KP\COMDEV\History Sistem\trainingRecord\BioPM\BioPM\bin\System.Web.Providers.dll
-E:\KP\COMDEV\History Sistem\trainingRecord\BioPM\BioPM\bin\System.Net.Http.dll
-E:\KP\COMDEV\History Sistem\trainingRecord\BioPM\BioPM\bin\EntityFramework.xml
-E:\KP\COMDEV\History Sistem\trainingRecord\BioPM\BioPM\bin\DotNetOpenAuth.Core.xml
-E:\KP\COMDEV\History Sistem\trainingRecord\BioPM\BioPM\bin\DotNetOpenAuth.OAuth.xml
-E:\KP\COMDEV\History Sistem\trainingRecord\BioPM\BioPM\bin\DotNetOpenAuth.OAuth.Consumer.xml
-E:\KP\COMDEV\History Sistem\trainingRecord\BioPM\BioPM\bin\DotNetOpenAuth.OpenId.xml
-E:\KP\COMDEV\History Sistem\trainingRecord\BioPM\BioPM\bin\DotNetOpenAuth.OpenId.RelyingParty.xml
-E:\KP\COMDEV\History Sistem\trainingRecord\BioPM\BioPM\bin\DotNetOpenAuth.AspNet.xml
-E:\KP\COMDEV\History Sistem\trainingRecord\BioPM\BioPM\bin\Microsoft.AspNet.Membership.OpenAuth.xml
-E:\KP\COMDEV\History Sistem\trainingRecord\BioPM\BioPM\bin\Microsoft.AspNet.FriendlyUrls.xml
-E:\KP\COMDEV\History Sistem\trainingRecord\BioPM\BioPM\bin\System.Net.Http.xml
-E:\KP\COMDEV\History Sistem\trainingRecord\BioPM\BioPM\obj\Debug\BioPM.dll
-E:\KP\COMDEV\History Sistem\trainingRecord\BioPM\BioPM\obj\Debug\BioPM.pdb
 C:\Users\rizaldi\Documents\GitHub\trainingRecord\BioPM\BioPM\obj\Debug\BioPM.csprojResolveAssemblyReference.cache
 C:\Users\rizaldi\Documents\GitHub\trainingRecord\BioPM\BioPM\obj\Debug\BioPM.dll
 C:\Users\rizaldi\Documents\GitHub\trainingRecord\BioPM\BioPM\obj\Debug\BioPM.pdb
@@ -56,3 +27,32 @@ C:\Users\rizaldi\Documents\GitHub\trainingRecord\BioPM\BioPM\bin\DotNetOpenAuth.
 C:\Users\rizaldi\Documents\GitHub\trainingRecord\BioPM\BioPM\bin\Microsoft.AspNet.Membership.OpenAuth.xml
 C:\Users\rizaldi\Documents\GitHub\trainingRecord\BioPM\BioPM\bin\Microsoft.AspNet.FriendlyUrls.xml
 C:\Users\rizaldi\Documents\GitHub\trainingRecord\BioPM\BioPM\bin\System.Net.Http.xml
+E:\KP\COMDEV\History Sistem\trainingRecord\BioPM\BioPM\bin\BioPM.dll
+E:\KP\COMDEV\History Sistem\trainingRecord\BioPM\BioPM\bin\BioPM.pdb
+E:\KP\COMDEV\History Sistem\trainingRecord\BioPM\BioPM\bin\AspNet.ScriptManager.jQuery.dll
+E:\KP\COMDEV\History Sistem\trainingRecord\BioPM\BioPM\bin\AspNet.ScriptManager.jQuery.UI.Combined.dll
+E:\KP\COMDEV\History Sistem\trainingRecord\BioPM\BioPM\bin\DotNetOpenAuth.AspNet.dll
+E:\KP\COMDEV\History Sistem\trainingRecord\BioPM\BioPM\bin\DotNetOpenAuth.Core.dll
+E:\KP\COMDEV\History Sistem\trainingRecord\BioPM\BioPM\bin\DotNetOpenAuth.OAuth.Consumer.dll
+E:\KP\COMDEV\History Sistem\trainingRecord\BioPM\BioPM\bin\DotNetOpenAuth.OAuth.dll
+E:\KP\COMDEV\History Sistem\trainingRecord\BioPM\BioPM\bin\DotNetOpenAuth.OpenId.dll
+E:\KP\COMDEV\History Sistem\trainingRecord\BioPM\BioPM\bin\DotNetOpenAuth.OpenId.RelyingParty.dll
+E:\KP\COMDEV\History Sistem\trainingRecord\BioPM\BioPM\bin\EntityFramework.dll
+E:\KP\COMDEV\History Sistem\trainingRecord\BioPM\BioPM\bin\Microsoft.AspNet.FriendlyUrls.dll
+E:\KP\COMDEV\History Sistem\trainingRecord\BioPM\BioPM\bin\Microsoft.AspNet.Membership.OpenAuth.dll
+E:\KP\COMDEV\History Sistem\trainingRecord\BioPM\BioPM\bin\Microsoft.Web.Infrastructure.dll
+E:\KP\COMDEV\History Sistem\trainingRecord\BioPM\BioPM\bin\System.Web.Providers.dll
+E:\KP\COMDEV\History Sistem\trainingRecord\BioPM\BioPM\bin\System.Net.Http.dll
+E:\KP\COMDEV\History Sistem\trainingRecord\BioPM\BioPM\bin\EntityFramework.xml
+E:\KP\COMDEV\History Sistem\trainingRecord\BioPM\BioPM\bin\DotNetOpenAuth.Core.xml
+E:\KP\COMDEV\History Sistem\trainingRecord\BioPM\BioPM\bin\DotNetOpenAuth.OAuth.xml
+E:\KP\COMDEV\History Sistem\trainingRecord\BioPM\BioPM\bin\DotNetOpenAuth.OAuth.Consumer.xml
+E:\KP\COMDEV\History Sistem\trainingRecord\BioPM\BioPM\bin\DotNetOpenAuth.OpenId.xml
+E:\KP\COMDEV\History Sistem\trainingRecord\BioPM\BioPM\bin\DotNetOpenAuth.OpenId.RelyingParty.xml
+E:\KP\COMDEV\History Sistem\trainingRecord\BioPM\BioPM\bin\DotNetOpenAuth.AspNet.xml
+E:\KP\COMDEV\History Sistem\trainingRecord\BioPM\BioPM\bin\Microsoft.AspNet.Membership.OpenAuth.xml
+E:\KP\COMDEV\History Sistem\trainingRecord\BioPM\BioPM\bin\Microsoft.AspNet.FriendlyUrls.xml
+E:\KP\COMDEV\History Sistem\trainingRecord\BioPM\BioPM\bin\System.Net.Http.xml
+E:\KP\COMDEV\History Sistem\trainingRecord\BioPM\BioPM\obj\Debug\BioPM.dll
+E:\KP\COMDEV\History Sistem\trainingRecord\BioPM\BioPM\obj\Debug\BioPM.pdb
+E:\KP\COMDEV\History Sistem\trainingRecord\BioPM\BioPM\obj\Debug\BioPM.csprojResolveAssemblyReference.cache
