@@ -91,46 +91,6 @@
                     </header>
                     <div class="panel-body">
                         <form id="Form1" class="form-horizontal " runat="server" >
-
-                        <div class="form-group">
-                            <label class="col-sm-3 control-label"> EVENT NAME </label>
-                            <div class="col-lg-3 col-md-4">
-                                <asp:Label ID="txtEventName" runat="server" class="form-control m-bot15">   
-                                </asp:Label> 
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="col-sm-3 control-label"> EMPLOYEE NAME </label>
-                            <div class="col-lg-3 col-md-4">
-                                <asp:Label ID="txtEmployeeName" runat="server" class="form-control m-bot15">   
-                                </asp:Label> 
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="col-sm-3 control-label"> EVENT MONTH </label>
-                            <div class="col-lg-3 col-md-4">
-                                <asp:TextBox ID="txtMonth" runat="server" class="form-control m-bot15">   
-                                </asp:TextBox> 
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="col-sm-3 control-label"> EVENT COST ESTIMATION </label>
-                            <div class="col-lg-3 col-md-4">
-                                <asp:TextBox ID="txtCost" runat="server" class="form-control m-bot15">   
-                                </asp:TextBox> 
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="col-sm-3 control-label"> </label>
-                            <div class="col-lg-3 col-md-3">
-                                <asp:Button class="btn btn-round btn-primary" ID="btnAdd" runat="server" Text="Add" OnClick="btnAdd_Click"/>
-                                <asp:Button class="btn btn-round btn-primary" ID="btnCancel" runat="server" Text="Cancel" OnClick="btnCancel_Click"/>
-                            </div>
-                        </div>
                             
                         </form>
                     </div>
