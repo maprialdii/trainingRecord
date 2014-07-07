@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="PageCompetencyDevelopmentEvent.aspx.cs" Inherits="BioPM.PageCompetencyDevelopmentEvent" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="PageEventTargetDetail.aspx.cs" Inherits="BioPM.PageEventTargetDetail" %>
 
 <!DOCTYPE html>
 <script runat="server">
@@ -7,13 +7,13 @@
         if (Session["username"] == null && Session["password"] == null) Response.Redirect("PageLogin.aspx");
     }
 
-    protected String GenerateDataEvent()
+    protected String GenerateDataEventTarget()
     {
         string htmlelement = "";
 
-        foreach (object[] data in BioPM.ClassObjects.ComDevEvent.GetAllComdevEvent())
+        foreach (object[] data in BioPM.ClassObjects.ComDevEvent.GetAllTargetComdevEvent(evtid))
         {
-            htmlelement += "<tr class=''><td>" + data[1].ToString() + "</td><td>" + data[2].ToString() + "</td><td><a class='edit' href='PageEventTargetDetail.aspx?key=" + data[0].ToString() + "'>View</a></td><td><a class='edit' href='FormUpdateEvent.aspx?key=" + data[0].ToString() + "'>Edit</a></td><td><a class='delete' href='PageInformation.aspx?key=" + data[0].ToString() + "&type=000'>Delete</a></td></tr>";
+            htmlelement += "<tr class=''><td>" + data[1].ToString() + "</td><td>" + data[2].ToString() + "</td><td>" + data[3].ToString() + "</td><td><a class='edit' href='FormUpdateEvent.aspx?key=" + data[0].ToString() + "'>Edit</a></td><td><a class='delete' href='PageInformation.aspx?key=" + data[0].ToString() + "&type=000'>Delete</a></td></tr>";
         }
         
         return htmlelement;
@@ -26,7 +26,7 @@
 <head>
     <% Response.Write(BioPM.ClassScripts.BasicScripts.GetMetaScript()); %>
 
-    <title>Competency Development Event</title>
+    <title>Event Target Detail</title>
 
     <% Response.Write(BioPM.ClassScripts.StyleScripts.GetCoreStyle()); %>
 <% Response.Write(BioPM.ClassScripts.StyleScripts.GetTableStyle()); %>
@@ -54,7 +54,7 @@
             <div class="col-sm-12">
                 <section class="panel">
                     <header class="panel-heading">
-                        Competency Development Event
+                        Event Target Detail
                           <span class="tools pull-right">
                             <a class="fa fa-chevron-down" href="javascript:;"></a>
                             <a class="fa fa-times" href="javascript:;"></a>
@@ -82,14 +82,14 @@
                                 <thead>
                                 <tr>
                                     <th>Event Name</th>                                   
-                                    <th>Event Method</th>
-                                    <th>Target Detail</th>
+                                    <th>Competency Name</th>
+                                    <th>Proficiency Level</th>
                                     <th>Edit</th>
                                     <th>Delete</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <% Response.Write(GenerateDataEvent()); %>
+                                <% Response.Write(GenerateDataEventTarget()); %>
                                 </tbody>
                             </table>
                         </div>
