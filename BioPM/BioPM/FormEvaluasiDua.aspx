@@ -21,9 +21,9 @@
     
     protected void InsertDataIntoDatabase()
     {
-        string RECID = (BioPM.ClassObjects.ComDevPlan.GetComDevPlanMaxID() + 1).ToString();
-        BioPM.ClassObjects.ComDevPlan.UpdateComDevPlan(RECID, Session["username"].ToString(), txtEventName.Text, txtMonth.Text, txtCost.Text, Session["username"].ToString());
-        BioPM.ClassObjects.ComDevPlan.InsertComDevPlanStatus(RECID, "Belum Disetujui", " ", Session["username"].ToString());
+        //string RECID = (BioPM.ClassObjects.ComDevPlan.GetComDevPlanMaxID() + 1).ToString();
+        //BioPM.ClassObjects.ComDevPlan.UpdateComDevPlan(RECID, Session["username"].ToString(), txtEventName.Text, txtMonth.Text, txtCost.Text, Session["username"].ToString());
+        //BioPM.ClassObjects.ComDevPlan.InsertComDevPlanStatus(RECID, "Belum Disetujui", " ", Session["username"].ToString());
     }
 
     protected void btnAdd_Click(object sender, EventArgs e)
@@ -43,7 +43,7 @@
         Response.Redirect("PageUserPanel.aspx");
     }
 
-    protected String GenerateDataKompetensi()
+    protected String GenerateDataKaryawan()
     {
         string htmlelement = " ";
         
@@ -83,7 +83,7 @@
             <div class="col-sm-12">
                 <section class="panel">
                     <header class="panel-heading">
-                        Evaluasi I
+                        Evaluasi II
                           <span class="tools pull-right">
                             <a class="fa fa-chevron-down" href="javascript:;"></a>
                             <a class="fa fa-times" href="javascript:;"></a>
@@ -93,37 +93,35 @@
                         <form id="Form1" class="form-horizontal " runat="server" >
 
                         <div class="form-group">
-                            <label class="col-sm-3 control-label"> EVENT NAME </label>
+                            <label class="col-sm-3 control-label"> PELATIHAN </label>
                             <div class="col-lg-3 col-md-4">
-                                <asp:Label ID="txtEventName" runat="server" class="form-control m-bot15">   
+                                <asp:Label ID="txtPelatihan" runat="server" class="form-control m-bot15">   
                                 </asp:Label> 
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label class="col-sm-3 control-label"> EMPLOYEE NAME </label>
+                            <label class="col-sm-3 control-label"> TANGGAL </label>
                             <div class="col-lg-3 col-md-4">
-                                <asp:Label ID="txtEmployeeName" runat="server" class="form-control m-bot15">   
+                                <asp:Label ID="txtTanggal" runat="server" class="form-control m-bot15">   
                                 </asp:Label> 
                             </div>
                         </div>
 
-                        <div class="form-group">
-                            <label class="col-sm-3 control-label"> EVENT MONTH </label>
-                            <div class="col-lg-3 col-md-4">
-                                <asp:TextBox ID="txtMonth" runat="server" class="form-control m-bot15">   
-                                </asp:TextBox> 
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="col-sm-3 control-label"> EVENT COST ESTIMATION </label>
-                            <div class="col-lg-3 col-md-4">
-                                <asp:TextBox ID="txtCost" runat="server" class="form-control m-bot15">   
-                                </asp:TextBox> 
-                            </div>
-                        </div>
-
+                        <table class="table table-striped table-hover table-bordered" id="dynamic-table" >
+                           <thead>
+                              <tr>
+                                    <th>NIK</th>
+                                    <th>NAMA</th>
+                                    <th>KEHADIRAN</th>
+                                    <th>NILAI</th>
+                              </tr>
+                           </thead>
+                           <tbody>
+                              <% Response.Write(GenerateDataKaryawan()); %>
+                           </tbody>
+                        </table>
+                        
                         <div class="form-group">
                             <label class="col-sm-3 control-label"> </label>
                             <div class="col-lg-3 col-md-3">
