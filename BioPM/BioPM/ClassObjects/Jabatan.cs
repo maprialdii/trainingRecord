@@ -101,7 +101,7 @@ namespace BioPM.ClassObjects
         public static List<object[]> GetKualifikasiJabatan(string posid)
         {
             SqlConnection conn = GetConnection();
-            string sqlCmd = @"SELECT DISTINCT PR.PRQID, UD.POSID, UD.PRPOS+' '+UD.PRORG AS POSISI, RK.CPYNM, PR.PRLVL
+            string sqlCmd = @"SELECT DISTINCT PR.PRQID, RK.CPYNM, PR.PRLVL
                             FROM BIOFARMA.bioumum.USER_DATA UD, BIOFARMA.trrcd.POSITION_REQ PR WITH(INDEX(POSITION_REQ_IDX_BEGDA_ENDDA_ID)), BIOFARMA.trrcd.REFERENSI_KOMPETENSI RK WITH(INDEX(REFERENSI_KOMPETENSI_IDX_BEGDA_ENDDA_ID))
                             WHERE UD.POSID IS NOT NULL AND UD.POSID!='' AND RK.CPYID=PR.CPYID AND UD.POSID=PR.POSID 
                             AND UD.BEGDA <= GETDATE() AND UD.ENDDA >= GETDATE()
@@ -117,7 +117,7 @@ namespace BioPM.ClassObjects
                 List<object[]> batchs = new List<object[]>();
                 while (reader.Read())
                 {
-                    object[] values = { reader[0].ToString(), reader[1].ToString(), reader[2].ToString(), reader[3].ToString(), reader[4].ToString() };
+                    object[] values = { reader[0].ToString(), reader[1].ToString(), reader[2].ToString() };
                     batchs.Add(values);
                 }
                 return batchs;
@@ -128,21 +128,13 @@ namespace BioPM.ClassObjects
             }
         }
 
-        public static object[] GetKualifikasiJabatanById(string posid, string cpyid)
+        public static object[] GetKualifikasiJabatanById(string prqid)
         {
             SqlConnection conn = GetConnection();
-<<<<<<< HEAD
             string sqlCmd = @"SELECT PR.PRQID, PR.POSID, PR.CPYID, PR.PRLVL
                             FROM trrcd.POSITION_REQ PR WITH(INDEX(POSITION_REQ_IDX_BEGDA_ENDDA_ID))
                             AND PR.BEGDA <= GETDATE() AND PR.ENDDA >= GETDATE()
                             AND PR.POSID='" + prqid+"'  ORDER BY PR.POSID ASC;";
-=======
-            string sqlCmd = @"SELECT PR.PRQID, PR.POSID, RK.CPYNM, PR.PRLVL
-                            FROM trrcd.REFERENSI_KOMPETENSI RK, trrcd.POSITION_REQ PR 
-                            WHERE RK.BEGDA <= GETDATE() AND RK.ENDDA >= GETDATE()
-                            AND PR.BEGDA <= GETDATE() AND PR.ENDDA >= GETDATE()
-                            AND PR.POSID='" +posid+"' AND PR.CPYID='"+cpyid+"' ORDER BY PR.POSID ASC;";
->>>>>>> origin/master
             SqlCommand cmd = GetCommand(conn, sqlCmd);
 
             try

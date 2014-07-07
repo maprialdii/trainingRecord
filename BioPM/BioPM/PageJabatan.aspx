@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="PagePositionRequirements.aspx.cs" Inherits="BioPM.PagePositionRequirements" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="PageJabatan.aspx.cs" Inherits="BioPM.PageJabatan" %>
 
 <!DOCTYPE html>
 <script runat="server">
@@ -11,10 +11,9 @@
     {
         string htmlelement = "";
 
-        foreach (object[] data in BioPM.ClassObjects.Jabatan.GetKualifikasiJabatan(Request.QueryString["key"].ToString()))
+        foreach (object[] data in BioPM.ClassObjects.Jabatan.GetAllJabatan())
         {
-            //htmlelement += "<tr class=''><td>" + data[1].ToString() + "</td><td>" + data[2].ToString() + "</td><td>" + data[3].ToString() + "</td><td><a class='edit' href='FormUpdate.aspx?key=" + data[0].ToString() + "'>Edit</a></td><td><a class='delete' href='#.aspx?key=" + data[0].ToString() + "&type=000'>Delete</a></td></tr>";
-            htmlelement += "<tr class=''><td>" + data[1].ToString() + "</td><td>" + data[2].ToString() + "</td><td><a class='edit' href='FormUpdatePositionRequirements.aspx?key=" + data[0].ToString() + "'>Edit</a></td><td><a class='delete' href='PageInformation.aspx?key=" + data[0].ToString() + "&type=000'>Delete</a></td></tr>";
+            htmlelement += "<tr class=''><td>" + data[1].ToString() + "</td><td>" + data[2].ToString() + "</td><td><a class='edit' href='FormUpdateRequirements.aspx?key=" + data[0].ToString() + "'>Edit</a></td><td><a class='edit' href='PageInformation.aspx?key=" + data[0].ToString() + "'>Delete</a></td></tr>";
         }
         
         return htmlelement;
@@ -82,8 +81,8 @@
                             <table class="table table-striped table-hover table-bordered" id="dynamic-table" >
                                 <thead>
                                 <tr>
-                                    <th>Competency Name</th>
-                                    <th>Required Level</th>
+                                    <th>Pos ID</th>
+                                    <th>Position</th>
                                     <th>Edit</th>
                                     <th>Delete</th>
                                 </tr>
@@ -114,3 +113,4 @@
 <% Response.Write(BioPM.ClassScripts.JS.GetInitialisationScript()); %>
 </body>
 </html>
+

@@ -8,7 +8,7 @@ namespace BioPM.ClassObjects
 {
     public class ComDevExecution:DatabaseFactory
     {
-        public static void InsertComDevExecution(string EXCID, string PERNR, string EVTID, string TITLE, string BATCH, string INSTI, string ADRIN, string CITIN, string CPYID, string COUIN, string CRTFL, string SCORE, string CHUSR)
+        public static void InsertComDevExecution(string EXCID, string PERNR, string EVTID, string TITLE, string BATCH, string INSTI, string ADRIN, string CITIN, string COUIN, string CRTFL, string SCORE, string CHUSR)
         {
             string date = DateTime.Now.ToString("MM/dd/yyyy HH:mm");
             string maxdate = DateTime.MaxValue.ToString("MM/dd/yyyy HH:mm");
@@ -29,7 +29,7 @@ namespace BioPM.ClassObjects
             }
         }
 
-        public static void UpdateComDevExecution(string EXCID, string PERNR, string EVTID, string TITLE, string BATCH, string INSTI, string ADRIN, string CITIN, string CPYID, string COUIN, string CRTFL, string SCORE, string CHUSR)
+        public static void UpdateComDevExecution(string EXCID, string PERNR, string EVTID, string TITLE, string BATCH, string INSTI, string ADRIN, string CITIN, string COUIN, string CRTFL, string SCORE, string CHUSR)
         {
             string date = DateTime.Now.ToString("MM/dd/yyyy HH:mm");
             string yesterday = DateTime.Now.AddMinutes(-1).ToString("MM/dd/yyyy HH:mm");
@@ -46,7 +46,7 @@ namespace BioPM.ClassObjects
             finally
             {
                 conn.Close();
-                InsertComDevExecution(EXCID, PERNR, EVTID, TITLE, BATCH, INSTI, ADRIN, CITIN, CPYID, COUIN, CRTFL, SCORE, CHUSR);
+                InsertComDevExecution(EXCID, PERNR, EVTID, TITLE, BATCH, INSTI, ADRIN, CITIN, COUIN, CRTFL, SCORE, CHUSR);
             }
         }
 

@@ -6,7 +6,8 @@
         if (Session["username"] == null && Session["password"] == null) Response.Redirect("PageLogin.aspx");
         if (!IsPostBack)
         {
-            GetDataSubCategory();
+            GetDataEvent();
+            txtExcid.Text = (BioPM.ClassObjects.ComDevExecution.GetComDevExecutionMaxID() + 1).ToString();    
         }
     }
     
@@ -27,27 +28,21 @@
     //    }
     //}
     
-    protected void GetDataSubCategory()
+    protected void GetDataEvent()
     {
-        //ddlSubCat.Items.Clear();
-        //foreach(object[] data in BioPM.ClassObjects.LabelCatalog.GetLabelSubCategories())
-        //{
-        //    ddlSubCat.Items.Add(new ListItem(data[1].ToString(), data[0].ToString()));
-        //}
+        ddlEventMethod.Items.Clear();
+        foreach(object[] data in BioPM.ClassObjects.EventMethod.GetAllEventMethod())
+        {
+            ddlEventMethod.Items.Add(new ListItem(data[1].ToString(), data[0].ToString()));
+        }
     }
     
     protected void InsertDataIntoDatabase()
     {
-        //BioPM.ClassObjects.LabelCatalog.InsertLabel(txtLabelID.Text.ToUpper(), txtLabelName.Text, txtLabelWidth.Text, txtLabelLength.Text, ddlSubCat.SelectedValue, Session["username"].ToString());
+        BioPM.ClassObjects.ComDevExecution.InsertComDevExecution(txtExcid.Text, Session["username"].ToString(), ddlEventMethod.SelectedValue, txtEventTitle.Text, txtBatch.Text, txtInsti.Text, txtAdrin.Text, TxtCitin.Text, txtCouin.Text, ddlStatus.SelectedValue, txtScore.ToString(), Session["username"].ToString());
     }
 
     protected void btnAdd_Click(object sender, EventArgs e)
-    {
-        //InsertDataIntoDatabase();
-        //Response.Redirect("PageLabel.aspx");
-    }
-
-    protected void btnAddComp_Click(object sender, EventArgs e)
     {
         InsertDataIntoDatabase();
         Response.Redirect("PageLabel.aspx");
@@ -100,11 +95,18 @@
                     </header>
                     <div class="panel-body">
                         <form id="Form1" class="form-horizontal " runat="server" >
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label"> EXECUTION ID </label>
+                            <div class="col-lg-3 col-md-4">
+                                <asp:TextBox ID="txtExcid" runat="server" class="form-control m-bot15" placeholder="EXECUTION ID" ></asp:TextBox>
+                            </div>
+                        </div>
                          
                         <div class="form-group">
-                            <label class="col-sm-3 control-label"> EVENT NAME </label>
+                            <label class="col-sm-3 control-label"> EVENT METHOD </label>
                             <div class="col-lg-3 col-md-4">
-                                <asp:DropDownList ID="ddlEventName" runat="server" class="form-control m-bot15">   
+                                <asp:DropDownList ID="ddlEventMethod" runat="server" class="form-control m-bot15">   
                                 </asp:DropDownList> 
                             </div>
                         </div>
@@ -124,9 +126,39 @@
                         </div>
 
                         <div class="form-group">
+                            <label class="col-sm-3 control-label"> INSTITUTION </label>
+                            <div class="col-lg-3 col-md-4">
+                                <asp:TextBox ID="txtInsti" runat="server" class="form-control m-bot15" placeholder="INSTITUTION" ></asp:TextBox>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label"> INSTITUTION ADDRESS </label>
+                            <div class="col-lg-3 col-md-4">
+                                <asp:TextBox ID="txtAdrin" runat="server" class="form-control m-bot15" placeholder="INSTITUTION ADDRESS" ></asp:TextBox>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label"> INSTITUTION CITY </label>
+                            <div class="col-lg-3 col-md-4">
+                                <asp:TextBox ID="TxtCitin" runat="server" class="form-control m-bot15" placeholder="INSTITUTION CITY" ></asp:TextBox>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label"> INSTITUTION COUNTRY </label>
+                            <div class="col-lg-3 col-md-4">
+                                <asp:TextBox ID="txtCouin" runat="server" class="form-control m-bot15" placeholder="INSTITUTION COUNTRY" ></asp:TextBox>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
                             <label class="col-sm-3 control-label"> STATUS </label>
                             <div class="col-lg-3 col-md-4">
-                                <asp:DropDownList ID="ddlStatus" runat="server" class="form-control m-bot15">   
+                                <asp:DropDownList ID="ddlStatus" runat="server" class="form-control m-bot15">  
+                                    <asp:ListItem Value="Lulus">Lulus</asp:ListItem> 
+                                    <asp:ListItem Value="Tidak Lulus">Tidak Lulus</asp:ListItem> 
                                 </asp:DropDownList> 
                             </div>
                         </div>

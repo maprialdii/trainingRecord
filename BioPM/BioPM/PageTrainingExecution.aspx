@@ -7,13 +7,13 @@
         if (Session["username"] == null && Session["password"] == null) Response.Redirect("PageLogin.aspx");
     }
 
-    protected String GenerateDataKompetensi()
+    protected String GenerateDataEksekusi()
     {
         string htmlelement = "";
 
-        foreach (object[] data in BioPM.ClassObjects.CompetencyCatalog.GetAllCompetency())
+        foreach (object[] data in BioPM.ClassObjects.ComDevExecution.GetComdevExecutionByUserId(Session["username"].ToString()))
         {
-            htmlelement += "<tr class=''><td>" + data[0].ToString() + "</td><td>" + data[1].ToString() + "</td><td><a class='edit' href='#.aspx?key=" + data[0].ToString() + "'>Edit</a></td><td><a class='delete' href='#.aspx?key=" + data[0].ToString() + "&type=000'>Delete</a></td></tr>";
+            htmlelement += "<tr class=''><td>" + data[1].ToString() + "</td><td>" + data[2].ToString() + "</td><td>" + data[3].ToString() + "</td><td>" + data[4].ToString() + "</td><td>" + data[5].ToString() + "</td><td>" + data[6].ToString() + "</td><td>" + data[7].ToString() + "</td><td>" + data[8].ToString() + "</td><td><a class='edit' href='#.aspx?key=" + data[0].ToString() + "'>Edit</a></td><td><a class='delete' href='#.aspx?key=" + data[0].ToString() + "&type=000'>Delete</a></td></tr>";
         }
         
         return htmlelement;
@@ -81,14 +81,20 @@
                             <table class="table table-striped table-hover table-bordered" id="dynamic-table" >
                                 <thead>
                                 <tr>
-                                    <th>Competency ID</th>
-                                    <th>Competency Name</th>                                   
+                                    <th>Event Name</th>
+                                    <th>Title</th>
+                                    <th>Angkatan</th>  
+                                    <th>Institution</th>  
+                                    <th>Start Date</th>  
+                                    <th>End Date</th>
+                                    <th>Status</th>  
+                                    <th>Score</th>                                       
                                     <th>Edit</th>
                                     <th>Delete</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <% Response.Write(GenerateDataKompetensi()); %>
+                                <% Response.Write(GenerateDataEksekusi()); %>
                                 </tbody>
                             </table>
                         </div>

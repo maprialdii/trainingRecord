@@ -115,13 +115,8 @@ namespace BioPM.ClassObjects
         public static List<object[]> GetComdevPlanByUsername(string pernr)
         {
             SqlConnection conn = GetConnection();
-<<<<<<< HEAD
             string sqlCmd = @"SELECT CP.RECID, CP.EVTNM, CP.EVTMH, CP.EVTCO, CS.APVST
                             FROM trrcd.COMDEV_PLAN CP WITH(INDEX(COMDEV_PLAN_IDX_BEGDA_ENDDA_ID)), trrcd.COMDEV_PLAN_STATUS CS WITH(INDEX(COMDEV_PLAN_STATUS_IDX_BEGDA_ENDDA_ID))
-=======
-            string sqlCmd = @"SELECT CP.EVTNM, CP.EVTMH, CP.EVTCO, CS.APVST
-                            FROM trrcd.COMDEV_PLAN CP, trrcd.COMDEV_PLAN_STATUS CS 
->>>>>>> origin/master
                             WHERE CP.BEGDA <= GETDATE() AND CP.ENDDA >= GETDATE()
                             AND CS.BEGDA <= GETDATE() AND CS.ENDDA >= GETDATE()
                             AND CP.RECID=CS.RECID AND CP.PERNR='" + pernr +"' ORDER BY CP.RECID DESC;";
@@ -148,13 +143,8 @@ namespace BioPM.ClassObjects
         public static List<object[]> GetComdevPlanByStatus(string status)
         {
             SqlConnection conn = GetConnection();
-<<<<<<< HEAD
             string sqlCmd = @"SELECT CP.RECID, CP.EVTNM, CP.EVTMH, CP.EVTCO, CS.APVST
                             FROM trrcd.COMDEV_PLAN CP WITH(INDEX(COMDEV_PLAN_IDX_BEGDA_ENDDA_ID)), trrcd.COMDEV_PLAN_STATUS CS WITH(INDEX(COMDEV_PLAN_STATUS_IDX_BEGDA_ENDDA_ID))
-=======
-            string sqlCmd = @"SELECT CP.EVTNM, CP.EVTMH, CP.EVTCO, CS.APVST
-                            FROM trrcd.COMDEV_PLAN CP, trrcd.COMDEV_PLAN_STATUS CS 
->>>>>>> origin/master
                             WHERE CP.BEGDA <= GETDATE() AND CP.ENDDA >= GETDATE()
                             AND CS.BEGDA <= GETDATE() AND CS.ENDDA >= GETDATE()
                             AND CP.RECID=CS.RECID AND CS.APVST='" + status + "' ORDER BY CP.RECID DESC;";
@@ -178,15 +168,14 @@ namespace BioPM.ClassObjects
             }
         }
 
-        public static List<object[]> GetComdevPlanById(string recid)
+        public static object[] GetComdevPlanById(string recid)
         {
             SqlConnection conn = GetConnection();
-<<<<<<< HEAD
             string sqlCmd = @"SELECT CP.RECID, CP.EVTNM, CP.EVTMH, CP.EVTCO, CS.APVST
                             FROM trrcd.COMDEV_PLAN CP WITH(INDEX(COMDEV_PLAN_IDX_BEGDA_ENDDA_ID)), trrcd.COMDEV_PLAN_STATUS CS WITH(INDEX(COMDEV_PLAN_STATUS_IDX_BEGDA_ENDDA_ID))
                             WHERE CP.BEGDA <= GETDATE() AND CP.ENDDA >= GETDATE()
                             AND CS.BEGDA <= GETDATE() AND CS.ENDDA >= GETDATE()
-                            AND CP.RECID=CS.RECID AND CP.RECID='" + recid + "' ORDER BY CP.RECID DESC;";
+                            AND CP.RECID=CS.RECID AND CP.RECID='" + recid + "';";
             SqlCommand cmd = GetCommand(conn, sqlCmd);
 
             try
@@ -214,12 +203,6 @@ namespace BioPM.ClassObjects
                             FROM trrcd.COMDEV_PLAN_STATUS CS WITH(INDEX(COMDEV_PLAN_STATUS_IDX_BEGDA_ENDDA_ID)), trrcd.COMDEV_PLAN CP WITH(INDEX(COMDEV_PLAN_IDX_BEGDA_ENDDA_ID))
                             WHERE CS.BEGDA <= GETDATE() AND CS.ENDDA >= GETDATE()
                             AND CS.BEGDA <= GETDATE() AND CS.ENDDA >= GETDATE()
-=======
-            string sqlCmd = @"SELECT CP.EVTNM, CP.EVTMH, CP.EVTCO, CS.APVST
-                            FROM trrcd.COMDEV_PLAN CP, trrcd.COMDEV_PLAN_STATUS CS 
-                            WHERE CP.BEGDA <= GETDATE() AND CP.ENDDA >= GETDATE()
-                            AND CS.BEGDA <= GETDATE() AND CS.ENDDA >= GETDATE()
->>>>>>> origin/master
                             AND CP.RECID=CS.RECID AND CS.RECID='" + recid + "' ORDER BY CP.RECID DESC;";
             SqlCommand cmd = GetCommand(conn, sqlCmd);
 
@@ -227,13 +210,13 @@ namespace BioPM.ClassObjects
             {
                 conn.Open();
                 SqlDataReader reader = GetDataReader(cmd);
-                List<object[]> batchs = new List<object[]>();
+                object[] data = null;
                 while (reader.Read())
                 {
                     object[] values = { reader[0].ToString(), reader[1].ToString(), reader[2].ToString(), reader[3].ToString() };
-                    batchs.Add(values);
+                    data = values;
                 }
-                return batchs;
+                return data;
             }
             finally
             {
