@@ -21,9 +21,9 @@
     
     protected void InsertDataIntoDatabase()
     {
-        string RECID = (BioPM.ClassObjects.ComDevPlan.GetComDevPlanMaxID() + 1).ToString();
-        BioPM.ClassObjects.ComDevPlan.UpdateComDevPlan(RECID, Session["username"].ToString(), txtEventName.Text, txtMonth.Text, txtCost.Text, Session["username"].ToString());
-        BioPM.ClassObjects.ComDevPlan.InsertComDevPlanStatus(RECID, "Belum Disetujui", " ", Session["username"].ToString());
+        //string RECID = (BioPM.ClassObjects.ComDevPlan.GetComDevPlanMaxID() + 1).ToString();
+        //BioPM.ClassObjects.ComDevPlan.UpdateComDevPlan(RECID, Session["username"].ToString(), txtEventName.Text, txtMonth.Text, txtCost.Text, Session["username"].ToString());
+        //BioPM.ClassObjects.ComDevPlan.InsertComDevPlanStatus(RECID, "Belum Disetujui", " ", Session["username"].ToString());
     }
 
     protected void btnAdd_Click(object sender, EventArgs e)
@@ -91,7 +91,39 @@
                     </header>
                     <div class="panel-body">
                         <form id="Form1" class="form-horizontal " runat="server" >
-                            
+                            <table class="table table-striped table-hover table-bordered" id="survey" >
+                                <tr>
+                                    <td rowspan="6">Soal</td>
+                                </tr>
+                                <tr>
+                                    <td>Buruk</td>
+                                    <td><div class="radio">
+	                                        <label>
+		                                        <input type="radio" name="Soal1" id="11" value="1" checked>
+		                                        1
+	                                        </label>
+                                        </div>                                    </td>
+                                    <td><div class="radio">
+	                                        <label>
+		                                        <input type="radio" name="Soal1" id="12" value="2" checked>
+		                                        2
+	                                        </label>
+                                        </div>                                    </td>
+                                    <td><div class="radio">
+	                                        <label>
+		                                        <input type="radio" name="Soal1" id="13" value="3" checked>
+		                                        3
+	                                        </label>
+                                        </div>                                    </td>
+                                    <td><div class="radio">
+	                                        <label>
+		                                        <input type="radio" name="Soal1" id="14" value="4" checked>
+		                                        4
+	                                        </label>
+                                        </div>                                    </td>
+                                    <td>Baik</td>
+                                </tr>
+                            </table>
                         </form>
                     </div>
                     
