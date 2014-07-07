@@ -39,13 +39,13 @@
     
     protected void InsertDataIntoDatabase()
     {
-        BioPM.ClassObjects.ComDevExecution.InsertComDevExecution(txtExcid.Text, Session["username"].ToString(), ddlEventMethod.SelectedValue, txtEventTitle.Text, txtBatch.Text, txtInsti.Text, txtAdrin.Text, TxtCitin.Text, txtCouin.Text, ddlStatus.SelectedValue, txtScore.ToString(), Session["username"].ToString());
+        BioPM.ClassObjects.ComDevExecution.InsertComDevExecution(txtExcid.Text, Session["username"].ToString(), ddlEventMethod.SelectedValue, txtEventTitle.Text, txtBatch.Text, txtPembicara.Text, txtInsti.Text, txtAdrin.Text, TxtCitin.Text, txtCouin.Text, ddlStatus.SelectedValue.ToString(), txtScore.Text, Session["username"].ToString(), txtBegda.Text, txtEndda.Text);
     }
 
     protected void btnAdd_Click(object sender, EventArgs e)
     {
         InsertDataIntoDatabase();
-        Response.Redirect("PageLabel.aspx");
+        Response.Redirect("PageTrainingExecution.aspx");
     }
 
     protected void btnCancel_Click(object sender, EventArgs e)
@@ -125,6 +125,7 @@
                             </div>
                         </div>
 
+
                         <div class="form-group">
                             <label class="col-sm-3 control-label"> BEGIN DATE </label>
                             <div class="col-md-4 col-lg-3">
@@ -138,6 +139,13 @@
                             <div class="col-md-4 col-lg-3">
                                 <asp:TextBox ID="txtEndda" value="" size="16" class="form-control form-control-inline input-medium default-date-picker" runat="server"></asp:TextBox>
                                 <span class="help-block">End Date Format : month-day-year e.g. 01-31-2014</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label"> PEMBICARA </label>
+                            <div class="col-lg-3 col-md-4">
+                                <asp:TextBox ID="txtPembicara" runat="server" class="form-control m-bot15" placeholder="INSTITUTION" ></asp:TextBox>
                             </div>
                         </div>
 

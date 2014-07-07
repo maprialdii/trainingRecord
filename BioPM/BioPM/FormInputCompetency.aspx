@@ -11,7 +11,7 @@
 
     protected void InsertCompetencyIntoDatabase()
     {
-        BioPM.ClassObjects.CompetencyCatalog.InsertCompetency(txtCpyID.Text, txtCpyName.Text, Session["username"].ToString());
+        BioPM.ClassObjects.CompetencyCatalog.InsertCompetency(txtCpyID.Text, txtCpyCode.Text, txtCpyName.Text, Session["username"].ToString());
     }
 
     protected void btnAdd_Click(object sender, EventArgs e)
@@ -71,6 +71,13 @@
                             <label class="col-sm-3 control-label"> COMPETENCY ID </label>
                             <div class="col-lg-3 col-md-4">
                                 <asp:TextBox ID="txtCpyID" runat="server" class="form-control m-bot15" placeholder="COMPETENCY ID" OnLoad="Page_Load" ReadOnly="true" ></asp:TextBox>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label"> COMPETENCY CODE </label>
+                            <div class="col-lg-3 col-md-4">
+                                <asp:TextBox ID="txtCpyCode" runat="server" class="form-control m-bot15" placeholder="COMPETENCY CODE" ></asp:TextBox>
                             </div>
                         </div>
                              

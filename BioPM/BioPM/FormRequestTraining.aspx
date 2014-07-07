@@ -29,7 +29,7 @@
 
     protected void btnAdd_Click(object sender, EventArgs e)
     {
-        //InsertDataIntoDatabase();
+        InsertDataIntoDatabase();
         Response.Redirect("PageRequestTraining.aspx");
     }
 

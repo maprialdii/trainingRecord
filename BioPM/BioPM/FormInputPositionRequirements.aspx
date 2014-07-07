@@ -2,6 +2,7 @@
 
 <!DOCTYPE html>
 <script runat="server">
+    string PRQID = null;
     protected void Page_Load(object sender, EventArgs e)
     {
         if (Session["username"] == null && Session["password"] == null) Response.Redirect("PageLogin.aspx");
@@ -17,29 +18,29 @@
 
     protected void SetPositionAndCompetencyList()
     {
-        //ddlJabatan.Items.Clear();
-        //foreach (object[] data in BioPM.ClassObjects.Jabatan.GetAllKualifikasiJabatan())
-        //{
-        //    ddlJabatan.Items.Add(new ListItem(data[1].ToString(), data[0].ToString()));
-        //}
+        ddlJabatan.Items.Clear();
+        foreach (object[] data in BioPM.ClassObjects.Jabatan.GetAllJabatan())
+        {
+            ddlJabatan.Items.Add(new ListItem(data[1].ToString(), data[0].ToString()));
+        }
 
         ddlCompetency.Items.Clear();
         foreach (object[] data in BioPM.ClassObjects.CompetencyCatalog.GetAllCompetency())
         {
-            ddlCompetency.Items.Add(new ListItem(data[1].ToString(), data[0].ToString()));
+            ddlCompetency.Items.Add(new ListItem(data[2].ToString(), data[0].ToString()));
         }
     }
 
     protected void InsertPositionReqIntoDatabase()
     {
-        string PRQID = (BioPM.ClassObjects.OrganizationCatalog.GetOrganizationMaxID() + 1).ToString();
+        PRQID = (BioPM.ClassObjects.Jabatan.GetPositionRequirementMaxID() + 1).ToString();
         BioPM.ClassObjects.Jabatan.InsertJabatan(PRQID, ddlJabatan.SelectedValue, ddlCompetency.SelectedValue, txtLevel.Text, Session["username"].ToString());
     }
 
     protected void btnAdd_Click(object sender, EventArgs e)
     {
         if (IsPostBack) InsertPositionReqIntoDatabase();
-        Response.Redirect("PagePositionRequirements.aspx");
+        Response.Redirect("PagePositionRequirements.aspx?key="+ddlJabatan.SelectedValue+"");
     }
 
     protected void btnCancel_Click(object sender, EventArgs e)

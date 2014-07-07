@@ -13,7 +13,7 @@
 
         foreach (object[] data in BioPM.ClassObjects.ComDevExecution.GetComdevExecutionByUserId(Session["username"].ToString()))
         {
-            htmlelement += "<tr class=''><td>" + data[1].ToString() + "</td><td>" + data[2].ToString() + "</td><td>" + data[3].ToString() + "</td><td>" + data[4].ToString() + "</td><td>" + data[5].ToString() + "</td><td>" + data[6].ToString() + "</td><td>" + data[7].ToString() + "</td><td>" + data[8].ToString() + "</td><td><a class='edit' href='#.aspx?key=" + data[0].ToString() + "'>Edit</a></td><td><a class='delete' href='#.aspx?key=" + data[0].ToString() + "&type=000'>Delete</a></td></tr>";
+            htmlelement += "<tr class=''><td>" + data[1].ToString() + "</td><td>" + data[2].ToString() + "</td><td>" + data[3].ToString() + "</td><td>" + data[4].ToString() + "</td><td>" + data[5].ToString() + "</td><td>" + data[6].ToString() + "</td><td>" + data[7].ToString() + "</td><td>" + data[8].ToString() + "</td><td>" + data[9].ToString() + "</td><td><a class='edit' href='#.aspx?key=" + data[0].ToString() + "'>Edit</a></td><td><a class='delete' href='#.aspx?key=" + data[0].ToString() + "&type=000'>Delete</a></td></tr>";
         }
         
         return htmlelement;
@@ -65,7 +65,7 @@
                         <div class="adv-table">
                             <div class="clearfix">
                                 <div class="btn-group">
-                                    <button id="editable-sample_new" onclick="document.location.href='FormInputCompetency.aspx';" class="btn btn-primary"> Add New <i class="fa fa-plus"></i>
+                                    <button id="editable-sample_new" onclick="document.location.href='FormInputTrainingExecution.aspx';" class="btn btn-primary"> Add New <i class="fa fa-plus"></i>
                                     </button>
                                 </div>
                                 <div class="btn-group pull-right">
@@ -83,7 +83,8 @@
                                 <tr>
                                     <th>Event Name</th>
                                     <th>Title</th>
-                                    <th>Angkatan</th>  
+                                    <th>Angkatan</th>
+                                    <th>Pembicara</th>   
                                     <th>Institution</th>  
                                     <th>Start Date</th>  
                                     <th>End Date</th>

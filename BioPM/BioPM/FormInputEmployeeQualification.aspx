@@ -17,21 +17,29 @@
 
     protected void SetOrganizationType()
     {
-        //ddlOrgType.Items.Clear();
-        //ddlOrgType.Items.Add(new ListItem("Unit", "1"));
-        //ddlOrgType.Items.Add(new ListItem("Position", "2"));
+        ddlNik.Items.Clear();
+        foreach (object[] data in BioPM.ClassObjects.EmployeeCatalog.GetAllNIK())
+        {
+            ddlNik.Items.Add(new ListItem(data[0].ToString(), data[0].ToString()));
+        }
+        
+        ddlCompName.Items.Clear();
+        foreach (object[] data in BioPM.ClassObjects.CompetencyCatalog.GetAllCompetency())
+        {
+            ddlCompName.Items.Add(new ListItem(data[2].ToString(), data[0].ToString()));
+        }
     }
 
     protected void InsertOrganizationIntoDatabase()
     {
-        //string ORGID = (BioPM.ClassObjects.OrganizationCatalog.GetOrganizationMaxID() + 1).ToString();
-        //BioPM.ClassObjects.OrganizationCatalog.InsertOrganization(ORGID, txtOrgID.Text, ddlOrgType.SelectedValue, txtOrgName.Text, Session["username"].ToString());
+        string GAPID = (BioPM.ClassObjects.QualificationCatalog.GetQualificationMaxID() + 1).ToString();
+        BioPM.ClassObjects.QualificationCatalog.InsertQualification(GAPID, ddlNik.SelectedValue, ddlCompName.SelectedValue, txtLevel.Text, Session["username"].ToString());
     }
 
     protected void btnAdd_Click(object sender, EventArgs e)
     {
-        //if (IsPostBack) InsertOrganizationIntoDatabase();
-        Response.Redirect("PageCompetencyDevelopmentEvent.aspx");
+        if (IsPostBack) InsertOrganizationIntoDatabase();
+        Response.Redirect("PageEmployeeQualification.aspx");
     }
 
     protected void btnCancel_Click(object sender, EventArgs e)
@@ -92,14 +100,6 @@
                             <label class="col-sm-3 control-label"> NIK </label>
                             <div class="col-lg-3 col-md-4">
                                 <asp:DropDownList ID="ddlNik" runat="server" class="form-control m-bot15">   
-                                </asp:DropDownList> 
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="col-sm-3 control-label"> POSITION </label>
-                            <div class="col-lg-3 col-md-4">
-                                <asp:DropDownList ID="ddlPosition" runat="server" class="form-control m-bot15">   
                                 </asp:DropDownList> 
                             </div>
                         </div>

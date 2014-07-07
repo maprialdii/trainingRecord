@@ -138,7 +138,7 @@
     <Content Include="PageEmployeeQualification.aspx" />
     <Content Include="PageEventMethod.aspx" />
     <Content Include="PageEventTargetDetail.aspx" />
-    <Content Include="PageExecutionPlanning.aspx" />
+    <Content Include="PageInstitutionDetail.aspx" />
     <Content Include="PageJabatan.aspx" />
     <Content Include="PageOrganization.aspx" />
     <Content Include="PageOrganizationStructure.aspx" />
@@ -510,12 +510,12 @@
     <Compile Include="PageEventTargetDetail.aspx.designer.cs">
       <DependentUpon>PageEventTargetDetail.aspx</DependentUpon>
     </Compile>
-    <Compile Include="PageExecutionPlanning.aspx.cs">
-      <DependentUpon>PageExecutionPlanning.aspx</DependentUpon>
+    <Compile Include="PageInstitutionDetail.aspx.cs">
+      <DependentUpon>PageInstitutionDetail.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="PageExecutionPlanning.aspx.designer.cs">
-      <DependentUpon>PageExecutionPlanning.aspx</DependentUpon>
+    <Compile Include="PageInstitutionDetail.aspx.designer.cs">
+      <DependentUpon>PageInstitutionDetail.aspx</DependentUpon>
     </Compile>
     <Compile Include="PageJabatan.aspx.cs">
       <DependentUpon>PageJabatan.aspx</DependentUpon>

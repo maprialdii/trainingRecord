@@ -165,7 +165,7 @@ namespace BioPM.ClassObjects
         public static List<object[]> GetAllTargetComdevEvent(string evtid)
         {
             SqlConnection conn = GetConnection();
-            string sqlCmd = @"SELECT CE.TRGID, CE.EVTNM, RK.CPYNM, CT.PRLVL
+            string sqlCmd = @"SELECT CT.TRGID, CE.EVTNM, RK.CPYNM, CT.PRLVL
                             FROM trrcd.COMDEV_EVENT_TARGET CT WITH(INDEX(COMDEV_EVENT_TARGET_IDX_BEGDA_ENDDA_ID)), trrcd.COMDEV_EVENT CE WITH(INDEX(COMDEV_EVENT_IDX_BEGDA_ENDDA_ID)), trrcd.REFERENSI_KOMPETENSI RK WITH(INDEX(REFERENSI_KOMPETENSI_IDX_BEGDA_ENDDA_ID))
                             WHERE CE.EVTID=CT.EVTID AND RK.CPYID=CT.CPYID
                             AND CT.BEGDA <= GETDATE() AND CT.ENDDA >= GETDATE()
@@ -246,7 +246,7 @@ namespace BioPM.ClassObjects
         public static object[] GetComdevEventTargetById(string trgid)
         {
             SqlConnection conn = GetConnection();
-            string sqlCmd = @"SELECT CE.TRGID, CE.EVTID, CE.EVTNM, CE.CPYID, RK.CPYNM, CT.PRLVL
+            string sqlCmd = @"SELECT CT.TRGID, CE.EVTID, CE.EVTNM, CE.CPYID, RK.CPYNM, CT.PRLVL
                             FROM trrcd.COMDEV_EVENT_TARGET CT WITH(INDEX(COMDEV_EVENT_TARGET_IDX_BEGDA_ENDDA_ID)), trrcd.COMDEV_EVENT CE WITH(INDEX(COMDEV_EVENT_IDX_BEGDA_ENDDA_ID)), trrcd.REFERENSI_KOMPETENSI RK WITH(INDEX(REFERENSI_KOMPETENSI_IDX_BEGDA_ENDDA_ID))
                             WHERE CE.EVTID=CT.EVTID AND RK.CPYID=CT.CPYID
                             AND CT.BEGDA <= GETDATE() AND CT.ENDDA >= GETDATE()
@@ -276,7 +276,7 @@ namespace BioPM.ClassObjects
         public static List<object[]> GetComdevEventTargetByEvent(string evtid)
         {
             SqlConnection conn = GetConnection();
-            string sqlCmd = @"SELECT CE.TRGID, CE.EVTID, CE.EVTNM, RK.CPYNM, CT.PRLVL
+            string sqlCmd = @"SELECT CT.TRGID, CE.EVTID, CE.EVTNM, RK.CPYNM, CT.PRLVL
                             FROM trrcd.COMDEV_EVENT_TARGET CT WITH(INDEX(COMDEV_EVENT_TARGET_IDX_BEGDA_ENDDA_ID)), trrcd.COMDEV_EVENT CE WITH(INDEX(COMDEV_EVENT_IDX_BEGDA_ENDDA_ID)), trrcd.REFERENSI_KOMPETENSI RK WITH(INDEX(REFERENSI_KOMPETENSI_IDX_BEGDA_ENDDA_ID))
                             WHERE CE.EVTID=CT.EVTID AND RK.CPYID=CT.CPYID
                             AND CT.BEGDA <= GETDATE() AND CT.ENDDA >= GETDATE()

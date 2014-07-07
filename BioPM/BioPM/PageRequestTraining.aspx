@@ -9,13 +9,13 @@
         if (Session["username"] == null && Session["password"] == null) Response.Redirect("PageLogin.aspx");
     }
 
-    protected String GenerateDataEvent()
+    protected String GenerateDataRequestTraining()
     {
         string htmlelement = "";
 
-        foreach (object[] data in BioPM.ClassObjects.ComDevEvent.GetAllComdevEvent())
+        foreach (object[] data in BioPM.ClassObjects.ComDevPlan.GetComdevPlanByUsername(Session["username"].ToString()))
         {
-            htmlelement += "<tr class=''><td>" + data[1].ToString() + "</td><td>" + data[2].ToString() + "</td><td><a class='edit' href='FormInputEvent.aspx?key=" + data[0].ToString() + "'>Edit</a></td><td><a class='delete' href='#.aspx?key=" + data[0].ToString() + "&type=000'>Delete</a></td></tr>";
+            htmlelement += "<tr class=''><td>" + data[0].ToString() + "</td><td>" + data[1].ToString() + "</td><td>" + data[4].ToString() + "</td><td><a class='edit' href='FormInputEvent.aspx?key=" + data[0].ToString() + "'>Edit</a></td><td><a class='delete' href='PageInformation.aspx?key=" + data[0].ToString() + "&type=000'>Delete</a></td></tr>";
         }
         
         return htmlelement;
@@ -72,7 +72,7 @@
                         <div class="adv-table">
                             <div class="clearfix">
                                 <div class="btn-group">
-                                    <button id="editable-sample_new" onclick="document.location.href='FormInputEvent.aspx';" class="btn btn-primary"> Add New <i class="fa fa-plus"></i>
+                                    <button id="editable-sample_new" onclick="document.location.href='FormRequestTraining.aspx';" class="btn btn-primary"> Add New <i class="fa fa-plus"></i>
                                     </button>
                                 </div>
                                 <div class="btn-group pull-right">
@@ -88,13 +88,15 @@
                             <table class="table table-striped table-hover table-bordered" id="dynamic-table" >
                                 <thead>
                                 <tr>
+                                    <th>Request ID</th>
                                     <th>Event Name</th>
+                                    <th>Status</th>
                                     <th class="auto-style1">Edit</th>
                                     <th>Delete</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <% Response.Write(GenerateDataEvent()); %>
+                                <% Response.Write(GenerateDataRequestTraining()); %>
                                 </tbody>
                             </table>
                         </div>

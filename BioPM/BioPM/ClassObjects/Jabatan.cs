@@ -14,7 +14,7 @@ namespace BioPM.ClassObjects
             string maxdate = DateTime.MaxValue.ToString("MM/dd/yyyy HH:mm");
             SqlConnection conn = GetConnection();
             string sqlCmd = @"INSERT INTO trrcd.POSITION_REQ (BEGDA, ENDDA, PRQID, POSID, CPYID, PRLVL, CHGDT, CHUSR)
-                            VALUES ('" + date + "','" + maxdate + "'," + PRQID + "," + POSID + "," + CPYID + ",'" + PRLVL + "','" + date + "','" + CHUSR + "');";
+                            VALUES ('" + date + "','" + maxdate + "'," + PRQID + ",'" + POSID + "'," + CPYID + ",'" + PRLVL + "','" + date + "','" + CHUSR + "');";
 
             SqlCommand cmd = DatabaseFactory.GetCommand(conn, sqlCmd);
 
@@ -75,7 +75,7 @@ namespace BioPM.ClassObjects
             SqlConnection conn = GetConnection();
             string sqlCmd = @"SELECT DISTINCT UD.POSID, UD.PRPOS+' '+UD.PRORG AS POSISI
                             FROM bioumum.USER_DATA UD
-                            WHERE UD.POSID IS NOT NULL AND UD.POSID!=''
+                            WHERE UD.POSID IS NOT NULL AND UD.POSID!='' AND UD.PRORG!=''
                             AND UD.BEGDA <= GETDATE() AND UD.ENDDA >= GETDATE()
                             ORDER BY UD.POSID ASC;";
             SqlCommand cmd = GetCommand(conn, sqlCmd);
@@ -107,7 +107,7 @@ namespace BioPM.ClassObjects
                             AND UD.BEGDA <= GETDATE() AND UD.ENDDA >= GETDATE()
                             AND PR.BEGDA <= GETDATE() AND PR.ENDDA >= GETDATE()
                             AND RK.BEGDA <= GETDATE() AND RK.ENDDA >= GETDATE()
-                            ORDER BY UD.POSID ASC;";
+                            AND PR.POSID='" + posid +"' ORDER BY PR.PRQID ASC;";
             SqlCommand cmd = GetCommand(conn, sqlCmd);
 
             try

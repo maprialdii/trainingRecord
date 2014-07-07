@@ -8,6 +8,7 @@
         if (!IsPostBack)
         {
             GetDataEvent();
+            GetDataEmployee();
         }
     }
     
@@ -19,17 +20,26 @@
             ddlEventName.Items.Add(new ListItem(data[1].ToString(), data[0].ToString()));
         }
     }
+
+    protected void GetDataEmployee()
+    {
+        ddlEmployeeName.Items.Clear();
+        foreach (object[] data in BioPM.ClassObjects.EmployeeCatalog.GetAllEmployee())
+        {
+            ddlEmployeeName.Items.Add(new ListItem(data[1].ToString(), data[0].ToString()));
+        }
+    }
     
     protected void InsertDataIntoDatabase()
     {
         string RECID = (BioPM.ClassObjects.ComDevPlan.GetComDevPlanMaxID() + 1).ToString();
-        BioPM.ClassObjects.ComDevPlan.InsertComDevPlan(RECID, Session["username"].ToString(), ddlEventName.SelectedValue, txtMonth.Text, txtCost.Text, Session["username"].ToString());
-        BioPM.ClassObjects.ComDevPlan.InsertComDevPlanStatus(RECID, "Belum Disetujui", " ", Session["username"].ToString());
+        BioPM.ClassObjects.ComDevPlan.InsertComDevPlan(RECID, ddlEmployeeName.SelectedValue, ddlEventName.SelectedValue, txtMonth.Text, txtCost.Text, Session["username"].ToString());
+        BioPM.ClassObjects.ComDevPlan.InsertComDevPlanStatus(RECID, "Diusulkan", " ", Session["username"].ToString());
     }
 
     protected void btnAdd_Click(object sender, EventArgs e)
     {
-        //InsertDataIntoDatabase();
+        InsertDataIntoDatabase();
         Response.Redirect("PageRequestTraining.aspx");
     }
 

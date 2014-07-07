@@ -13,7 +13,7 @@
 
         foreach (object[] data in BioPM.ClassObjects.ComDevPlan.GetComdevPlanByStatus("Belum Disetujui") )
         {
-            //htmlelement += "<tr class=''><td>" + data[0].ToString() + "</td><td>" + data[1].ToString() + "</td><td><a class='edit' href='FormApproveRequest.aspx?key=" + data[0].ToString() + "'>Edit</a></td><td><a class='delete' href='#.aspx?key=" + data[0].ToString() + "&type=000'>Delete</a></td></tr>";
+            htmlelement += "<tr class=''><td>" + data[5].ToString() + "</td><td>" + data[1].ToString() + "</td><td><a class='edit' href='FormApproveRequest.aspx?key=" + data[0].ToString() + "'>Approve</a></td><td><a class='delete' href='#.aspx?key=" + data[0].ToString() + "&type=000'>Reject</a></td></tr>";
         }
         
         return htmlelement;
@@ -25,7 +25,7 @@
 
         foreach (object[] data in BioPM.ClassObjects.ComDevPlan.GetComdevPlanByStatus("Disetujui"))
         {
-            //htmlelement += "<tr class=''><td>" + data[0].ToString() + "</td><td>" + data[1].ToString() + "</td><td><a class='edit' href='#.aspx?key=" + data[0].ToString() + "'>Edit</a></td><td><a class='delete' href='#.aspx?key=" + data[0].ToString() + "&type=000'>Delete</a></td></tr>";
+            htmlelement += "<tr class=''><td>" + data[5].ToString() + "</td><td>" + data[1].ToString() + "</td><td><a class='edit' href='#.aspx?key=" + data[0].ToString() + "'>Edit</a></td><td><a class='delete' href='#.aspx?key=" + data[0].ToString() + "&type=000'>Delete</a></td></tr>";
         }
 
         return htmlelement;
@@ -37,7 +37,7 @@
 
         foreach (object[] data in BioPM.ClassObjects.ComDevPlan.GetComdevPlanByStatus("Ditolak"))
         {
-            //htmlelement += "<tr class=''><td>" + data[0].ToString() + "</td><td>" + data[1].ToString() + "</td><td><a class='edit' href='#.aspx?key=" + data[0].ToString() + "'>Edit</a></td><td><a class='delete' href='#.aspx?key=" + data[0].ToString() + "&type=000'>Delete</a></td></tr>";
+            htmlelement += "<tr class=''><td>" + data[5].ToString() + "</td><td>" + data[1].ToString() + "</td><td><a class='edit' href='#.aspx?key=" + data[0].ToString() + "'>Edit</a></td><td><a class='delete' href='#.aspx?key=" + data[0].ToString() + "&type=000'>Delete</a></td></tr>";
         }
 
         return htmlelement;
@@ -49,7 +49,7 @@
 
         foreach (object[] data in BioPM.ClassObjects.ComDevPlan.GetComdevPlanByStatus("Diusulkan"))
         {
-            //htmlelement += "<tr class=''><td>" + data[0].ToString() + "</td><td>" + data[1].ToString() + "</td><td><a class='edit' href='#.aspx?key=" + data[0].ToString() + "'>Edit</a></td><td><a class='delete' href='#.aspx?key=" + data[0].ToString() + "&type=000'>Delete</a></td></tr>";
+            htmlelement += "<tr class=''><td>" + data[5].ToString() + "</td><td>" + data[1].ToString() + "</td><td><a class='edit' href='#.aspx?key=" + data[0].ToString() + "'>Edit</a></td><td><a class='delete' href='#.aspx?key=" + data[0].ToString() + "&type=000'>Delete</a></td></tr>";
         }
 
         return htmlelement;

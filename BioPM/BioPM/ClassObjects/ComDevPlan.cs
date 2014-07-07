@@ -13,7 +13,7 @@ namespace BioPM.ClassObjects
             string date = DateTime.Now.ToString("MM/dd/yyyy HH:mm");
             string maxdate = DateTime.MaxValue.ToString("MM/dd/yyyy HH:mm");
             SqlConnection conn = GetConnection();
-            string sqlCmd = @"INSERT INTO trrcd.COMDEV_PLAN (BEGDA, ENDDA, RECID, PERNR, EVTID, EVTMH, EVTCO, CHUSR, CHGDT)
+            string sqlCmd = @"INSERT INTO trrcd.COMDEV_PLAN (BEGDA, ENDDA, RECID, PERNR, EVTID, EVTMH, EVTCO, CHGDT, CHUSR)
                             VALUES ('" + date + "','" + maxdate + "'," + RECID + ",'" + PERNR + "'," + EVTID + ",'" + EVTMH + "','" + EVTCO + "','" + date + "','" + CHUSR + "');";
 
             SqlCommand cmd = DatabaseFactory.GetCommand(conn, sqlCmd);
@@ -34,7 +34,7 @@ namespace BioPM.ClassObjects
             string date = DateTime.Now.ToString("MM/dd/yyyy HH:mm");
             string maxdate = DateTime.MaxValue.ToString("MM/dd/yyyy HH:mm");
             SqlConnection conn = GetConnection();
-            string sqlCmd = @"INSERT INTO trrcd.COMDEV_PLAN_STATUS (BEGDA, ENDDA, RECID, APVST, APVPR, CHUSR, CHGDT)
+            string sqlCmd = @"INSERT INTO trrcd.COMDEV_PLAN_STATUS (BEGDA, ENDDA, RECID, APVST, APVPR, CHGDT, CHUSR)
                             VALUES ('" + date + "','" + maxdate + "'," + RECID + ",'" + APVST + "','" + APVPR + "','" + date + "','" + CHUSR + "');";
 
             SqlCommand cmd = DatabaseFactory.GetCommand(conn, sqlCmd);
@@ -115,11 +115,12 @@ namespace BioPM.ClassObjects
         public static List<object[]> GetComdevPlanByUsername(string pernr)
         {
             SqlConnection conn = GetConnection();
-            string sqlCmd = @"SELECT CP.RECID, CP.EVTNM, CP.EVTMH, CP.EVTCO, CS.APVST
-                            FROM trrcd.COMDEV_PLAN CP WITH(INDEX(COMDEV_PLAN_IDX_BEGDA_ENDDA_ID)), trrcd.COMDEV_PLAN_STATUS CS WITH(INDEX(COMDEV_PLAN_STATUS_IDX_BEGDA_ENDDA_ID))
+            string sqlCmd = @"SELECT CP.RECID, CE.EVTNM, CP.EVTMH, CP.EVTCO, CS.APVST
+                            FROM trrcd.COMDEV_PLAN CP WITH(INDEX(COMDEV_PLAN_IDX_BEGDA_ENDDA_ID)), trrcd.COMDEV_PLAN_STATUS CS WITH(INDEX(COMDEV_PLAN_STATUS_IDX_BEGDA_ENDDA_ID)), trrcd.COMDEV_EVENT CE WITH(INDEX(COMDEV_EVENT_IDX_BEGDA_ENDDA_ID))
                             WHERE CP.BEGDA <= GETDATE() AND CP.ENDDA >= GETDATE()
                             AND CS.BEGDA <= GETDATE() AND CS.ENDDA >= GETDATE()
-                            AND CP.RECID=CS.RECID AND CP.PERNR='" + pernr +"' ORDER BY CP.RECID DESC;";
+                            AND CE.BEGDA <= GETDATE() AND CE.ENDDA >= GETDATE()
+                            AND CP.RECID=CS.RECID AND CP.EVTID=CE.EVTID AND CP.PERNR='" + pernr + "' ORDER BY CP.RECID DESC;";
             SqlCommand cmd = GetCommand(conn, sqlCmd);
 
             try
@@ -129,7 +130,7 @@ namespace BioPM.ClassObjects
                 List<object[]> batchs = new List<object[]>();
                 while (reader.Read())
                 {
-                    object[] values = { reader[0].ToString(), reader[1].ToString(), reader[2].ToString(), reader[3].ToString() };
+                    object[] values = { reader[0].ToString(), reader[1].ToString(), reader[2].ToString(), reader[3].ToString(), reader[4].ToString() };
                     batchs.Add(values);
                 }
                 return batchs;
@@ -143,11 +144,13 @@ namespace BioPM.ClassObjects
         public static List<object[]> GetComdevPlanByStatus(string status)
         {
             SqlConnection conn = GetConnection();
-            string sqlCmd = @"SELECT CP.RECID, CP.EVTNM, CP.EVTMH, CP.EVTCO, CS.APVST
-                            FROM trrcd.COMDEV_PLAN CP WITH(INDEX(COMDEV_PLAN_IDX_BEGDA_ENDDA_ID)), trrcd.COMDEV_PLAN_STATUS CS WITH(INDEX(COMDEV_PLAN_STATUS_IDX_BEGDA_ENDDA_ID))
+            string sqlCmd = @"SELECT CP.RECID, CE.EVTNM, CP.EVTMH, CP.EVTCO, CS.APVST, UD.CNAME
+                            FROM trrcd.COMDEV_PLAN CP WITH(INDEX(COMDEV_PLAN_IDX_BEGDA_ENDDA_ID)), trrcd.COMDEV_PLAN_STATUS CS WITH(INDEX(COMDEV_PLAN_STATUS_IDX_BEGDA_ENDDA_ID)), trrcd.COMDEV_EVENT CE WITH(INDEX(COMDEV_EVENT_IDX_BEGDA_ENDDA_ID)), bioumum.USER_DATA UD
                             WHERE CP.BEGDA <= GETDATE() AND CP.ENDDA >= GETDATE()
                             AND CS.BEGDA <= GETDATE() AND CS.ENDDA >= GETDATE()
-                            AND CP.RECID=CS.RECID AND CS.APVST='" + status + "' ORDER BY CP.RECID DESC;";
+                            AND CE.BEGDA <= GETDATE() AND CE.ENDDA >= GETDATE()
+                            AND UD.PERNR=CP.PERNR
+                            AND CP.RECID=CS.RECID AND CP.EVTID=CE.EVTID AND CS.APVST='" + status + "' ORDER BY CP.RECID DESC;";
             SqlCommand cmd = GetCommand(conn, sqlCmd);
 
             try
@@ -157,7 +160,7 @@ namespace BioPM.ClassObjects
                 List<object[]> batchs = new List<object[]>();
                 while (reader.Read())
                 {
-                    object[] values = { reader[0].ToString(), reader[1].ToString(), reader[2].ToString(), reader[3].ToString() };
+                    object[] values = { reader[0].ToString(), reader[1].ToString(), reader[2].ToString(), reader[3].ToString(), reader[4].ToString(), reader[5].ToString() };
                     batchs.Add(values);
                 }
                 return batchs;
@@ -171,11 +174,11 @@ namespace BioPM.ClassObjects
         public static object[] GetComdevPlanById(string recid)
         {
             SqlConnection conn = GetConnection();
-            string sqlCmd = @"SELECT CP.RECID, CP.EVTNM, CP.EVTMH, CP.EVTCO, CS.APVST
+            string sqlCmd = @"SELECT CP.RECID, CP.EVTID, CP.EVTMH, CP.EVTCO, CS.APVST
                             FROM trrcd.COMDEV_PLAN CP WITH(INDEX(COMDEV_PLAN_IDX_BEGDA_ENDDA_ID)), trrcd.COMDEV_PLAN_STATUS CS WITH(INDEX(COMDEV_PLAN_STATUS_IDX_BEGDA_ENDDA_ID))
                             WHERE CP.BEGDA <= GETDATE() AND CP.ENDDA >= GETDATE()
                             AND CS.BEGDA <= GETDATE() AND CS.ENDDA >= GETDATE()
-                            AND CP.RECID=CS.RECID AND CP.RECID='" + recid + "';";
+                            AND CP.RECID=CS.RECID AND CP.EVTID=CE.EVTIDAND CP.RECID='" + recid + "';";
             SqlCommand cmd = GetCommand(conn, sqlCmd);
 
             try
@@ -185,7 +188,7 @@ namespace BioPM.ClassObjects
                 object[] data = null;
                 while (reader.Read())
                 {
-                    object[] values = { reader[0].ToString(), reader[1].ToString(), reader[2].ToString(), reader[3].ToString() };
+                    object[] values = { reader[0].ToString(), reader[1].ToString(), reader[2].ToString(), reader[3].ToString(), reader[4].ToString() };
                     data=values;
                 }
                 return data;

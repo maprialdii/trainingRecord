@@ -8,13 +8,13 @@ namespace BioPM.ClassObjects
 {
     public class CompetencyCatalog : DatabaseFactory
     {
-        public static void InsertCompetency(string CPYID, string CPYNM, string CHUSR)
+        public static void InsertCompetency(string CPYID, string CPYKD, string CPYNM, string CHUSR)
         {
             string date = DateTime.Now.ToString("MM/dd/yyyy HH:mm");
             string maxdate = DateTime.MaxValue.ToString("MM/dd/yyyy HH:mm");
             SqlConnection conn = GetConnection();
-            string sqlCmd = @"INSERT INTO trrcd.REFERENSI_KOMPETENSI (BEGDA, ENDDA, CPYID, CPYNM, CHGDT, CHUSR)
-                            VALUES ('" + date + "','" + maxdate + "'," + CPYID + ",'" + CPYNM +  "','" + date + "','" + CHUSR + "');";
+            string sqlCmd = @"INSERT INTO trrcd.REFERENSI_KOMPETENSI (BEGDA, ENDDA, CPYID, CPYKD, CPYNM, CHGDT, CHUSR)
+                            VALUES ('" + date + "','" + maxdate + "'," + CPYID + ",'" + CPYKD + "','" + CPYNM + "','" + date + "','" + CHUSR + "');";
 
             SqlCommand cmd = DatabaseFactory.GetCommand(conn, sqlCmd);
 
@@ -29,7 +29,7 @@ namespace BioPM.ClassObjects
             }
         }
 
-        public static void UpdateCompetency(string CPYID, string CPYNM, string CHUSR)
+        public static void UpdateCompetency(string CPYID, string CPYKD, string CPYNM, string CHUSR)
         {
             string date = DateTime.Now.ToString("MM/dd/yyyy HH:mm");
             string yesterday = DateTime.Now.AddMinutes(-1).ToString("MM/dd/yyyy HH:mm");
@@ -46,7 +46,7 @@ namespace BioPM.ClassObjects
             finally
             {
                 conn.Close();
-                InsertCompetency(CPYID, CPYNM, CHUSR);
+                InsertCompetency(CPYID, CPYKD, CPYNM, CHUSR);
             }
         }
 
@@ -72,7 +72,7 @@ namespace BioPM.ClassObjects
         public static List<object[]> GetAllCompetency()
         {
             SqlConnection conn = GetConnection();
-            string sqlCmd = @"SELECT RK.CPYID, RK.CPYNM
+            string sqlCmd = @"SELECT RK.CPYID, RK.CPYKD, RK.CPYNM
                             FROM trrcd.REFERENSI_KOMPETENSI RK WITH(INDEX(REFERENSI_KOMPETENSI_IDX_BEGDA_ENDDA_ID))
                             WHERE RK.BEGDA <= GETDATE() AND RK.ENDDA >= GETDATE()
                             ORDER BY RK.CPYID ASC;";
@@ -85,7 +85,7 @@ namespace BioPM.ClassObjects
                 List<object[]> batchs = new List<object[]>();
                 while (reader.Read())
                 {
-                    object[] values = { reader[0].ToString(), reader[1].ToString() };
+                    object[] values = { reader[0].ToString(), reader[1].ToString(), reader[2].ToString() };
                     batchs.Add(values);
                 }
                 return batchs;
@@ -99,7 +99,7 @@ namespace BioPM.ClassObjects
         public static object[] GetCompetencyById(string cpyid)
         {
             SqlConnection conn = GetConnection();
-            string sqlCmd = @"SELECT RK.CPYID, RK.CPYNM
+            string sqlCmd = @"SELECT RK.CPYID, RK.CPYKD, RK.CPYNM
                             FROM trrcd.REFERENSI_KOMPETENSI RK WITH(INDEX(REFERENSI_KOMPETENSI_IDX_BEGDA_ENDDA_ID))
                             WHERE RK.BEGDA <= GETDATE() AND RK.ENDDA >= GETDATE()
                             AND RK.CPYID='" + cpyid + "'ORDER BY RK.CPYID ASC;";

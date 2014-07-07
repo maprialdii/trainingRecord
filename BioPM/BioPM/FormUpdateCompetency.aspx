@@ -29,7 +29,7 @@
     
     protected void UpdateCompetencyOnDatabase()
     {
-        BioPM.ClassObjects.CompetencyCatalog.UpdateCompetency(txtCompID.Text, txtCompName.Text, Session["username"].ToString());
+        BioPM.ClassObjects.CompetencyCatalog.UpdateCompetency(txtCompID.Text, txtCompCode.Text, txtCompName.Text, Session["username"].ToString());
     }
 
     protected void btnAdd_Click(object sender, EventArgs e)
@@ -89,6 +89,13 @@
                             <label class="col-sm-3 control-label"> COMPETENCY ID </label>
                             <div class="col-lg-3 col-md-4">
                                 <asp:TextBox ID="txtCompID" runat="server" class="form-control m-bot15" placeholder="COMPETENCY ID" ReadOnly="true"></asp:TextBox>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label"> COMPETENCY CODE </label>
+                            <div class="col-lg-3 col-md-4">
+                                <asp:TextBox ID="txtCompCode" runat="server" class="form-control m-bot15" placeholder="COMPETENCY_CODE" ></asp:TextBox>
                             </div>
                         </div>
 

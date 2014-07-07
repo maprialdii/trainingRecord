@@ -31,15 +31,6 @@ namespace BioPM {
         protected global::System.Web.UI.WebControls.DropDownList ddlNik;
         
         /// <summary>
-        /// ddlPosition control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlPosition;
-        
-        /// <summary>
         /// ddlCompName control.
         /// </summary>
         /// <remarks>

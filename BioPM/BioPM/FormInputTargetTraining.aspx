@@ -25,8 +25,8 @@
 
     protected void btnAdd_Click(object sender, EventArgs e)
     {
-        //if (IsPostBack) InsertOrganizationIntoDatabase();
-        Response.Redirect("PageRequestTraining.aspx");
+        if (IsPostBack) InsertOrganizationIntoDatabase();
+        Response.Redirect("PageEventTargetDetail.aspx");
     }
 
     protected void btnAddComp_Click(object sender, EventArgs e)

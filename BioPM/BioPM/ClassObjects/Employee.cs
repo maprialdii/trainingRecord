@@ -87,6 +87,33 @@ namespace BioPM.ClassObjects
             }
         }
 
+        public static List<object[]> GetAllNIK()
+        {
+            SqlConnection conn = GetConnection();
+            string sqlCmd = @"SELECT US.PERNR
+                            FROM bioumum.USER_DATA US 
+                            WHERE US.PERNR!='' and US.PERNR is not null
+                            ORDER BY US.PERNR;";
+            SqlCommand cmd = GetCommand(conn, sqlCmd);
+
+            try
+            {
+                conn.Open();
+                SqlDataReader reader = GetDataReader(cmd);
+                List<object[]> batchs = new List<object[]>();
+                while (reader.Read())
+                {
+                    object[] values = { reader[0].ToString() };
+                    batchs.Add(values);
+                }
+                return batchs;
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+
         public static object[] GetPosID(string pernr)
         {
             SqlConnection conn = GetConnection();
@@ -236,7 +263,7 @@ namespace BioPM.ClassObjects
             string maxdate = DateTime.MaxValue.ToString("MM/dd/yyyy HH:mm");
             SqlConnection conn = GetConnection();
             string sqlCmd = @"INSERT INTO trrcd.COMPETENCY_GAP (BEGDA, ENDDA, GAPID, PERNR, CPYID, PRLVL, CHGDT, CHUSR)
-                            VALUES ('" + date + "','" + maxdate + "'," + GAPID + "," + PERNR + "," + CPYID + ",'" + PRLVL + "','" + date + "','" + CHUSR + "');";
+                            VALUES ('" + date + "','" + maxdate + "'," + GAPID + ",'" + PERNR + "'," + CPYID + "," + PRLVL + ",'" + date + "','" + CHUSR + "');";
 
             SqlCommand cmd = DatabaseFactory.GetCommand(conn, sqlCmd);
 

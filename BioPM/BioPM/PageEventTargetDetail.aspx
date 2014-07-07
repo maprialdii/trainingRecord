@@ -11,7 +11,7 @@
     {
         string htmlelement = "";
 
-        foreach (object[] data in BioPM.ClassObjects.ComDevEvent.GetAllTargetComdevEvent(evtid))
+        foreach (object[] data in BioPM.ClassObjects.ComDevEvent.GetAllTargetComdevEvent(Request.QueryString["key"]))
         {
             htmlelement += "<tr class=''><td>" + data[1].ToString() + "</td><td>" + data[2].ToString() + "</td><td>" + data[3].ToString() + "</td><td><a class='edit' href='FormUpdateEvent.aspx?key=" + data[0].ToString() + "'>Edit</a></td><td><a class='delete' href='PageInformation.aspx?key=" + data[0].ToString() + "&type=000'>Delete</a></td></tr>";
         }
@@ -65,7 +65,7 @@
                         <div class="adv-table">
                             <div class="clearfix">
                                 <div class="btn-group">
-                                    <button id="editable-sample_new" onclick="document.location.href='FormInputEvent.aspx';" class="btn btn-primary"> Add New <i class="fa fa-plus"></i>
+                                    <button id="editable-sample_new" onclick="document.location.href='FormInputTargetTraining.aspx';" class="btn btn-primary"> Add New <i class="fa fa-plus"></i>
                                     </button>
                                 </div>
                                 <div class="btn-group pull-right">
