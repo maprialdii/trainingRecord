@@ -106,6 +106,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="FormApproveRequest.aspx" />
+    <Content Include="FormEvaluasiSatu.aspx" />
+    <Content Include="FormEvaluasiDua.aspx" />
+    <Content Include="FormEvaluasiTiga.aspx" />
     <Content Include="FormInputAllQualification.aspx" />
     <Content Include="FormInputCompetencyRelation.aspx" />
     <Content Include="FormInputEmployeeQualification.aspx" />
@@ -135,6 +138,7 @@
     <Content Include="PageCompetencyDevelopmentEvent.aspx" />
     <Content Include="PageCompetencyParameter.aspx" />
     <Content Include="PageCompetencyRelation.aspx" />
+    <Content Include="PageEmployeeDetail.aspx" />
     <Content Include="PageEmployeeQualification.aspx" />
     <Content Include="PageEventMethod.aspx" />
     <Content Include="PageEventTargetDetail.aspx" />
@@ -218,6 +222,7 @@
     <Content Include="PageTrainingExecution.aspx" />
     <Content Include="PageTrainingHours.aspx" />
     <Content Include="PageTrainingReport.aspx" />
+    <Content Include="PageTrainingSurvey.aspx" />
     <Content Include="PageUserActiveAccount.aspx" />
     <Content Include="PageUserAdminReference.aspx" />
     <Content Include="PageUserPanel.aspx" />
@@ -285,6 +290,27 @@
     </Compile>
     <Compile Include="FormApproveRequest.aspx.designer.cs">
       <DependentUpon>FormApproveRequest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FormEvaluasiSatu.aspx.cs">
+      <DependentUpon>FormEvaluasiSatu.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FormEvaluasiSatu.aspx.designer.cs">
+      <DependentUpon>FormEvaluasiSatu.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FormEvaluasiDua.aspx.cs">
+      <DependentUpon>FormEvaluasiDua.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FormEvaluasiDua.aspx.designer.cs">
+      <DependentUpon>FormEvaluasiDua.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FormEvaluasiTiga.aspx.cs">
+      <DependentUpon>FormEvaluasiTiga.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FormEvaluasiTiga.aspx.designer.cs">
+      <DependentUpon>FormEvaluasiTiga.aspx</DependentUpon>
     </Compile>
     <Compile Include="FormInputAllQualification.aspx.cs">
       <DependentUpon>FormInputAllQualification.aspx</DependentUpon>
@@ -489,6 +515,13 @@
     <Compile Include="PageCompetencyRelation.aspx.designer.cs">
       <DependentUpon>PageCompetencyRelation.aspx</DependentUpon>
     </Compile>
+    <Compile Include="PageEmployeeDetail.aspx.cs">
+      <DependentUpon>PageEmployeeDetail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageEmployeeDetail.aspx.designer.cs">
+      <DependentUpon>PageEmployeeDetail.aspx</DependentUpon>
+    </Compile>
     <Compile Include="PageEmployeeQualification.aspx.cs">
       <DependentUpon>PageEmployeeQualification.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -661,6 +694,13 @@
     </Compile>
     <Compile Include="PageTrainingReport.aspx.designer.cs">
       <DependentUpon>PageTrainingReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageTrainingSurvey.aspx.cs">
+      <DependentUpon>PageTrainingSurvey.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageTrainingSurvey.aspx.designer.cs">
+      <DependentUpon>PageTrainingSurvey.aspx</DependentUpon>
     </Compile>
     <Compile Include="PageUserActiveAccount.aspx.cs">
       <DependentUpon>PageUserActiveAccount.aspx</DependentUpon>
