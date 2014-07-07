@@ -81,7 +81,7 @@
         <section class="wrapper">
         <!-- page start-->
 
-        <div class="row">
+         <div class="row">
             <div class="col-sm-12">
                 <section class="panel">
                     <header class="panel-heading">
@@ -109,8 +109,8 @@
                                 </div>
                             </div>
                         INSERT NEW
-                        <form id="Form1" class="form-horizontal " runat="server" >
-                          <table class="table table-striped table-hover table-bordered" id="table-form">
+                        <form id="Form2" class="form-horizontal " runat="server" >
+                          <table class="table table-striped table-hover table-bordered" id="table2">
                                 <thead>
                                 <tr>
                                     <th>COMPETENCY</th>
@@ -123,12 +123,44 @@
                                     <tr>
                                             <td><asp:DropDownList ID="ddlCompParent" runat="server" class="form-control m-bot15" /></td>
                                             <td><asp:DropDownList ID="ddlCompChild" runat="server" class="form-control m-bot15" /></td>
-                                            <td><asp:TextBox ID="txtCompLevel" runat="server" class="form-control m-bot15" placeholder="e.g : 1, 2, .., n" /></td>
-                                            <td><asp:Button class="btn btn-round btn-primary" ID="btnAdd" runat="server" Text="Add" OnClick="btnAdd_Click"/></td>
+                                            <td><asp:TextBox ID="TextBox1" runat="server" class="form-control m-bot15" placeholder="e.g : 1, 2, .., n" /></td>
+                                            <td><asp:Button class="btn btn-round btn-primary" ID="Button1" runat="server" Text="Add" OnClick="btnAdd_Click"/></td>
                                     </tr>
                                 </tbody>
                             </table>
                           </form>
+                        </div>
+                </section>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12">
+                <section class="panel">
+                    <header class="panel-heading">
+                        Competency Relation
+                          <span class="tools pull-right">
+                            <a class="fa fa-chevron-down" href="javascript:;"></a>
+                            <a class="fa fa-times" href="javascript:;"></a>
+                         </span>
+                    </header>
+                    <div class="panel-body">
+                        <div class="adv-table">
+                            <!-- class="clearfix">
+                                <!--div class="btn-group">
+                                    <!-- button id="editable-sample_new" onclick="document.location.href='FormInputCompetencyRelation.aspx';" class="btn btn-primary"> Create New <i class="fa fa-plus"></i>
+                                    </!-->
+                                <!--/!-->
+                                <div class="btn-group pull-right">
+                                    <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">Tools <i class="fa fa-angle-down"></i>
+                                    </button>
+                                    <ul class="dropdown-menu pull-right">
+                                        <li><a href="#">Print</a></li>
+                                        <li><a href="#">Save as PDF</a></li>
+                                        <li><a href="#">Export to Excel</a></li>
+                                    </ul>
+                                </div>
+                            </div>
                         EXISTING RELATION
                             <table class="table table-striped table-hover table-bordered" id="Table1" >
                                 <thead>
