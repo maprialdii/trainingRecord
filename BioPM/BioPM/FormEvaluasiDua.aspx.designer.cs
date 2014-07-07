@@ -10,7 +10,7 @@
 namespace BioPM {
     
     
-    public partial class PageCompetencyRelation {
+    public partial class FormEvaluasiII {
         
         /// <summary>
         /// Form1 control.
@@ -22,31 +22,40 @@ namespace BioPM {
         protected global::System.Web.UI.HtmlControls.HtmlForm Form1;
         
         /// <summary>
-        /// ddlCompParent control.
+        /// txtEventName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlCompParent;
+        protected global::System.Web.UI.WebControls.Label txtEventName;
         
         /// <summary>
-        /// ddlCompChild control.
+        /// txtEmployeeName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlCompChild;
+        protected global::System.Web.UI.WebControls.Label txtEmployeeName;
         
         /// <summary>
-        /// txtCompLevel control.
+        /// txtMonth control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCompLevel;
+        protected global::System.Web.UI.WebControls.TextBox txtMonth;
+        
+        /// <summary>
+        /// txtCost control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtCost;
         
         /// <summary>
         /// btnAdd control.
@@ -56,5 +65,14 @@ namespace BioPM {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnAdd;
+        
+        /// <summary>
+        /// btnCancel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnCancel;
     }
 }

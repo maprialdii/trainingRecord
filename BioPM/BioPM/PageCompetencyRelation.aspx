@@ -5,6 +5,7 @@
     protected void Page_Load(object sender, EventArgs e)
     {
         if (Session["username"] == null && Session["password"] == null) Response.Redirect("PageLogin.aspx");
+        if (!IsPostBack) SetExistingCompetencyRelation();
     }
     
     protected void sessionCreator()
@@ -27,6 +28,28 @@
         return htmlelement;
     }
 
+    protected void SetExistingCompetencyRelation()
+    {
+        ddlCompParent.Items.Clear();
+        ddlCompChild.Items.Clear();
+        foreach (object[] data in BioPM.ClassObjects.CompetencyCatalog.GetAllCompetency())
+        {
+            ddlCompParent.Items.Add(new ListItem(data[1].ToString(), data[0].ToString()));
+            ddlCompChild.Items.Add(new ListItem(data[1].ToString(), data[0].ToString()));
+        }
+    }
+
+    protected void InsertRelationIntoDatabase()
+    {
+        string RLSID = (BioPM.ClassObjects.CompetencyCatalog.GetCompetencyRelationMaxID() + 1).ToString();
+        BioPM.ClassObjects.CompetencyCatalog.InsertCompetencyStructure(RLSID, ddlCompParent.SelectedValue, ddlCompChild.SelectedValue, txtCompLevel.Text, Session["username"].ToString());
+    }
+
+    protected void btnAdd_Click(object sender, EventArgs e)
+    {
+        if (IsPostBack) InsertRelationIntoDatabase();
+        Response.Redirect("PageCompetencyRelation.aspx");
+    }
    
 </script>
 
@@ -69,13 +92,12 @@
                          </span>
                     </header>
                     <div class="panel-body">
-
                         <div class="adv-table">
-                            <div class="clearfix">
-                                <div class="btn-group">
-                                    <button id="editable-sample_new" onclick="document.location.href='FormInputCompetencyRelation.aspx';" class="btn btn-primary"> Create New <i class="fa fa-plus"></i>
-                                    </button>
-                                </div>
+                            <!-- class="clearfix">
+                                <!--div class="btn-group">
+                                    <!-- button id="editable-sample_new" onclick="document.location.href='FormInputCompetencyRelation.aspx';" class="btn btn-primary"> Create New <i class="fa fa-plus"></i>
+                                    </!-->
+                                <!--/!-->
                                 <div class="btn-group pull-right">
                                     <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">Tools <i class="fa fa-angle-down"></i>
                                     </button>
@@ -86,11 +108,33 @@
                                     </ul>
                                 </div>
                             </div>
-                            <table class="table table-striped table-hover table-bordered" id="dynamic-table" >
+                        INSERT NEW
+                        <form id="Form1" class="form-horizontal " runat="server" >
+                          <table class="table table-striped table-hover table-bordered" id="table-form">
                                 <thead>
                                 <tr>
-                                    <th>PARENT NAME</th>
-                                    <th>CHILD NAME</th>
+                                    <th>COMPETENCY</th>
+                                    <th>SUBCOMPETENCY</th>
+                                    <th>RELATION LEVEL</th>
+                                    <th>Add</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                            <td><asp:DropDownList ID="ddlCompParent" runat="server" class="form-control m-bot15" /></td>
+                                            <td><asp:DropDownList ID="ddlCompChild" runat="server" class="form-control m-bot15" /></td>
+                                            <td><asp:TextBox ID="txtCompLevel" runat="server" class="form-control m-bot15" placeholder="e.g : 1, 2, .., n" /></td>
+                                            <td><asp:Button class="btn btn-round btn-primary" ID="btnAdd" runat="server" Text="Add" OnClick="btnAdd_Click"/></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                          </form>
+                        EXISTING RELATION
+                            <table class="table table-striped table-hover table-bordered" id="Table1" >
+                                <thead>
+                                <tr>
+                                    <th>COMPETENCY</th>
+                                    <th>SUBCOMPETENCY</th>
                                     <th>RELATION LEVEL</th>
                                     <th>Edit</th>
                                     <th>Delete</th>
@@ -101,8 +145,6 @@
                                 </tbody>
                             </table>
                         </div>
-                    </div>
-                    
                 </section>
             </div>
         </div>
