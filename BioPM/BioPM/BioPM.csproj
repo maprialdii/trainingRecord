@@ -137,6 +137,7 @@
     <Content Include="PageCompetencyRelation.aspx" />
     <Content Include="PageEmployeeQualification.aspx" />
     <Content Include="PageEventMethod.aspx" />
+    <Content Include="PageEventTargetDetail.aspx" />
     <Content Include="PageExecutionPlanning.aspx" />
     <Content Include="PageJabatan.aspx" />
     <Content Include="PageOrganization.aspx" />
@@ -501,6 +502,13 @@
     </Compile>
     <Compile Include="PageEventMethod.aspx.designer.cs">
       <DependentUpon>PageEventMethod.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageEventTargetDetail.aspx.cs">
+      <DependentUpon>PageEventTargetDetail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageEventTargetDetail.aspx.designer.cs">
+      <DependentUpon>PageEventTargetDetail.aspx</DependentUpon>
     </Compile>
     <Compile Include="PageExecutionPlanning.aspx.cs">
       <DependentUpon>PageExecutionPlanning.aspx</DependentUpon>

@@ -13,7 +13,7 @@
 
         foreach (object[] data in BioPM.ClassObjects.ComDevEvent.GetAllComdevEvent())
         {
-            htmlelement += "<tr class=''><td>" + data[1].ToString() + "</td><td>" + data[2].ToString() + "</td><td><a class='edit' href='FormUpdateEvent.aspx?key=" + data[0].ToString() + "'>Edit</a></td><td><a class='delete' href='PageInformation.aspx?key=" + data[0].ToString() + "&type=000'>Delete</a></td></tr>";
+            htmlelement += "<tr class=''><td>" + data[1].ToString() + "</td><td>" + data[2].ToString() + "</td><td><a class='edit' href='PageEventTargetDetail.aspx?key=" + data[0].ToString() + "'>View</a></td><td><a class='edit' href='FormUpdateEvent.aspx?key=" + data[0].ToString() + "'>Edit</a></td><td><a class='delete' href='PageInformation.aspx?key=" + data[0].ToString() + "&type=000'>Delete</a></td></tr>";
         }
         
         return htmlelement;
@@ -83,6 +83,7 @@
                                 <tr>
                                     <th>Event Name</th>                                   
                                     <th>Event Method</th>
+                                    <th>Target Detail</th>
                                     <th>Edit</th>
                                     <th>Delete</th>
                                 </tr>

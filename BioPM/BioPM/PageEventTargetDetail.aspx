@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="PageEmployeeQualification.aspx.cs" Inherits="BioPM.PageEmployeeQualification" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="PageEventTargetDetail.aspx.cs" Inherits="BioPM.PageEventTargetDetail" %>
 
 <!DOCTYPE html>
 <script runat="server">
@@ -7,13 +7,13 @@
         if (Session["username"] == null && Session["password"] == null) Response.Redirect("PageLogin.aspx");
     }
 
-    protected String GenerateDataKompetensi()
+    protected String GenerateDataEventTarget()
     {
         string htmlelement = "";
 
-        foreach (object[] data in BioPM.ClassObjects.QualificationCatalog.GetQualification(Session["username"].ToString()))
+        foreach (object[] data in BioPM.ClassObjects.ComDevEvent.GetAllTargetComdevEvent(evtid))
         {
-            htmlelement += "<tr class=''><td>" + data[1].ToString() + "</td><td>" + data[4].ToString() + "</td><td>" + data[5].ToString() + "</td><td>" + data[6].ToString() + "</td><td>" + data[7].ToString() + "</td><td><a class='edit' href='FormUpdateEmployeeQualification.aspx?key=" + data[0].ToString() + "'>Edit</a></td><td><a class='delete' href='PageInformation.aspx?key=" + data[0].ToString() + "&type=000'>Delete</a></td></tr>";
+            htmlelement += "<tr class=''><td>" + data[1].ToString() + "</td><td>" + data[2].ToString() + "</td><td>" + data[3].ToString() + "</td><td><a class='edit' href='FormUpdateEvent.aspx?key=" + data[0].ToString() + "'>Edit</a></td><td><a class='delete' href='PageInformation.aspx?key=" + data[0].ToString() + "&type=000'>Delete</a></td></tr>";
         }
         
         return htmlelement;
@@ -26,7 +26,7 @@
 <head>
     <% Response.Write(BioPM.ClassScripts.BasicScripts.GetMetaScript()); %>
 
-    <title>Employee Qualification</title>
+    <title>Event Target Detail</title>
 
     <% Response.Write(BioPM.ClassScripts.StyleScripts.GetCoreStyle()); %>
 <% Response.Write(BioPM.ClassScripts.StyleScripts.GetTableStyle()); %>
@@ -54,7 +54,7 @@
             <div class="col-sm-12">
                 <section class="panel">
                     <header class="panel-heading">
-                        Employee Qualification
+                        Event Target Detail
                           <span class="tools pull-right">
                             <a class="fa fa-chevron-down" href="javascript:;"></a>
                             <a class="fa fa-times" href="javascript:;"></a>
@@ -65,7 +65,7 @@
                         <div class="adv-table">
                             <div class="clearfix">
                                 <div class="btn-group">
-                                    <button id="editable-sample_new" onclick="document.location.href='FormInputEmployeeQualification.aspx';" class="btn btn-primary"> Add New <i class="fa fa-plus"></i>
+                                    <button id="editable-sample_new" onclick="document.location.href='FormInputEvent.aspx';" class="btn btn-primary"> Add New <i class="fa fa-plus"></i>
                                     </button>
                                 </div>
                                 <div class="btn-group pull-right">
@@ -81,17 +81,15 @@
                             <table class="table table-striped table-hover table-bordered" id="dynamic-table" >
                                 <thead>
                                 <tr>
-                                    <th>NIK</th>
+                                    <th>Event Name</th>                                   
                                     <th>Competency Name</th>
                                     <th>Proficiency Level</th>
-                                    <th>Required Proficiency Level</th>
-                                    <th>Gap</th>
                                     <th>Edit</th>
                                     <th>Delete</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <% Response.Write(GenerateDataKompetensi()); %>
+                                <% Response.Write(GenerateDataEventTarget()); %>
                                 </tbody>
                             </table>
                         </div>
