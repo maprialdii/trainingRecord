@@ -41,7 +41,7 @@
         if (Session["password"].ToString() == BioPM.ClassEngines.CryptographFactory.Encrypt(txtConfirmation.Text, true))
         {
             UpdateCompetencyOnDatabase();
-            Response.Redirect("PageRisk.aspx");
+            Response.Redirect("PageCompetencyParameter.aspx");
         }
         else
         {

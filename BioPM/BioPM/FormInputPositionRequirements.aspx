@@ -46,7 +46,7 @@
         if (Session["password"].ToString() == BioPM.ClassEngines.CryptographFactory.Encrypt(txtConfirmation.Text, true))
         {
             InsertPositionReqIntoDatabase();
-            Response.Redirect("PageRisk.aspx");
+            Response.Redirect("PagePositionRequirements.aspx?key=" + ddlJabatan.SelectedValue + "");
         }
         else
         {

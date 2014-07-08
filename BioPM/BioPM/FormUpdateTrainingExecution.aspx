@@ -47,7 +47,7 @@
 
     protected void btnAdd_Click(object sender, EventArgs e)
     {
-        if (IsPostBack) UpdatePositionReqIntoDatabase();
+        if (IsPostBack) UpdateExecutionIntoDatabase();
         Response.Redirect("PageTrainingExecution.aspx");
     }
 
@@ -61,7 +61,7 @@
         if (Session["password"].ToString() == BioPM.ClassEngines.CryptographFactory.Encrypt(txtConfirmation.Text, true))
         {
             UpdateExecutionIntoDatabase();
-            Response.Redirect("PageRisk.aspx");
+            Response.Redirect("PageTrainingExecution.aspx");
         }
         else
         {
