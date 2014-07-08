@@ -42,18 +42,6 @@
 
         return htmlelement;
     }
-
-    protected String GenerateSuggestedPlan()
-    {
-        string htmlelement = "";
-
-        foreach (object[] data in BioPM.ClassObjects.ComDevPlan.GetComdevPlanByStatus("Diusulkan"))
-        {
-            htmlelement += "<tr class=''><td>" + data[5].ToString() + "</td><td>" + data[1].ToString() + "</td><td><a class='edit' href='#.aspx?key=" + data[0].ToString() + "'>Edit</a></td><td><a class='delete' href='#.aspx?key=" + data[0].ToString() + "&type=000'>Delete</a></td></tr>";
-        }
-
-        return htmlelement;
-    }
    
 </script>
 
