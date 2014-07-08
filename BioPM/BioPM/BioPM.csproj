@@ -157,6 +157,7 @@
     <Content Include="FormRegisterUser.aspx" />
     <Content Include="PageLogin.aspx" />
     <Content Include="PageReport.aspx" />
+    <Content Include="PageRequestFromEmployee.aspx" />
     <Content Include="PageRequestTraining.aspx" />
     <Content Include="PageCompanyEmployee.aspx" />
     <Content Include="Content\Site.css" />
@@ -653,6 +654,13 @@
     </Compile>
     <Compile Include="PageReport.aspx.designer.cs">
       <DependentUpon>PageReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageRequestFromEmployee.aspx.cs">
+      <DependentUpon>PageRequestFromEmployee.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageRequestFromEmployee.aspx.designer.cs">
+      <DependentUpon>PageRequestFromEmployee.aspx</DependentUpon>
     </Compile>
     <Compile Include="PageRequestTraining.aspx.cs">
       <DependentUpon>PageRequestTraining.aspx</DependentUpon>

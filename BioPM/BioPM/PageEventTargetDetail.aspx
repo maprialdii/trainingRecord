@@ -19,6 +19,35 @@
         return htmlelement;
     }
 
+    protected void InsertTargetIntoDatabase()
+    {
+        //string ORGID = (BioPM.ClassObjects.OrganizationCatalog.GetOrganizationMaxID() + 1).ToString();
+        //BioPM.ClassObjects.OrganizationCatalog.InsertOrganization(ORGID, txtOrgID.Text, ddlOrgType.SelectedValue, txtOrgName.Text, Session["username"].ToString());
+    }
+
+    protected void btnAdd_Click(object sender, EventArgs e)
+    {
+        if (IsPostBack) InsertTargetIntoDatabase();
+        Response.Redirect("PageEventTargetDetail.aspx");
+    }
+
+    protected void btnAddComp_Click(object sender, EventArgs e)
+    {
+        //if (IsPostBack) InsertTargetIntoDatabase();
+        Response.Redirect("FormInputTargetTraining.aspx");
+    }
+
+    protected void btnCancel_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("FormRequestTraining.aspx");
+    }
+
+    protected String GenerateDataKompetensi()
+    {
+        string htmlelement = " ";
+
+        return htmlelement;
+    }
    
 </script>
 
@@ -52,6 +81,42 @@
 
         <div class="row">
             <div class="col-sm-12">
+                 <section class="panel">
+                    <header class="panel-heading">
+                        Competency Development Event Entry Form
+                          <span class="tools pull-right">
+                            <a class="fa fa-chevron-down" href="javascript:;"></a>
+                            <a class="fa fa-times" href="javascript:;"></a>
+                         </span>
+                    </header>
+                    <div class="panel-body">
+                        <form id="Form1" class="form-horizontal " runat="server" >
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label"> COMPETENCY NAME </label>
+                            <div class="col-lg-3 col-md-4">
+                                <asp:DropDownList ID="ddlCompetency" runat="server" class="form-control m-bot15">   
+                                </asp:DropDownList> 
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label"> PROFICIENCY LEVEL TARGET </label>
+                            <div class="col-lg-3 col-md-4">
+                                <asp:TextBox ID="txtLevelTarget" runat="server" class="form-control m-bot15" placeholder="PROFICIENCY LEVEL TARGET" ></asp:TextBox>
+                            </div>
+                        </div>
+
+                        <asp:Button class="btn btn-round btn-primary" ID="addComp" runat="server" Text="Add Competency" OnClick="btnAddComp_Click"/>
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label"> </label>
+                        </div>
+                            
+                        </form>
+                    </div>    
+                </section>
+
                 <section class="panel">
                     <header class="panel-heading">
                         Event Target Detail
@@ -65,8 +130,6 @@
                         <div class="adv-table">
                             <div class="clearfix">
                                 <div class="btn-group">
-                                    <button id="editable-sample_new" onclick="document.location.href='FormInputTargetTraining.aspx';" class="btn btn-primary"> Add New <i class="fa fa-plus"></i>
-                                    </button>
                                 </div>
                                 <div class="btn-group pull-right">
                                     <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">Tools <i class="fa fa-angle-down"></i>

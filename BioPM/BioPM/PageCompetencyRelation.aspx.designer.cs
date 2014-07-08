@@ -13,12 +13,20 @@ namespace BioPM {
     public partial class PageCompetencyRelation {
         
         /// <summary>
+<<<<<<< HEAD
+=======
+        /// Form1 control.
+>>>>>>> origin/master
         /// Form2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
+<<<<<<< HEAD
+=======
+        protected global::System.Web.UI.HtmlControls.HtmlForm Form1;
+>>>>>>> origin/master
         protected global::System.Web.UI.HtmlControls.HtmlForm Form2;
         
         /// <summary>
@@ -40,12 +48,23 @@ namespace BioPM {
         protected global::System.Web.UI.WebControls.DropDownList ddlCompChild;
         
         /// <summary>
+<<<<<<< HEAD
+=======
+        /// txtCompLevel control.
+>>>>>>> origin/master
         /// TextBox1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
+<<<<<<< HEAD
+=======
+        protected global::System.Web.UI.WebControls.TextBox txtCompLevel;
+        
+        /// <summary>
+        /// btnAdd control.
+>>>>>>> origin/master
         protected global::System.Web.UI.WebControls.TextBox TextBox1;
         
         /// <summary>
@@ -55,6 +74,7 @@ namespace BioPM {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
+<<<<<<< HEAD
         protected global::System.Web.UI.WebControls.Button Button1;
         
         /// <summary>
@@ -101,5 +121,9 @@ namespace BioPM {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnAdd;
+=======
+        protected global::System.Web.UI.WebControls.Button btnAdd;
+        protected global::System.Web.UI.WebControls.Button Button1;
+>>>>>>> origin/master
     }
 }

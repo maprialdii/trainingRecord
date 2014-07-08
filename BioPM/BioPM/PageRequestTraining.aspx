@@ -15,12 +15,27 @@
 
         foreach (object[] data in BioPM.ClassObjects.ComDevPlan.GetComdevPlanByUsername(Session["username"].ToString()))
         {
+<<<<<<< HEAD
             htmlelement += "<tr class=''><td>" + data[0].ToString() + "</td><td>" + data[1].ToString() + "</td><td>" + data[4].ToString() + "</td><td><a class='edit' href='FormUpdateRequestTraining.aspx?key=" + data[0].ToString() + "'>Edit</a></td><td><a class='delete' href='PageInformation.aspx?key=" + data[0].ToString() + "&type=27'>Delete</a></td></tr>";
+=======
+            htmlelement += "<tr class=''><td>" + data[0].ToString() + "</td><td>" + data[1].ToString() + "</td><td>" + data[4].ToString() + "</td><td></tr>";
+>>>>>>> origin/master
         }
         
         return htmlelement;
     }
 
+    protected String GenerateDataRekomendasi()
+    {
+        string htmlelement = "";
+
+        foreach (object[] data in BioPM.ClassObjects.ComDevPlan.GetComdevPlanByUsername(Session["username"].ToString()))
+        {
+            //htmlelement += "<tr class=''><td>" + data[0].ToString() + "</td><td>" + data[1].ToString() + "</td><td>" + data[4].ToString() + "</td><td><a class='edit' href='FormInputEvent.aspx?key=" + data[0].ToString() + "'>Edit</a></td><td><a class='delete' href='PageInformation.aspx?key=" + data[0].ToString() + "&type=000'>Delete</a></td></tr>";
+        }
+
+        return htmlelement;
+    }
    
 </script>
 
@@ -61,6 +76,46 @@
             <div class="col-sm-12">
                 <section class="panel">
                     <header class="panel-heading">
+                        Training Recommendation
+                          <span class="tools pull-right">
+                            <a class="fa fa-chevron-down" href="javascript:;"></a>
+                            <a class="fa fa-times" href="javascript:;"></a>
+                         </span>
+                    </header>
+                    <div class="panel-body">
+
+                        <div class="adv-table">
+                            <div class="clearfix">
+                                <div class="btn-group pull-right">
+                                    <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">Tools <i class="fa fa-angle-down"></i>
+                                    </button>
+                                    <ul class="dropdown-menu pull-right">
+                                        <li><a href="#">Print</a></li>
+                                        <li><a href="#">Save as PDF</a></li>
+                                        <li><a href="#">Export to Excel</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <table class="table table-striped table-hover table-bordered" id="Table1" >
+                                <thead>
+                                <tr>
+                                    <th>Event Name</th>
+                                    <th>Competency</th>
+                                    <th>Proficiency Level Gap</th>
+                                    <th>Request This Training</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <% Response.Write(GenerateDataRekomendasi()); %>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    
+                </section>
+
+            <section class="panel">
+                    <header class="panel-heading">
                         Requested Competency Development Event
                           <span class="tools pull-right">
                             <a class="fa fa-chevron-down" href="javascript:;"></a>
@@ -71,10 +126,6 @@
 
                         <div class="adv-table">
                             <div class="clearfix">
-                                <div class="btn-group">
-                                    <button id="editable-sample_new" onclick="document.location.href='FormRequestTraining.aspx';" class="btn btn-primary"> Add New <i class="fa fa-plus"></i>
-                                    </button>
-                                </div>
                                 <div class="btn-group pull-right">
                                     <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">Tools <i class="fa fa-angle-down"></i>
                                     </button>
@@ -91,8 +142,7 @@
                                     <th>Request ID</th>
                                     <th>Event Name</th>
                                     <th>Status</th>
-                                    <th class="auto-style1">Edit</th>
-                                    <th>Delete</th>
+                                    <%--<th>Delete</th>--%>
                                 </tr>
                                 </thead>
                                 <tbody>
