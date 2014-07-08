@@ -61,7 +61,7 @@
 <head>
     <% Response.Write(BioPM.ClassScripts.BasicScripts.GetMetaScript()); %>
 
-    <title>Training Suggest & Request From Employee</title>
+    <title>Training Request From Employee</title>
 
     <% Response.Write(BioPM.ClassScripts.StyleScripts.GetCoreStyle()); %>
 <% Response.Write(BioPM.ClassScripts.StyleScripts.GetTableStyle()); %>
