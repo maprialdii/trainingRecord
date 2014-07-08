@@ -1,43 +1,65 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="FormUpdateEventMethod.aspx.cs" Inherits="BioPM.FormUpdateEventMethod" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="FormUpdateSuggestTraining.aspx.cs" Inherits="BioPM.FormUpdateSuggestTraining" %>
 
 <!DOCTYPE html>
 <script runat="server">
     protected void Page_Load(object sender, EventArgs e)
     {
         if (Session["username"] == null && Session["password"] == null) Response.Redirect("PageLogin.aspx");
-        if(!IsPostBack) SetDataToForm()
-    }
-
+        if (!IsPostBack)
+        {
+            SetDataToForm();
+            GetDataEventAndEmployee();
+        }
+    }  
+   
+    
     protected void SetDataToForm()
     {
-        object[] values = BioPM.ClassObjects.EventMethod.GetEventMethodById(Request.QueryString["key"].ToString());
-        txtEmtID.Text = values[0].ToString();
-        txtMtdName.Text = values[1].ToString();
+        object[] values = BioPM.ClassObjects.ComDevPlan.GetComdevPlanById(Request.QueryString["key"].ToString());
+        txtRecID.Text = values[0].ToString();
+        ddlEventName.SelectedValue = values[1].ToString();
+        txtEvtMonth.Text = values[2].ToString();
+        txtEvtCost.Text = values[3].ToString();
+        ddlEmpName.SelectedValue = values[5].ToString();
     }
-        
-    protected void UpdateMethodInDatabase()
+
+    protected void GetDataEventAndEmployee()
     {
-        BioPM.ClassObjects.EventMethod.UpdateEventMethod(txtEmtID.Text, txtMtdName.Text, Session["username"].ToString());
+        ddlEventName.Items.Clear();
+        foreach (object[] data in BioPM.ClassObjects.ComDevEvent.GetAllComdevEvent())
+        {
+            ddlEventName.Items.Add(new ListItem(data[1].ToString(), data[0].ToString()));
+        }
+        
+        ddlEmpName.Items.Clear();
+        foreach (object[] data in BioPM.ClassObjects.EmployeeCatalog.GetAllEmployee())
+        {
+            ddlEmpName.Items.Add(new ListItem(data[1].ToString(), data[0].ToString()));
+        }
+    }
+    
+    protected void UpdateSuggestTrainingOnDatabase()
+    {
+        BioPM.ClassObjects.ComDevPlan.UpdateComDevPlan(txtRecID.Text, ddlEmpName.SelectedValue, ddlEventName.SelectedValue, txtEvtMonth.Text, txtEvtCost.Text, Session["username"].ToString());
     }
 
     protected void btnAdd_Click(object sender, EventArgs e)
     {
-        if (IsPostBack) UpdateMethodInDatabase();
-        Response.Redirect("PageEventMethod.aspx");
+        if (IsPostBack) UpdateSuggestTrainingOnDatabase();
+        Response.Redirect("PageSuggestTraining.aspx");
     }
-    
+
     protected void btnCancel_Click(object sender, EventArgs e)
     {
         Response.Redirect("PageUserPanel.aspx");
     }
-    
 </script>
 
 <html lang="en">
 <head>
     <% Response.Write(BioPM.ClassScripts.BasicScripts.GetMetaScript()); %>
 
-    <title>EVENT METHOD UPDATE FORM</title>
+    <title>COMPETENCY ENTRY</title>
 
     <% Response.Write(BioPM.ClassScripts.StyleScripts.GetCoreStyle()); %>
     <% Response.Write(BioPM.ClassScripts.StyleScripts.GetFormStyle()); %>
@@ -65,7 +87,7 @@
             <div class="col-sm-12">
                 <section class="panel">
                     <header class="panel-heading">
-                        Event Method Update Form
+                        SUGGEST TRAINING UPDATE FORM
                           <span class="tools pull-right">
                             <a class="fa fa-chevron-down" href="javascript:;"></a>
                             <a class="fa fa-times" href="javascript:;"></a>
@@ -73,21 +95,45 @@
                     </header>
                     <div class="panel-body">
                         <form id="Form1" class="form-horizontal " runat="server" >
-
+                         
                         <div class="form-group">
-                            <label class="col-sm-3 control-label"> METHOD ID </label>
+                            <label class="col-sm-3 control-label"> PLANNING ID </label>
                             <div class="col-lg-3 col-md-4">
-                                <asp:TextBox ID="txtEmtID" runat="server" class="form-control m-bot15" placeholder="METHOD ID" ReadOnly="true" ></asp:TextBox>
-                            </div>
-                        </div>
-                             
-                        <div class="form-group">
-                            <label class="col-sm-3 control-label"> METHOD NAME </label>
-                            <div class="col-lg-3 col-md-4">
-                                <asp:TextBox ID="txtMtdName" runat="server" class="form-control m-bot15" placeholder="METHOD NAME" ></asp:TextBox>
+                                <asp:TextBox ID="txtRecID" runat="server" class="form-control m-bot15" placeholder="PLANNING ID" ReadOnly="true"></asp:TextBox>
                             </div>
                         </div>
 
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label"> EVENT NAME </label>
+                            <div class="col-lg-3 col-md-4">
+                                <asp:DropDownList ID="ddlEventName" runat="server" class="form-control m-bot15">   
+                                </asp:DropDownList> 
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label"> EMPLOYEE NAME </label>
+                            <div class="col-lg-3 col-md-4">
+                                <asp:DropDownList ID="ddlEmpName" runat="server" class="form-control m-bot15">   
+                                </asp:DropDownList> 
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label"> EVENT MONTH </label>
+                            <div class="col-lg-3 col-md-4">
+                                <asp:TextBox ID="txtEvtMonth" runat="server" class="form-control m-bot15" placeholder="EVENT MONTH"></asp:TextBox>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label"> COST ESTIMATION </label>
+                            <div class="col-lg-3 col-md-4">
+                                <asp:TextBox ID="txtEvtCost" runat="server" class="form-control m-bot15" placeholder="COST ESTIMATION"></asp:TextBox>
+                            </div>
+                        </div>
+
+                       
                         <div class="form-group">
                             <label class="col-sm-3 control-label"> </label>
                             <div class="col-lg-3 col-md-3">

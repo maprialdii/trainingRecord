@@ -10,52 +10,34 @@
 namespace BioPM {
     
     
-    public partial class FormUpdateEmployeeQualification {
+    public partial class FormUpdateRequestTraining {
         
         /// <summary>
-        /// Form2 control.
+        /// Form1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm Form2;
+        protected global::System.Web.UI.HtmlControls.HtmlForm Form1;
         
         /// <summary>
-        /// txtGapID control.
+        /// txtRecID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtGapID;
+        protected global::System.Web.UI.WebControls.TextBox txtRecID;
         
         /// <summary>
-        /// ddlEmployee control.
+        /// ddlEventName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlEmployee;
-        
-        /// <summary>
-        /// ddlCompetency control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlCompetency;
-        
-        /// <summary>
-        /// txtLevel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtLevel;
+        protected global::System.Web.UI.WebControls.DropDownList ddlEventName;
         
         /// <summary>
         /// btnAdd control.

@@ -1,34 +1,53 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="FormInputTrainingExecution.aspx.cs" Inherits="BioPM.FormTrainingExecution" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="FormUpdateTrainingExecution.aspx.cs" Inherits="BioPM.FormUpdateTrainingExecution" %>
 
+<!DOCTYPE html>
 <script runat="server">
     protected void Page_Load(object sender, EventArgs e)
     {
         if (Session["username"] == null && Session["password"] == null) Response.Redirect("PageLogin.aspx");
         if (!IsPostBack)
         {
-            GetDataEvent();
-            txtExcid.Text = (BioPM.ClassObjects.ComDevExecution.GetComDevExecutionMaxID() + 1).ToString();    
+            SetEventName();
+            SetDataToForm();
         }
     }
-    
-   
-    protected void GetDataEvent()
+
+    protected void SetDataToForm()
+    {
+        object[] values = BioPM.ClassObjects.ComDevExecution.GetComdevExecutionById(Request.QueryString["key"].ToString());
+        txtExcid.Text = values[0].ToString();
+        ddlEventMethod.SelectedValue = values[1].ToString();
+        txtEventTitle.Text = values[3].ToString();
+        txtBatch.Text = values[4].ToString();
+        txtBegda.Text = values[7].ToString();
+        txtEndda.Text = values[8].ToString();
+        txtPembicara.Text = values[5].ToString();
+        txtInsti.Text = values[6].ToString();
+        txtAdrin.Text = values[11].ToString();
+        TxtCitin.Text = values[12].ToString();
+        txtCouin.Text = values[13].ToString();
+        ddlStatus.SelectedValue = values[9].ToString();
+        txtScore.Text = values[10].ToString();
+    }
+
+    protected void SetEventName()
     {
         ddlEventMethod.Items.Clear();
-        foreach(object[] data in BioPM.ClassObjects.ComDevEvent.GetAllComdevEvent())
+        foreach (object[] data in BioPM.ClassObjects.EventMethod.GetAllEventMethod())
         {
             ddlEventMethod.Items.Add(new ListItem(data[1].ToString(), data[0].ToString()));
         }
+
     }
-    
-    protected void InsertDataIntoDatabase()
+
+    protected void UpdatePositionReqIntoDatabase()
     {
-        BioPM.ClassObjects.ComDevExecution.InsertComDevExecution(txtExcid.Text, Session["username"].ToString(), ddlEventMethod.SelectedValue, txtEventTitle.Text, txtBatch.Text, txtPembicara.Text, txtInsti.Text, txtAdrin.Text, TxtCitin.Text, txtCouin.Text, ddlStatus.SelectedValue.ToString(), txtScore.Text, Session["username"].ToString(), txtBegda.Text, txtEndda.Text);
+        BioPM.ClassObjects.ComDevExecution.UpdateComDevExecution(txtExcid.Text, Session["username"].ToString(), ddlEventMethod.SelectedValue, txtEventTitle.Text, txtBatch.Text, txtPembicara.Text, txtInsti.Text, txtAdrin.Text, TxtCitin.Text, txtCouin.Text, ddlStatus.SelectedValue, txtScore.Text, Session["username"].ToString(), txtBegda.Text, txtEndda.Text);
     }
 
     protected void btnAdd_Click(object sender, EventArgs e)
     {
-        InsertDataIntoDatabase();
+        if (IsPostBack) UpdatePositionReqIntoDatabase();
         Response.Redirect("PageTrainingExecution.aspx");
     }
 
@@ -43,11 +62,11 @@
 <head>
     <% Response.Write(BioPM.ClassScripts.BasicScripts.GetMetaScript()); %>
 
-    <title>Training Execution</title>
+    <title>POSITION REQUIREMENTS UPDATE FORM</title>
 
     <% Response.Write(BioPM.ClassScripts.StyleScripts.GetCoreStyle()); %>
-<% Response.Write(BioPM.ClassScripts.StyleScripts.GetFormStyle()); %>
-<% Response.Write(BioPM.ClassScripts.StyleScripts.GetCustomStyle()); %>
+    <% Response.Write(BioPM.ClassScripts.StyleScripts.GetFormStyle()); %>
+    <% Response.Write(BioPM.ClassScripts.StyleScripts.GetCustomStyle()); %>
 </head>
 
 <body>
@@ -71,24 +90,24 @@
             <div class="col-sm-12">
                 <section class="panel">
                     <header class="panel-heading">
-                        Training Execution
+                        TRAINING EXECUTION UPDATE FORM
                           <span class="tools pull-right">
                             <a class="fa fa-chevron-down" href="javascript:;"></a>
                             <a class="fa fa-times" href="javascript:;"></a>
                          </span>
                     </header>
                     <div class="panel-body">
-                        <form id="Form1" class="form-horizontal " runat="server" >
+                        <form id="Form2" class="form-horizontal " runat="server" >
 
                         <div class="form-group">
                             <label class="col-sm-3 control-label"> EXECUTION ID </label>
                             <div class="col-lg-3 col-md-4">
-                                <asp:TextBox ID="txtExcid" runat="server" class="form-control m-bot15" placeholder="EXECUTION ID" ></asp:TextBox>
+                                <asp:TextBox ID="txtExcid" runat="server" class="form-control m-bot15" placeholder="EXECUTION ID" ReadOnly="true" ></asp:TextBox>
                             </div>
                         </div>
                          
                         <div class="form-group">
-                            <label class="col-sm-3 control-label"> EVENT NAME </label>
+                            <label class="col-sm-3 control-label"> EVENT METHOD </label>
                             <div class="col-lg-3 col-md-4">
                                 <asp:DropDownList ID="ddlEventMethod" runat="server" class="form-control m-bot15">   
                                 </asp:DropDownList> 
@@ -202,7 +221,8 @@
 </section>
 
 <!-- Placed js at the end of the document so the pages load faster -->
-    <% Response.Write(BioPM.ClassScripts.JS.GetCoreScript()); %>
+   
+<% Response.Write(BioPM.ClassScripts.JS.GetCoreScript()); %>
 <% Response.Write(BioPM.ClassScripts.JS.GetCustomFormScript()); %>
 <% Response.Write(BioPM.ClassScripts.JS.GetInitialisationScript()); %>
 <% Response.Write(BioPM.ClassScripts.JS.GetPieChartScript()); %>

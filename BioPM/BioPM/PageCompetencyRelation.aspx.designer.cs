@@ -13,21 +13,13 @@ namespace BioPM {
     public partial class PageCompetencyRelation {
         
         /// <summary>
-<<<<<<< HEAD
-        /// Form1 control.
-=======
         /// Form2 control.
->>>>>>> origin/master
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-<<<<<<< HEAD
-        protected global::System.Web.UI.HtmlControls.HtmlForm Form1;
-=======
         protected global::System.Web.UI.HtmlControls.HtmlForm Form2;
->>>>>>> origin/master
         
         /// <summary>
         /// ddlCompParent control.
@@ -48,36 +40,66 @@ namespace BioPM {
         protected global::System.Web.UI.WebControls.DropDownList ddlCompChild;
         
         /// <summary>
-<<<<<<< HEAD
-        /// txtCompLevel control.
-=======
         /// TextBox1 control.
->>>>>>> origin/master
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-<<<<<<< HEAD
-        protected global::System.Web.UI.WebControls.TextBox txtCompLevel;
-        
-        /// <summary>
-        /// btnAdd control.
-=======
         protected global::System.Web.UI.WebControls.TextBox TextBox1;
         
         /// <summary>
         /// Button1 control.
->>>>>>> origin/master
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-<<<<<<< HEAD
-        protected global::System.Web.UI.WebControls.Button btnAdd;
-=======
         protected global::System.Web.UI.WebControls.Button Button1;
->>>>>>> origin/master
+        
+        /// <summary>
+        /// Form1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlForm Form1;
+        
+        /// <summary>
+        /// ddlCompParent control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        //protected global::System.Web.UI.WebControls.DropDownList ddlCompParent;
+        
+        /// <summary>
+        /// ddlCompChild control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        //protected global::System.Web.UI.WebControls.DropDownList ddlCompChild;
+        
+        /// <summary>
+        /// txtCompLevel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtCompLevel;
+        
+        /// <summary>
+        /// btnAdd control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnAdd;
     }
 }

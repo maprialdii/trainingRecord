@@ -101,7 +101,7 @@ namespace BioPM.ClassObjects
         public static object[] GetComdevExecutionById(string excid)
         {
             SqlConnection conn = GetConnection();
-            string sqlCmd = @"SELECT CE.EXCID, CE.EVTID, CV.EVTNM, CE.TITLE, CE.BATCH, CE.PMBCR, CE.INSTI, CE.BEGDA, CE.ENDDA, CE.CRTFL, CE.SCORE
+            string sqlCmd = @"SELECT CE.EXCID, CE.EVTID, CV.EVTNM, CE.TITLE, CE.BATCH, CE.PMBCR, CE.INSTI, CE.BEGDA, CE.ENDDA, CE.CRTFL, CE.SCORE, CE.ADRIN, CE.CITIN, CE.COUIN
                             FROM trrcd.COMDEV_EVENT_EXECUTION CE WITH(INDEX(COMDEV_EVENT_EXECUTION_IDX_BEGDA_ENDDA_ID)), trrcd.COMDEV_EVENT CV WITH(INDEX(COMDEV_EVENT_IDX_BEGDA_ENDDA_ID))
                             WHERE CV.EVTID=CE.EVTID 
                             AND CV.BEGDA <= GETDATE() AND CV.ENDDA >= GETDATE()
@@ -115,7 +115,7 @@ namespace BioPM.ClassObjects
                 object[] data = null;
                 while (reader.Read())
                 {
-                    object[] values = { reader[0].ToString(), reader[1].ToString(), reader[2].ToString(), reader[3].ToString(), reader[4].ToString(), reader[5].ToString(), reader[6].ToString(), reader[7].ToString(), reader[8].ToString() };
+                    object[] values = { reader[0].ToString(), reader[1].ToString(), reader[2].ToString(), reader[3].ToString(), reader[4].ToString(), reader[5].ToString(), reader[6].ToString(), reader[7].ToString(), reader[8].ToString(), reader[9].ToString(), reader[10].ToString(), reader[11].ToString(), reader[12].ToString(), reader[13].ToString() };
                     data = values;
                 }
                 return data;
