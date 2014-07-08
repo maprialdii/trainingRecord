@@ -24,6 +24,19 @@
     {
         Response.Redirect("PageUserPanel.aspx");
     }
+
+    protected void btnSave_Click(object sender, EventArgs e)
+    {
+        if (Session["password"].ToString() == BioPM.ClassEngines.CryptographFactory.Encrypt(txtConfirmation.Text, true))
+        {
+            InsertCompetencyIntoDatabase();
+            Response.Redirect("PageRisk.aspx");
+        }
+        else
+        {
+            ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('" + "YOUR PASSWORD IS INCORRECT" + "');", true);
+        }
+    }
 </script>
 
 <html lang="en">
@@ -88,10 +101,33 @@
                             </div>
                         </div>
 
+                        <!-- Modal -->
+                        <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModal" class="modal fade">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                        <h4 class="modal-title">Approver Confirmation</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>You Are Logged In As <% Response.Write(Session["name"].ToString()); %></p><br />
+                                        <p>Are you sure to insert into database?</p>
+                                        <asp:TextBox ID="txtConfirmation" runat="server" TextMode="Password" placeholder="Confirmation Password" class="form-control placeholder-no-fix"></asp:TextBox>
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <asp:Button ID="btnClose" runat="server" data-dismiss="modal" class="btn btn-default" Text="Cancel"></asp:Button>
+                                        <asp:Button ID="btnSubmit" runat="server" class="btn btn-success" Text="Confirm" OnClick="btnSave_Click"></asp:Button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- modal -->
+
                         <div class="form-group">
                             <label class="col-sm-3 control-label"> </label>
                             <div class="col-lg-3 col-md-3">
-                                <asp:Button class="btn btn-round btn-primary" ID="btnAdd" runat="server" Text="Add" OnClick="btnAdd_Click"/>
+                                <asp:LinkButton data-toggle="modal" class="btn btn-round btn-primary" ID="btnAction" runat="server" Text="Add" href="#myModal"/>
                                 <asp:Button class="btn btn-round btn-primary" ID="btnCancel" runat="server" Text="Cancel" OnClick="btnCancel_Click"/>
                             </div>
                         </div>
