@@ -22,6 +22,15 @@ namespace BioPM {
         protected global::System.Web.UI.HtmlControls.HtmlForm Form2;
         
         /// <summary>
+        /// txtPrqID control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtPrqID;
+        
+        /// <summary>
         /// ddlJabatan control.
         /// </summary>
         /// <remarks>

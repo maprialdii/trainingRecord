@@ -13,7 +13,7 @@
 
         foreach (object[] data in BioPM.ClassObjects.CompetencyCatalog.GetAllCompetency())
         {
-            htmlelement += "<tr class=''><td>" + data[1].ToString() + "</td><td>" + data[2].ToString() + "</td><td><a class='edit' href='FormUpdateCompetency.aspx?key=" + BioPM.ClassEngines.CryptographFactory.Encrypt(data[0].ToString(), true) + "'>Edit</a></td><td><a class='delete' href='PageInformation.aspx?key=" + BioPM.ClassEngines.CryptographFactory.Encrypt(data[0].ToString(), true) + "&type=21'>Delete</a></td></tr>";
+            htmlelement += "<tr class=''><td>" + data[1].ToString() + "</td><td>" + data[2].ToString() + "</td><td><a class='edit' href='FormUpdateCompetency.aspx?key=" + data[0].ToString() + "'>Edit</a></td><td><a class='delete' href='PageInformation.aspx?key=" + data[0].ToString() + "&type=21'>Delete</a></td></tr>";
         }
         
         return htmlelement;

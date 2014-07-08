@@ -135,6 +135,9 @@
     <Content Include="FormUpdateOrganization.aspx" />
     <Content Include="FormUpdateOrganizationStructure.aspx" />
     <Content Include="FormUpdatePositionRequirements.aspx" />
+    <Content Include="FormUpdateRequestTraining.aspx" />
+    <Content Include="FormUpdateSuggestTraining.aspx" />
+    <Content Include="FormUpdateTrainingExecution.aspx" />
     <Content Include="PageCompetencyDevelopmentEvent.aspx" />
     <Content Include="PageCompetencyParameter.aspx" />
     <Content Include="PageCompetencyRelation.aspx" />
@@ -494,6 +497,27 @@
     </Compile>
     <Compile Include="FormUpdatePositionRequirements.aspx.designer.cs">
       <DependentUpon>FormUpdatePositionRequirements.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FormUpdateRequestTraining.aspx.cs">
+      <DependentUpon>FormUpdateRequestTraining.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FormUpdateRequestTraining.aspx.designer.cs">
+      <DependentUpon>FormUpdateRequestTraining.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FormUpdateSuggestTraining.aspx.cs">
+      <DependentUpon>FormUpdateSuggestTraining.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FormUpdateSuggestTraining.aspx.designer.cs">
+      <DependentUpon>FormUpdateSuggestTraining.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FormUpdateTrainingExecution.aspx.cs">
+      <DependentUpon>FormUpdateTrainingExecution.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FormUpdateTrainingExecution.aspx.designer.cs">
+      <DependentUpon>FormUpdateTrainingExecution.aspx</DependentUpon>
     </Compile>
     <Compile Include="PageCompetencyDevelopmentEvent.aspx.cs">
       <DependentUpon>PageCompetencyDevelopmentEvent.aspx</DependentUpon>

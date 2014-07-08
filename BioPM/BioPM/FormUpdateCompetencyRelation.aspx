@@ -21,7 +21,7 @@
     
     protected void SetDataToForm()
     {
-        object[] values = BioPM.ClassObjects.CompetencyCatalog.GetCompetencyStructureByID(BioPM.ClassEngines.CryptographFactory.Decrypt(Request.QueryString["key"], true));
+        object[] values = BioPM.ClassObjects.CompetencyCatalog.GetCompetencyStructureByID(Request.QueryString["key"]);
         ddlCompParent.SelectedValue = values[0].ToString();
         ddlCompChild.SelectedValue = values[1].ToString();
         txtCompLevel.Text = values[2].ToString();

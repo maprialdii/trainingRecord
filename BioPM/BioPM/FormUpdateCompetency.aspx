@@ -9,22 +9,15 @@
         {
             SetDataToForm();
         }
-    }
-    
-    protected void sessionCreator()
-    {
-        Session["username"] = "K495";
-        Session["name"] = "ALLAN PRAKOSA";
-        Session["password"] = "admin1234";
-        Session["role"] = "111111";
-    }
-    
+    }  
+   
     
     protected void SetDataToForm()
     {
-        object[] values = BioPM.ClassObjects.CompetencyCatalog.GetCompetencyById(BioPM.ClassEngines.CryptographFactory.Decrypt(Request.QueryString["key"], true));
+        object[] values = BioPM.ClassObjects.CompetencyCatalog.GetCompetencyById(Request.QueryString["key"]);
         txtCompID.Text = values[0].ToString();
-        txtCompName.Text = values[1].ToString();
+        txtCompCode.Text = values[1].ToString();
+        txtCompName.Text = values[2].ToString();
     }
     
     protected void UpdateCompetencyOnDatabase()

@@ -13,7 +13,7 @@
 
         foreach (object[] data in BioPM.ClassObjects.QualificationCatalog.GetQualification(Session["username"].ToString()))
         {
-            htmlelement += "<tr class=''><td>" + data[1].ToString() + "</td><td>" + data[4].ToString() + "</td><td>" + data[5].ToString() + "</td><td>" + data[6].ToString() + "</td><td>" + data[7].ToString() + "</td><td><a class='edit' href='FormUpdateEmployeeQualification.aspx?key=" + data[0].ToString() + "'>Edit</a></td><td><a class='delete' href='PageInformation.aspx?key=" + data[0].ToString() + "&type=000'>Delete</a></td></tr>";
+            htmlelement += "<tr class=''><td>" + data[1].ToString() + "</td><td>" + data[4].ToString() + "</td><td>" + data[5].ToString() + "</td><td>" + data[6].ToString() + "</td><td>" + data[7].ToString() + "</td><td><a class='edit' href='FormUpdateEmployeeQualification.aspx?key=" + data[0].ToString() + "'>Edit</a></td><td><a class='delete' href='PageInformation.aspx?key=" + data[0].ToString() + "&type=28'>Delete</a></td></tr>";
         }
         
         return htmlelement;

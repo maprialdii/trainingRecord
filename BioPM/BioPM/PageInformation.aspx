@@ -8,7 +8,7 @@
         if (Session["username"] == null && Session["password"] == null) Response.Redirect("PageLogin.aspx");
         if (!IsPostBack)
         {
-            string id = BioPM.ClassEngines.CryptographFactory.Decrypt(Request.QueryString["key"], true);
+            string id = Request.QueryString["key"];
             DeleteDataOnDatabase(id, Request.QueryString["type"]);
         }
     }
@@ -164,15 +164,41 @@
                 }
             case "24":
                 {
-                    //LABEL SUB CATEGORY
+                    BioPM.ClassObjects.ComDevEvent.DeleteComDevEvent(ID, Session["username"].ToString());
+                    message = "DELETE SUCCESS! EVENT ID " + ID + " HAS BEEN DELETED. <a href='PageCompetencyDevelopmentEvent.aspx'>BACK</a>.";
                     break;
                 }
             case "25":
                 {
-                    //PRINT LABEL
+                    BioPM.ClassObjects.ComDevEvent.DeleteComDevEventTarget(ID, Session["username"].ToString());
+                    message = "DELETE SUCCESS! COMDEV EVENT TARGET ID " + ID + " HAS BEEN DELETED. <a href='PageCompetencyDevelopmentEvent.aspx'>BACK</a>.";
                     break;
                 }
-
+            case "26":
+                {
+                    BioPM.ClassObjects.ComDevExecution.DeleteComDevExecution(ID, Session["username"].ToString());
+                    message = "DELETE SUCCESS! COMDEV EXECUTION ID " + ID + " HAS BEEN DELETED. <a href='PageTrainingExecution.aspx'>BACK</a>.";
+                    break;
+                }
+            case "27":
+                {
+                    BioPM.ClassObjects.ComDevPlan.DeleteComDevPlan(ID, Session["username"].ToString());
+                    message = "DELETE SUCCESS! COMDEV PLAN ID " + ID + " HAS BEEN DELETED. <a href='PageSuggestTraining.aspx'>BACK</a>.";
+                    break;
+                }
+            case "28":
+                {
+                    BioPM.ClassObjects.QualificationCatalog.DeleteQualification(ID, Session["username"].ToString());
+                    message = "DELETE SUCCESS! EMPLOYEE QUALIFICATION ID " + ID + " HAS BEEN DELETED. <a href='PageEmployeeQualification.aspx'>BACK</a>.";
+                    break;
+                }
+            case "29":
+                {
+                    BioPM.ClassObjects.Jabatan.DeleteJabatan(ID, Session["username"].ToString());
+                    message = "DELETE SUCCESS! POSITION REQUIREMENT ID " + ID + " HAS BEEN DELETED. <a href='PageJabatan.aspx'>BACK</a>.";
+                    break;
+                }
+            
             default :
                 {
                     break;

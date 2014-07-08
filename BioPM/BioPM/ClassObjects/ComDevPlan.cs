@@ -50,12 +50,12 @@ namespace BioPM.ClassObjects
             }
         }
 
-        public static void UpdateComDevPlan(string RECID, string PERNR, string EVTID, string EVTMH, string EVTMT, string CHUSR)
+        public static void UpdateComDevPlan(string RECID, string PERNR, string EVTID, string EVTMH, string EVTCO, string CHUSR)
         {
             string date = DateTime.Now.ToString("MM/dd/yyyy HH:mm");
             string yesterday = DateTime.Now.AddMinutes(-1).ToString("MM/dd/yyyy HH:mm");
             SqlConnection conn = GetConnection();
-            string sqlCmd = @"UPDATE trrcd.COMDEV_PLAN SET ENDDA = '" + yesterday + "', CHGDT = '" + date + "', CHUSR = '" + CHUSR + "' WHERE (RECID = " + RECID + " AND BEGDA <= GETDATE() AND ENDDA >= GETDATE()";
+            string sqlCmd = @"UPDATE trrcd.COMDEV_PLAN SET ENDDA = '" + yesterday + "', CHGDT = '" + date + "', CHUSR = '" + CHUSR + "' WHERE (RECID = " + RECID + " AND BEGDA <= GETDATE() AND ENDDA >= GETDATE())";
 
             SqlCommand cmd = DatabaseFactory.GetCommand(conn, sqlCmd);
 
@@ -67,7 +67,7 @@ namespace BioPM.ClassObjects
             finally
             {
                 conn.Close();
-                InsertComDevPlan(RECID, PERNR, EVTID, EVTMH, EVTMT, CHUSR);
+                InsertComDevPlan(RECID, PERNR, EVTID, EVTMH, EVTCO, CHUSR);
             }
         }
 
@@ -76,7 +76,7 @@ namespace BioPM.ClassObjects
             string date = DateTime.Now.ToString("MM/dd/yyyy HH:mm");
             string yesterday = DateTime.Now.AddMinutes(-1).ToString("MM/dd/yyyy HH:mm");
             SqlConnection conn = GetConnection();
-            string sqlCmd = @"UPDATE trrcd.COMDEV_PLAN_STATUS SET CHGDT = '" + date + "', APVST = '" + APVST + "', APVPR = '" + APVPR +  "', CHUSR = '" + CHUSR + "' WHERE (RECID = " + RECID + " AND BEGDA <= GETDATE() AND ENDDA >= GETDATE()";
+            string sqlCmd = @"UPDATE trrcd.COMDEV_PLAN_STATUS SET CHGDT = '" + date + "', APVST = '" + APVST + "', APVPR = '" + APVPR +  "', CHUSR = '" + CHUSR + "' WHERE (RECID = " + RECID + " AND BEGDA <= GETDATE() AND ENDDA >= GETDATE())";
 
             SqlCommand cmd = DatabaseFactory.GetCommand(conn, sqlCmd);
 
@@ -96,7 +96,7 @@ namespace BioPM.ClassObjects
             string date = DateTime.Now.ToString("MM/dd/yyyy HH:mm");
             string yesterday = DateTime.Now.AddMinutes(-1).ToString("MM/dd/yyyy HH:mm");
             SqlConnection conn = GetConnection();
-            string sqlCmd = @"UPDATE trrcd.COMDEV_PLAN SET ENDDA = '" + yesterday + "', CHGDT = '" + date + "', CHUSR = '" + chusr+ "' WHERE (RECID = " + recid + " AND BEGDA <= GETDATE() AND ENDDA >= GETDATE()";
+            string sqlCmd = @"UPDATE trrcd.COMDEV_PLAN SET ENDDA = '" + yesterday + "', CHGDT = '" + date + "', CHUSR = '" + chusr+ "' WHERE (RECID = " + recid + " AND BEGDA <= GETDATE() AND ENDDA >= GETDATE())";
 
             SqlCommand cmd = DatabaseFactory.GetCommand(conn, sqlCmd);
 
@@ -174,11 +174,11 @@ namespace BioPM.ClassObjects
         public static object[] GetComdevPlanById(string recid)
         {
             SqlConnection conn = GetConnection();
-            string sqlCmd = @"SELECT CP.RECID, CP.EVTID, CP.EVTMH, CP.EVTCO, CS.APVST
+            string sqlCmd = @"SELECT CP.RECID, CP.EVTID, CP.EVTMH, CP.EVTCO, CS.APVST, CP.PERNR
                             FROM trrcd.COMDEV_PLAN CP WITH(INDEX(COMDEV_PLAN_IDX_BEGDA_ENDDA_ID)), trrcd.COMDEV_PLAN_STATUS CS WITH(INDEX(COMDEV_PLAN_STATUS_IDX_BEGDA_ENDDA_ID))
                             WHERE CP.BEGDA <= GETDATE() AND CP.ENDDA >= GETDATE()
                             AND CS.BEGDA <= GETDATE() AND CS.ENDDA >= GETDATE()
-                            AND CP.RECID=CS.RECID AND CP.EVTID=CE.EVTIDAND CP.RECID='" + recid + "';";
+                            AND CP.RECID=CS.RECID AND CP.RECID='" + recid + "';";
             SqlCommand cmd = GetCommand(conn, sqlCmd);
 
             try
@@ -188,7 +188,7 @@ namespace BioPM.ClassObjects
                 object[] data = null;
                 while (reader.Read())
                 {
-                    object[] values = { reader[0].ToString(), reader[1].ToString(), reader[2].ToString(), reader[3].ToString(), reader[4].ToString() };
+                    object[] values = { reader[0].ToString(), reader[1].ToString(), reader[2].ToString(), reader[3].ToString(), reader[4].ToString(), reader[5].ToString() };
                     data=values;
                 }
                 return data;

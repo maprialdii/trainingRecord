@@ -40,7 +40,7 @@
     protected void btnAdd_Click(object sender, EventArgs e)
     {
         InsertDataIntoDatabase();
-        Response.Redirect("PageRequestTraining.aspx");
+        Response.Redirect("PageSuggestTraining.aspx");
     }
 
     protected void btnAddComp_Click(object sender, EventArgs e)

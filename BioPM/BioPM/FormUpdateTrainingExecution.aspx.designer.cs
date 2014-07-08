@@ -10,108 +10,133 @@
 namespace BioPM {
     
     
-    public partial class PageCompetencyRelation {
+    public partial class FormUpdateTrainingExecution {
         
         /// <summary>
-<<<<<<< HEAD
-=======
-        /// Form1 control.
->>>>>>> origin/master
         /// Form2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-<<<<<<< HEAD
-=======
-        protected global::System.Web.UI.HtmlControls.HtmlForm Form1;
->>>>>>> origin/master
         protected global::System.Web.UI.HtmlControls.HtmlForm Form2;
         
         /// <summary>
-        /// ddlCompParent control.
+        /// txtExcid control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlCompParent;
+        protected global::System.Web.UI.WebControls.TextBox txtExcid;
         
         /// <summary>
-        /// ddlCompChild control.
+        /// ddlEventMethod control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlCompChild;
+        protected global::System.Web.UI.WebControls.DropDownList ddlEventMethod;
         
         /// <summary>
-<<<<<<< HEAD
-=======
-        /// txtCompLevel control.
->>>>>>> origin/master
-        /// TextBox1 control.
+        /// txtEventTitle control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-<<<<<<< HEAD
-=======
-        protected global::System.Web.UI.WebControls.TextBox txtCompLevel;
+        protected global::System.Web.UI.WebControls.TextBox txtEventTitle;
         
         /// <summary>
-        /// btnAdd control.
->>>>>>> origin/master
-        protected global::System.Web.UI.WebControls.TextBox TextBox1;
-        
-        /// <summary>
-        /// Button1 control.
+        /// txtBatch control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-<<<<<<< HEAD
-        protected global::System.Web.UI.WebControls.Button Button1;
+        protected global::System.Web.UI.WebControls.TextBox txtBatch;
         
         /// <summary>
-        /// Form1 control.
+        /// txtBegda control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm Form1;
+        protected global::System.Web.UI.WebControls.TextBox txtBegda;
         
         /// <summary>
-        /// ddlCompParent control.
+        /// txtEndda control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        //protected global::System.Web.UI.WebControls.DropDownList ddlCompParent;
+        protected global::System.Web.UI.WebControls.TextBox txtEndda;
         
         /// <summary>
-        /// ddlCompChild control.
+        /// txtPembicara control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        //protected global::System.Web.UI.WebControls.DropDownList ddlCompChild;
+        protected global::System.Web.UI.WebControls.TextBox txtPembicara;
         
         /// <summary>
-        /// txtCompLevel control.
+        /// txtInsti control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCompLevel;
+        protected global::System.Web.UI.WebControls.TextBox txtInsti;
+        
+        /// <summary>
+        /// txtAdrin control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtAdrin;
+        
+        /// <summary>
+        /// TxtCitin control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TxtCitin;
+        
+        /// <summary>
+        /// txtCouin control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtCouin;
+        
+        /// <summary>
+        /// ddlStatus control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlStatus;
+        
+        /// <summary>
+        /// txtScore control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtScore;
         
         /// <summary>
         /// btnAdd control.
@@ -121,9 +146,14 @@ namespace BioPM {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnAdd;
-=======
-        protected global::System.Web.UI.WebControls.Button btnAdd;
-        protected global::System.Web.UI.WebControls.Button Button1;
->>>>>>> origin/master
+        
+        /// <summary>
+        /// btnCancel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnCancel;
     }
 }

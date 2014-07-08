@@ -133,8 +133,8 @@ namespace BioPM.ClassObjects
             SqlConnection conn = GetConnection();
             string sqlCmd = @"SELECT PR.PRQID, PR.POSID, PR.CPYID, PR.PRLVL
                             FROM trrcd.POSITION_REQ PR WITH(INDEX(POSITION_REQ_IDX_BEGDA_ENDDA_ID))
-                            AND PR.BEGDA <= GETDATE() AND PR.ENDDA >= GETDATE()
-                            AND PR.POSID='" + prqid+"'  ORDER BY PR.POSID ASC;";
+                            WHERE PR.BEGDA <= GETDATE() AND PR.ENDDA >= GETDATE()
+                            AND PR.PRQID=" + prqid + "  ORDER BY PR.POSID ASC;";
             SqlCommand cmd = GetCommand(conn, sqlCmd);
 
             try
@@ -145,7 +145,7 @@ namespace BioPM.ClassObjects
                 while (reader.Read())
                 {
                     object[] values = { reader[0].ToString(), reader[1].ToString(), reader[2].ToString(), reader[3].ToString() };
-                    values = data;
+                    data = values;
                 }
                 return data;
             }

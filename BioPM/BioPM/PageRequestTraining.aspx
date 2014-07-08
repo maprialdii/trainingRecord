@@ -15,7 +15,11 @@
 
         foreach (object[] data in BioPM.ClassObjects.ComDevPlan.GetComdevPlanByUsername(Session["username"].ToString()))
         {
+<<<<<<< HEAD
+            htmlelement += "<tr class=''><td>" + data[0].ToString() + "</td><td>" + data[1].ToString() + "</td><td>" + data[4].ToString() + "</td><td><a class='edit' href='FormUpdateRequestTraining.aspx?key=" + data[0].ToString() + "'>Edit</a></td><td><a class='delete' href='PageInformation.aspx?key=" + data[0].ToString() + "&type=27'>Delete</a></td></tr>";
+=======
             htmlelement += "<tr class=''><td>" + data[0].ToString() + "</td><td>" + data[1].ToString() + "</td><td>" + data[4].ToString() + "</td><td></tr>";
+>>>>>>> origin/master
         }
         
         return htmlelement;

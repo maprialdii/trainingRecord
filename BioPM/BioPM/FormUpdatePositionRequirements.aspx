@@ -5,41 +5,46 @@
     protected void Page_Load(object sender, EventArgs e)
     {
         if (Session["username"] == null && Session["password"] == null) Response.Redirect("PageLogin.aspx");
-        if (!IsPostBack) SetPositionAndCompetencyList();
+        if (!IsPostBack)
+        {
+            SetPositionAndCompetencyList();
+            SetDataToForm();
+        }
     }
-    //protected void sessionCreator()
-    //{
-    //    Session["username"] = "K495";
-    //    Session["name"] = "ALLAN PRAKOSA";
-    //    Session["password"] = "admin1234";
-    //    Session["role"] = "111111";
-    //}
+
+    protected void SetDataToForm()
+    {
+        object[] values = BioPM.ClassObjects.Jabatan.GetKualifikasiJabatanById(Request.QueryString["key"].ToString());
+        txtPrqID.Text = values[0].ToString();
+        txtLevel.Text = values[3].ToString();
+        ddlJabatan.SelectedValue = values[1].ToString();
+        ddlCompetency.SelectedValue = values[2].ToString();
+    }
 
     protected void SetPositionAndCompetencyList()
     {
-        //ddlJabatan.Items.Clear();
-        //foreach (object[] data in BioPM.ClassObjects.Jabatan.GetAllKualifikasiJabatan())
-        //{
-        //    ddlJabatan.Items.Add(new ListItem(data[1].ToString(), data[0].ToString()));
-        //}
+        ddlJabatan.Items.Clear();
+        foreach (object[] data in BioPM.ClassObjects.Jabatan.GetAllJabatan())
+        {
+            ddlJabatan.Items.Add(new ListItem(data[1].ToString(), data[0].ToString()));
+        }
 
         ddlCompetency.Items.Clear();
         foreach (object[] data in BioPM.ClassObjects.CompetencyCatalog.GetAllCompetency())
         {
-            ddlCompetency.Items.Add(new ListItem(data[1].ToString(), data[0].ToString()));
+            ddlCompetency.Items.Add(new ListItem(data[2].ToString(), data[0].ToString()));
         }
     }
 
     protected void UpdatePositionReqIntoDatabase()
     {
-        string PRQID = (BioPM.ClassObjects.OrganizationCatalog.GetOrganizationMaxID()).ToString();
-        BioPM.ClassObjects.Jabatan.UpdateJabatan(PRQID, ddlJabatan.SelectedValue, ddlCompetency.SelectedValue, txtLevel.Text, Session["username"].ToString());
+        BioPM.ClassObjects.Jabatan.UpdateJabatan(txtPrqID.Text, ddlJabatan.SelectedValue, ddlCompetency.SelectedValue, txtLevel.Text, Session["username"].ToString());
     }
 
     protected void btnAdd_Click(object sender, EventArgs e)
     {
         if (IsPostBack) UpdatePositionReqIntoDatabase();
-        Response.Redirect("PagePositionRequirements.aspx");
+        Response.Redirect("PagePositionRequirements.aspx?key=" + ddlJabatan.SelectedValue + "");
     }
 
     protected void btnCancel_Click(object sender, EventArgs e)
@@ -89,6 +94,13 @@
                     </header>
                     <div class="panel-body">
                         <form id="Form2" class="form-horizontal " runat="server" >
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label"> POSITION REQUIREMENT ID </label>
+                            <div class="col-lg-3 col-md-4">
+                                <asp:TextBox ID="txtPrqID" runat="server" class="form-control m-bot15" placeholder="POSITION REQUIREMENT ID" ReadOnly="true"></asp:TextBox>
+                            </div>
+                        </div>
 
                         <div class="form-group">
                             <label class="col-sm-3 control-label"> POSITION NAME </label>

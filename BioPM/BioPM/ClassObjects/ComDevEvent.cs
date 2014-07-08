@@ -195,12 +195,12 @@ namespace BioPM.ClassObjects
         public static object[] GetComdevEventById(string evtid)
         {
             SqlConnection conn = GetConnection();
-            string sqlCmd = @"SELECT CE.EVTID, CE.EVTNM, CE.EMTID, EM.EMTNM
+            string sqlCmd = @"SELECT CE.EVTID, CE.EVTNM, CE.EMTID, EM.EVTMT
                             FROM trrcd.COMDEV_EVENT CE WITH(INDEX(COMDEV_EVENT_IDX_BEGDA_ENDDA_ID)), trrcd.EVENT_METHOD EM WITH(INDEX(EVENT_METHOD_IDX_BEGDA_ENDDA_ID))
                             WHERE CE.EMTID = EM.EMTID
-                            AND CM.BEGDA <= GETDATE() AND CM.ENDDA >= GETDATE()
+                            AND EM.BEGDA <= GETDATE() AND EM.ENDDA >= GETDATE()
                             AND CE.BEGDA <= GETDATE() AND CE.ENDDA >= GETDATE()
-                            AND CE.EVTID='" + evtid + "'ORDER BY CE.EVTID ASC;";
+                            AND CE.EVTID=" + evtid + "ORDER BY CE.EVTID ASC;";
             SqlCommand cmd = GetCommand(conn, sqlCmd);
 
             try
