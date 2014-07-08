@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="PageSuggestTraining.aspx.cs" Inherits="BioPM.PageSuggestTraining" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="PageRequestFromEmployee.aspx.cs" Inherits="BioPM.PageRequestFromEmployee" %>
 
 <!DOCTYPE html>
 <script runat="server">
@@ -89,7 +89,7 @@
             <div class="col-sm-12">
                 <section class="panel">
                     <header class="panel-heading">
-                        Your Training Suggestion
+                        Training Request From Employee
                           <span class="tools pull-right">
                             <a class="fa fa-chevron-down" href="javascript:;"></a>
                             <a class="fa fa-times" href="javascript:;"></a>
@@ -99,10 +99,6 @@
 
                         <div class="adv-table">
                             <div class="clearfix">
-                                <div class="btn-group">
-                                    <button id="Button1" onclick="document.location.href='FormSuggestTraining.aspx';" class="btn btn-primary"> Add New <i class="fa fa-plus"></i>
-                                    </button>
-                                </div>
                                 <div class="btn-group pull-right">
                                     <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">Tools <i class="fa fa-angle-down"></i>
                                     </button>
@@ -113,17 +109,52 @@
                                     </ul>
                                 </div>
                             </div>
-                            <table class="table table-striped table-hover table-bordered" id="Table1" >
+                         </div>
+                        
+                        New Request
+                        <div class="adv-table">
+                            <div class="clearfix">
+                            <table class="table table-striped table-hover table-bordered" id="dynamic-table" >
                                 <thead>
                                 <tr>
                                     <th>Employee Name</th>
-                                    <th>Suggested Competency Development Event</th>                                   
-                                    <th>Edit</th>
-                                    <th>Delete</th>
+                                    <th>Requested Competency Development Event</th>                                   
+                                    <th>Approve</th>
+                                    <th>Reject</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <% Response.Write(GenerateSuggestedPlan()); %>
+                                <% Response.Write(GenerateRequestedPlan()); %>
+                                </tbody>
+                            </table>
+                            </div>
+                        </div>
+
+                            Approved Request
+                            <table class="table table-striped table-hover table-bordered" id="Table2" >
+                                <thead>
+                                <tr>
+                                    <th>Employee Name</th>
+                                    <th>Competency Development Event</th>                                   
+                                    <th>Edit</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <% Response.Write(GenerateApprovedPlan()); %>
+                                </tbody>
+                            </table>
+
+                            Rejected Request
+                            <table class="table table-striped table-hover table-bordered" id="Table3" >
+                                <thead>
+                                <tr>
+                                    <th>Employee Name</th>
+                                    <th>Competency Development Event</th>                                   
+                                    <th>Edit</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <% Response.Write(GenerateRejectedPlan()); %>
                                 </tbody>
                             </table>
                         </div>
