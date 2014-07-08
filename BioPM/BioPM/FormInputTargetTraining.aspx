@@ -5,44 +5,54 @@
     protected void Page_Load(object sender, EventArgs e)
     {
         if (Session["username"] == null && Session["password"] == null) Response.Redirect("PageLogin.aspx");
-        if (!IsPostBack) SetCompetencyList();
+        if (!IsPostBack) SetCompetencyAndEventList();
     }
 
-    protected void SetCompetencyList()
+    protected void SetCompetencyAndEventList()
     {
         ddlCompetency.Items.Clear();
         foreach (object[] data in BioPM.ClassObjects.CompetencyCatalog.GetAllCompetency())
         {
             ddlCompetency.Items.Add(new ListItem(data[1].ToString(), data[0].ToString()));
         }
+
+        ddlEvtName.Items.Clear();
+        foreach (object[] data in BioPM.ClassObjects.ComDevEvent.GetAllComdevEvent())
+        {
+            ddlEvtName.Items.Add(new ListItem(data[1].ToString(), data[0].ToString()));
+        }
     }
 
-    protected void InsertOrganizationIntoDatabase()
+    protected void InsertTargetIntoDatabase()
     {
-        //string ORGID = (BioPM.ClassObjects.OrganizationCatalog.GetOrganizationMaxID() + 1).ToString();
-        //BioPM.ClassObjects.OrganizationCatalog.InsertOrganization(ORGID, txtOrgID.Text, ddlOrgType.SelectedValue, txtOrgName.Text, Session["username"].ToString());
+        string TRGID = (BioPM.ClassObjects.ComDevEvent.GetComDevEventTargetMaxID() + 1).ToString();
+        BioPM.ClassObjects.ComDevEvent.InsertComDevEventTarget(TRGID, ddlEvtName.SelectedValue, ddlCompetency.SelectedValue, txtLevelTarget.Text, Session["username"].ToString());
     }
 
     protected void btnAdd_Click(object sender, EventArgs e)
     {
-        if (IsPostBack) InsertOrganizationIntoDatabase();
-        Response.Redirect("PageEventTargetDetail.aspx");
+        Response.Redirect("PageCompetencyDevelopmentEvent.aspx");
     }
 
     protected void btnAddComp_Click(object sender, EventArgs e)
     {
-        //if (IsPostBack) InsertOrganizationIntoDatabase();
-        Response.Redirect("FormInputTargetTraining.aspx");
+        if (IsPostBack) InsertTargetIntoDatabase();
+        Response.Redirect("FormInputTargetTraining.aspx?key=" + ddlEvtName.SelectedValue + "");
     }
 
     protected void btnCancel_Click(object sender, EventArgs e)
     {
-        Response.Redirect("FormRequestTraining.aspx");
+        Response.Redirect("PageUserPanel.aspx");
     }
 
     protected String GenerateDataKompetensi()
     {
-        string htmlelement = " ";
+        string htmlelement = "";
+
+        foreach (object[] data in BioPM.ClassObjects.ComDevEvent.GetComdevEventTargetByEvent(Request.QueryString["key"].ToString()))
+        {
+            htmlelement += "<tr class=''><td>" + data[3].ToString() + "</td><td>" + data[4].ToString() + "</td><td><a class='edit' href='FormUpdateEventMethod.aspx?key=" + data[0].ToString() + "'>Edit</a></td><td><a class='delete' href='PageInformation.aspx?key=" + data[0].ToString() + "&type=23'>Delete</a></td></tr>";
+        }
 
         return htmlelement;
     }
@@ -90,6 +100,14 @@
                         <form id="Form1" class="form-horizontal " runat="server" >
 
                         COMPETENCY TO DEVELOP
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label"> EVENT NAME </label>
+                            <div class="col-lg-3 col-md-4">
+                                <asp:DropDownList ID="ddlEvtName" runat="server" class="form-control m-bot15">   
+                                </asp:DropDownList> 
+                            </div>
+                        </div>
 
                         <div class="form-group">
                             <label class="col-sm-3 control-label"> COMPETENCY NAME </label>

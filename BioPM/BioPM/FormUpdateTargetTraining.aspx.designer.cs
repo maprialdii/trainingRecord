@@ -10,25 +10,34 @@
 namespace BioPM {
     
     
-    public partial class FormInputTargetTraining {
+    public partial class FormUpdateTargetTraining {
         
         /// <summary>
-        /// Form1 control.
+        /// Form2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm Form1;
+        protected global::System.Web.UI.HtmlControls.HtmlForm Form2;
         
         /// <summary>
-        /// ddlEvtName control.
+        /// txtTrgID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlEvtName;
+        protected global::System.Web.UI.WebControls.TextBox txtTrgID;
+        
+        /// <summary>
+        /// txtEvtName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtEvtName;
         
         /// <summary>
         /// ddlCompetency control.
@@ -47,15 +56,6 @@ namespace BioPM {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtLevelTarget;
-        
-        /// <summary>
-        /// addComp control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button addComp;
         
         /// <summary>
         /// btnAdd control.

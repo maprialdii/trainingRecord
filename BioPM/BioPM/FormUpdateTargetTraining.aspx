@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="FormInputPositionRequirements.aspx.cs" Inherits="BioPM.FormInputPositionRequirements" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="FormUpdateTargetTraining.aspx.cs" Inherits="BioPM.FormUpdateTargetTraining" %>
 
 <!DOCTYPE html>
 <script runat="server">
@@ -6,17 +6,24 @@
     protected void Page_Load(object sender, EventArgs e)
     {
         if (Session["username"] == null && Session["password"] == null) Response.Redirect("PageLogin.aspx");
-        if (!IsPostBack) SetPositionAndCompetencyList();
+        if (!IsPostBack)
+        {
+            SetPositionAndCompetencyList();
+            SetDataToForm();
+        }
+    }
+
+    protected void SetDataToForm()
+    {
+        object[] values = BioPM.ClassObjects.ComDevEvent.GetComdevEventTargetById(Request.QueryString["key"].ToString());
+        txtTrgID.Text = values[0].ToString();
+        txtEvtName.Text = values[1].ToString();
+        ddlCompetency.SelectedValue = values[3].ToString();
+        txtLevelTarget.Text = values[5].ToString();
     }
 
     protected void SetPositionAndCompetencyList()
     {
-        ddlJabatan.Items.Clear();
-        foreach (object[] data in BioPM.ClassObjects.Jabatan.GetAllJabatan())
-        {
-            ddlJabatan.Items.Add(new ListItem(data[1].ToString(), data[0].ToString()));
-        }
-
         ddlCompetency.Items.Clear();
         foreach (object[] data in BioPM.ClassObjects.CompetencyCatalog.GetAllCompetency())
         {
@@ -24,16 +31,15 @@
         }
     }
 
-    protected void InsertPositionReqIntoDatabase()
+    protected void UpdatePositionReqToDatabase()
     {
-        PRQID = (BioPM.ClassObjects.Jabatan.GetPositionRequirementMaxID() + 1).ToString();
-        BioPM.ClassObjects.Jabatan.InsertJabatan(PRQID, ddlJabatan.SelectedValue, ddlCompetency.SelectedValue, txtLevel.Text, Session["username"].ToString());
+        BioPM.ClassObjects.ComDevEvent.UpdateComDevEventTarget(txtTrgID.Text, txtEvtName.Text, ddlCompetency.SelectedValue, txtLevelTarget.Text, Session["username"].ToString());
     }
 
     protected void btnAdd_Click(object sender, EventArgs e)
     {
-        if (IsPostBack) InsertPositionReqIntoDatabase();
-        Response.Redirect("PagePositionRequirements.aspx?key="+ddlJabatan.SelectedValue+"");
+        if (IsPostBack) UpdatePositionReqToDatabase();
+        Response.Redirect("PageCompetencyDevelopmentEvent.aspx");
     }
 
     protected void btnCancel_Click(object sender, EventArgs e)
@@ -85,10 +91,16 @@
                         <form id="Form2" class="form-horizontal " runat="server" >
 
                         <div class="form-group">
-                            <label class="col-sm-3 control-label"> POSITION NAME </label>
+                            <label class="col-sm-3 control-label"> ID TARGET </label>
                             <div class="col-lg-3 col-md-4">
-                                <asp:DropDownList ID="ddlJabatan" runat="server" class="form-control m-bot15">   
-                                </asp:DropDownList> 
+                                <asp:TextBox ID="txtTrgID" runat="server" class="form-control m-bot15" placeholder="PROFICIENCY LEVEL TARGET" ReadOnly="true" ></asp:TextBox>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label"> EVENT NAME </label>
+                            <div class="col-lg-3 col-md-4">
+                                <asp:TextBox ID="txtEvtName" runat="server" class="form-control m-bot15" placeholder="PROFICIENCY LEVEL TARGET" ReadOnly="true" ></asp:TextBox>
                             </div>
                         </div>
 
@@ -101,16 +113,16 @@
                         </div>
 
                         <div class="form-group">
-                            <label class="col-sm-3 control-label"> REQUIRED LEVEL </label>
+                            <label class="col-sm-3 control-label"> PROFICIENCY LEVEL TARGET </label>
                             <div class="col-lg-3 col-md-4">
-                                <asp:TextBox ID="txtLevel" runat="server" class="form-control m-bot15" placeholder="PROFICIENCY LEVEL TARGET" ></asp:TextBox>
+                                <asp:TextBox ID="txtLevelTarget" runat="server" class="form-control m-bot15" placeholder="PROFICIENCY LEVEL TARGET" ></asp:TextBox>
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label class="col-sm-3 control-label"> </label>
                             <div class="col-lg-3 col-md-3">
-                                <asp:Button class="btn btn-round btn-primary" ID="btnAdd" runat="server" Text="Add" OnClick="btnAdd_Click"/>
+                                <asp:Button class="btn btn-round btn-primary" ID="btnAdd" runat="server" Text="Update" OnClick="btnAdd_Click"/>
                                 <asp:Button class="btn btn-round btn-primary" ID="btnCancel" runat="server" Text="Cancel" OnClick="btnCancel_Click"/>
                             </div>
                         </div>
@@ -140,3 +152,4 @@
 <% Response.Write(BioPM.ClassScripts.JS.GetFlotChartScript()); %>
 </body>
 </html>
+

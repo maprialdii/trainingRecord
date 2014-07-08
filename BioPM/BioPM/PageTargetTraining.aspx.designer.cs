@@ -10,6 +10,6 @@
 namespace BioPM {
     
     
-    public partial class PageCompetencyDevelopmentEvent {
+    public partial class PageTargetTraining {
     }
 }

@@ -137,6 +137,7 @@
     <Content Include="FormUpdatePositionRequirements.aspx" />
     <Content Include="FormUpdateRequestTraining.aspx" />
     <Content Include="FormUpdateSuggestTraining.aspx" />
+    <Content Include="FormUpdateTargetTraining.aspx" />
     <Content Include="FormUpdateTrainingExecution.aspx" />
     <Content Include="PageCompetencyDevelopmentEvent.aspx" />
     <Content Include="PageCompetencyParameter.aspx" />
@@ -223,6 +224,7 @@
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="PageInformation.aspx" />
     <Content Include="PageSuggestTraining.aspx" />
+    <Content Include="PageTargetTraining.aspx" />
     <Content Include="PageTrainingExecution.aspx" />
     <Content Include="PageTrainingHours.aspx" />
     <Content Include="PageTrainingReport.aspx" />
@@ -512,6 +514,13 @@
     <Compile Include="FormUpdateSuggestTraining.aspx.designer.cs">
       <DependentUpon>FormUpdateSuggestTraining.aspx</DependentUpon>
     </Compile>
+    <Compile Include="FormUpdateTargetTraining.aspx.cs">
+      <DependentUpon>FormUpdateTargetTraining.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FormUpdateTargetTraining.aspx.designer.cs">
+      <DependentUpon>FormUpdateTargetTraining.aspx</DependentUpon>
+    </Compile>
     <Compile Include="FormUpdateTrainingExecution.aspx.cs">
       <DependentUpon>FormUpdateTrainingExecution.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -705,6 +714,13 @@
     </Compile>
     <Compile Include="PageSuggestTraining.aspx.designer.cs">
       <DependentUpon>PageSuggestTraining.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageTargetTraining.aspx.cs">
+      <DependentUpon>PageTargetTraining.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageTargetTraining.aspx.designer.cs">
+      <DependentUpon>PageTargetTraining.aspx</DependentUpon>
     </Compile>
     <Compile Include="PageTrainingExecution.aspx.cs">
       <DependentUpon>PageTrainingExecution.aspx</DependentUpon>
