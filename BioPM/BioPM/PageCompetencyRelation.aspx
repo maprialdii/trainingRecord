@@ -63,19 +63,6 @@
             ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('" + "YOUR PASSWORD IS INCORRECT" + "');", true);
         }
     }
-
-    protected void btnSave_Click(object sender, EventArgs e)
-    {
-        if (Session["password"].ToString() == BioPM.ClassEngines.CryptographFactory.Encrypt(txtConfirmation.Text, true))
-        {
-            InsertRelationIntoDatabase();
-            Response.Redirect("PageRisk.aspx");
-        }
-        else
-        {
-            ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('" + "YOUR PASSWORD IS INCORRECT" + "');", true);
-        }
-    }
     
 </script>
 

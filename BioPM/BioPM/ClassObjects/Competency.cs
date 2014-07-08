@@ -102,7 +102,7 @@ namespace BioPM.ClassObjects
             string sqlCmd = @"SELECT RK.CPYID, RK.CPYKD, RK.CPYNM
                             FROM trrcd.REFERENSI_KOMPETENSI RK WITH(INDEX(REFERENSI_KOMPETENSI_IDX_BEGDA_ENDDA_ID))
                             WHERE RK.BEGDA <= GETDATE() AND RK.ENDDA >= GETDATE()
-                            AND RK.CPYID=" + cpyid + " ORDER BY RK.CPYID ASC;";
+                            AND RK.CPYID=" + cpyid + "ORDER BY RK.CPYID ASC;";
             SqlCommand cmd = GetCommand(conn, sqlCmd);
 
             try
