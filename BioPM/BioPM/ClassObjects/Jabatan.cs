@@ -161,7 +161,7 @@ namespace BioPM.ClassObjects
             string sqlCmd = @"SELECT PR.PRQID, PR.POSID, PR.CPYID, PR.PRLVL
                             FROM trrcd.POSITION_REQ PR WITH(INDEX(POSITION_REQ_IDX_BEGDA_ENDDA_ID))
                             WHERE PR.BEGDA <= GETDATE() AND PR.ENDDA >= GETDATE()
-                            AND PR.POSID=" + posid + " AND PR.CPYID=" + cpyid + "  ORDER BY PR.POSID ASC;";
+                            AND PR.POSID='" + posid + "' AND PR.CPYID=" + cpyid + "  ORDER BY PR.POSID ASC;";
             SqlCommand cmd = GetCommand(conn, sqlCmd);
 
             try

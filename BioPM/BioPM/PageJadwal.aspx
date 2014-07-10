@@ -21,9 +21,9 @@
     {
         string htmlelement = "";
 
-        foreach (object[] data in BioPM.ClassObjects.ComDevPlan.GetComdevPlanByMonth(Request.QueryString["key"].ToString()))
+        foreach (object[] data in BioPM.ClassObjects.ComDevPlan.GetComdevPlanByMonth())
         {
-            htmlelement += "<tr class=''><td>" + data[0].ToString() + "</td><td>" + data[1].ToString() + "</td></tr>";
+            htmlelement += "<tr class=''><td>" + data[4].ToString() + "</td><td>" + data[1].ToString() + "</td><td>" + data[2].ToString() + "</td></tr>";
         }
         
         return htmlelement;
@@ -31,7 +31,12 @@
 
     protected void btnSave_Click(object sender, EventArgs e)
     {
-        Response.Redirect("PageRequestTraining.aspx?key="+ddlBulan.SelectedValue+"");
+        Response.Redirect("PageJadwal.aspx?key="+ddlBulan.SelectedItem+"");
+    }
+
+    protected void btnCancel_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("PageUserPanel.aspx");
     }
 
 </script>
@@ -92,54 +97,25 @@
                                     </ul>
                                 </div>
                             </div>
-                            <asp:DropDownList ID="ddlBulan" runat="server" class="form-control m-bot15">   
+                            <form id="Form1" class="form-horizontal " runat="server" >
+                                <asp:DropDownList ID="ddlBulan" runat="server" class="form-control m-bot15">   
                                 </asp:DropDownList> 
-                            <asp:Button ID="btnView" runat="server" class="btn btn-success" Text="View" OnClick="btnSave_Click"></asp:Button>
-                            <table class="table table-striped table-hover table-bordered" id="dynamic-table" >
+                                <asp:Button ID="btnView" runat="server" class="btn btn-success" Text="View" OnClick="btnSave_Click"></asp:Button>
+                           </form>
+                                <table class="table table-striped table-hover table-bordered" id="dynamic-table" >
                                 <thead>
                                 <tr>
                                     <th>Employee Name</th>
                                     <th>Event Name</th>
+                                    <th>Event Month</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 <% 
-                                    if(IsPostBack)Response.Write(GenerateDataRequestTraining()); %>
+                                    Response.Write(GenerateDataRequestTraining()); %>
                                 </tbody>
                             </table>
-                        </div>
-
-                        <!-- Modal -->
-                        <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModal" class="modal fade">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                        <h4 class="modal-title">Approver Confirmation</h4>
-                                    </div>
-                                    <div class="modal-body">
-                                        <p>You Are Logged In As <% Response.Write(Session["name"].ToString()); %></p><br />
-                                        <p>Are you sure to insert into database?</p>
-                                        <asp:TextBox ID="txtConfirmation" runat="server" TextMode="Password" placeholder="Confirmation Password" class="form-control placeholder-no-fix"></asp:TextBox>
-
-                                    </div>
-                                    <div class="modal-footer">
-                                        <asp:Button ID="btnClose" runat="server" data-dismiss="modal" class="btn btn-default" Text="Cancel"></asp:Button>
-                                        <asp:Button ID="btnSubmit" runat="server" class="btn btn-success" Text="Confirm" OnClick="btnSave_Click"></asp:Button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- modal -->
-
-                        <div class="form-group">
-                            <label class="col-sm-3 control-label"> </label>
-                            <div class="col-lg-3 col-md-3">
-                                <asp:LinkButton data-toggle="modal" class="btn btn-round btn-primary" ID="btnAction" runat="server" Text="Add" href="#myModal"/>
-                                <asp:Button class="btn btn-round btn-primary" ID="btnCancel" runat="server" Text="Cancel" OnClick="btnCancel_Click"/>
-                            </div>
-                        </div>
-
+                        </div>                      
                     </div>
                     
                 </section>

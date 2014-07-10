@@ -130,7 +130,7 @@ namespace BioPM.ClassObjects
                 object[] data = null;
                 while (reader.Read())
                 {
-                    object[] values = { reader[0].ToString(), reader[1].ToString(), reader[2].ToString(), reader[3].ToString(), reader[4].ToString(), reader[5].ToString(), reader[6].ToString() };
+                    object[] values = { reader[0].ToString(), reader[1].ToString() };
                     data = values;
                 }
                 return data;
@@ -233,7 +233,7 @@ namespace BioPM.ClassObjects
         public static List<object[]> GetQualification(string pernr)
         {
             SqlConnection conn = GetConnection();
-            string sqlCmd = @"SELECT CG.GAPID, UD.PERNR, UD.POSID, CG.CPYID, RK.CPYNM, CG.PRLVL, PR.PRLVL, PR.GAPLV
+            string sqlCmd = @"SELECT CG.GAPID, UD.PERNR, UD.POSID, CG.CPYID, RK.CPYNM, CG.PRLVL, PR.PRLVL, CG.GAPLV
                             FROM trrcd.COMPETENCY_GAP CG WITH(INDEX(COMPETENCY_GAP_IDX_BEGDA_ENDDA_ID)), bioumum.USER_DATA UD, trrcd.POSITION_REQ PR WITH(INDEX(POSITION_REQ_IDX_BEGDA_ENDDA_ID)), trrcd.REFERENSI_KOMPETENSI RK WITH(INDEX(REFERENSI_KOMPETENSI_IDX_BEGDA_ENDDA_ID))
                             WHERE CG.BEGDA <= GETDATE() AND CG.ENDDA >= GETDATE()
                             AND PR.BEGDA <= GETDATE() AND PR.ENDDA >= GETDATE()
@@ -249,7 +249,7 @@ namespace BioPM.ClassObjects
                 List<object[]> batchs = new List<object[]>();
                 while (reader.Read())
                 {
-                    object[] values = { reader[0].ToString(), reader[1].ToString(), reader[2].ToString(), reader[3].ToString(), reader[4].ToString(), reader[5].ToString(), reader[6].ToString(), reader[7].ToString(), reader[8].ToString() };
+                    object[] values = { reader[0].ToString(), reader[1].ToString(), reader[2].ToString(), reader[3].ToString(), reader[4].ToString(), reader[5].ToString(), reader[6].ToString(), reader[7].ToString() };
                     batchs.Add(values);
                 }
                 return batchs;
@@ -268,7 +268,7 @@ namespace BioPM.ClassObjects
             string maxdate = DateTime.MaxValue.ToString("MM/dd/yyyy HH:mm");
             SqlConnection conn = GetConnection();
             string sqlCmd = @"INSERT INTO trrcd.COMPETENCY_GAP (BEGDA, ENDDA, GAPID, PERNR, CPYID, PRLVL, CHGDT, CHUSR, GAPLV)
-                            VALUES ('" + date + "','" + maxdate + "'," + GAPID + ",'" + PERNR + "'," + CPYID + "," + PRLVL + ",'" + date + "','" + CHUSR + "', ,'" + GAPLV + "');";
+                            VALUES ('" + date + "','" + maxdate + "'," + GAPID + ",'" + PERNR + "'," + CPYID + "," + PRLVL + ",'" + date + "','" + CHUSR + "','" + GAPLV + "');";
 
             SqlCommand cmd = DatabaseFactory.GetCommand(conn, sqlCmd);
 

@@ -144,7 +144,7 @@ namespace BioPM.ClassObjects
         public static List<object[]> GetRekomendasiTraining(string PERNR)
         {
             SqlConnection conn = GetConnection();
-            string sqlCmd = @"SELECT CE.EVTNM, EM.EVTMT
+            string sqlCmd = @"SELECT DISTINCT CE.EVTNM, EM.EVTMT, CE.EVTID
                             FROM trrcd.COMPETENCY_GAP CG WITH(INDEX(COMPETENCY_GAP_IDX_BEGDA_ENDDA_ID)), trrcd.COMDEV_EVENT_TARGET CT, trrcd.COMDEV_EVENT CE, trrcd.EVENT_METHOD EM, 
                             trrcd.POSITION_REQ PR
                             WHERE CG.BEGDA <= GETDATE() AND CG.ENDDA >= GETDATE()
@@ -152,8 +152,7 @@ namespace BioPM.ClassObjects
                             AND CE.BEGDA <= GETDATE() AND CE.ENDDA >= GETDATE()
                             AND EM.BEGDA <= GETDATE() AND EM.ENDDA >= GETDATE()
                             AND PR.BEGDA <= GETDATE() AND PR.ENDDA >= GETDATE()
-                            AND CG.CPYID=CT.CPYID and CT.EVTID=CE.EVTID and CE.EMTID=EM.EMTID and PR.CPYID=CG.CPYID
-                            AND CG.GAPID>0 AND CT.PRLVL>PR.PRLVL AND CG.PERNR='" + PERNR + "'";
+                            AND CG.CPYID=CT.CPYID and CT.EVTID=CE.EVTID and CE.EMTID=EM.EMTID and PR.CPYID=CG.CPYID AND CE.EVTID not in (SELECT CP.EVTID FROM trrcd.COMDEV_PLAN CP where CP.PERNR='" + PERNR + "') AND CG.GAPID>0 AND CT.PRLVL>PR.PRLVL AND CG.PERNR='" + PERNR + "'";
             SqlCommand cmd = GetCommand(conn, sqlCmd);
 
             try
@@ -163,7 +162,7 @@ namespace BioPM.ClassObjects
                 List<object[]> batchs = new List<object[]>();
                 while (reader.Read())
                 {
-                    object[] values = { reader[0].ToString(), reader[1].ToString() };
+                    object[] values = { reader[0].ToString(), reader[1].ToString(), reader[2].ToString() };
                     batchs.Add(values);
                 }
                 return batchs;
@@ -287,10 +286,10 @@ namespace BioPM.ClassObjects
         public static List<object[]> GetMonth()
         {
             SqlConnection conn = GetConnection();
-            string sqlCmd = @"SELECT DISTINCT CP.EVTCO
+            string sqlCmd = @"SELECT DISTINCT CP.EVTMH
                             FROM trrcd.COMDEV_PLAN CP WITH(INDEX(COMDEV_PLAN_IDX_BEGDA_ENDDA_ID))
                             WHERE CP.BEGDA <= GETDATE() AND CP.ENDDA >= GETDATE()
-                            ORDER BY CP.RECID ASC;";
+                            ORDER BY CP.EVTMH ASC;";
             SqlCommand cmd = GetCommand(conn, sqlCmd);
 
             try
@@ -311,7 +310,7 @@ namespace BioPM.ClassObjects
             }
         }
 
-        public static List<object[]> GetComdevPlanByMonth(string month)
+        public static List<object[]> GetComdevPlanByMonth()
         {
             SqlConnection conn = GetConnection();
             string sqlCmd = @"SELECT CP.RECID, CE.EVTNM, CP.EVTMH, CP.EVTCO, UD.CNAME
@@ -319,7 +318,7 @@ namespace BioPM.ClassObjects
                             WHERE CP.BEGDA <= GETDATE() AND CP.ENDDA >= GETDATE()
                             AND CS.BEGDA <= GETDATE() AND CS.ENDDA >= GETDATE()
                             AND CE.BEGDA <= GETDATE() AND CE.ENDDA >= GETDATE()
-                            AND CP.RECID=CS.RECID AND CP.EVTID=CE.EVTID AND UD.PERNR=CP.PERNR AND CP.EVTCO='" + month + "' ORDER BY CP.RECID DESC;";
+                            AND CP.RECID=CS.RECID AND CP.EVTID=CE.EVTID AND UD.PERNR=CP.PERNR AND CS.APVST='Disetujui'";
             SqlCommand cmd = GetCommand(conn, sqlCmd);
 
             try

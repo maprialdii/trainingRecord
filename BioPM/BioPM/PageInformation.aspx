@@ -198,6 +198,20 @@
                     message = "DELETE SUCCESS! POSITION REQUIREMENT ID " + ID + " HAS BEEN DELETED. <a href='PageJabatan.aspx'>BACK</a>.";
                     break;
                 }
+            case "30":
+                {
+                    string RECID = (BioPM.ClassObjects.ComDevPlan.GetComDevPlanMaxID() + 1).ToString();
+                    BioPM.ClassObjects.ComDevPlan.InsertComDevPlan(RECID, Session["username"].ToString(), ID, " ", " ", Session["username"].ToString());
+                    BioPM.ClassObjects.ComDevPlan.InsertComDevPlanStatus(RECID, "Belum Disetujui", " ", Session["username"].ToString());
+                    message = "REQUEST SUCCESS! REQUEST HAS BEEN ADDED. <a href='PageRequestTraining.aspx'>BACK</a>.";
+                    break;
+                }
+            case "31":
+                {
+                    BioPM.ClassObjects.ComDevPlan.UpdateComDevPlanStatus(ID, "Tidak Disetujui", Session["username"].ToString(), Session["username"].ToString());
+                    message = "UPDATE SUCCESS! REQUEST HAS BEEN REJECTED. <a href='PageRequestFromEmployee.aspx'>BACK</a>.";
+                    break;
+                }
             
             default :
                 {

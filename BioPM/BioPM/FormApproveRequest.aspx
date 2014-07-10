@@ -114,7 +114,11 @@
                             <div class="col-lg-3 col-md-4">
                                 <asp:TextBox ID="txtMonth" runat="server" class="form-control m-bot15">   
                                 </asp:TextBox> 
+<<<<<<< HEAD
                             <a href="PageJadwal.aspx">LIHAT JADWAL</a>   
+=======
+                            <a href="PageJadwal.aspx" target="_blank"> LIHAT JADWAL </a>   
+>>>>>>> origin/master
                             </div>
                         </div>
 
