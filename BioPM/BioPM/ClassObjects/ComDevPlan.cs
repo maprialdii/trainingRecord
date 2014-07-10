@@ -141,6 +141,39 @@ namespace BioPM.ClassObjects
             }
         }
 
+        public static List<object[]> GetRekomendasiTraining(string PERNR)
+        {
+            SqlConnection conn = GetConnection();
+            string sqlCmd = @"SELECT CE.EVTNM, EM.EVTMT
+                            FROM trrcd.COMPETENCY_GAP CG WITH(INDEX(COMPETENCY_GAP_IDX_BEGDA_ENDDA_ID)), trrcd.COMDEV_EVENT_TARGET CT, trrcd.COMDEV_EVENT CE, trrcd.EVENT_METHOD EM, 
+                            trrcd.POSITION_REQ PR
+                            WHERE CG.BEGDA <= GETDATE() AND CG.ENDDA >= GETDATE()
+                            AND CT.BEGDA <= GETDATE() AND CT.ENDDA >= GETDATE()
+                            AND CE.BEGDA <= GETDATE() AND CE.ENDDA >= GETDATE()
+                            AND EM.BEGDA <= GETDATE() AND EM.ENDDA >= GETDATE()
+                            AND PR.BEGDA <= GETDATE() AND PR.ENDDA >= GETDATE()
+                            AND CG.CPYID=CT.CPYID and CT.EVTID=CE.EVTID and CE.EMTID=EM.EMTID and PR.CPYID=CG.CPYID
+                            AND CG.GAPID>0 AND CT.PRLVL>PR.PRLVL AND CG.PERNR='" + PERNR + "'";
+            SqlCommand cmd = GetCommand(conn, sqlCmd);
+
+            try
+            {
+                conn.Open();
+                SqlDataReader reader = GetDataReader(cmd);
+                List<object[]> batchs = new List<object[]>();
+                while (reader.Read())
+                {
+                    object[] values = { reader[0].ToString(), reader[1].ToString() };
+                    batchs.Add(values);
+                }
+                return batchs;
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+
         public static List<object[]> GetComdevPlanByStatus(string status)
         {
             SqlConnection conn = GetConnection();
@@ -174,11 +207,11 @@ namespace BioPM.ClassObjects
         public static object[] GetComdevPlanById(string recid)
         {
             SqlConnection conn = GetConnection();
-            string sqlCmd = @"SELECT CP.RECID, CP.EVTID, CP.EVTMH, CP.EVTCO, CS.APVST, CP.PERNR
-                            FROM trrcd.COMDEV_PLAN CP WITH(INDEX(COMDEV_PLAN_IDX_BEGDA_ENDDA_ID)), trrcd.COMDEV_PLAN_STATUS CS WITH(INDEX(COMDEV_PLAN_STATUS_IDX_BEGDA_ENDDA_ID))
+            string sqlCmd = @"SELECT CP.RECID, CP.EVTID, CP.EVTMH, CP.EVTCO, CS.APVST, CP.PERNR, UD.CNAME
+                            FROM trrcd.COMDEV_PLAN CP WITH(INDEX(COMDEV_PLAN_IDX_BEGDA_ENDDA_ID)), trrcd.COMDEV_PLAN_STATUS CS WITH(INDEX(COMDEV_PLAN_STATUS_IDX_BEGDA_ENDDA_ID)), bioumum.USER_DATA UD
                             WHERE CP.BEGDA <= GETDATE() AND CP.ENDDA >= GETDATE()
                             AND CS.BEGDA <= GETDATE() AND CS.ENDDA >= GETDATE()
-                            AND CP.RECID=CS.RECID AND CP.RECID='" + recid + "';";
+                            AND CP.RECID=CS.RECID AND UD.PERNR=CP.PERNR AND CP.RECID='" + recid + "';";
             SqlCommand cmd = GetCommand(conn, sqlCmd);
 
             try
@@ -188,7 +221,7 @@ namespace BioPM.ClassObjects
                 object[] data = null;
                 while (reader.Read())
                 {
-                    object[] values = { reader[0].ToString(), reader[1].ToString(), reader[2].ToString(), reader[3].ToString(), reader[4].ToString(), reader[5].ToString() };
+                    object[] values = { reader[0].ToString(), reader[1].ToString(), reader[2].ToString(), reader[3].ToString(), reader[4].ToString(), reader[5].ToString(), reader[6].ToString() };
                     data=values;
                 }
                 return data;
@@ -198,6 +231,8 @@ namespace BioPM.ClassObjects
                 conn.Close();
             }
         }
+
+
 
         public static object[] GetComdevPlanStatusById(string recid)
         {
@@ -242,6 +277,62 @@ namespace BioPM.ClassObjects
                     if (!reader.IsDBNull(0)) id = reader[0].ToString() + "";
                 }
                 return Convert.ToInt16(id);
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+
+        public static List<object[]> GetMonth()
+        {
+            SqlConnection conn = GetConnection();
+            string sqlCmd = @"SELECT DISTINCT CP.EVTCO
+                            FROM trrcd.COMDEV_PLAN CP WITH(INDEX(COMDEV_PLAN_IDX_BEGDA_ENDDA_ID))
+                            WHERE CP.BEGDA <= GETDATE() AND CP.ENDDA >= GETDATE()
+                            ORDER BY CP.RECID ASC;";
+            SqlCommand cmd = GetCommand(conn, sqlCmd);
+
+            try
+            {
+                conn.Open();
+                SqlDataReader reader = GetDataReader(cmd);
+                List<object[]> batchs = new List<object[]>();
+                while (reader.Read())
+                {
+                    object[] values = { reader[0].ToString() };
+                    batchs.Add(values);
+                }
+                return batchs;
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+
+        public static List<object[]> GetComdevPlanByMonth(string month)
+        {
+            SqlConnection conn = GetConnection();
+            string sqlCmd = @"SELECT CP.RECID, CE.EVTNM, CP.EVTMH, CP.EVTCO, UD.CNAME
+                            FROM trrcd.COMDEV_PLAN CP WITH(INDEX(COMDEV_PLAN_IDX_BEGDA_ENDDA_ID)), trrcd.COMDEV_PLAN_STATUS CS WITH(INDEX(COMDEV_PLAN_STATUS_IDX_BEGDA_ENDDA_ID)), trrcd.COMDEV_EVENT CE WITH(INDEX(COMDEV_EVENT_IDX_BEGDA_ENDDA_ID)), bioumum.USER_DATA UD
+                            WHERE CP.BEGDA <= GETDATE() AND CP.ENDDA >= GETDATE()
+                            AND CS.BEGDA <= GETDATE() AND CS.ENDDA >= GETDATE()
+                            AND CE.BEGDA <= GETDATE() AND CE.ENDDA >= GETDATE()
+                            AND CP.RECID=CS.RECID AND CP.EVTID=CE.EVTID AND UD.PERNR=CP.PERNR AND CP.EVTCO='" + month + "' ORDER BY CP.RECID DESC;";
+            SqlCommand cmd = GetCommand(conn, sqlCmd);
+
+            try
+            {
+                conn.Open();
+                SqlDataReader reader = GetDataReader(cmd);
+                List<object[]> batchs = new List<object[]>();
+                while (reader.Read())
+                {
+                    object[] values = { reader[0].ToString(), reader[1].ToString(), reader[2].ToString(), reader[3].ToString(), reader[4].ToString() };
+                    batchs.Add(values);
+                }
+                return batchs;
             }
             finally
             {

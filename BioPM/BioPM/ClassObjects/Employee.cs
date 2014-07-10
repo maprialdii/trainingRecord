@@ -172,6 +172,9 @@ namespace BioPM.ClassObjects
 
     public class CostCenterCatalog : DatabaseFactory
     {
+        string POSID = null;
+        string PRLVL = null;
+
         public static List<object[]> GetAllCostCenter()
         {
             SqlConnection conn = GetConnection();
@@ -230,13 +233,13 @@ namespace BioPM.ClassObjects
         public static List<object[]> GetQualification(string pernr)
         {
             SqlConnection conn = GetConnection();
-            string sqlCmd = @"SELECT CG.GAPID, UD.PERNR, UD.POSID, CG.CPYID, RK.CPYNM, CG.PRLVL, PR.PRLVL, PR.PRLVL-CG.PRLVL AS GAP
+            string sqlCmd = @"SELECT CG.GAPID, UD.PERNR, UD.POSID, CG.CPYID, RK.CPYNM, CG.PRLVL, PR.PRLVL, PR.GAPLV
                             FROM trrcd.COMPETENCY_GAP CG WITH(INDEX(COMPETENCY_GAP_IDX_BEGDA_ENDDA_ID)), bioumum.USER_DATA UD, trrcd.POSITION_REQ PR WITH(INDEX(POSITION_REQ_IDX_BEGDA_ENDDA_ID)), trrcd.REFERENSI_KOMPETENSI RK WITH(INDEX(REFERENSI_KOMPETENSI_IDX_BEGDA_ENDDA_ID))
                             WHERE CG.BEGDA <= GETDATE() AND CG.ENDDA >= GETDATE()
                             AND PR.BEGDA <= GETDATE() AND PR.ENDDA >= GETDATE()
                             AND RK.BEGDA <= GETDATE() AND RK.ENDDA >= GETDATE()
                             AND UD.BEGDA <= GETDATE() AND UD.ENDDA >= GETDATE()
-                            AND CG.PERNR=UD.PERNR and PR.CPYID=CG.CPYID and CG.CPYID=RK.CPYID and UD.PERNR='" + pernr + "';";
+                            AND CG.PERNR=UD.PERNR and PR.CPYID=CG.CPYID and CG.CPYID=RK.CPYID and PR.POSID=UD.POSID and UD.PERNR='" + pernr + "';";
             SqlCommand cmd = GetCommand(conn, sqlCmd);
 
             try
@@ -246,7 +249,7 @@ namespace BioPM.ClassObjects
                 List<object[]> batchs = new List<object[]>();
                 while (reader.Read())
                 {
-                    object[] values = { reader[0].ToString(), reader[1].ToString(), reader[2].ToString(), reader[3].ToString(), reader[4].ToString(), reader[5].ToString(), reader[6].ToString(), reader[7].ToString() };
+                    object[] values = { reader[0].ToString(), reader[1].ToString(), reader[2].ToString(), reader[3].ToString(), reader[4].ToString(), reader[5].ToString(), reader[6].ToString(), reader[7].ToString(), reader[8].ToString() };
                     batchs.Add(values);
                 }
                 return batchs;
@@ -257,13 +260,15 @@ namespace BioPM.ClassObjects
             }
         }
 
-        public static void InsertQualification(string GAPID, string PERNR, string CPYID, string PRLVL, string CHUSR)
+        public static void InsertQualification(string GAPID, string PERNR, string CPYID, string PRLVL, string CHUSR, string PRQLVL)
         {
+            float GAP = float.Parse(PRQLVL) - float.Parse(PRLVL);
+            string GAPLV = GAP.ToString();
             string date = DateTime.Now.ToString("MM/dd/yyyy HH:mm");
             string maxdate = DateTime.MaxValue.ToString("MM/dd/yyyy HH:mm");
             SqlConnection conn = GetConnection();
-            string sqlCmd = @"INSERT INTO trrcd.COMPETENCY_GAP (BEGDA, ENDDA, GAPID, PERNR, CPYID, PRLVL, CHGDT, CHUSR)
-                            VALUES ('" + date + "','" + maxdate + "'," + GAPID + ",'" + PERNR + "'," + CPYID + "," + PRLVL + ",'" + date + "','" + CHUSR + "');";
+            string sqlCmd = @"INSERT INTO trrcd.COMPETENCY_GAP (BEGDA, ENDDA, GAPID, PERNR, CPYID, PRLVL, CHGDT, CHUSR, GAPLV)
+                            VALUES ('" + date + "','" + maxdate + "'," + GAPID + ",'" + PERNR + "'," + CPYID + "," + PRLVL + ",'" + date + "','" + CHUSR + "', ,'" + GAPLV + "');";
 
             SqlCommand cmd = DatabaseFactory.GetCommand(conn, sqlCmd);
 
@@ -280,6 +285,10 @@ namespace BioPM.ClassObjects
 
         public static void UpdateQualification(string GAPID, string PERNR, string CPYID, string PRLVL, string CHUSR)
         {
+            object[] values = BioPM.ClassObjects.EmployeeCatalog.GetPosID(PERNR);
+            string POSID = values[1].ToString();
+            values = BioPM.ClassObjects.Jabatan.GetKualifikasiJabatanByPositionAndCompetency(POSID, CPYID);
+            string PRQLVL = values[3].ToString();
             string date = DateTime.Now.ToString("MM/dd/yyyy HH:mm");
             string yesterday = DateTime.Now.AddMinutes(-1).ToString("MM/dd/yyyy HH:mm");
             SqlConnection conn = GetConnection();
@@ -295,7 +304,7 @@ namespace BioPM.ClassObjects
             finally
             {
                 conn.Close();
-                InsertQualification(GAPID, PERNR, CPYID, PRLVL, CHUSR);
+                InsertQualification(GAPID, PERNR, CPYID, PRLVL, CHUSR, PRQLVL);
             }
         }
 

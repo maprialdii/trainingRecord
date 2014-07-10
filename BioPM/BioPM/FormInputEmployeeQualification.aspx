@@ -2,25 +2,32 @@
 
 <!DOCTYPE html>
 <script runat="server">
+    string POSID = null;
+    string PRLVL = null;
     protected void Page_Load(object sender, EventArgs e)
     {
         if (Session["username"] == null && Session["password"] == null) Response.Redirect("PageLogin.aspx");
         if (!IsPostBack) SetQualificationType();
     }
-    //protected void sessionCreator()
-    //{
-    //    Session["username"] = "K495";
-    //    Session["name"] = "ALLAN PRAKOSA";
-    //    Session["password"] = "admin1234";
-    //    Session["role"] = "111111";
-    //}
+
+    protected void GetPOSID()
+    {
+        object[] values=BioPM.ClassObjects.EmployeeCatalog.GetPosID(ddlNik.SelectedValue);
+        POSID = values[1].ToString();
+    }
+
+    protected void GetPRQID()
+    {
+        object[] values = BioPM.ClassObjects.Jabatan.GetKualifikasiJabatanByPositionAndCompetency(POSID, ddlCompName.SelectedValue);
+        PRLVL = values[3].ToString();
+    }
 
     protected void SetQualificationType()
     {
         ddlNik.Items.Clear();
-        foreach (object[] data in BioPM.ClassObjects.EmployeeCatalog.GetAllNIK())
+        foreach (object[] data in BioPM.ClassObjects.EmployeeCatalog.GetAllEmployee())
         {
-            ddlNik.Items.Add(new ListItem(data[0].ToString(), data[0].ToString()));
+            ddlNik.Items.Add(new ListItem(data[1].ToString(), data[0].ToString()));
         }
         
         ddlCompName.Items.Clear();
@@ -33,7 +40,9 @@
     protected void InsertQualificationIntoDatabase()
     {
         string GAPID = (BioPM.ClassObjects.QualificationCatalog.GetQualificationMaxID() + 1).ToString();
-        BioPM.ClassObjects.QualificationCatalog.InsertQualification(GAPID, ddlNik.SelectedValue, ddlCompName.SelectedValue, txtLevel.Text, Session["username"].ToString());
+        GetPOSID();
+        GetPRQID();
+        BioPM.ClassObjects.QualificationCatalog.InsertQualification(GAPID, ddlNik.SelectedValue, ddlCompName.SelectedValue, txtLevel.Text, Session["username"].ToString(), PRLVL);
     }
 
     protected void btnAdd_Click(object sender, EventArgs e)
@@ -59,7 +68,7 @@
         if (Session["password"].ToString() == BioPM.ClassEngines.CryptographFactory.Encrypt(txtConfirmation.Text, true))
         {
             InsertQualificationIntoDatabase();
-            Response.Redirect("PageRisk.aspx");
+            Response.Redirect("PageEmployeeQualification.aspx");
         }
         else
         {
@@ -100,7 +109,7 @@
             <div class="col-sm-12">
                 <section class="panel">
                     <header class="panel-heading">
-                        Competency Development Event Entry Form
+                        Employee Qualification Entry Form
                           <span class="tools pull-right">
                             <a class="fa fa-chevron-down" href="javascript:;"></a>
                             <a class="fa fa-times" href="javascript:;"></a>
@@ -110,7 +119,7 @@
                         <form id="Form1" class="form-horizontal " runat="server" >
 
                         <div class="form-group">
-                            <label class="col-sm-3 control-label"> NIK </label>
+                            <label class="col-sm-3 control-label"> EMPLOYEE NAME </label>
                             <div class="col-lg-3 col-md-4">
                                 <asp:DropDownList ID="ddlNik" runat="server" class="form-control m-bot15">   
                                 </asp:DropDownList> 

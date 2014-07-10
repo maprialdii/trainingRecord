@@ -155,6 +155,33 @@ namespace BioPM.ClassObjects
             }
         }
 
+        public static object[] GetKualifikasiJabatanByPositionAndCompetency(string posid, string cpyid)
+        {
+            SqlConnection conn = GetConnection();
+            string sqlCmd = @"SELECT PR.PRQID, PR.POSID, PR.CPYID, PR.PRLVL
+                            FROM trrcd.POSITION_REQ PR WITH(INDEX(POSITION_REQ_IDX_BEGDA_ENDDA_ID))
+                            WHERE PR.BEGDA <= GETDATE() AND PR.ENDDA >= GETDATE()
+                            AND PR.POSID=" + posid + " AND PR.CPYID=" + cpyid + "  ORDER BY PR.POSID ASC;";
+            SqlCommand cmd = GetCommand(conn, sqlCmd);
+
+            try
+            {
+                conn.Open();
+                SqlDataReader reader = GetDataReader(cmd);
+                object[] data = null;
+                while (reader.Read())
+                {
+                    object[] values = { reader[0].ToString(), reader[1].ToString(), reader[2].ToString(), reader[3].ToString() };
+                    data = values;
+                }
+                return data;
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+
         public static int GetPositionRequirementMaxID()
         {
             SqlConnection conn = GetConnection();

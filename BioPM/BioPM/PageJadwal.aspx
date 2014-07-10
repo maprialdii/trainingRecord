@@ -1,20 +1,29 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="PageRequestTraining.aspx.cs" Inherits="BioPM.PageRequestTraining" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="PageJadwal.aspx.cs" Inherits="BioPM.PageJadwal" %>
 
 <!DOCTYPE html>
 <script runat="server">
     protected void Page_Load(object sender, EventArgs e)
     {
         if (Session["username"] == null && Session["password"] == null) Response.Redirect("PageLogin.aspx");
+        GetMonth();
+    }
+
+    protected void GetMonth()
+    {
+        ddlBulan.Items.Clear();
+        foreach (object[] data in BioPM.ClassObjects.ComDevPlan.GetMonth())
+        {
+            ddlBulan.Items.Add(new ListItem(data[0].ToString(), data[0].ToString()));
+        }
     }
 
     protected String GenerateDataRequestTraining()
     {
         string htmlelement = "";
 
-        foreach (object[] data in BioPM.ClassObjects.ComDevPlan.GetComdevPlanByUsername(Session["username"].ToString()))
+        foreach (object[] data in BioPM.ClassObjects.ComDevPlan.GetComdevPlanByMonth(Request.QueryString["key"].ToString()))
         {
-            htmlelement += "<tr class=''><td>" + data[0].ToString() + "</td><td>" + data[1].ToString() + "</td><td>" + data[4].ToString() + "</td><td><a class='edit' href='FormUpdateRequestTraining.aspx?key=" + data[0].ToString() + "'>Edit</a></td><td><a class='delete' href='PageInformation.aspx?key=" + data[0].ToString() + "&type=30'>Delete</a></td></tr>";
-            htmlelement += "<tr class=''><td>" + data[0].ToString() + "</td><td>" + data[1].ToString() + "</td><td>" + data[4].ToString() + "</td><td></tr>";
+            htmlelement += "<tr class=''><td>" + data[0].ToString() + "</td><td>" + data[1].ToString() + "</td></tr>";
         }
         
         return htmlelement;
@@ -22,36 +31,9 @@
 
     protected void btnSave_Click(object sender, EventArgs e)
     {
-        if (Session["password"].ToString() == BioPM.ClassEngines.CryptographFactory.Encrypt(txtConfirmation.Text, true))
-        {
-            InsertDataIntoDatabase();
-            Response.Redirect("PageRisk.aspx");
-        }
-        else
-        {
-            ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('" + "YOUR PASSWORD IS INCORRECT" + "');", true);
-        }
+        Response.Redirect("PageRequestTraining.aspx?key="+ddlBulan.SelectedValue+"");
     }
 
-    protected void InsertDataIntoDatabase()
-    {
-        string RECID = (BioPM.ClassObjects.ComDevPlan.GetComDevPlanMaxID() + 1).ToString();
-        BioPM.ClassObjects.ComDevPlan.InsertComDevPlan(RECID, Session["username"].ToString(), Request.QueryString["key"], " ", " ", Session["username"].ToString());
-        BioPM.ClassObjects.ComDevPlan.InsertComDevPlanStatus(RECID, "Belum Disetujui", " ", Session["username"].ToString());
-    }
-
-    protected String GenerateDataRekomendasi()
-    {
-        string htmlelement = "";
-
-        foreach (object[] data in BioPM.ClassObjects.ComDevPlan.GetRekomendasiTraining(Session["username"].ToString()))
-        {
-            htmlelement += "<tr class=''><td>" + data[0].ToString() + "</td><td>" + data[1].ToString() + "</td><td><a class='edit' OnClick='btnSave_Click' href='PageRequestTraining.aspx?key=" + data[3].ToString() + "'>Request</a></td></tr>";
-        }
-
-        return htmlelement;
-    }
-   
 </script>
 
 <html lang="en">
@@ -88,46 +70,7 @@
         <!-- page start-->
 
         <div class="row">
-            <div class="col-sm-12">
-                <section class="panel">
-                    <header class="panel-heading">
-                        Training Recommendation
-                          <span class="tools pull-right">
-                            <a class="fa fa-chevron-down" href="javascript:;"></a>
-                            <a class="fa fa-times" href="javascript:;"></a>
-                         </span>
-                    </header>
-                    <div class="panel-body">
-
-                        <div class="adv-table">
-                            <div class="clearfix">
-                                <div class="btn-group pull-right">
-                                    <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">Tools <i class="fa fa-angle-down"></i>
-                                    </button>
-                                    <ul class="dropdown-menu pull-right">
-                                        <li><a href="#">Print</a></li>
-                                        <li><a href="#">Save as PDF</a></li>
-                                        <li><a href="#">Export to Excel</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <table class="table table-striped table-hover table-bordered" id="Table1" >
-                                <thead>
-                                <tr>
-                                    <th>Event Name</th>
-                                    <th>Event Method</th>
-                                    <th>Request This Training</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <% Response.Write(GenerateDataRekomendasi()); %>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                    
-                </section>
-
+            <div class="col-sm-12">                
             <section class="panel">
                     <header class="panel-heading">
                         Requested Competency Development Event
@@ -137,7 +80,6 @@
                          </span>
                     </header>
                     <div class="panel-body">
-
                         <div class="adv-table">
                             <div class="clearfix">
                                 <div class="btn-group pull-right">
@@ -150,17 +92,19 @@
                                     </ul>
                                 </div>
                             </div>
+                            <asp:DropDownList ID="ddlBulan" runat="server" class="form-control m-bot15">   
+                                </asp:DropDownList> 
+                            <asp:Button ID="btnView" runat="server" class="btn btn-success" Text="View" OnClick="btnSave_Click"></asp:Button>
                             <table class="table table-striped table-hover table-bordered" id="dynamic-table" >
                                 <thead>
                                 <tr>
-                                    <th>Request ID</th>
+                                    <th>Employee Name</th>
                                     <th>Event Name</th>
-                                    <th>Status</th>
-                                    <%--<th>Delete</th>--%>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <% Response.Write(GenerateDataRequestTraining()); %>
+                                <% 
+                                    if(IsPostBack)Response.Write(GenerateDataRequestTraining()); %>
                                 </tbody>
                             </table>
                         </div>
@@ -217,3 +161,4 @@
 <% Response.Write(BioPM.ClassScripts.JS.GetInitialisationScript()); %>
 </body>
 </html>
+

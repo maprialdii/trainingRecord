@@ -2,33 +2,34 @@
 
 <!DOCTYPE html>
 <script runat="server">
+    string RECID = null;
+    string EMPID = null;
+    string EVTID = null;
     protected void Page_Load(object sender, EventArgs e)
     {
         if (Session["username"] == null && Session["password"] == null) Response.Redirect("PageLogin.aspx");
-        if (!IsPostBack)
-        {
-            //GetDataEvent();
-            SetDataToForm();
-        }
+        SetDataToForm();
+        RECID=Request.QueryString["key"].ToString();
     }
-    
+
     protected void SetDataToForm()
     {
-        //object[] values = BioPM.ClassObjects.CompetencyCatalog.GetCompetencyById(BioPM.ClassEngines.CryptographFactory.Decrypt(Request.QueryString["key"], true));
-        //txtEventName.Text = values[0].ToString();
-        //txtEmployeeName.Text = values[1].ToString();
-    }
-    
+        object[] values = BioPM.ClassObjects.ComDevPlan.GetComdevPlanById(Request.QueryString["key"].ToString());
+        txtRecID.Text = values[0].ToString();
+        txtEmpName.Text = values[6].ToString();
+        EMPID = values[5].ToString();
+        EVTID = values[1].ToString();
+    }    
+   
     protected void InsertDataIntoDatabase()
     {
-        string RECID = (BioPM.ClassObjects.ComDevPlan.GetComDevPlanMaxID() + 1).ToString();
-        BioPM.ClassObjects.ComDevPlan.UpdateComDevPlan(RECID, Session["username"].ToString(), txtEventName.Text, txtMonth.Text, txtCost.Text, Session["username"].ToString());
-        BioPM.ClassObjects.ComDevPlan.InsertComDevPlanStatus(RECID, "Belum Disetujui", " ", Session["username"].ToString());
+        BioPM.ClassObjects.ComDevPlan.UpdateComDevPlan(RECID, EMPID, EVTID, txtMonth.Text, txtCost.Text, Session["username"].ToString());
+        BioPM.ClassObjects.ComDevPlan.UpdateComDevPlanStatus(RECID, "Disetujui", Session["username"].ToString(), Session["username"].ToString());
     }
 
     protected void btnAdd_Click(object sender, EventArgs e)
     {
-        //InsertDataIntoDatabase();
+        InsertDataIntoDatabase();
         Response.Redirect("PageRequestTraining.aspx");
     }
 
@@ -93,18 +94,18 @@
                         <form id="Form1" class="form-horizontal " runat="server" >
 
                         <div class="form-group">
-                            <label class="col-sm-3 control-label"> EVENT NAME </label>
+                            <label class="col-sm-3 control-label"> REQUEST ID</label>
                             <div class="col-lg-3 col-md-4">
-                                <asp:Label ID="txtEventName" runat="server" class="form-control m-bot15">   
-                                </asp:Label> 
+                                <asp:TextBox ID="txtRecID" runat="server" class="form-control m-bot15" ReadOnly="true">   
+                                </asp:TextBox> 
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label class="col-sm-3 control-label"> EMPLOYEE NAME </label>
                             <div class="col-lg-3 col-md-4">
-                                <asp:Label ID="txtEmployeeName" runat="server" class="form-control m-bot15">   
-                                </asp:Label> 
+                                <asp:TextBox ID="txtEmpName" runat="server" class="form-control m-bot15" ReadOnly="true">   
+                                </asp:TextBox> 
                             </div>
                         </div>
 
@@ -113,6 +114,7 @@
                             <div class="col-lg-3 col-md-4">
                                 <asp:TextBox ID="txtMonth" runat="server" class="form-control m-bot15">   
                                 </asp:TextBox> 
+                            <a href="PageJadwal.aspx"><label class="col-sm-3 control-label"> LIHAT JADWAL </label> </a>   
                             </div>
                         </div>
 
@@ -127,7 +129,7 @@
                         <div class="form-group">
                             <label class="col-sm-3 control-label"> </label>
                             <div class="col-lg-3 col-md-3">
-                                <asp:Button class="btn btn-round btn-primary" ID="btnAdd" runat="server" Text="Add" OnClick="btnAdd_Click"/>
+                                <asp:Button class="btn btn-round btn-primary" ID="btnAdd" runat="server" Text="Approve" OnClick="btnAdd_Click"/>
                                 <asp:Button class="btn btn-round btn-primary" ID="btnCancel" runat="server" Text="Cancel" OnClick="btnCancel_Click"/>
                             </div>
                         </div>

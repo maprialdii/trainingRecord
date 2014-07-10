@@ -148,6 +148,7 @@
     <Content Include="PageEventTargetDetail.aspx" />
     <Content Include="PageInstitutionDetail.aspx" />
     <Content Include="PageJabatan.aspx" />
+    <Content Include="PageJadwal.aspx" />
     <Content Include="PageOrganization.aspx" />
     <Content Include="PageOrganizationStructure.aspx" />
     <Content Include="PagePositionRequirements.aspx" />
@@ -590,6 +591,13 @@
     </Compile>
     <Compile Include="PageJabatan.aspx.designer.cs">
       <DependentUpon>PageJabatan.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageJadwal.aspx.cs">
+      <DependentUpon>PageJadwal.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageJadwal.aspx.designer.cs">
+      <DependentUpon>PageJadwal.aspx</DependentUpon>
     </Compile>
     <Compile Include="PageOrganization.aspx.cs">
       <DependentUpon>PageOrganization.aspx</DependentUpon>
