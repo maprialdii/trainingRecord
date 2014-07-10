@@ -56,7 +56,7 @@
 <head>
     <% Response.Write(BioPM.ClassScripts.BasicScripts.GetMetaScript()); %>
 
-    <title>Training Request</title>
+    <title>Suggest Training</title>
 
     <% Response.Write(BioPM.ClassScripts.StyleScripts.GetCoreStyle()); %>
 <% Response.Write(BioPM.ClassScripts.StyleScripts.GetFormStyle()); %>
@@ -114,7 +114,7 @@
                             <div class="col-lg-3 col-md-4">
                                 <asp:TextBox ID="txtMonth" runat="server" class="form-control m-bot15">   
                                 </asp:TextBox> 
-                            <a href="PageJadwal.aspx"><label class="col-sm-3 control-label"> LIHAT JADWAL </label> </a>   
+                            <a href="PageJadwal.aspx">LIHAT JADWAL</a>   
                             </div>
                         </div>
 
