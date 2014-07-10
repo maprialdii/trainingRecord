@@ -55,3 +55,4 @@ E:\KP\COMDEV\History Sistem\trainingRecord\BioPM\BioPM\bin\Microsoft.AspNet.Frie
 E:\KP\COMDEV\History Sistem\trainingRecord\BioPM\BioPM\bin\System.Net.Http.xml
 E:\KP\COMDEV\History Sistem\trainingRecord\BioPM\BioPM\obj\Debug\BioPM.dll
 E:\KP\COMDEV\History Sistem\trainingRecord\BioPM\BioPM\obj\Debug\BioPM.pdb
+E:\KP\COMDEV\History Sistem\trainingRecord\BioPM\BioPM\obj\Debug\BioPM.csprojResolveAssemblyReference.cache

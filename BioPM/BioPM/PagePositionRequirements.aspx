@@ -2,6 +2,7 @@
 
 <!DOCTYPE html>
 <script runat="server">
+    string posisi=null;
     protected void Page_Load(object sender, EventArgs e)
     {
         if (Session["username"] == null && Session["password"] == null) Response.Redirect("PageLogin.aspx");
@@ -13,6 +14,7 @@
 
         foreach (object[] data in BioPM.ClassObjects.Jabatan.GetKualifikasiJabatan(Request.QueryString["key"].ToString()))
         {
+            posisi=data[3].ToString();
             //htmlelement += "<tr class=''><td>" + data[1].ToString() + "</td><td>" + data[2].ToString() + "</td><td>" + data[3].ToString() + "</td><td><a class='edit' href='FormUpdate.aspx?key=" + data[0].ToString() + "'>Edit</a></td><td><a class='delete' href='#.aspx?key=" + data[0].ToString() + "&type=000'>Delete</a></td></tr>";
             htmlelement += "<tr class=''><td>" + data[1].ToString() + "</td><td>" + data[2].ToString() + "</td><td><a class='edit' href='FormUpdatePositionRequirements.aspx?key=" + data[0].ToString() + "'>Edit</a></td><td><a class='delete' href='PageInformation.aspx?key=" + data[0].ToString() + "&type=29'>Delete</a></td></tr>";
         }
@@ -62,7 +64,6 @@
                          </span>
                     </header>
                     <div class="panel-body">
-
                         <div class="adv-table">
                             <div class="clearfix">
                                 <div class="btn-group">

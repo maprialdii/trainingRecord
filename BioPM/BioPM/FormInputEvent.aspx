@@ -2,9 +2,11 @@
 
 <!DOCTYPE html>
 <script runat="server">
+    string EVTID = null;
     protected void Page_Load(object sender, EventArgs e)
     {
         if (Session["username"] == null && Session["password"] == null) Response.Redirect("PageLogin.aspx");
+        txtEvtName.Text = "";
         if (!IsPostBack) SetExistingMethod();
     }
     //protected void sessionCreator()
@@ -26,14 +28,14 @@
     
     protected void InsertEventIntoDatabase()
     {
-        string EVTID = (BioPM.ClassObjects.ComDevEvent.GetComDevEventMaxID() + 1).ToString();
+        EVTID = (BioPM.ClassObjects.ComDevEvent.GetComDevEventMaxID() + 1).ToString();
         BioPM.ClassObjects.ComDevEvent.InsertComDevEvent(EVTID, txtEvtName.Text, ddlEventMethod.SelectedValue, Session["username"].ToString());
     }
 
     protected void btnAdd_Click(object sender, EventArgs e)
     {
         if (IsPostBack) InsertEventIntoDatabase();
-        Response.Redirect("FormInputTargetTraining.aspx");
+        Response.Redirect("FormInputTargetTraining.aspx?key="+EVTID+"");
     }
 
     protected void btnCancel_Click(object sender, EventArgs e)

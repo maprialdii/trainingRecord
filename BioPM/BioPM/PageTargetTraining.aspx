@@ -3,6 +3,8 @@
 <!DOCTYPE html>
 <script runat="server">
     string evtId = "";
+    string eventName = null;
+    string method = null;
     protected void Page_Load(object sender, EventArgs e)
     {
         if (Session["username"] == null && Session["password"] == null) Response.Redirect("PageLogin.aspx");
@@ -14,7 +16,8 @@
         string htmlelement = "";
         foreach (object[] data in BioPM.ClassObjects.ComDevEvent.GetComdevEventTargetByEvent(Request.QueryString["key"].ToString()))
         {
-            //htmlelement += "<tr class=''><td>" + data[1].ToString() + "</td><td>" + data[2].ToString() + "</td><td>" + data[3].ToString() + "</td><td><a class='edit' href='FormUpdate.aspx?key=" + data[0].ToString() + "'>Edit</a></td><td><a class='delete' href='#.aspx?key=" + data[0].ToString() + "&type=000'>Delete</a></td></tr>";
+            eventName = data[2].ToString();
+            method = data[5].ToString();
             htmlelement += "<tr class=''><td>" + data[3].ToString() + "</td><td>" + data[4].ToString() + "</td><td><a class='edit' href='FormUpdateTargetTraining.aspx?key=" + data[0].ToString() + "'>Edit</a></td><td><a class='delete' href='PageInformation.aspx?key=" + data[0].ToString() + "&type=25'>Delete</a></td></tr>";
         }
         
@@ -63,7 +66,6 @@
                          </span>
                     </header>
                     <div class="panel-body">
-
                         <div class="adv-table">
                             <div class="clearfix">
                                 <div class="btn-group">
@@ -80,6 +82,7 @@
                                     </ul>
                                 </div>
                             </div>
+
                             <table class="table table-striped table-hover table-bordered" id="dynamic-table" >
                                 <thead>
                                 <tr>

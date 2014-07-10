@@ -34,7 +34,7 @@ namespace BioPM.ClassObjects
             string date = DateTime.Now.ToString("MM/dd/yyyy HH:mm");
             string yesterday = DateTime.Now.AddMinutes(-1).ToString("MM/dd/yyyy HH:mm");
             SqlConnection conn = GetConnection();
-            string sqlCmd = @"UPDATE trrcd.COMDEV_EVENT_EXECUTION SET CHGDT = '" + date + "', CHUSR = '" + CHUSR + "' WHERE (EXCID = " + EXCID + ")";
+            string sqlCmd = @"UPDATE trrcd.COMDEV_EVENT_EXECUTION SET EVTID=" + EVTID + ",  TITLE = '" + TITLE + "',  BATCH = '" + BATCH + "',  PMBCR = '" + PMBCR + "',  INSTI = '" + INSTI + "',  ADRIN = '" + ADRIN + "',  CITIN = '" + CITIN + "',  COUIN = '" + COUIN + "',  CRTFL = '" + CRTFL + "',  SCORE = '" + SCORE + "',  BEGDA = '" + BEGDA + "',  ENDDA = '" + ENDDA + "',  CHGDT = '" + date + "', CHUSR = '" + CHUSR + "' WHERE (EXCID = " + EXCID + ")";
 
             SqlCommand cmd = DatabaseFactory.GetCommand(conn, sqlCmd);
 
@@ -55,7 +55,7 @@ namespace BioPM.ClassObjects
             string date = DateTime.Now.ToString("MM/dd/yyyy HH:mm");
             string yesterday = DateTime.Now.AddMinutes(-1).ToString("MM/dd/yyyy HH:mm");
             SqlConnection conn = GetConnection();
-            string sqlCmd = @"UPDATE trrcd.COMDEV_EVENT_EXECUTION SET ENDDA = '" + yesterday + "', CHGDT = '" + date + "', CHUSR = '" + chusr + "' WHERE (EXCID = " + excid + " AND BEGDA <= GETDATE() AND ENDDA >= GETDATE())";
+            string sqlCmd = @"DELETE from trrcd.COMDEV_EVENT_EXECUTION WHERE (EXCID = " + excid + ")";
 
             SqlCommand cmd = DatabaseFactory.GetCommand(conn, sqlCmd);
 
@@ -106,6 +106,32 @@ namespace BioPM.ClassObjects
                             WHERE CV.EVTID=CE.EVTID 
                             AND CV.BEGDA <= GETDATE() AND CV.ENDDA >= GETDATE()
                             AND CE.EXCID=" + excid + ";";
+            SqlCommand cmd = GetCommand(conn, sqlCmd);
+
+            try
+            {
+                conn.Open();
+                SqlDataReader reader = GetDataReader(cmd);
+                object[] data = null;
+                while (reader.Read())
+                {
+                    object[] values = { reader[0].ToString(), reader[1].ToString(), reader[2].ToString(), reader[3].ToString(), reader[4].ToString(), reader[5].ToString(), reader[6].ToString(), reader[7].ToString(), reader[8].ToString(), reader[9].ToString(), reader[10].ToString(), reader[11].ToString(), reader[12].ToString(), reader[13].ToString() };
+                    data = values;
+                }
+                return data;
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+
+        public static object[] GetTotalHoursExecution(string pernr)
+        {
+            SqlConnection conn = GetConnection();
+            string sqlCmd = @"SELECT SUM(DATEDIFF(day,CE.BEGDA, CE.ENDDA))*8 AS TOTAL_JAM
+                            FROM trrcd.COMDEV_EVENT_EXECUTION CE
+                            WHERE PERNR='" + pernr + "';";
             SqlCommand cmd = GetCommand(conn, sqlCmd);
 
             try

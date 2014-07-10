@@ -2,21 +2,23 @@
 
 <!DOCTYPE html>
 <script runat="server">
+    string adrin=null, citi=null, couin=null, insti=null;
     protected void Page_Load(object sender, EventArgs e)
     {
         if (Session["username"] == null && Session["password"] == null) Response.Redirect("PageLogin.aspx");
+        GenerateDataInstitusi();
     }
 
-    protected String GenerateDataInstitusi()
+    protected void GenerateDataInstitusi()
     {
-        string htmlelement = "";
-
-        foreach (object[] data in BioPM.ClassObjects.ComDevExecution.GetComdevExecutionByUserId(Session["username"].ToString()))
+        foreach (object[] data in BioPM.ClassObjects.ComDevExecution.GetDetailInstitution(Request.QueryString["key"].ToString()))
         {
-            htmlelement += "<tr class=''><td>" + data[1].ToString() + "</td><td>" + data[2].ToString() + "</td><td>" + data[3].ToString() + "</td><td>" + data[4].ToString() + "</td><td>" + data[5].ToString() + "</td><td>" + data[6].ToString() + "</td><td>" + data[7].ToString() + "</td><td>" + data[8].ToString() + "</td><td>" + data[9].ToString() + "</td><td><a class='edit' href='#.aspx?key=" + data[0].ToString() + "'>Edit</a></td><td><a class='delete' href='#.aspx?key=" + data[0].ToString() + "&type=000'>Delete</a></td></tr>";
+            insti = data[0].ToString();
+            adrin = data[1].ToString();
+            citi = data[2].ToString();
+            couin = data[3].ToString();
+            //htmlelement += "<tr class=''><td>" + data[1].ToString() + "</td><td>" + data[2].ToString() + "</td><td>" + data[3].ToString() + "</td><td>" + data[4].ToString() + "</td><td>" + data[5].ToString() + "</td><td>" + data[6].ToString() + "</td><td>" + data[7].ToString() + "</td><td>" + data[8].ToString() + "</td><td>" + data[9].ToString() + "</td><td><a class='edit' href='#.aspx?key=" + data[0].ToString() + "'>Edit</a></td><td><a class='delete' href='#.aspx?key=" + data[0].ToString() + "&type=000'>Delete</a></td></tr>";
         }
-        
-        return htmlelement;
     }
 
    
@@ -61,13 +63,9 @@
                          </span>
                     </header>
                     <div class="panel-body">
-
+                        <h4><%insti.ToString(); %></h4>
                         <div class="adv-table">
                             <div class="clearfix">
-                                <div class="btn-group">
-                                    <button id="editable-sample_new" onclick="document.location.href='FormInputTrainingExecution.aspx';" class="btn btn-primary"> Add New <i class="fa fa-plus"></i>
-                                    </button>
-                                </div>
                                 <div class="btn-group pull-right">
                                     <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">Tools <i class="fa fa-angle-down"></i>
                                     </button>
@@ -79,23 +77,10 @@
                                 </div>
                             </div>
                             <table class="table table-striped table-hover table-bordered" id="dynamic-table" >
-                                <thead>
-                                <tr>
-                                    <th>Event Name</th>
-                                    <th>Title</th>
-                                    <th>Angkatan</th>
-                                    <th>Pembicara</th>   
-                                    <th>Institution</th>  
-                                    <th>Start Date</th>  
-                                    <th>End Date</th>
-                                    <th>Status</th>  
-                                    <th>Score</th>                                       
-                                    <th>Edit</th>
-                                    <th>Delete</th>
-                                </tr>
-                                </thead>
                                 <tbody>
-                                <% Response.Write(GenerateDataInstitusi()); %>
+                                    <tr><td>Address Institution</td><td><%adrin.ToString(); %></td></tr>
+                                    <tr><td>City Institution</td><td><%citi.ToString(); %></td></tr>
+                                    <tr><td>Country Institution</td><td><%couin.ToString(); %></td></tr>
                                 </tbody>
                             </table>
                         </div>

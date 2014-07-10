@@ -152,7 +152,7 @@ namespace BioPM.ClassObjects
                             AND CE.BEGDA <= GETDATE() AND CE.ENDDA >= GETDATE()
                             AND EM.BEGDA <= GETDATE() AND EM.ENDDA >= GETDATE()
                             AND PR.BEGDA <= GETDATE() AND PR.ENDDA >= GETDATE()
-                            AND CG.CPYID=CT.CPYID and CT.EVTID=CE.EVTID and CE.EMTID=EM.EMTID and PR.CPYID=CG.CPYID AND CE.EVTID not in (SELECT CP.EVTID FROM trrcd.COMDEV_PLAN CP where CP.PERNR='" + PERNR + "') AND CG.GAPID>0 AND CT.PRLVL>PR.PRLVL AND CG.PERNR='" + PERNR + "'";
+                            AND CG.CPYID=CT.CPYID and CT.EVTID=CE.EVTID and CE.EMTID=EM.EMTID and PR.CPYID=CG.CPYID AND CE.EVTID not in (SELECT CP.EVTID FROM trrcd.COMDEV_PLAN CP, trrcd.COMDEV_PLAN_STATUS CS where CS.RECID=CP.RECID AND CS.APVST!='Disetujui' AND CP.PERNR='" + PERNR + "') AND CG.GAPID>0 AND CT.PRLVL>PR.PRLVL AND CG.PERNR='" + PERNR + "'";
             SqlCommand cmd = GetCommand(conn, sqlCmd);
 
             try

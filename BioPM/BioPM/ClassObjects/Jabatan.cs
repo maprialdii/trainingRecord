@@ -101,7 +101,7 @@ namespace BioPM.ClassObjects
         public static List<object[]> GetKualifikasiJabatan(string posid)
         {
             SqlConnection conn = GetConnection();
-            string sqlCmd = @"SELECT DISTINCT PR.PRQID, RK.CPYNM, PR.PRLVL
+            string sqlCmd = @"SELECT DISTINCT PR.PRQID, RK.CPYNM, PR.PRLVL, UD.PRPOS+' '+UD.PRORG AS POSISI
                             FROM BIOFARMA.bioumum.USER_DATA UD, BIOFARMA.trrcd.POSITION_REQ PR WITH(INDEX(POSITION_REQ_IDX_BEGDA_ENDDA_ID)), BIOFARMA.trrcd.REFERENSI_KOMPETENSI RK WITH(INDEX(REFERENSI_KOMPETENSI_IDX_BEGDA_ENDDA_ID))
                             WHERE UD.POSID IS NOT NULL AND UD.POSID!='' AND RK.CPYID=PR.CPYID AND UD.POSID=PR.POSID 
                             AND UD.BEGDA <= GETDATE() AND UD.ENDDA >= GETDATE()
@@ -117,7 +117,7 @@ namespace BioPM.ClassObjects
                 List<object[]> batchs = new List<object[]>();
                 while (reader.Read())
                 {
-                    object[] values = { reader[0].ToString(), reader[1].ToString(), reader[2].ToString() };
+                    object[] values = { reader[0].ToString(), reader[1].ToString(), reader[2].ToString(), reader[3].ToString() };
                     batchs.Add(values);
                 }
                 return batchs;
