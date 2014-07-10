@@ -81,6 +81,38 @@
 
         <div class="row">
             <div class="col-sm-12">
+                <section class="panel">
+                    <header class="panel-heading">
+                        Competency Development Event Entry Form
+                          <span class="tools pull-right">
+                            <a class="fa fa-chevron-down" href="javascript:;"></a>
+                            <a class="fa fa-times" href="javascript:;"></a>
+                         </span>
+                    </header>
+                    <div class="panel-body">
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label"> EVENT NAME </label>
+                            <div class="col-lg-3 col-md-4">
+                                <asp:Label ID="txtEvtName" runat="server" class="form-control m-bot15">   
+                                </asp:Label> 
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label"> EVENT METHOD </label>
+                            <div class="col-lg-3 col-md-4">
+                                <asp:Label ID="txtMethod" runat="server" class="form-control m-bot15">   
+                                </asp:Label> 
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label"> </label>
+                        </div>
+                            
+                    </div>    
+                </section>
+
                  <section class="panel">
                     <header class="panel-heading">
                         Competency Development Event Entry Form

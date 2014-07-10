@@ -13,14 +13,18 @@ namespace BioPM {
     public partial class PageCompetencyRelation {
         
         /// <summary>
+<<<<<<< HEAD
         /// Form1 control.
 
+=======
+>>>>>>> origin/master
         /// Form2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
+<<<<<<< HEAD
 
         protected global::System.Web.UI.HtmlControls.HtmlForm Form1;
 
@@ -54,11 +58,18 @@ namespace BioPM {
         /// <summary>
         /// txtConfirmation control.
 
+=======
+        protected global::System.Web.UI.HtmlControls.HtmlForm Form2;
+        
+        /// <summary>
+        /// txtConfirmation control.
+>>>>>>> origin/master
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
+<<<<<<< HEAD
 
 
         protected global::System.Web.UI.WebControls.TextBox txtCompLevel;
@@ -69,6 +80,9 @@ namespace BioPM {
         protected global::System.Web.UI.WebControls.TextBox TextBox1;
         protected global::System.Web.UI.WebControls.TextBox txtConfirmation;
 
+=======
+        protected global::System.Web.UI.WebControls.TextBox txtConfirmation;
+>>>>>>> origin/master
         
         /// <summary>
         /// btnClose control.
@@ -77,8 +91,11 @@ namespace BioPM {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
+<<<<<<< HEAD
         protected global::System.Web.UI.WebControls.Button Button1;
 
+=======
+>>>>>>> origin/master
         protected global::System.Web.UI.WebControls.Button btnClose;
         
         /// <summary>
@@ -88,11 +105,15 @@ namespace BioPM {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
+<<<<<<< HEAD
 
         //protected global::System.Web.UI.HtmlControls.HtmlForm Form1;
 
         protected global::System.Web.UI.WebControls.Button btnSubmit;
 
+=======
+        protected global::System.Web.UI.WebControls.Button btnSubmit;
+>>>>>>> origin/master
         
         /// <summary>
         /// ddlCompParent control.
@@ -119,7 +140,7 @@ namespace BioPM {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        //protected global::System.Web.UI.WebControls.TextBox txtCompLevel;
+        protected global::System.Web.UI.WebControls.TextBox txtCompLevel;
         
         /// <summary>
         /// btnAction control.
@@ -128,11 +149,15 @@ namespace BioPM {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
+<<<<<<< HEAD
         protected global::System.Web.UI.WebControls.Button btnAdd;
         //protected global::System.Web.UI.WebControls.Button btnAdd;
         //protected global::System.Web.UI.WebControls.Button Button1;
 
         protected global::System.Web.UI.WebControls.LinkButton btnAction;
 
+=======
+        protected global::System.Web.UI.WebControls.LinkButton btnAction;
+>>>>>>> origin/master
     }
 }

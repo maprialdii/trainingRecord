@@ -56,7 +56,7 @@
         if (Session["password"].ToString() == BioPM.ClassEngines.CryptographFactory.Encrypt(txtConfirmation.Text, true))
         {
             InsertRelationIntoDatabase();
-            Response.Redirect("PageRisk.aspx");
+            Response.Redirect("PageCompetencyRelation.aspx");
         }
         else
         {
@@ -155,10 +155,10 @@
                                 </thead>
                                 <tbody>
                                     <tr>
-                                            <td><asp:DropDownList ID="ddlCompParent" runat="server" class="form-control m-bot15" /></td>
-                                            <td><asp:DropDownList ID="ddlCompChild" runat="server" class="form-control m-bot15" /></td>
-                                            <td><asp:TextBox ID="txtCompLevel" runat="server" class="form-control m-bot15" placeholder="e.g : 1, 2, .., n" /></td>
-                                            <td><asp:LinkButton data-toggle="modal" class="btn btn-round btn-primary" ID="btnAction" runat="server" Text="Save" href="#myModal"/></td>
+                                        <td><asp:DropDownList ID="ddlCompParent" runat="server" class="form-control m-bot15" /></td>
+                                        <td><asp:DropDownList ID="ddlCompChild" runat="server" class="form-control m-bot15" /></td>
+                                        <td><asp:TextBox ID="txtCompLevel" runat="server" class="form-control m-bot15" placeholder="e.g : 1, 2, .., n" /></td>
+                                        <td><asp:LinkButton data-toggle="modal" class="btn btn-round btn-primary" ID="btnAction" runat="server" Text="Save" href="#myModal"/></td>
                                     </tr>
                                 </tbody>
                             </table>

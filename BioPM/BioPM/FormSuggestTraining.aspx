@@ -66,7 +66,7 @@
         if (Session["password"].ToString() == BioPM.ClassEngines.CryptographFactory.Encrypt(txtConfirmation.Text, true))
         {
             InsertDataIntoDatabase();
-            Response.Redirect("PageRisk.aspx");
+            Response.Redirect("PageSuggestTraining.aspx");
         }
         else
         {

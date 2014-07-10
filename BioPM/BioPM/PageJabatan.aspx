@@ -83,6 +83,7 @@
                                 <tr>
                                     <th>Pos ID</th>
                                     <th>Position</th>
+                                    <th>Required Competency</th>
                                     <th>Edit</th>
                                     <th>Delete</th>
                                 </tr>
