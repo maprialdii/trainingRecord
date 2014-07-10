@@ -14,7 +14,6 @@
         foreach (object[] data in BioPM.ClassObjects.ComDevPlan.GetComdevPlanByUsername(Session["username"].ToString()))
         {
             htmlelement += "<tr class=''><td>" + data[0].ToString() + "</td><td>" + data[1].ToString() + "</td><td>" + data[4].ToString() + "</td><td><a class='edit' href='FormUpdateRequestTraining.aspx?key=" + data[0].ToString() + "'>Edit</a></td><td><a class='delete' href='PageInformation.aspx?key=" + data[0].ToString() + "&type=30'>Delete</a></td></tr>";
-            htmlelement += "<tr class=''><td>" + data[0].ToString() + "</td><td>" + data[1].ToString() + "</td><td>" + data[4].ToString() + "</td><td></tr>";
         }
         
         return htmlelement;
@@ -22,15 +21,8 @@
 
     protected void btnSave_Click(object sender, EventArgs e)
     {
-        if (Session["password"].ToString() == BioPM.ClassEngines.CryptographFactory.Encrypt(txtConfirmation.Text, true))
-        {
-            InsertDataIntoDatabase();
-            Response.Redirect("PageRisk.aspx");
-        }
-        else
-        {
-            ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('" + "YOUR PASSWORD IS INCORRECT" + "');", true);
-        }
+        InsertDataIntoDatabase();
+        Response.Redirect("PageRequestTraining.aspx");
     }
 
     protected void InsertDataIntoDatabase()
@@ -46,10 +38,15 @@
 
         foreach (object[] data in BioPM.ClassObjects.ComDevPlan.GetRekomendasiTraining(Session["username"].ToString()))
         {
-            htmlelement += "<tr class=''><td>" + data[0].ToString() + "</td><td>" + data[1].ToString() + "</td><td><a class='edit' OnClick='btnSave_Click' href='PageRequestTraining.aspx?key=" + data[3].ToString() + "'>Request</a></td></tr>";
+            htmlelement += "<tr class=''><td>" + data[0].ToString() + "</td><td>" + data[1].ToString() + "</td><td><a class='edit' href='PageInformation.aspx?key=" + data[2].ToString() + "&type=30'>Request</a></td></tr>";
         }
 
         return htmlelement;
+    }
+
+    protected void btnCancel_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("PageUserPanel.aspx");
     }
    
 </script>
@@ -164,38 +161,6 @@
                                 </tbody>
                             </table>
                         </div>
-
-                        <!-- Modal -->
-                        <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModal" class="modal fade">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                        <h4 class="modal-title">Approver Confirmation</h4>
-                                    </div>
-                                    <div class="modal-body">
-                                        <p>You Are Logged In As <% Response.Write(Session["name"].ToString()); %></p><br />
-                                        <p>Are you sure to insert into database?</p>
-                                        <asp:TextBox ID="txtConfirmation" runat="server" TextMode="Password" placeholder="Confirmation Password" class="form-control placeholder-no-fix"></asp:TextBox>
-
-                                    </div>
-                                    <div class="modal-footer">
-                                        <asp:Button ID="btnClose" runat="server" data-dismiss="modal" class="btn btn-default" Text="Cancel"></asp:Button>
-                                        <asp:Button ID="btnSubmit" runat="server" class="btn btn-success" Text="Confirm" OnClick="btnSave_Click"></asp:Button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- modal -->
-
-                        <div class="form-group">
-                            <label class="col-sm-3 control-label"> </label>
-                            <div class="col-lg-3 col-md-3">
-                                <asp:LinkButton data-toggle="modal" class="btn btn-round btn-primary" ID="btnAction" runat="server" Text="Add" href="#myModal"/>
-                                <asp:Button class="btn btn-round btn-primary" ID="btnCancel" runat="server" Text="Cancel" OnClick="btnCancel_Click"/>
-                            </div>
-                        </div>
-
                     </div>
                     
                 </section>
