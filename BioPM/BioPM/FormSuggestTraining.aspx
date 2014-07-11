@@ -33,7 +33,7 @@
     protected void InsertDataIntoDatabase()
     {
         string RECID = (BioPM.ClassObjects.ComDevPlan.GetComDevPlanMaxID() + 1).ToString();
-        BioPM.ClassObjects.ComDevPlan.InsertComDevPlan(RECID, ddlEmployeeName.SelectedValue, ddlEventName.SelectedValue, txtMonth.Text, txtCost.Text, Session["username"].ToString());
+        BioPM.ClassObjects.ComDevPlan.InsertComDevPlan(RECID, ddlEmployeeName.SelectedValue, ddlEventName.SelectedValue, txtMonth.Text, txtCost.Text, txtDuration.Text, Session["username"].ToString());
         BioPM.ClassObjects.ComDevPlan.InsertComDevPlanStatus(RECID, "Diusulkan", " ", Session["username"].ToString());
     }
 
@@ -144,6 +144,14 @@
                             <label class="col-sm-3 control-label"> COST ETIMATION </label>
                             <div class="col-lg-3 col-md-4">
                                 <asp:TextBox ID="txtCost" runat="server" class="form-control m-bot15">   
+                                </asp:TextBox> 
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label"> DURATION </label>
+                            <div class="col-lg-3 col-md-4">
+                                <asp:TextBox ID="txtDuration" runat="server" class="form-control m-bot15">   
                                 </asp:TextBox> 
                             </div>
                         </div>

@@ -40,6 +40,15 @@ namespace BioPM {
         protected global::System.Web.UI.WebControls.TextBox txtEvtName;
         
         /// <summary>
+        /// txtEventGroup control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtEventGroup;
+        
+        /// <summary>
         /// ddlEventMethod control.
         /// </summary>
         /// <remarks>

@@ -13,7 +13,7 @@
 
         foreach (object[] data in BioPM.ClassObjects.ComDevExecution.GetComdevExecutionByUserId(Session["username"].ToString()))
         {
-            htmlelement += "<tr class=''><td>" + data[1].ToString() + "</td><td>" + data[2].ToString() + "</td><td>" + data[3].ToString() + "</td><td>" + data[4].ToString() + "</td><td><a class='edit' href='PageInstitutionDetail.aspx?key=" + data[0].ToString() + "'>" + data[5].ToString() + "</a></td><td>" + data[6].ToString() + "</td><td>" + data[7].ToString() + "</td><td>" + data[8].ToString() + "</td><td>" + data[9].ToString() + "</td><td><a class='edit' href='FormUpdateTrainingExecution.aspx?key=" + data[0].ToString() + "'>Edit</a></td><td><a class='delete' href='PageInformation.aspx?key=" + data[0].ToString() + "&type=26'>Delete</a></td></tr>";
+            htmlelement += "<tr class=''><td>" + data[1].ToString() + "</td><td>" + data[2].ToString() + "</td><td>" + data[3].ToString() + "</td><td>" + data[4].ToString() + "</td><td>" + data[10].ToString() + "</td><td><a class='edit' href='PageInstitutionDetail.aspx?key=" + data[0].ToString() + "'>" + data[5].ToString() + "</a></td><td>" + data[6].ToString() + "</td><td>" + data[7].ToString() + "</td><td>" + data[8].ToString() + "</td><td>" + data[9].ToString() + "</td><td><a class='edit' href='FormUpdateTrainingExecution.aspx?key=" + data[0].ToString() + "'>Edit</a></td><td><a class='delete' href='PageInformation.aspx?key=" + data[0].ToString() + "&type=26'>Delete</a></td></tr>";
         }
         
         return htmlelement;
@@ -83,8 +83,9 @@
                                 <tr>
                                     <th>Event Name</th>
                                     <th>Title</th>
-                                    <th>Angkatan</th>
-                                    <th>Pembicara</th>   
+                                    <th>Batch</th>
+                                    <th>Speaker</th> 
+                                    <th>Cost</th>    
                                     <th>Institution</th>  
                                     <th>Start Date</th>  
                                     <th>End Date</th>
