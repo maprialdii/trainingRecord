@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace BioRMM.Controller.Helper
+namespace BioPM.Controller.Helper
 {
     /// <summary>
     /// An object which implements this interface is considered a node in a tree.

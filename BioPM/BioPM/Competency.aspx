@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPages/BackEnd.Master" AutoEventWireup="true" CodeBehind="Competency.aspx.cs" Inherits="BioRMM.Pages.Competency" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPages/BackEnd.Master" AutoEventWireup="true" CodeBehind="Competency.aspx.cs" Inherits="BioPM.Pages.Competency" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="cpHead" runat="server">
     <link rel="stylesheet" type="text/css" href="/CSS/Feature/jquery.nestable.css" />

@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using BioRMM.Controller.Object;
-using BioRMM.Controller.Database;
+using BioPM.Controller.Object;
+using BioPM.Controller.Database;
 using System.Data.SqlClient;
 using System.Data;
 
-namespace BioRMM.Controller.Database
+namespace BioPM.Controller.Database
 {
     public class KatalogCompetency
     {

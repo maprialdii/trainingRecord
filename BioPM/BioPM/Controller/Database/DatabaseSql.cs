@@ -5,13 +5,13 @@ using System.Web;
 using System.Data.SqlClient;
 using System.Configuration;
 
-namespace BioRMM.Controller.Database
+namespace BioPM.Controller.Database
 {
     public class DatabaseSql
     {
 	public static string GetDbConnectionString()
         {
-            return ConfigurationManager.ConnectionStrings["BioRMMConnectionString"].ConnectionString;
+            return ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
         }
 
         public static SqlConnection GetConnection()

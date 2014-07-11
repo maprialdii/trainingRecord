@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using BioRMM.Controller.Object;
+using BioPM.Controller.Object;
 using System.Data.SqlClient;
 using System.Data;
 
-namespace BioRMM.Controller.Database
+namespace BioPM.Controller.Database
 {
     public class KatalogMenu
     {

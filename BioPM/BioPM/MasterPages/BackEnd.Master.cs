@@ -6,9 +6,9 @@ using System.Text;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using BioRMM.Controller.Function;
+using BioPM.Controller.Function;
 
-namespace BioRMM.MasterPages
+namespace BioPM.MasterPages
 {
     public partial class BackEnd : System.Web.UI.MasterPage
     {

@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BioRMM.MasterPages {
+namespace BioPM.MasterPages {
     
     
     public partial class BackEnd {

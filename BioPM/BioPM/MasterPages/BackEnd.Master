@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="BackEnd.master.cs" Inherits="BioRMM.MasterPages.BackEnd" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="BackEnd.master.cs" Inherits="BioPM.MasterPages.BackEnd" %>
 
 <!DOCTYPE html>
 

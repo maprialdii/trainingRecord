@@ -4,9 +4,9 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using BioRMM.Controller.Function;
+using BioPM.Controller.Function;
 
-namespace BioRMM.Pages
+namespace BioPM.Pages
 {
     public partial class Competency : System.Web.UI.Page
     {
