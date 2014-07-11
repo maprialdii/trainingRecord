@@ -105,6 +105,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Competency.aspx" />
+    <Content Include="CSS\Feature\jquery.nestable.css" />
     <Content Include="FormApproveRequest.aspx" />
     <Content Include="FormEvaluasiSatu.aspx" />
     <Content Include="FormEvaluasiDua.aspx" />
@@ -142,6 +144,7 @@
     <Content Include="PageCompetencyDevelopmentEvent.aspx" />
     <Content Include="PageCompetencyParameter.aspx" />
     <Content Include="PageCompetencyRelation.aspx" />
+    <Content Include="PageCompetencyRelationTable.aspx" />
     <Content Include="PageEmployeeDetail.aspx" />
     <Content Include="PageEmployeeQualification.aspx" />
     <Content Include="PageEventMethod.aspx" />
@@ -221,6 +224,7 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="packages.config" />
+    <Content Include="MasterPages\BackEnd.Master" />
     <None Include="Properties\PublishProfiles\BioPM.pubxml" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="PageInformation.aspx" />
@@ -291,6 +295,22 @@
     <Compile Include="ClassObjects\QC.cs" />
     <Compile Include="ClassScripts\BasicScripts.cs" />
     <Compile Include="ClassScripts\JS.cs" />
+    <Compile Include="Competency.aspx.cs">
+      <DependentUpon>Competency.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Competency.aspx.designer.cs">
+      <DependentUpon>Competency.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Controller\Database\DatabaseFactory.cs" />
+    <Compile Include="Controller\Database\DatabaseSql.cs" />
+    <Compile Include="Controller\Database\KatalogCompetency.cs" />
+    <Compile Include="Controller\Database\KatalogMenu.cs" />
+    <Compile Include="Controller\Function\CompetencyGenerator.cs" />
+    <Compile Include="Controller\Function\MenuGenerator.cs" />
+    <Compile Include="Controller\Helper\ITreeNode.cs" />
+    <Compile Include="Controller\Object\Competency.cs" />
+    <Compile Include="Controller\Object\Menu.cs" />
     <Compile Include="FormApproveRequest.aspx.cs">
       <DependentUpon>FormApproveRequest.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -529,6 +549,13 @@
     <Compile Include="FormUpdateTrainingExecution.aspx.designer.cs">
       <DependentUpon>FormUpdateTrainingExecution.aspx</DependentUpon>
     </Compile>
+    <Compile Include="MasterPages\BackEnd.Master.cs">
+      <DependentUpon>BackEnd.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterPages\BackEnd.Master.designer.cs">
+      <DependentUpon>BackEnd.Master</DependentUpon>
+    </Compile>
     <Compile Include="PageCompetencyDevelopmentEvent.aspx.cs">
       <DependentUpon>PageCompetencyDevelopmentEvent.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -549,6 +576,13 @@
     </Compile>
     <Compile Include="PageCompetencyRelation.aspx.designer.cs">
       <DependentUpon>PageCompetencyRelation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageCompetencyRelationTable.aspx.cs">
+      <DependentUpon>PageCompetencyRelationTable.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageCompetencyRelationTable.aspx.designer.cs">
+      <DependentUpon>PageCompetencyRelationTable.aspx</DependentUpon>
     </Compile>
     <Compile Include="PageEmployeeDetail.aspx.cs">
       <DependentUpon>PageEmployeeDetail.aspx</DependentUpon>
