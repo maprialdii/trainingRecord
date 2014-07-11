@@ -8,13 +8,13 @@ namespace BioPM.ClassObjects
 {
     public class ComDevEvent:DatabaseFactory
     {
-        public static void InsertComDevEvent(string EVTID, string EVTNM, string EMTID, string CHUSR)
+        public static void InsertComDevEvent(string EVTID, string EVTNM, string EMTID, string EVTGR, string CHUSR)
         {
             string date = DateTime.Now.ToString("MM/dd/yyyy HH:mm");
             string maxdate = DateTime.MaxValue.ToString("MM/dd/yyyy HH:mm");
             SqlConnection conn = GetConnection();
-            string sqlCmd = @"INSERT INTO trrcd.COMDEV_EVENT (BEGDA, ENDDA, EVTID, EVTNM, EMTID, CHUSR, CHGDT)
-                            VALUES ('" + date + "','" + maxdate + "'," + EVTID + ",'" + EVTNM + "'," + EMTID + ",'" + CHUSR + "','" + date + "');";
+            string sqlCmd = @"INSERT INTO trrcd.COMDEV_EVENT (BEGDA, ENDDA, EVTID, EVTNM, EMTID, EVTGR, CHUSR, CHGDT)
+                            VALUES ('" + date + "','" + maxdate + "'," + EVTID + ",'" + EVTNM + "'," + EMTID + ",'" + EVTGR + "','" + CHUSR + "','" + date + "');";
 
             SqlCommand cmd = DatabaseFactory.GetCommand(conn, sqlCmd);
 
@@ -51,7 +51,7 @@ namespace BioPM.ClassObjects
             }
         }
 
-        public static void UpdateComDevEvent(string EVTID, string EVTNM, string EMTID, string USRDT)
+        public static void UpdateComDevEvent(string EVTID, string EVTNM, string EMTID, string EVTGR, string USRDT)
         {
             string date = DateTime.Now.ToString("MM/dd/yyyy HH:mm");
             string yesterday = DateTime.Now.AddMinutes(-1).ToString("MM/dd/yyyy HH:mm");
@@ -68,7 +68,7 @@ namespace BioPM.ClassObjects
             finally
             {
                 conn.Close();
-                InsertComDevEvent(EVTID, EVTNM, EMTID, USRDT);
+                InsertComDevEvent(EVTID, EVTNM, EMTID, EVTGR, USRDT);
             }
         }
 
@@ -136,7 +136,7 @@ namespace BioPM.ClassObjects
         public static List<object[]> GetAllComdevEvent()
         {
             SqlConnection conn = GetConnection();
-            string sqlCmd = @"SELECT CE.EVTID, CE.EVTNM, EM.EVTMT
+            string sqlCmd = @"SELECT CE.EVTID, CE.EVTNM, EM.EVTMT, CE.EVTGR
                             FROM trrcd.COMDEV_EVENT CE WITH(INDEX(COMDEV_EVENT_IDX_BEGDA_ENDDA_ID)), trrcd.EVENT_METHOD EM WITH(INDEX(EVENT_METHOD_IDX_BEGDA_ENDDA_ID))
                             WHERE CE.EMTID = EM.EMTID
                             AND EM.BEGDA <= GETDATE() AND EM.ENDDA >= GETDATE()
@@ -195,7 +195,7 @@ namespace BioPM.ClassObjects
         public static object[] GetComdevEventById(string evtid)
         {
             SqlConnection conn = GetConnection();
-            string sqlCmd = @"SELECT CE.EVTID, CE.EVTNM, CE.EMTID, EM.EVTMT
+            string sqlCmd = @"SELECT CE.EVTID, CE.EVTNM, CE.EMTID, EM.EVTMT, CE.EVTGR
                             FROM trrcd.COMDEV_EVENT CE WITH(INDEX(COMDEV_EVENT_IDX_BEGDA_ENDDA_ID)), trrcd.EVENT_METHOD EM WITH(INDEX(EVENT_METHOD_IDX_BEGDA_ENDDA_ID))
                             WHERE CE.EMTID = EM.EMTID
                             AND EM.BEGDA <= GETDATE() AND EM.ENDDA >= GETDATE()

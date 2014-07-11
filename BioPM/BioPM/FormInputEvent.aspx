@@ -29,7 +29,7 @@
     protected void InsertEventIntoDatabase()
     {
         EVTID = (BioPM.ClassObjects.ComDevEvent.GetComDevEventMaxID() + 1).ToString();
-        BioPM.ClassObjects.ComDevEvent.InsertComDevEvent(EVTID, txtEvtName.Text, ddlEventMethod.SelectedValue, Session["username"].ToString());
+        BioPM.ClassObjects.ComDevEvent.InsertComDevEvent(EVTID, txtEvtName.Text, ddlEventMethod.SelectedValue, txtEventGroup.Text, Session["username"].ToString());
     }
 
     protected void btnAdd_Click(object sender, EventArgs e)
@@ -111,6 +111,13 @@
                             <div class="col-lg-3 col-md-4">
                                 <asp:DropDownList ID="ddlEventMethod" runat="server" class="form-control m-bot15">   
                                 </asp:DropDownList> 
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label"> EVENT GROUP </label>
+                            <div class="col-lg-3 col-md-4">
+                                <asp:TextBox ID="txtEventGroup" runat="server" class="form-control m-bot15" placeholder="EVENT NAME" ></asp:TextBox>
                             </div>
                         </div>
 

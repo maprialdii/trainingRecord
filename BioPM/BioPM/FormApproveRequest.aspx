@@ -23,7 +23,7 @@
    
     protected void InsertDataIntoDatabase()
     {
-        BioPM.ClassObjects.ComDevPlan.UpdateComDevPlan(RECID, EMPID, EVTID, txtMonth.Text, txtCost.Text, Session["username"].ToString());
+        BioPM.ClassObjects.ComDevPlan.UpdateComDevPlan(RECID, EMPID, EVTID, txtMonth.Text, txtCost.Text, txtDuration.Text, Session["username"].ToString());
         BioPM.ClassObjects.ComDevPlan.UpdateComDevPlanStatus(RECID, "Disetujui", Session["username"].ToString(), Session["username"].ToString());
     }
 
@@ -114,11 +114,7 @@
                             <div class="col-lg-3 col-md-4">
                                 <asp:TextBox ID="txtMonth" runat="server" class="form-control m-bot15">   
                                 </asp:TextBox> 
-<<<<<<< HEAD
-                            <a href="PageJadwal.aspx">LIHAT JADWAL</a>   
-=======
                             <a href="PageJadwal.aspx" target="_blank"> LIHAT JADWAL </a>   
->>>>>>> origin/master
                             </div>
                         </div>
 
@@ -126,6 +122,14 @@
                             <label class="col-sm-3 control-label"> EVENT COST ESTIMATION </label>
                             <div class="col-lg-3 col-md-4">
                                 <asp:TextBox ID="txtCost" runat="server" class="form-control m-bot15">   
+                                </asp:TextBox> 
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label"> EVENT DURATION </label>
+                            <div class="col-lg-3 col-md-4">
+                                <asp:TextBox ID="txtDuration" runat="server" class="form-control m-bot15">   
                                 </asp:TextBox> 
                             </div>
                         </div>

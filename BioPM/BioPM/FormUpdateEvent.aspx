@@ -18,6 +18,7 @@
         txtEvtID.Text = values[0].ToString();
         txtEvtName.Text = values[1].ToString();
         ddlEventMethod.SelectedValue = values[2].ToString();
+        txtEventGroup.Text = values[3].ToString();
     }
 
     protected void SetEventMethod()
@@ -32,7 +33,7 @@
 
     protected void UpdateEventIntoDatabase()
     {
-        BioPM.ClassObjects.ComDevEvent.UpdateComDevEvent(txtEvtID.Text, txtEvtName.Text, ddlEventMethod.SelectedValue, Session["username"].ToString());
+        BioPM.ClassObjects.ComDevEvent.UpdateComDevEvent(txtEvtID.Text, txtEvtName.Text, ddlEventMethod.SelectedValue, txtEventGroup.Text, Session["username"].ToString());
     }
 
     protected void btnAdd_Click(object sender, EventArgs e)
@@ -113,6 +114,13 @@
                             <label class="col-sm-3 control-label"> EVENT NAME </label>
                             <div class="col-lg-3 col-md-4">
                                 <asp:TextBox ID="txtEvtName" runat="server" class="form-control m-bot15" placeholder="EVENT NAME" ></asp:TextBox>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label"> EVENT GROUP </label>
+                            <div class="col-lg-3 col-md-4">
+                                <asp:TextBox ID="txtEventGroup" runat="server" class="form-control m-bot15" placeholder="EVENT NAME" ></asp:TextBox>
                             </div>
                         </div>
 

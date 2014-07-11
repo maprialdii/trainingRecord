@@ -28,12 +28,13 @@
         txtCouin.Text = values[13].ToString();
         ddlStatus.SelectedValue = values[9].ToString();
         txtScore.Text = values[10].ToString();
+        
     }
 
     protected void SetEventName()
     {
         ddlEventMethod.Items.Clear();
-        foreach (object[] data in BioPM.ClassObjects.EventMethod.GetAllEventMethod())
+        foreach (object[] data in BioPM.ClassObjects.ComDevEvent.GetAllComdevEvent())
         {
             ddlEventMethod.Items.Add(new ListItem(data[1].ToString(), data[0].ToString()));
         }
@@ -42,7 +43,7 @@
 
     protected void UpdateExecutionIntoDatabase()
     {
-        BioPM.ClassObjects.ComDevExecution.UpdateComDevExecution(txtExcid.Text, Session["username"].ToString(), ddlEventMethod.SelectedValue, txtEventTitle.Text, txtBatch.Text, txtPembicara.Text, txtInsti.Text, txtAdrin.Text, TxtCitin.Text, txtCouin.Text, ddlStatus.SelectedValue, txtScore.Text, Session["username"].ToString(), txtBegda.Text, txtEndda.Text);
+        BioPM.ClassObjects.ComDevExecution.UpdateComDevExecution(txtExcid.Text, Session["username"].ToString(), ddlEventMethod.SelectedValue, txtEventTitle.Text, txtBatch.Text, txtPembicara.Text, txtCost.Text, txtInsti.Text, txtAdrin.Text, TxtCitin.Text, txtCouin.Text, ddlStatus.SelectedValue, txtScore.Text, Session["username"].ToString(), txtBegda.Text, txtEndda.Text);
     }
 
     protected void btnAdd_Click(object sender, EventArgs e)
@@ -159,9 +160,16 @@
                         </div>
 
                         <div class="form-group">
-                            <label class="col-sm-3 control-label"> PEMBICARA </label>
+                            <label class="col-sm-3 control-label"> SPEAKER </label>
                             <div class="col-lg-3 col-md-4">
                                 <asp:TextBox ID="txtPembicara" runat="server" class="form-control m-bot15" placeholder="PEMBICARA" ></asp:TextBox>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label"> COST </label>
+                            <div class="col-lg-3 col-md-4">
+                                <asp:TextBox ID="txtCost" runat="server" class="form-control m-bot15" placeholder="COST" ></asp:TextBox>
                             </div>
                         </div>
 

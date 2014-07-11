@@ -201,7 +201,7 @@
             case "30":
                 {
                     string RECID = (BioPM.ClassObjects.ComDevPlan.GetComDevPlanMaxID() + 1).ToString();
-                    BioPM.ClassObjects.ComDevPlan.InsertComDevPlan(RECID, Session["username"].ToString(), ID, " ", " ", Session["username"].ToString());
+                    BioPM.ClassObjects.ComDevPlan.InsertComDevPlan(RECID, Session["username"].ToString(), ID, " ", " ", " ", Session["username"].ToString());
                     BioPM.ClassObjects.ComDevPlan.InsertComDevPlanStatus(RECID, "Belum Disetujui", " ", Session["username"].ToString());
                     message = "REQUEST SUCCESS! REQUEST HAS BEEN ADDED. <a href='PageRequestTraining.aspx'>BACK</a>.";
                     break;
