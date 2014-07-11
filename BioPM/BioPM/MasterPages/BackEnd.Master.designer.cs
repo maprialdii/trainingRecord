@@ -7,81 +7,72 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BioPM {
+namespace BioRMM.MasterPages {
     
     
-    public partial class PageCompetencyRelation {
+    public partial class BackEnd {
         
         /// <summary>
-        /// Form2 control.
+        /// cpHead control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm Form2;
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder cpHead;
         
         /// <summary>
-        /// txtConfirmation control.
+        /// form1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtConfirmation;
+        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// btnClose control.
+        /// lbUserName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnClose;
+        protected global::System.Web.UI.WebControls.Label lbUserName;
         
         /// <summary>
-        /// btnSubmit control.
+        /// navAccordion control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSubmit;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl navAccordion;
         
         /// <summary>
-        /// ddlCompParent control.
+        /// cpMainContent control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlCompParent;
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder cpMainContent;
         
         /// <summary>
-        /// ddlCompChild control.
+        /// cpScriptLibContent control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlCompChild;
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder cpScriptLibContent;
         
         /// <summary>
-        /// txtCompLevel control.
+        /// cpScriptContent control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCompLevel;
-        
-        /// <summary>
-        /// btnAction control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton btnAction;
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder cpScriptContent;
     }
 }

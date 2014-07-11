@@ -10,7 +10,7 @@
 namespace BioPM {
     
     
-    public partial class PageCompetencyRelation {
+    public partial class PageCompetencyRelationTable {
         
         /// <summary>
         /// Form2 control.
