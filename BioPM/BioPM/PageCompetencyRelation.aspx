@@ -52,8 +52,8 @@
                                     <section class="panel">
                                         <div class="panel-body">
                                             <div class="dd" id="nestable_list_1">
-			                        <ol class="dd-list" id="List" runat="server">
-			                        </ol>
+			                                    <ol class="dd-list" id="List" runat="server">       
+			                                    </ol>
                                             </div>
                                         </div>
                                     </section>
