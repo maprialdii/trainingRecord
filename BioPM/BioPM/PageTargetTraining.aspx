@@ -66,6 +66,21 @@
                          </span>
                     </header>
                     <div class="panel-body">
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label"> EVENT NAME </label>
+                            <div class="col-lg-3 col-md-4">
+                                <asp:Label ID="txtEvtName" runat="server" class="form-control m-bot15">   
+                                </asp:Label> 
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label"> EVENT METHOD </label>
+                            <div class="col-lg-3 col-md-4">
+                                <asp:Label ID="txtMethod" runat="server" class="form-control m-bot15">   
+                                </asp:Label> 
+                            </div>
+                        </div>
                         <div class="adv-table">
                             <div class="clearfix">
                                 <div class="btn-group">
