@@ -13,8 +13,8 @@ namespace BioPM
         CompetencyGenerator Com = new CompetencyGenerator();
         protected void Page_Load(object sender, EventArgs e)
         {
-            //Com.GenerateCompetency();
-            //List.InnerHtml = Com.ListCompetency.ToString();
+            Com.GenerateCompetency();
+            List.InnerHtml = Com.ListCompetency.ToString();
         }
     }
 }

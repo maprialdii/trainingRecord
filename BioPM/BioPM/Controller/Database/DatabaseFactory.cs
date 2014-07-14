@@ -10,7 +10,7 @@ namespace BioPM.Controller.Database
     {
         public static SqlConnection GetConnection()
         {
-            return new SqlConnection(System.Web.Configuration.WebConfigurationManager.AppSettings["ConnectionString"].ToString());
+            return new SqlConnection(System.Web.Configuration.WebConfigurationManager.ConnectionStrings["DefaultConnection"].ToString());
         }
 
         public static SqlCommand GetCommand(SqlConnection con, string sqlCommand)
