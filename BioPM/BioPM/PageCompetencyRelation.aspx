@@ -50,11 +50,6 @@
                             <div class="row">
                                 <div class="col-lg-12">
                                     <section class="panel">
-		                            <span class="tools pull-right">
-			                        <a href="javascript:;" class="icon-chevron-down"></a>
-			                        <a href="javascript:;" class="icon-remove"></a>
-		                            </span>
-                                        </header>
                                         <div class="panel-body">
                                             <div class="dd" id="nestable_list_1">
 			                        <ol class="dd-list" id="List" runat="server">
