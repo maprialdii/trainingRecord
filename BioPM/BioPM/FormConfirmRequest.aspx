@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="FormApproveRequest.aspx.cs" Inherits="BioPM.FormApproveRequest" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="FormConfirmRequest.aspx.cs" Inherits="BioPM.FormApproveRequest" %>
 
 <!DOCTYPE html>
 <script runat="server">

@@ -152,6 +152,58 @@ namespace BioPM.ClassObjects
             }
         }
 
+        public static object[] GetUnplannedExecution(string pernr)
+        {
+            SqlConnection conn = GetConnection();
+            string sqlCmd = @"SELECT COUNT(*) AS DI_LUAR_RENCANA 
+                            FROM trrcd.COMDEV_EVENT_EXECUTION
+                            WHERE PERNR='" + pernr + "' AND RECID IS NULL;";
+            SqlCommand cmd = GetCommand(conn, sqlCmd);
+
+            try
+            {
+                conn.Open();
+                SqlDataReader reader = GetDataReader(cmd);
+                object[] data = null;
+                while (reader.Read())
+                {
+                    object[] values = { reader[0].ToString() };
+                    data = values;
+                }
+                return data;
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+
+        public static object[] GetPlannedExecution(string pernr)
+        {
+            SqlConnection conn = GetConnection();
+            string sqlCmd = @"SELECT COUNT(*) AS SESUAI_RENCANA 
+                            FROM trrcd.COMDEV_EVENT_EXECUTION
+                            WHERE PERNR='" + pernr + "' AND RECID IS NOT NULL;";
+            SqlCommand cmd = GetCommand(conn, sqlCmd);
+
+            try
+            {
+                conn.Open();
+                SqlDataReader reader = GetDataReader(cmd);
+                object[] data = null;
+                while (reader.Read())
+                {
+                    object[] values = { reader[0].ToString() };
+                    data = values;
+                }
+                return data;
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+
         public static object[] GetDetailInstitution(string excid)
         {
             SqlConnection conn = GetConnection();
@@ -177,6 +229,8 @@ namespace BioPM.ClassObjects
                 conn.Close();
             }
         }
+
+
 
         public static int GetComDevExecutionMaxID()
         {

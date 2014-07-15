@@ -262,7 +262,7 @@ namespace BioPM.ClassObjects
 
         public static void InsertQualification(string GAPID, string PERNR, string CPYID, string PRLVL, string CHUSR, string PRQLVL)
         {
-            float GAP = float.Parse(PRQLVL) - float.Parse(PRLVL);
+            float GAP = float.Parse(PRLVL) - float.Parse(PRQLVL);
             string GAPLV = GAP.ToString();
             string date = DateTime.Now.ToString("MM/dd/yyyy HH:mm");
             string maxdate = DateTime.MaxValue.ToString("MM/dd/yyyy HH:mm");

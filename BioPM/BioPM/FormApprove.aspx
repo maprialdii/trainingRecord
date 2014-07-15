@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="FormInputTrainingExecution.aspx.cs" Inherits="BioPM.FormTrainingExecution" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="FormApprove.aspx.cs" Inherits="BioPM.FormApprove" %>
 
 <!DOCTYPE html>
 <script runat="server">
@@ -24,7 +24,7 @@
     
     protected void InsertDataIntoDatabase()
     {
-        BioPM.ClassObjects.ComDevExecution.InsertComDevExecution(txtExcid.Text, Session["username"].ToString(), ddlEventMethod.SelectedValue, txtEventTitle.Text, txtBatch.Text, txtPembicara.Text, txtCost.Text, txtInsti.Text, txtAdrin.Text, TxtCitin.Text, txtCouin.Text, ddlStatus.SelectedValue.ToString(), txtScore.Text, Session["username"].ToString(), txtBegda.Text, txtEndda.Text);
+        BioPM.ClassObjects.ComDevExecution.InsertComDevExecution(txtExcid.Text, Session["username"].ToString(), ddlEventMethod.SelectedValue, txtEventTitle.Text, txtBatch.Text, txtPembicara.Text, txtCost.Text, txtInsti.Text, txtAdrin.Text, TxtCitin.Text, txtCouin.Text, " ", "0", Session["username"].ToString(), txtBegda.Text, txtEndda.Text);
     }
 
     protected void btnAdd_Click(object sender, EventArgs e)
@@ -166,23 +166,6 @@
                             <label class="col-sm-3 control-label"> INSTITUTION COUNTRY </label>
                             <div class="col-lg-3 col-md-4">
                                 <asp:TextBox ID="txtCouin" runat="server" class="form-control m-bot15" placeholder="INSTITUTION COUNTRY" ></asp:TextBox>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="col-sm-3 control-label"> STATUS </label>
-                            <div class="col-lg-3 col-md-4">
-                                <asp:DropDownList ID="ddlStatus" runat="server" class="form-control m-bot15">  
-                                    <asp:ListItem Value="Lulus">Lulus</asp:ListItem> 
-                                    <asp:ListItem Value="Tidak Lulus">Tidak Lulus</asp:ListItem> 
-                                </asp:DropDownList> 
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="col-sm-3 control-label"> SCORE </label>
-                            <div class="col-lg-3 col-md-4">
-                                <asp:TextBox ID="txtScore" runat="server" class="form-control m-bot15" placeholder="SCORE" ></asp:TextBox>
                             </div>
                         </div>
 

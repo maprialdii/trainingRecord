@@ -13,7 +13,7 @@
 
         foreach (object[] data in BioPM.ClassObjects.ComDevPlan.GetComdevPlanByStatus("Belum Disetujui") )
         {
-            htmlelement += "<tr class=''><td>" + data[5].ToString() + "</td><td>" + data[1].ToString() + "</td><td><a class='edit' href='FormApproveRequest.aspx?key=" + data[0].ToString() + "'>Approve</a></td><td><a class='delete' href='PageInformation.aspx?key=" + data[0].ToString() + "&type=31'>Reject</a></td></tr>";
+            htmlelement += "<tr class=''><td>" + data[5].ToString() + "</td><td>" + data[1].ToString() + "</td><td><a class='edit' href='FormConfirmRequest.aspx?key=" + data[0].ToString() + "'>Confirm</a></td></tr>";
         }
         
         return htmlelement;
@@ -108,7 +108,7 @@
                                     <th>Employee Name</th>
                                     <th>Requested Competency Development Event</th>                                   
                                     <th>Approve</th>
-                                    <th>Reject</th>
+                                    
                                 </tr>
                                 </thead>
                                 <tbody>

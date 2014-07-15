@@ -10,136 +10,96 @@
 namespace BioPM {
     
     
-    public partial class PageCompetencyRelation {
+    public partial class PageSurvey {
         
         /// <summary>
-<<<<<<< HEAD
-        /// Form1 control.
         /// Form2 control.
-=======
-        /// List control.
->>>>>>> fbd1503f921f5b2fab1da198ac6ba082006863b9
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-<<<<<<< HEAD
         protected global::System.Web.UI.HtmlControls.HtmlForm Form2;
         
         /// <summary>
-        /// ddlCompParent control.
+        /// ddlorgid control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlCompParent;
+        protected global::System.Web.UI.WebControls.DropDownList ddlorgid;
         
         /// <summary>
-        /// ddlCompChild control.
+        /// txtnama control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlCompChild;
+        protected global::System.Web.UI.WebControls.TextBox txtnama;
         
         /// <summary>
-
-        /// txtCompLevel control.
-
-        /// TextBox1 control.
-        //protected global::System.Web.UI.HtmlControls.HtmlForm Form2;
-        
-        /// <summary>
-        /// txtConfirmation control.
-
-        //protected global::System.Web.UI.HtmlControls.HtmlForm Form2;
-        
-        /// <summary>
-        /// txtConfirmation control.
+        /// txtpanggilan control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-
-        protected global::System.Web.UI.WebControls.TextBox txtCompLevel;
+        protected global::System.Web.UI.WebControls.TextBox txtpanggilan;
         
         /// <summary>
-        /// btnAdd control.
-
-        protected global::System.Web.UI.WebControls.TextBox TextBox1;
-        protected global::System.Web.UI.WebControls.TextBox txtConfirmation;
-
-        //protected global::System.Web.UI.WebControls.TextBox txtConfirmation;
-        //protected global::System.Web.UI.WebControls.TextBox txtConfirmation;
-
-        
-        /// <summary>
-        /// btnClose control.
+        /// txtdate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
-        protected global::System.Web.UI.WebControls.Button btnClose;
+        protected global::System.Web.UI.WebControls.TextBox txtdate;
         
         /// <summary>
-        /// btnSubmit control.
+        /// txttime control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSubmit;
-        //protected global::System.Web.UI.WebControls.Button btnSubmit;
-
+        protected global::System.Web.UI.WebControls.TextBox txttime;
         
         /// <summary>
-        /// ddlCompParent control.
+        /// RadioButton1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        //protected global::System.Web.UI.WebControls.DropDownList ddlCompParent;
+        protected global::System.Web.UI.WebControls.RadioButton RadioButton1;
         
         /// <summary>
-        /// ddlCompChild control.
+        /// RadioButton2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        //protected global::System.Web.UI.WebControls.DropDownList ddlCompChild;
+        protected global::System.Web.UI.WebControls.RadioButton RadioButton2;
         
         /// <summary>
-        /// txtCompLevel control.
+        /// ddltipe control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-
-        //protected global::System.Web.UI.WebControls.TextBox txtCompLevel;
-
-        //protected global::System.Web.UI.WebControls.TextBox txtCompLevel;
+        protected global::System.Web.UI.WebControls.DropDownList ddltipe;
         
         /// <summary>
-        /// btnAction control.
+        /// txtcidera control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton btnAction;
-        //protected global::System.Web.UI.WebControls.LinkButton btnAction;
-
-=======
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl List;
->>>>>>> fbd1503f921f5b2fab1da198ac6ba082006863b9
+        protected global::System.Web.UI.WebControls.TextBox txtcidera;
     }
 }

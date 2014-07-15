@@ -212,6 +212,12 @@
                     message = "UPDATE SUCCESS! REQUEST HAS BEEN REJECTED. <a href='PageRequestFromEmployee.aspx'>BACK</a>.";
                     break;
                 }
+            case "32":
+                {
+                    BioPM.ClassObjects.ComDevPlan.UpdateComDevPlanStatus(ID, "Disetujui", Session["username"].ToString(), Session["username"].ToString());
+                    message = "UPDATE SUCCESS! REQUEST HAS BEEN APPROVED. <a href='PageComdevPlan.aspx'>BACK</a>.";
+                    break;
+                }
             
             default :
                 {

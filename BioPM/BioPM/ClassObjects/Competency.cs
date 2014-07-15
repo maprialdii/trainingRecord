@@ -13,8 +13,8 @@ namespace BioPM.ClassObjects
             string date = DateTime.Now.ToString("MM/dd/yyyy HH:mm");
             string maxdate = DateTime.MaxValue.ToString("MM/dd/yyyy HH:mm");
             SqlConnection conn = GetConnection();
-            string sqlCmd = @"INSERT INTO trrcd.REFERENSI_KOMPETENSI (BEGDA, ENDDA, CPYID, CPYKD, CPYNM, CHGDT, CHUSR)
-                            VALUES ('" + date + "','" + maxdate + "'," + CPYID + ",'" + CPYKD + "','" + CPYNM + "','" + date + "','" + CHUSR + "');";
+            string sqlCmd = @"INSERT INTO bioumum.PARAMETER (BEGDA, ENDDA, PRMID, PRMTY, PRMKD, PRMNM, CHGDT, CHUSR)
+                            VALUES ('" + date + "','" + maxdate + "'," + CPYID + ",'CM','" + CPYKD + "','" + CPYNM + "','" + date + "','" + CHUSR + "');";
 
             SqlCommand cmd = DatabaseFactory.GetCommand(conn, sqlCmd);
 
@@ -34,7 +34,7 @@ namespace BioPM.ClassObjects
             string date = DateTime.Now.ToString("MM/dd/yyyy HH:mm");
             string yesterday = DateTime.Now.AddMinutes(-1).ToString("MM/dd/yyyy HH:mm");
             SqlConnection conn = GetConnection();
-            string sqlCmd = @"UPDATE trrcd.REFERENSI_KOMPETENSI SET ENDDA = '" + yesterday + "', CHGDT = '" + date + "', CHUSR = '" + CHUSR + "' WHERE (CPYID = '" + CPYID + "' AND BEGDA <= GETDATE() AND ENDDA >= GETDATE())";
+            string sqlCmd = @"UPDATE bioumum.PARAMETER SET ENDDA = '" + yesterday + "', CHGDT = '" + date + "', CHUSR = '" + CHUSR + "' WHERE (CPYID = '" + CPYID + "' AND BEGDA <= GETDATE() AND ENDDA >= GETDATE())";
 
             SqlCommand cmd = DatabaseFactory.GetCommand(conn, sqlCmd);
 
@@ -55,7 +55,7 @@ namespace BioPM.ClassObjects
             string date = DateTime.Now.ToString("MM/dd/yyyy HH:mm");
             string yesterday = DateTime.Now.AddMinutes(-1).ToString("MM/dd/yyyy HH:mm");
             SqlConnection conn = GetConnection();
-            string sqlCmd = @"UPDATE trrcd.REFERENSI_KOMPETENSI SET ENDDA = '" + yesterday + "', CHGDT = '" + date + "', CHUSR = '" + usrdt + "' WHERE (CPYID = '" + cpyid + "' AND BEGDA <= GETDATE() AND ENDDA >= GETDATE())";
+            string sqlCmd = @"UPDATE bioumum.PARAMETER SET ENDDA = '" + yesterday + "', CHGDT = '" + date + "', CHUSR = '" + usrdt + "' WHERE (CPYID = '" + cpyid + "' AND BEGDA <= GETDATE() AND ENDDA >= GETDATE())";
 
             SqlCommand cmd = DatabaseFactory.GetCommand(conn, sqlCmd);
 
@@ -72,10 +72,10 @@ namespace BioPM.ClassObjects
         public static List<object[]> GetAllCompetency()
         {
             SqlConnection conn = GetConnection();
-            string sqlCmd = @"SELECT RK.CPYID, RK.CPYKD, RK.CPYNM
-                            FROM trrcd.REFERENSI_KOMPETENSI RK WITH(INDEX(REFERENSI_KOMPETENSI_IDX_BEGDA_ENDDA_ID))
+            string sqlCmd = @"SELECT RK.PRMID, RK.PRMKD, RK.PRMNM
+                            FROM bioumum.PARAMETER RK 
                             WHERE RK.BEGDA <= GETDATE() AND RK.ENDDA >= GETDATE()
-                            ORDER BY RK.CPYID ASC;";
+                            ORDER BY RK.PRMID ASC;";
             SqlCommand cmd = GetCommand(conn, sqlCmd);
 
             try
@@ -96,13 +96,13 @@ namespace BioPM.ClassObjects
             }
         }
 
-        public static object[] GetCompetencyById(string cpyid)
+        public static object[] GetCompetencyById(string prmid)
         {
             SqlConnection conn = GetConnection();
-            string sqlCmd = @"SELECT RK.CPYID, RK.CPYKD, RK.CPYNM
-                            FROM trrcd.REFERENSI_KOMPETENSI RK WITH(INDEX(REFERENSI_KOMPETENSI_IDX_BEGDA_ENDDA_ID))
+            string sqlCmd = @"SELECT RK.PRMID, RK.PRMKD, RK.PRMNM
+                            FROM bioumum.PARAMETER RK
                             WHERE RK.BEGDA <= GETDATE() AND RK.ENDDA >= GETDATE()
-                            AND RK.CPYID=" + cpyid + "ORDER BY RK.CPYID ASC;";
+                            AND RK.PRMID=" + prmid + "ORDER BY RK.PRMID ASC;";
             SqlCommand cmd = GetCommand(conn, sqlCmd);
 
             try

@@ -4,11 +4,14 @@
 <script runat="server">
     string evtId = "";
     string eventName = null;
-    string method = null;
+    string method = null;/
     protected void Page_Load(object sender, EventArgs e)
     {
         if (Session["username"] == null && Session["password"] == null) Response.Redirect("PageLogin.aspx");
         evtId = Request.QueryString["key"].ToString();
+        object[] data = BioPM.ClassObjects.ComDevEvent.GetComdevEventById(evtId);
+        eventName = data[2].ToString();
+        method = data[5].ToString();
     }
 
     protected String GenerateDataTargetTraining()

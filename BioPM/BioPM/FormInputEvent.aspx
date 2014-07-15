@@ -6,7 +6,6 @@
     protected void Page_Load(object sender, EventArgs e)
     {
         if (Session["username"] == null && Session["password"] == null) Response.Redirect("PageLogin.aspx");
-        txtEvtName.Text = "";
         if (!IsPostBack) SetExistingMethod();
     }
     //protected void sessionCreator()
@@ -48,7 +47,7 @@
         if (Session["password"].ToString() == BioPM.ClassEngines.CryptographFactory.Encrypt(txtConfirmation.Text, true))
         {
             InsertEventIntoDatabase();
-            Response.Redirect("FormInputTargetTraining.aspx");
+            Response.Redirect("FormInputTargetTraining.aspx?key=" + EVTID + "");
         }
         else
         {
