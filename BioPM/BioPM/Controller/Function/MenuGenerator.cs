@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Web;
 
-namespace BioRMM.Controller.Function
+namespace BioPM.Controller.Function
 {
     public class MenuGenerator
     {
@@ -18,7 +18,7 @@ namespace BioRMM.Controller.Function
 
         public void GenerateMenu()
         {
-            BioRMM.Controller.Database.KatalogMenu getMenu = new Controller.Database.KatalogMenu();
+            BioPM.Controller.Database.KatalogMenu getMenu = new Controller.Database.KatalogMenu();
             IList<Controller.Object.Menu> topLevelMenus = Controller.Helper.TreeHelper.ConvertToForest(getMenu.GetMenuFromDb());
 
             foreach (Controller.Object.Menu topLevelMenu in topLevelMenus)

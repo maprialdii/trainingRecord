@@ -93,35 +93,74 @@
                         <form id="Form1" class="form-horizontal " runat="server" >
                             <table class="table table-striped table-hover table-bordered" id="survey" >
                                 <tr>
-                                    <td rowspan="6">Soal</td>
+                                    <td colspan="6">1. Tujuan pelaksanaan pelatihan</td>
                                 </tr>
                                 <tr>
-                                    <td>Buruk</td>
+                                    <td>Tidak tercapai</td>
                                     <td><div class="radio">
 	                                        <label>
 		                                        <input type="radio" name="Soal1" id="11" value="1" checked>
 		                                        1
 	                                        </label>
-                                        </div>                                    </td>
+                                        </div>
+                                    </td>
                                     <td><div class="radio">
 	                                        <label>
 		                                        <input type="radio" name="Soal1" id="12" value="2" checked>
 		                                        2
 	                                        </label>
-                                        </div>                                    </td>
+                                        </div>
+                                    </td>
                                     <td><div class="radio">
 	                                        <label>
 		                                        <input type="radio" name="Soal1" id="13" value="3" checked>
 		                                        3
 	                                        </label>
-                                        </div>                                    </td>
+                                        </div>
+                                    </td>
                                     <td><div class="radio">
 	                                        <label>
 		                                        <input type="radio" name="Soal1" id="14" value="4" checked>
 		                                        4
 	                                        </label>
-                                        </div>                                    </td>
-                                    <td>Baik</td>
+                                        </div>
+                                    </td>
+                                    <td>Tercapai</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="6">2. Tujuan anda mengikuti pelatihan ini</td>
+                                </tr>
+                                <tr>
+                                    <td>Tidak tercapai</td>
+                                    <td><div class="radio">
+	                                        <label>
+		                                        <input type="radio" name="Soal1" id="Radio1" value="1" checked>
+		                                        1
+	                                        </label>
+                                        </div>
+                                    </td>
+                                    <td><div class="radio">
+	                                        <label>
+		                                        <input type="radio" name="Soal1" id="Radio2" value="2" checked>
+		                                        2
+	                                        </label>
+                                        </div>
+                                    </td>
+                                    <td><div class="radio">
+	                                        <label>
+		                                        <input type="radio" name="Soal1" id="Radio3" value="3" checked>
+		                                        3
+	                                        </label>
+                                        </div>
+                                    </td>
+                                    <td><div class="radio">
+	                                        <label>
+		                                        <input type="radio" name="Soal1" id="Radio4" value="4" checked>
+		                                        4
+	                                        </label>
+                                        </div>
+                                    </td>
+                                    <td>Tercapai</td>
                                 </tr>
                             </table>
                         </form>

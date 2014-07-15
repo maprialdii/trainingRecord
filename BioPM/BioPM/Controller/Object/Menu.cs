@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace BioRMM.Controller.Object
+namespace BioPM.Controller.Object
 {
-    public class Menu : BioRMM.Controller.Helper.ITreeNode<Menu>
+    public class Menu : BioPM.Controller.Helper.ITreeNode<Menu>
     {
         //Current Node Information
         protected int _menuId;

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using BioRMM.Controller.Function;
+using BioPM.Controller.Function;
 
 namespace BioPM
 {
@@ -13,8 +13,8 @@ namespace BioPM
         CompetencyGenerator Com = new CompetencyGenerator();
         protected void Page_Load(object sender, EventArgs e)
         {
-            //Com.GenerateCompetency();
-            //List.InnerHtml = Com.ListCompetency.ToString();
+            Com.GenerateCompetency();
+            List.InnerHtml = Com.ListCompetency.ToString();
         }
     }
 }

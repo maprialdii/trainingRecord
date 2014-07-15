@@ -1,75 +1,11 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="PageCompetencyRelation.aspx.cs" Inherits="BioPM.PageCompetencyRelation" %>
 
 <!DOCTYPE html>
-<script runat="server">
-    protected void Page_Load(object sender, EventArgs e)
-    {
-        if (Session["username"] == null && Session["password"] == null) Response.Redirect("PageLogin.aspx");
-        if (!IsPostBack) SetExistingCompetencyRelation();
-    }
-    
-    protected void sessionCreator()
-    {     
-        Session["username"] = "K495";
-        Session["name"] = "ALLAN PRAKOSA";
-        Session["password"] = "admin1234";
-        Session["role"] = "111111";
-    }
-
-    protected String GenerateDataCompetencyRelation()
-    {
-        string htmlelement = "";
-
-        foreach (object[] data in BioPM.ClassObjects.CompetencyCatalog.GetCompetencyStructures())
-        {
-            htmlelement += "<tr class=''><td>" + data[0].ToString() + "</td><td>" + data[1].ToString() + "</td><td>" + data[2].ToString() + "</td><td><a class='edit' href='FormUpdateCompetencyRelation.aspx?key=" + data[3].ToString() + "'>Edit</a></td><td><a class='delete' href='PageInformation.aspx?key=" + data[3].ToString() + "&type=22'>Delete</a></td></tr>";
-        }
-        
-        return htmlelement;
-    }
-
-    protected void SetExistingCompetencyRelation()
-    {
-        ddlCompParent.Items.Clear();
-        ddlCompChild.Items.Clear();
-        foreach (object[] data in BioPM.ClassObjects.CompetencyCatalog.GetAllCompetency())
-        {
-            ddlCompParent.Items.Add(new ListItem(data[2].ToString(), data[0].ToString()));
-            ddlCompChild.Items.Add(new ListItem(data[2].ToString(), data[0].ToString()));
-        }
-    }
-
-    protected void InsertRelationIntoDatabase()
-    {
-        string RLSID = (BioPM.ClassObjects.CompetencyCatalog.GetCompetencyRelationMaxID() + 1).ToString();
-        BioPM.ClassObjects.CompetencyCatalog.InsertCompetencyStructure(RLSID, ddlCompParent.SelectedValue, ddlCompChild.SelectedValue, txtCompLevel.Text, Session["username"].ToString());
-    }
-
-    protected void btnAdd_Click(object sender, EventArgs e)
-    {
-        if (IsPostBack) InsertRelationIntoDatabase();
-        Response.Redirect("PageCompetencyRelation.aspx");
-    }
-
-    protected void btnSave_Click(object sender, EventArgs e)
-    {
-        if (Session["password"].ToString() == BioPM.ClassEngines.CryptographFactory.Encrypt(txtConfirmation.Text, true))
-        {
-            InsertRelationIntoDatabase();
-            Response.Redirect("PageCompetencyRelation.aspx");
-        }
-        else
-        {
-            ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('" + "YOUR PASSWORD IS INCORRECT" + "');", true);
-        }
-    }
-    
-</script>
 
 <html lang="en">
 <head>
 <% Response.Write(BioPM.ClassScripts.BasicScripts.GetMetaScript()); %>
-
+   
     <title>COMPETENCY RELATION</title>
     
 <% Response.Write(BioPM.ClassScripts.StyleScripts.GetCoreStyle()); %>
@@ -78,7 +14,8 @@
 </head>
 
 <body>
-
+    <link rel="stylesheet" type="text/css" href="/Scripts/Feature/jquery.nestable.css" />
+    
 <section id="container" >
  
 <!--header start--> 
@@ -100,78 +37,6 @@
             <div class="col-sm-12">
                 <section class="panel">
                     <header class="panel-heading">
-                        New Competency Relation
-                          <span class="tools pull-right">
-                            <a class="fa fa-chevron-down" href="javascript:;"></a>
-                            <a class="fa fa-times" href="javascript:;"></a>
-                         </span>
-                    </header>
-                    <div class="panel-body">
-                        <div class="adv-table">
-                            <!-- class="clearfix">
-                                <!--div class="btn-group">
-                                    <!-- button id="editable-sample_new" onclick="document.location.href='FormInputCompetencyRelation.aspx';" class="btn btn-primary"> Create New <i class="fa fa-plus"></i>
-                                    </!-->
-                                <!--/!-->
-                                <div class="btn-group pull-right">
-                                    <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">Tools <i class="fa fa-angle-down"></i>
-                                    </button>
-                                    <ul class="dropdown-menu pull-right">
-                                        <li><a href="#">Print</a></li>
-                                        <li><a href="#">Save as PDF</a></li>
-                                        <li><a href="#">Export to Excel</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        INSERT NEW
-                        <form id="Form2" class="form-horizontal " runat="server" >
-                            <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModal" class="modal fade">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                            <h4 class="modal-title">Approver Confirmation</h4>
-                                        </div>
-                                        <div class="modal-body">
-                                            <p>You Are Logged In As <% Response.Write(Session["name"].ToString()); %></p><br />
-                                            <p>Are you sure to insert into database?</p>
-                                            <asp:TextBox ID="txtConfirmation" runat="server" TextMode="Password" placeholder="Confirmation Password" class="form-control placeholder-no-fix"></asp:TextBox>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <asp:Button ID="btnClose" runat="server" data-dismiss="modal" class="btn btn-default" Text="Cancel"></asp:Button>
-                                            <asp:Button ID="btnSubmit" runat="server" class="btn btn-success" Text="Confirm" OnClick="btnSave_Click"></asp:Button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                          <table class="table table-striped table-hover table-bordered" id="table2">
-                                <thead>
-                                <tr>
-                                    <th>COMPETENCY</th>
-                                    <th>SUBCOMPETENCY</th>
-                                    <th>RELATION LEVEL</th>
-                                    <th>Add</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td><asp:DropDownList ID="ddlCompParent" runat="server" class="form-control m-bot15" /></td>
-                                        <td><asp:DropDownList ID="ddlCompChild" runat="server" class="form-control m-bot15" /></td>
-                                        <td><asp:TextBox ID="txtCompLevel" runat="server" class="form-control m-bot15" placeholder="e.g : 1, 2, .., n" /></td>
-                                        <td><asp:LinkButton data-toggle="modal" class="btn btn-round btn-primary" ID="btnAction" runat="server" Text="Save" href="#myModal"/></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                          </form>
-                        </div>
-                </section>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-sm-12">
-                <section class="panel">
-                    <header class="panel-heading">
                         Competency Relation
                           <span class="tools pull-right">
                             <a class="fa fa-chevron-down" href="javascript:;"></a>
@@ -179,42 +44,27 @@
                          </span>
                     </header>
                     <div class="panel-body">
-                        <div class="adv-table">
-                            <!-- class="clearfix">
-                                <!--div class="btn-group">
-                                    <!-- button id="editable-sample_new" onclick="document.location.href='FormInputCompetencyRelation.aspx';" class="btn btn-primary"> Create New <i class="fa fa-plus"></i>
-                                    </!-->
-                                <!--/!-->
-                                <div class="btn-group pull-right">
-                                    <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">Tools <i class="fa fa-angle-down"></i>
-                                    </button>
-                                    <ul class="dropdown-menu pull-right">
-                                        <li><a href="#">Print</a></li>
-                                        <li><a href="#">Save as PDF</a></li>
-                                        <li><a href="#">Export to Excel</a></li>
-                                    </ul>
+                        <div class="btn-group">
+                              <button id="editable-sample_new" onclick="document.location.href='PageCompetencyRelationTable.aspx';" class="btn btn-primary"> Table View
+                              </button>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <section class="panel">
+                                        <div class="panel-body">
+                                            <div class="dd" id="nestable_list_1">
+			                                    <ol class="dd-list" id="List" runat="server">       
+			                                    </ol>
+                                            </div>
+                                        </div>
+                                    </section>
                                 </div>
                             </div>
-                        EXISTING RELATION
-                            <table class="table table-striped table-hover table-bordered" id="Table1" >
-                                <thead>
-                                <tr>
-                                    <th>COMPETENCY</th>
-                                    <th>SUBCOMPETENCY</th>
-                                    <th>RELATION LEVEL</th>
-                                    <th>Edit</th>
-                                    <th>Delete</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <% Response.Write(GenerateDataCompetencyRelation()); %>
-                                </tbody>
-                            </table>
+                            <script src="/Scripts/Feature/jquery.nestable.js" type="text/javascript"></script>
+                            <script src="/Scripts/nestable.js"></script>
                         </div>
                 </section>
             </div>
         </div>
-
         <!-- page end-->
         </section>
     </section>

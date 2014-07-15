@@ -47,6 +47,10 @@
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Microsoft ASP.NET\ASP.NET MVC 4\Assemblies\System.Web.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
@@ -109,6 +113,12 @@
     <Content Include="CSS\Feature\jquery.nestable.css" />
     <Content Include="FormApprove.aspx" />
     <Content Include="FormConfirmRequest.aspx" />
+    <Content Include="Scripts\bootstrap-reset.css" />
+    <Content Include="Scripts\bootstrap.min.css" />
+    <Content Include="Scripts\Feature\jquery.nestable.css" />
+    <Content Include="Scripts\style-responsive.css" />
+    <Content Include="Scripts\style.css" />
+    <Content Include="FormApproveRequest.aspx" />
     <Content Include="FormEvaluasiSatu.aspx" />
     <Content Include="FormEvaluasiDua.aspx" />
     <Content Include="FormEvaluasiTiga.aspx" />
@@ -143,6 +153,15 @@
     <Content Include="FormUpdateTargetTraining.aspx" />
     <Content Include="FormUpdateTrainingExecution.aspx" />
     <Content Include="PageComdevPlan.aspx" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\common-scripts.js" />
+    <Content Include="Scripts\Feature\jquery.nestable.js" />
+    <Content Include="Scripts\jquery.dcjqaccordion.2.7.js" />
+    <Content Include="Scripts\jquery.js" />
+    <Content Include="Scripts\jquery.nicescroll.js" />
+    <Content Include="Scripts\jquery.scrollTo.min.js" />
+    <Content Include="Scripts\nestable.js" />
+    <Content Include="Scripts\respond.min.js" />
     <Content Include="PageCompetencyDevelopmentEvent.aspx" />
     <Content Include="PageCompetencyParameter.aspx" />
     <Content Include="PageCompetencyRelation.aspx" />
@@ -227,7 +246,6 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="packages.config" />
-    <Content Include="MasterPages\BackEnd.Master" />
     <None Include="Properties\PublishProfiles\BioPM.pubxml" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="PageInformation.aspx" />
@@ -300,13 +318,6 @@
     <Compile Include="ClassObjects\Survey.cs" />
     <Compile Include="ClassScripts\BasicScripts.cs" />
     <Compile Include="ClassScripts\JS.cs" />
-    <Compile Include="Competency.aspx.cs">
-      <DependentUpon>Competency.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Competency.aspx.designer.cs">
-      <DependentUpon>Competency.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Controller\Database\DatabaseFactory.cs" />
     <Compile Include="Controller\Database\DatabaseSql.cs" />
     <Compile Include="Controller\Database\KatalogCompetency.cs" />

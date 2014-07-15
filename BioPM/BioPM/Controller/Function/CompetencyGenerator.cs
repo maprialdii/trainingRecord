@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Web;
-using BioRMM.Controller.Object;
+using BioPM.Controller.Object;
 
-namespace BioRMM.Controller.Function
+namespace BioPM.Controller.Function
 {
     public class CompetencyGenerator
     {
@@ -20,7 +20,7 @@ namespace BioRMM.Controller.Function
 
         public void GenerateCompetency()
         {
-            BioRMM.Controller.Database.KatalogCompetency getCompetency = new Controller.Database.KatalogCompetency();
+            BioPM.Controller.Database.KatalogCompetency getCompetency = new Controller.Database.KatalogCompetency();
             IList<Competency> topLevelCompetency = Controller.Helper.TreeHelper.ConvertToForest(getCompetency.GetCompetencyFromDb());
 
             foreach (Competency topLevelCompetency_ in topLevelCompetency)

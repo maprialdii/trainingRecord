@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BioRMM.Pages {
+namespace BioPM.Pages {
     
     
     public partial class Competency {
