@@ -7,7 +7,6 @@
         if (Session["username"] == null && Session["password"] == null) Response.Redirect("PageLogin.aspx");
         if(!IsPostBack)
             txtCpyID.Text= (BioPM.ClassObjects.CompetencyCatalog.GetCompetencyMaxID() + 1).ToString();
-        txtCpyName.Text = "";     
     }
 
     protected void InsertCompetencyIntoDatabase()

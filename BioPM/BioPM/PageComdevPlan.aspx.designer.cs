@@ -10,6 +10,6 @@
 namespace BioPM {
     
     
-    public partial class PageTrainingSurvey {
+    public partial class PageComdevPlan {
     }
 }

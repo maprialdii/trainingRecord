@@ -16,10 +16,10 @@
         POSID = values[1].ToString();
     }
 
-    protected void GetPRQID()
+    protected string GetPRQID()
     {
         object[] values = BioPM.ClassObjects.Jabatan.GetKualifikasiJabatanByPositionAndCompetency(POSID, ddlCompName.SelectedValue);
-        PRLVL = values[3].ToString();
+        return values[3].ToString();
     }
 
     protected void SetQualificationType()
@@ -41,7 +41,7 @@
     {
         string GAPID = (BioPM.ClassObjects.QualificationCatalog.GetQualificationMaxID() + 1).ToString();
         GetPOSID();
-        GetPRQID();
+        PRLVL=GetPRQID();
         BioPM.ClassObjects.QualificationCatalog.InsertQualification(GAPID, ddlNik.SelectedValue, ddlCompName.SelectedValue, txtLevel.Text, Session["username"].ToString(), PRLVL);
     }
 

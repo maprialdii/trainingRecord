@@ -1,32 +1,23 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="PageTargetTraining.aspx.cs" Inherits="BioPM.PageTargetTraining" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="PageComdevPlan.aspx.cs" Inherits="BioPM.PageComdevPlan" %>
 
 <!DOCTYPE html>
 <script runat="server">
-    string evtId = "";
-    string eventName = null;
-    string method = null;/
     protected void Page_Load(object sender, EventArgs e)
     {
         if (Session["username"] == null && Session["password"] == null) Response.Redirect("PageLogin.aspx");
-        evtId = Request.QueryString["key"].ToString();
-        object[] data = BioPM.ClassObjects.ComDevEvent.GetComdevEventById(evtId);
-        eventName = data[2].ToString();
-        method = data[5].ToString();
     }
 
-    protected String GenerateDataTargetTraining()
+    protected String GenerateRequestedPlan()
     {
         string htmlelement = "";
-        foreach (object[] data in BioPM.ClassObjects.ComDevEvent.GetComdevEventTargetByEvent(Request.QueryString["key"].ToString()))
+
+        foreach (object[] data in BioPM.ClassObjects.ComDevPlan.GetComdevPlanByStatus("Sudah dikonfirmasi") )
         {
-            eventName = data[2].ToString();
-            method = data[5].ToString();
-            htmlelement += "<tr class=''><td>" + data[3].ToString() + "</td><td>" + data[4].ToString() + "</td><td><a class='edit' href='FormUpdateTargetTraining.aspx?key=" + data[0].ToString() + "'>Edit</a></td><td><a class='delete' href='PageInformation.aspx?key=" + data[0].ToString() + "&type=25'>Delete</a></td></tr>";
+            htmlelement += "<tr class=''><td>" + data[5].ToString() + "</td><td>" + data[1].ToString() + "</td><td>" + data[7].ToString() + "</td><td>" + data[2].ToString() + "</td><td>" + data[3].ToString() + "</td><td>" + data[6].ToString() + "</td><td><a class='edit' href='PageInformation.aspx?key=" + data[0].ToString() + "&type=32'>Approve</a></td><td><a class='delete' href='PageInformation.aspx?key=" + data[0].ToString() + "&type=31'>Reject</a></td></tr>";
         }
         
         return htmlelement;
-    }
-
+    }    
    
 </script>
 
@@ -34,7 +25,7 @@
 <head>
     <% Response.Write(BioPM.ClassScripts.BasicScripts.GetMetaScript()); %>
 
-    <title>Target Training</title>
+    <title>Training Request From Employee</title>
 
     <% Response.Write(BioPM.ClassScripts.StyleScripts.GetCoreStyle()); %>
 <% Response.Write(BioPM.ClassScripts.StyleScripts.GetTableStyle()); %>
@@ -62,19 +53,16 @@
             <div class="col-sm-12">
                 <section class="panel">
                     <header class="panel-heading">
-                        Training Target
+                        Training Request From Employee
                           <span class="tools pull-right">
                             <a class="fa fa-chevron-down" href="javascript:;"></a>
                             <a class="fa fa-times" href="javascript:;"></a>
                          </span>
                     </header>
                     <div class="panel-body">
+
                         <div class="adv-table">
                             <div class="clearfix">
-                                <div class="btn-group">
-                                    <button id="editable-sample_new" onclick="document.location.href='FormInputTargetTraining.aspx?key=<%=evtId %>';" class="btn btn-primary"> Add New <i class="fa fa-plus"></i>
-                                    </button>
-                                </div>
                                 <div class="btn-group pull-right">
                                     <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">Tools <i class="fa fa-angle-down"></i>
                                     </button>
@@ -85,23 +73,31 @@
                                     </ul>
                                 </div>
                             </div>
-
+                         </div>
+                        
+                        New Request
+                        <div class="adv-table">
+                            <div class="clearfix">
                             <table class="table table-striped table-hover table-bordered" id="dynamic-table" >
                                 <thead>
                                 <tr>
-                                    <th>Competency Name</th>
-                                    <th>Profficiency Level</th>
-                                    <th>Edit</th>
-                                    <th>Delete</th>
+                                    <th>Employee Name</th>
+                                    <th>Event Name</th>                                   
+                                    <th>Event Method</th>
+                                    <th>Event Month</th>
+                                    <th>Event Cost</th>
+                                    <th>Event Duration</th>
+                                    <th>Approve</th>
+                                    <th>Reject</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <% Response.Write(GenerateDataTargetTraining()); %>
+                                <% Response.Write(GenerateRequestedPlan()); %>
                                 </tbody>
                             </table>
+                            </div>
                         </div>
                     </div>
-                    
                 </section>
             </div>
         </div>

@@ -5,33 +5,20 @@
     protected void Page_Load(object sender, EventArgs e)
     {
         if (Session["username"] == null && Session["password"] == null) Response.Redirect("PageLogin.aspx");
-        if (!IsPostBack)
-        {
-            GetDataEvent();
-            //GetDataEmployee();
-        }
     }
 
-    protected String GenerateDataEvent()
+    protected String GenerateDataEksekusi()
     {
         string htmlelement = "";
 
-        //foreach (object[] data in BioPM.ClassObjects.ComDevEvent.GetAllComdevEvent())
-        //{
-        //    htmlelement += "<tr class=''><td>" + data[1].ToString() + "</td><td>" + data[2].ToString() + "</td><td><a class='edit' href='PageEventTargetDetail.aspx?key=" + data[0].ToString() + "'>View</a></td><td><a class='edit' href='FormUpdateEvent.aspx?key=" + data[0].ToString() + "'>Edit</a></td><td><a class='delete' href='PageInformation.aspx?key=" + data[0].ToString() + "&type=24'>Delete</a></td></tr>";
-        //}
+        foreach (object[] data in BioPM.ClassObjects.ComDevExecution.GetComdevExecutionByUserId(Session["username"].ToString()))
+        {
+            htmlelement += "<tr class=''><td>" + data[1].ToString() + "</td><td>" + data[2].ToString() + "</td><td><a class='edit' href='#.aspx?key=" + data[0].ToString() + "&type=1'>Survey 1</a></td><td><a class='edit' href='#.aspx?key=" + data[0].ToString() + "&type=2'>Survey 2</a></td><td><a class='delete' href='#.aspx?key=" + data[0].ToString() + "&type=3'>Survey</a></td></tr>";
+        }
         
         return htmlelement;
     }
 
-    protected void GetDataEvent()
-    {
-        ddlEventName.Items.Clear();
-        foreach (object[] data in BioPM.ClassObjects.ComDevEvent.GetAllComdevEvent())
-        {
-            ddlEventName.Items.Add(new ListItem(data[1].ToString(), data[0].ToString()));
-        }
-    }
    
 </script>
 
@@ -39,7 +26,7 @@
 <head>
     <% Response.Write(BioPM.ClassScripts.BasicScripts.GetMetaScript()); %>
 
-    <title>Training Evaluation</title>
+    <title>Training Execution</title>
 
     <% Response.Write(BioPM.ClassScripts.StyleScripts.GetCoreStyle()); %>
 <% Response.Write(BioPM.ClassScripts.StyleScripts.GetTableStyle()); %>
@@ -67,56 +54,45 @@
             <div class="col-sm-12">
                 <section class="panel">
                     <header class="panel-heading">
-                        Training Evaluation
+                        Competency Parameter
                           <span class="tools pull-right">
                             <a class="fa fa-chevron-down" href="javascript:;"></a>
                             <a class="fa fa-times" href="javascript:;"></a>
                          </span>
                     </header>
                     <div class="panel-body">
-                        <form id="Form1" class="form-horizontal " runat="server" >
-                            <div class="adv-table">
-                                <div class="clearfix">
-                                    <%--<div class="btn-group">
-                                        <button id="editable-sample_new" onclick="document.location.href='FormInputEvent.aspx';" class="btn btn-primary"> Add New <i class="fa fa-plus"></i>
-                                        </button>
-                                    </div>--%>
-                                    <div class="btn-group pull-right">
-                                        <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">Tools <i class="fa fa-angle-down"></i>
-                                        </button>
-                                        <ul class="dropdown-menu pull-right">
-                                            <li><a href="#">Print</a></li>
-                                            <li><a href="#">Save as PDF</a></li>
-                                            <li><a href="#">Export to Excel</a></li>
-                                        </ul>
-                                    </div>
+
+                        <div class="adv-table">
+                            <div class="clearfix">
+                                <div class="btn-group">
+                                    <button id="editable-sample_new" onclick="document.location.href='FormInputTrainingExecution.aspx';" class="btn btn-primary"> Add New <i class="fa fa-plus"></i>
+                                    </button>
                                 </div>
-                                <div class="form-group">
-                                    <label class="col-sm-3 control-label"> EVENT NAME </label>
-                                    <div class="col-lg-3 col-md-4">
-                                        <asp:DropDownList ID="ddlEventName" runat="server" class="form-control m-bot15">   
-                                        </asp:DropDownList> 
-                                    </div>
+                                <div class="btn-group pull-right">
+                                    <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">Tools <i class="fa fa-angle-down"></i>
+                                    </button>
+                                    <ul class="dropdown-menu pull-right">
+                                        <li><a href="#">Print</a></li>
+                                        <li><a href="#">Save as PDF</a></li>
+                                        <li><a href="#">Export to Excel</a></li>
+                                    </ul>
                                 </div>
-                                <table class="table table-striped table-hover table-bordered" id="dynamic-table" >
-                                    <thead>
-                                    <tr>
-                                        <th>NIK</th>                                   
-                                        <th>Employee Name</th>
-                                        <th>Position</th>
-                                        <th>Attendance</th>
-                                        <th>Evaluasi I</th>
-                                        <th>Evaluasi II</th>
-                                        <th>Evaluasi III</th>
-                                        <th>Delete</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <% Response.Write(GenerateDataEvent()); %>
-                                    </tbody>
-                                </table>
                             </div>
-                        </form>
+                            <table class="table table-striped table-hover table-bordered" id="dynamic-table" >
+                                <thead>
+                                <tr>
+                                    <th>Event Name</th>
+                                    <th>Title</th>
+                                    <th>Survey 1</th>                                       
+                                    <th>Survey 2</th>
+                                    <th>Survey 3</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <% Response.Write(GenerateDataEksekusi()); %>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                     
                 </section>

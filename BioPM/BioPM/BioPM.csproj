@@ -107,7 +107,8 @@
   <ItemGroup>
     <Content Include="Competency.aspx" />
     <Content Include="CSS\Feature\jquery.nestable.css" />
-    <Content Include="FormApproveRequest.aspx" />
+    <Content Include="FormApprove.aspx" />
+    <Content Include="FormConfirmRequest.aspx" />
     <Content Include="FormEvaluasiSatu.aspx" />
     <Content Include="FormEvaluasiDua.aspx" />
     <Content Include="FormEvaluasiTiga.aspx" />
@@ -141,6 +142,7 @@
     <Content Include="FormUpdateSuggestTraining.aspx" />
     <Content Include="FormUpdateTargetTraining.aspx" />
     <Content Include="FormUpdateTrainingExecution.aspx" />
+    <Content Include="PageComdevPlan.aspx" />
     <Content Include="PageCompetencyDevelopmentEvent.aspx" />
     <Content Include="PageCompetencyParameter.aspx" />
     <Content Include="PageCompetencyRelation.aspx" />
@@ -149,6 +151,7 @@
     <Content Include="PageEmployeeQualification.aspx" />
     <Content Include="PageEventMethod.aspx" />
     <Content Include="PageEventTargetDetail.aspx" />
+    <Content Include="PageExecutionPlanning.aspx" />
     <Content Include="PageInstitutionDetail.aspx" />
     <Content Include="PageJabatan.aspx" />
     <Content Include="PageJadwal.aspx" />
@@ -229,6 +232,7 @@
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="PageInformation.aspx" />
     <Content Include="PageSuggestTraining.aspx" />
+    <Content Include="PageSurvey.aspx" />
     <Content Include="PageTargetTraining.aspx" />
     <Content Include="PageTrainingExecution.aspx" />
     <Content Include="PageTrainingHours.aspx" />
@@ -293,6 +297,7 @@
     <Compile Include="ClassObjects\Jabatan.cs" />
     <Compile Include="ClassObjects\Organization.cs" />
     <Compile Include="ClassObjects\QC.cs" />
+    <Compile Include="ClassObjects\Survey.cs" />
     <Compile Include="ClassScripts\BasicScripts.cs" />
     <Compile Include="ClassScripts\JS.cs" />
     <Compile Include="Competency.aspx.cs">
@@ -311,12 +316,19 @@
     <Compile Include="Controller\Helper\ITreeNode.cs" />
     <Compile Include="Controller\Object\Competency.cs" />
     <Compile Include="Controller\Object\Menu.cs" />
-    <Compile Include="FormApproveRequest.aspx.cs">
-      <DependentUpon>FormApproveRequest.aspx</DependentUpon>
+    <Compile Include="FormApprove.aspx.cs">
+      <DependentUpon>FormApprove.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="FormApproveRequest.aspx.designer.cs">
-      <DependentUpon>FormApproveRequest.aspx</DependentUpon>
+    <Compile Include="FormApprove.aspx.designer.cs">
+      <DependentUpon>FormApprove.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FormConfirmRequest.aspx.cs">
+      <DependentUpon>FormConfirmRequest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FormConfirmRequest.aspx.designer.cs">
+      <DependentUpon>FormConfirmRequest.aspx</DependentUpon>
     </Compile>
     <Compile Include="FormEvaluasiSatu.aspx.cs">
       <DependentUpon>FormEvaluasiSatu.aspx</DependentUpon>
@@ -556,6 +568,13 @@
     <Compile Include="MasterPages\BackEnd.Master.designer.cs">
       <DependentUpon>BackEnd.Master</DependentUpon>
     </Compile>
+    <Compile Include="PageComdevPlan.aspx.cs">
+      <DependentUpon>PageComdevPlan.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageComdevPlan.aspx.designer.cs">
+      <DependentUpon>PageComdevPlan.aspx</DependentUpon>
+    </Compile>
     <Compile Include="PageCompetencyDevelopmentEvent.aspx.cs">
       <DependentUpon>PageCompetencyDevelopmentEvent.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -611,6 +630,13 @@
     </Compile>
     <Compile Include="PageEventTargetDetail.aspx.designer.cs">
       <DependentUpon>PageEventTargetDetail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageExecutionPlanning.aspx.cs">
+      <DependentUpon>PageExecutionPlanning.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageExecutionPlanning.aspx.designer.cs">
+      <DependentUpon>PageExecutionPlanning.aspx</DependentUpon>
     </Compile>
     <Compile Include="PageInstitutionDetail.aspx.cs">
       <DependentUpon>PageInstitutionDetail.aspx</DependentUpon>
@@ -756,6 +782,13 @@
     </Compile>
     <Compile Include="PageSuggestTraining.aspx.designer.cs">
       <DependentUpon>PageSuggestTraining.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageSurvey.aspx.cs">
+      <DependentUpon>PageSurvey.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageSurvey.aspx.designer.cs">
+      <DependentUpon>PageSurvey.aspx</DependentUpon>
     </Compile>
     <Compile Include="PageTargetTraining.aspx.cs">
       <DependentUpon>PageTargetTraining.aspx</DependentUpon>
