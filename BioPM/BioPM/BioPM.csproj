@@ -109,7 +109,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Competency.aspx" />
     <Content Include="CSS\Feature\jquery.nestable.css" />
     <Content Include="FormApprove.aspx" />
     <Content Include="FormConfirmRequest.aspx" />
@@ -118,7 +117,6 @@
     <Content Include="Scripts\Feature\jquery.nestable.css" />
     <Content Include="Scripts\style-responsive.css" />
     <Content Include="Scripts\style.css" />
-    <Content Include="FormApproveRequest.aspx" />
     <Content Include="FormEvaluasiSatu.aspx" />
     <Content Include="FormEvaluasiDua.aspx" />
     <Content Include="FormEvaluasiTiga.aspx" />
@@ -571,13 +569,6 @@
     </Compile>
     <Compile Include="FormUpdateTrainingExecution.aspx.designer.cs">
       <DependentUpon>FormUpdateTrainingExecution.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="MasterPages\BackEnd.Master.cs">
-      <DependentUpon>BackEnd.Master</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="MasterPages\BackEnd.Master.designer.cs">
-      <DependentUpon>BackEnd.Master</DependentUpon>
     </Compile>
     <Compile Include="PageComdevPlan.aspx.cs">
       <DependentUpon>PageComdevPlan.aspx</DependentUpon>

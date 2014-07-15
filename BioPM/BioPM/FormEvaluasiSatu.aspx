@@ -97,71 +97,29 @@
                                 </tr>
                                 <tr>
                                     <td>Tidak tercapai</td>
-                                    <td><div class="radio">
-	                                        <label>
-		                                        <input type="radio" name="Soal1" id="11" value="1" checked>
-		                                        1
-	                                        </label>
+                                    <td><div class="radio disable">
+	                                        <asp:RadioButton id="R11" runat="server" GroupName="Soal1" value="1"/>
+                                            <label>1</label>
                                         </div>
                                     </td>
-                                    <td><div class="radio">
-	                                        <label>
-		                                        <input type="radio" name="Soal1" id="12" value="2" checked>
-		                                        2
-	                                        </label>
+                                    <td><div class="radio disable">
+	                                        <asp:RadioButton id="R12" runat="server" GroupName="Soal1" value="2"/>
+                                            <label>2</label>
                                         </div>
                                     </td>
-                                    <td><div class="radio">
-	                                        <label>
-		                                        <input type="radio" name="Soal1" id="13" value="3" checked>
-		                                        3
-	                                        </label>
+                                    <td><div class="radio disable">
+	                                        <asp:RadioButton id="R13" runat="server" GroupName="Soal1" value="3"/>
+                                            <label>3</label>
                                         </div>
                                     </td>
-                                    <td><div class="radio">
-	                                        <label>
-		                                        <input type="radio" name="Soal1" id="14" value="4" checked>
-		                                        4
-	                                        </label>
+                                    <td><div class="radio disable">
+	                                        <asp:RadioButton id="R14" runat="server" GroupName="Soal1" value="4"/>
+                                            <label>4</label>
                                         </div>
                                     </td>
                                     <td>Tercapai</td>
                                 </tr>
-                                <tr>
-                                    <td colspan="6">2. Tujuan anda mengikuti pelatihan ini</td>
-                                </tr>
-                                <tr>
-                                    <td>Tidak tercapai</td>
-                                    <td><div class="radio">
-	                                        <label>
-		                                        <input type="radio" name="Soal1" id="Radio1" value="1" checked>
-		                                        1
-	                                        </label>
-                                        </div>
-                                    </td>
-                                    <td><div class="radio">
-	                                        <label>
-		                                        <input type="radio" name="Soal1" id="Radio2" value="2" checked>
-		                                        2
-	                                        </label>
-                                        </div>
-                                    </td>
-                                    <td><div class="radio">
-	                                        <label>
-		                                        <input type="radio" name="Soal1" id="Radio3" value="3" checked>
-		                                        3
-	                                        </label>
-                                        </div>
-                                    </td>
-                                    <td><div class="radio">
-	                                        <label>
-		                                        <input type="radio" name="Soal1" id="Radio4" value="4" checked>
-		                                        4
-	                                        </label>
-                                        </div>
-                                    </td>
-                                    <td>Tercapai</td>
-                                </tr>
+                                
                             </table>
                         </form>
                     </div>
@@ -179,7 +137,8 @@
 </section>
 
 <!-- Placed js at the end of the document so the pages load faster -->
-    <% Response.Write(BioPM.ClassScripts.JS.GetCoreScript()); %>
+    
+<% Response.Write(BioPM.ClassScripts.JS.GetCoreScript()); %>
 <% Response.Write(BioPM.ClassScripts.JS.GetCustomFormScript()); %>
 <% Response.Write(BioPM.ClassScripts.JS.GetInitialisationScript()); %>
 <% Response.Write(BioPM.ClassScripts.JS.GetPieChartScript()); %>

@@ -13,18 +13,14 @@ namespace BioPM {
     public partial class PageCompetencyRelation {
         
         /// <summary>
-<<<<<<< HEAD
         /// Form1 control.
         /// Form2 control.
-=======
         /// List control.
->>>>>>> fbd1503f921f5b2fab1da198ac6ba082006863b9
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-<<<<<<< HEAD
         protected global::System.Web.UI.HtmlControls.HtmlForm Form2;
         
         /// <summary>
@@ -138,8 +134,6 @@ namespace BioPM {
         protected global::System.Web.UI.WebControls.LinkButton btnAction;
         //protected global::System.Web.UI.WebControls.LinkButton btnAction;
 
-=======
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl List;
->>>>>>> fbd1503f921f5b2fab1da198ac6ba082006863b9
     }
 }
