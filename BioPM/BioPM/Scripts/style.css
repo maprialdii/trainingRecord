@@ -4797,3 +4797,14 @@ overflow:hidden;
     text-decoration: none;
     color:#FFF;
 }
+
+.RBL label
+{
+    display: block;
+}
+
+.RBL td
+{
+    text-align: center;
+    width: 20px;
+}
