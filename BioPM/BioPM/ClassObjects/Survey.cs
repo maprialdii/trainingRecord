@@ -11,10 +11,20 @@ namespace BioPM.ClassObjects
         public static List<object[]> GetQuestions(string type)
         {
             SqlConnection conn = GetConnection();
+<<<<<<< HEAD
             string sqlCmd = @"SELECT PR1.PRMID, PR1.PRMNM, SUBSTRING(PRMKD, 12, 1) AS Initial
                             FROM bioumum.PARAMETER PR1
                             WHERE PR1.BEGDA <= GETDATE() AND PR1.ENDDA >= GETDATE()
                             AND PR1.PRMKD LIKE '%" + type + "%';";
+=======
+            string sqlCmd = @"SELECT CG.GAPID, UD.PERNR, UD.POSID, CG.CPYID, RK.CPYNM, CG.PRLVL, PR.PRLVL, CG.GAPLV
+                            FROM bioumum.PARAMATER PR, oumum.USER_DATA UD, trrcd.POSITION_REQ PR WITH(INDEX(POSITION_REQ_IDX_BEGDA_ENDDA_ID)), trrcd.REFERENSI_KOMPETENSI RK WITH(INDEX(REFERENSI_KOMPETENSI_IDX_BEGDA_ENDDA_ID))
+                            WHERE CG.BEGDA <= GETDATE() AND CG.ENDDA >= GETDATE()
+                            AND PR.BEGDA <= GETDATE() AND PR.ENDDA >= GETDATE()
+                            AND RK.BEGDA <= GETDATE() AND RK.ENDDA >= GETDATE()
+                            AND UD.BEGDA <= GETDATE() AND UD.ENDDA >= GETDATE()
+                            AND CG.PERNR=UD.PERNR and PR.CPYID=CG.CPYID and CG.CPYID=RK.CPYID and PR.POSID=UD.POSID and UD.PERNR='" + type + "';";
+>>>>>>> origin/master
             SqlCommand cmd = GetCommand(conn, sqlCmd);
 
             try

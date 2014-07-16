@@ -39,7 +39,7 @@
 
     protected void btnCancel_Click(object sender, EventArgs e)
     {
-        Response.Redirect("PageUserPanel.aspx");
+        Response.Redirect("PageCompetencyDevelopmentEvent.aspx");
     }
 
     protected void btnSave_Click(object sender, EventArgs e)

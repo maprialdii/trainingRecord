@@ -26,8 +26,9 @@
       methods = {
         init: function() {
           return this.each(function() {
+            
             var $div, $element, $form, $label, $switchLeft, $switchRight, $wrapper, changeState;
-            $element = $(this);
+			$element = $(this);
             $switchLeft = $("<span>", {
               "class": "switch-left",
               html: function() {
@@ -70,7 +71,8 @@
             });
             $div = $("<div>");
             $wrapper = $("<div>", {
-              "class": "has-switch",
+              //"class": "has-switch",
+			  //"class": "",
               tabindex: 0
             });
             $form = $element.closest("form");
@@ -100,13 +102,13 @@
             if ($element.data("animated") !== false) {
               $div.addClass("switch-animate").data("animated", true);
             }
-            $div = $element.wrap($div).parent();
-            $wrapper = $div.wrap($wrapper).parent();
-            $element.before($switchLeft).before($label).before($switchRight);
-            $div.addClass($element.is(":checked") ? "switch-on" : "switch-off");
-            if ($element.is(":disabled") || $element.is("[readonly]")) {
-              $wrapper.addClass("disabled");
-            }
+            //$div = $element.wrap($div).parent();
+            //$wrapper = $div.wrap($wrapper).parent();
+            //$element.before($switchLeft).before($label).before($switchRight);
+            //$div.addClass($element.is(":checked") ? "switch-on" : "switch-off");
+            //if ($element.is(":disabled") || $element.is("[readonly]")) {
+            //  $wrapper.addClass("disabled");
+            //}
             $element.on("keydown", function(e) {
               if (e.keyCode !== 32) {
                 return;

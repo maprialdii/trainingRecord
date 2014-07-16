@@ -112,12 +112,12 @@
     <Content Include="CSS\Feature\jquery.nestable.css" />
     <Content Include="FormApprove.aspx" />
     <Content Include="FormConfirmRequest.aspx" />
+    <Content Include="FormEvaluasiImplementasi.aspx" />
     <Content Include="Scripts\bootstrap-reset.css" />
     <Content Include="Scripts\bootstrap.min.css" />
     <Content Include="Scripts\Feature\jquery.nestable.css" />
     <Content Include="Scripts\style-responsive.css" />
     <Content Include="Scripts\style.css" />
-    <Content Include="FormApproveRequest.aspx" />
     <Content Include="FormEvaluasiSatu.aspx" />
     <Content Include="FormEvaluasiDua.aspx" />
     <Content Include="FormEvaluasiTiga.aspx" />
@@ -339,6 +339,13 @@
     </Compile>
     <Compile Include="FormConfirmRequest.aspx.designer.cs">
       <DependentUpon>FormConfirmRequest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FormEvaluasiImplementasi.aspx.cs">
+      <DependentUpon>FormEvaluasiImplementasi.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FormEvaluasiImplementasi.aspx.designer.cs">
+      <DependentUpon>FormEvaluasiImplementasi.aspx</DependentUpon>
     </Compile>
     <Compile Include="FormEvaluasiSatu.aspx.cs">
       <DependentUpon>FormEvaluasiSatu.aspx</DependentUpon>

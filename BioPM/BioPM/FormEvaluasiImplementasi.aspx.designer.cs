@@ -10,7 +10,7 @@
 namespace BioPM {
     
     
-    public partial class FormEvaluasiIII {
+    public partial class FormEvaluasiImplementasi {
         
         /// <summary>
         /// Form1 control.
@@ -31,6 +31,24 @@ namespace BioPM {
         protected global::System.Web.UI.WebControls.TextBox txtTopik;
         
         /// <summary>
+        /// txtNama control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtNama;
+        
+        /// <summary>
+        /// txtNamaJabatan control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtNamaJabatan;
+        
+        /// <summary>
         /// txtTanggal control.
         /// </summary>
         /// <remarks>
@@ -38,69 +56,6 @@ namespace BioPM {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtTanggal;
-        
-        /// <summary>
-        /// txtCpyName control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCpyName;
-        
-        /// <summary>
-        /// txtPeserta control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtPeserta;
-        
-        /// <summary>
-        /// txtBagian control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtBagian;
-        
-        /// <summary>
-        /// txtJabatan control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtJabatan;
-        
-        /// <summary>
-        /// R14 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton R14;
-        
-        /// <summary>
-        /// R13 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton R13;
-        
-        /// <summary>
-        /// R12 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton R12;
         
         /// <summary>
         /// R11 control.
@@ -112,139 +67,175 @@ namespace BioPM {
         protected global::System.Web.UI.WebControls.RadioButton R11;
         
         /// <summary>
-        /// R24 control.
+        /// R12 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton R24;
+        protected global::System.Web.UI.WebControls.RadioButton R12;
         
         /// <summary>
-        /// R23 control.
+        /// R13 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton R23;
+        protected global::System.Web.UI.WebControls.RadioButton R13;
         
         /// <summary>
-        /// R22 control.
+        /// R14 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton R22;
+        protected global::System.Web.UI.WebControls.RadioButton R14;
         
         /// <summary>
-        /// R21 control.
+        /// R15 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton R21;
+        protected global::System.Web.UI.WebControls.RadioButton R15;
         
         /// <summary>
-        /// R34 control.
+        /// RadioButton1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton R34;
+        protected global::System.Web.UI.WebControls.RadioButton RadioButton1;
         
         /// <summary>
-        /// R33 control.
+        /// RadioButton2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton R33;
+        protected global::System.Web.UI.WebControls.RadioButton RadioButton2;
         
         /// <summary>
-        /// R32 control.
+        /// RadioButton3 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton R32;
+        protected global::System.Web.UI.WebControls.RadioButton RadioButton3;
         
         /// <summary>
-        /// R31 control.
+        /// RadioButton4 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton R31;
+        protected global::System.Web.UI.WebControls.RadioButton RadioButton4;
         
         /// <summary>
-        /// txtTglEval control.
+        /// RadioButton5 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtTglEval;
+        protected global::System.Web.UI.WebControls.RadioButton RadioButton5;
         
         /// <summary>
-        /// txtEvaluator control.
+        /// RadioButton6 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtEvaluator;
+        protected global::System.Web.UI.WebControls.RadioButton RadioButton6;
         
         /// <summary>
-        /// txtDivisiEvl control.
+        /// RadioButton7 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDivisiEvl;
+        protected global::System.Web.UI.WebControls.RadioButton RadioButton7;
         
         /// <summary>
-        /// txtJabatanEvl control.
+        /// RadioButton8 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtJabatanEvl;
+        protected global::System.Web.UI.WebControls.RadioButton RadioButton8;
         
         /// <summary>
-        /// txtSetuju control.
+        /// RadioButton9 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSetuju;
+        protected global::System.Web.UI.WebControls.RadioButton RadioButton9;
         
         /// <summary>
-        /// txtTglSetuju control.
+        /// RadioButton10 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtTglSetuju;
+        protected global::System.Web.UI.WebControls.RadioButton RadioButton10;
         
         /// <summary>
-        /// txtNamaSetuju control.
+        /// RadioButton11 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtNamaSetuju;
+        protected global::System.Web.UI.WebControls.RadioButton RadioButton11;
+        
+        /// <summary>
+        /// RadioButton12 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButton RadioButton12;
+        
+        /// <summary>
+        /// RadioButton13 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButton RadioButton13;
+        
+        /// <summary>
+        /// RadioButton14 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButton RadioButton14;
+        
+        /// <summary>
+        /// RadioButton15 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButton RadioButton15;
         
         /// <summary>
         /// txtConfirmation control.

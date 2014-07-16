@@ -16,15 +16,22 @@ namespace BioPM {
         /// <summary>
         /// Form1 control.
         /// Form2 control.
+<<<<<<< HEAD
 
         /// List control.
 
+=======
+        /// List control.
+>>>>>>> origin/master
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/master
         protected global::System.Web.UI.HtmlControls.HtmlForm Form2;
 
         /// <summary>
