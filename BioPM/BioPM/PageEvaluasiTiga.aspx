@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="FormEvaluasiTiga.aspx.cs" Inherits="BioPM.FormEvaluasiIII" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="PageEvaluasiTiga.aspx.cs" Inherits="BioPM.PageEvaluasiTiga" %>
 
 <!DOCTYPE html>
 <script runat="server">
@@ -7,62 +7,26 @@
         if (Session["username"] == null && Session["password"] == null) Response.Redirect("PageLogin.aspx");
     }
 
-    protected void InsertAnswersIntoDatabase()
+    protected void SetDataToPage()
     {
-        int ANSID;
-        int answerNumOne = 0;
-        int answerNumTwo = 0;
-        int answerNumThree = 0;
-        if (R11.Checked)
-            answerNumOne = 1;
-        if (R12.Checked)
-            answerNumOne = 2;
-        if (R13.Checked)
-            answerNumOne = 3;
-        if (R14.Checked)
-            answerNumOne = 4;
-        if (R21.Checked)
-            answerNumTwo = 1;
-        if (R22.Checked)
-            answerNumTwo = 2;
-        if (R23.Checked)
-            answerNumTwo = 3;
-        if (R24.Checked)
-            answerNumTwo = 4;
-        if (R31.Checked)
-            answerNumThree = 1;
-        if (R32.Checked)
-            answerNumThree = 2;
-        if (R33.Checked)
-            answerNumThree = 3;
-        if (R34.Checked)
-            answerNumThree = 4;
-        ANSID = BioPM.ClassObjects.Survey.GetAnswersMaxID() + 1;   
-        BioPM.ClassObjects.Survey.SubmitAnswers(ANSID.ToString(), Request.QueryString["key"].ToString(), "1", answerNumOne.ToString(), Session["username"].ToString());
-        ANSID = BioPM.ClassObjects.Survey.GetAnswersMaxID() + 1;
-        BioPM.ClassObjects.Survey.SubmitAnswers(ANSID.ToString(), Request.QueryString["key"].ToString(), "2", TextArea1.Text, Session["username"].ToString());
-        ANSID = BioPM.ClassObjects.Survey.GetAnswersMaxID() + 1;
-        BioPM.ClassObjects.Survey.SubmitAnswers(ANSID.ToString(), Request.QueryString["key"].ToString(), "3", answerNumTwo.ToString(), Session["username"].ToString());
-        ANSID = BioPM.ClassObjects.Survey.GetAnswersMaxID() + 1;
-        BioPM.ClassObjects.Survey.SubmitAnswers(ANSID.ToString(), Request.QueryString["key"].ToString(), "4", TextArea2.Text, Session["username"].ToString());
-        ANSID = BioPM.ClassObjects.Survey.GetAnswersMaxID() + 1;
-        BioPM.ClassObjects.Survey.SubmitAnswers(ANSID.ToString(), Request.QueryString["key"].ToString(), "5", answerNumThree.ToString(), Session["username"].ToString());
-        ANSID = BioPM.ClassObjects.Survey.GetAnswersMaxID() + 1;
-        BioPM.ClassObjects.Survey.SubmitAnswers(ANSID.ToString(), Request.QueryString["key"].ToString(), "6", TextArea3.Text, Session["username"].ToString());
-        ANSID = BioPM.ClassObjects.Survey.GetAnswersMaxID() + 1;
-        BioPM.ClassObjects.Survey.SubmitAnswers(ANSID.ToString(), Request.QueryString["key"].ToString(), "7", TextArea4.Text, Session["username"].ToString());
+        string excid = Request.QueryString["key"].ToString();
+        object[] data = null;
+        data = BioPM.ClassObjects.Survey.GetAnswerById(excid, "1");
+        txtSoal1.Text = data[1].ToString();
+        data = BioPM.ClassObjects.Survey.GetAnswerById(excid, "2");
+        TextArea1.Text = data[1].ToString();
+        data = BioPM.ClassObjects.Survey.GetAnswerById(excid, "3");
+        txtSoal2.Text = data[1].ToString();
+        data = BioPM.ClassObjects.Survey.GetAnswerById(excid, "4");
+        TextArea2.Text = data[1].ToString();
+        data = BioPM.ClassObjects.Survey.GetAnswerById(excid, "5");
+        txtSoal3.Text = data[1].ToString();
+        data = BioPM.ClassObjects.Survey.GetAnswerById(excid, "6");
+        TextArea3.Text = data[1].ToString();
+        data = BioPM.ClassObjects.Survey.GetAnswerById(excid, "7");
+        TextArea4.Text = data[1].ToString();
     }
 
-    protected void btnAdd_Click(object sender, EventArgs e)
-    {
-        if (IsPostBack) InsertAnswersIntoDatabase();
-        Response.Redirect("PageTrainingSurvey.aspx");
-    }
-
-    protected void btnCancel_Click(object sender, EventArgs e)
-    {
-        Response.Redirect("PageUserPanel.aspx");
-    }
 
     protected void btnSave_Click(object sender, EventArgs e)
     {
@@ -173,22 +137,7 @@
                             Apakah objektif / tujuan pelatihan ini sudah tercapai oleh peserta tersebut?
                             </label>
                             <div class="col-lg-3 col-md-4">
-                                <div class="radio disable">
-	                                <asp:RadioButton id="R14" runat="server" GroupName="Soal1" value="4"/>
-                                    <label>4 (Tercapai)</label>
-                                </div>
-                                <div class="radio disable">
-	                                <asp:RadioButton id="R13" runat="server" GroupName="Soal1" value="3"/>
-                                    <label>3</label>
-                                </div>
-                                <div class="radio disable">
-	                                <asp:RadioButton id="R12" runat="server" GroupName="Soal1" value="2"/>
-                                    <label>2</label>
-                                </div>
-                                <div class="radio disable">
-	                                <asp:RadioButton id="R11" runat="server" GroupName="Soal1" value="1"/>
-                                    <label>1 (Tidak tercapai)</label>
-                                </div>
+                                <asp:TextBox id="txtSoal1" runat="server" ReadOnly="true" />
                             </div>
                         </div>
                         <div class="form-group">
@@ -205,22 +154,7 @@
                             Apakah peserta pelatihan ini sudah mengaplikasikan pengetahuan yang didapat pada pekerjaannya?
                             </label>
                             <div class="col-lg-3 col-md-4">
-                                <div class="radio disable">
-	                                <asp:RadioButton id="R24" runat="server" GroupName="Soal2" value="4"/>
-                                    <label>4 (Sudah diaplikasikan)</label>
-                                </div>
-                                <div class="radio disable">
-	                                <asp:RadioButton id="R23" runat="server" GroupName="Soal2" value="3"/>
-                                    <label>3</label>
-                                </div>
-                                <div class="radio disable">
-	                                <asp:RadioButton id="R22" runat="server" GroupName="Soal2" value="2"/>
-                                    <label>2</label>
-                                </div>
-                                <div class="radio disable">
-	                                <asp:RadioButton id="R21" runat="server" GroupName="Soal2" value="1"/>
-                                    <label>1 (Belum diaplikasikan)</label>
-                                </div>
+                                <asp:TextBox id="txtSoal2" runat="server" ReadOnly="true" />
                             </div>
                         </div>
                         <div class="form-group">
@@ -237,22 +171,7 @@
                             Bagaimana penilaian anda atas hasil yang telah dicapai oleh karyawan tersebut?
                             </label>
                             <div class="col-lg-3 col-md-4">
-                                <div class="radio disable">
-	                                <asp:RadioButton id="R34" runat="server" GroupName="Soal3" value="4"/>
-                                    <label>4 (Sangat baik)</label>
-                                </div>
-                                <div class="radio disable">
-	                                <asp:RadioButton id="R33" runat="server" GroupName="Soal3" value="3"/>
-                                    <label>3</label>
-                                </div>
-                                <div class="radio disable">
-	                                <asp:RadioButton id="R32" runat="server" GroupName="Soal3" value="2"/>
-                                    <label>2</label>
-                                </div>
-                                <div class="radio disable">
-	                                <asp:RadioButton id="R31" runat="server" GroupName="Soal3" value="1"/>
-                                    <label>1 (Sangat buruk)</label>
-                                </div>
+                                <asp:TextBox id="txtSoal3" runat="server" ReadOnly="true" />
                             </div>
                         </div>
                         <div class="form-group">
@@ -345,13 +264,7 @@
                         </div>
                         <!-- modal -->
 
-                        <div class="form-group">
-                            <label class="col-sm-3 control-label"> </label>
-                            <div class="col-lg-3 col-md-3">
-                                <asp:Button class="btn btn-round btn-primary" ID="btnAdd" runat="server" Text="Add" OnClick="btnAdd_Click"/>
-                                <asp:Button class="btn btn-round btn-primary" ID="btnCancel" runat="server" Text="Cancel" OnClick="btnCancel_Click"/>
-                            </div>
-                        </div>
+                        
                             
                         </form>
                     </div>

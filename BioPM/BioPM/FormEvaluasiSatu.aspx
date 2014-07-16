@@ -129,13 +129,9 @@
                                     </td>
                                     <td>Tercapai</td>
                                 </tr>
-<<<<<<< HEAD
+
                                 </tbody>
                              </table>
-=======
-                                
-                            </table>
->>>>>>> origin/master
                         </form>
                     </div>
                     

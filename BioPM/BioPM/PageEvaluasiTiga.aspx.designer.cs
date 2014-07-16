@@ -10,7 +10,7 @@
 namespace BioPM {
     
     
-    public partial class FormEvaluasiIII {
+    public partial class PageEvaluasiTiga {
         
         /// <summary>
         /// Form1 control.
@@ -76,40 +76,13 @@ namespace BioPM {
         protected global::System.Web.UI.WebControls.TextBox txtJabatan;
         
         /// <summary>
-        /// R14 control.
+        /// txtSoal1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton R14;
-        
-        /// <summary>
-        /// R13 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton R13;
-        
-        /// <summary>
-        /// R12 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton R12;
-        
-        /// <summary>
-        /// R11 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton R11;
+        protected global::System.Web.UI.WebControls.TextBox txtSoal1;
         
         /// <summary>
         /// TextArea1 control.
@@ -121,40 +94,13 @@ namespace BioPM {
         protected global::System.Web.UI.WebControls.TextBox TextArea1;
         
         /// <summary>
-        /// R24 control.
+        /// txtSoal2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton R24;
-        
-        /// <summary>
-        /// R23 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton R23;
-        
-        /// <summary>
-        /// R22 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton R22;
-        
-        /// <summary>
-        /// R21 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton R21;
+        protected global::System.Web.UI.WebControls.TextBox txtSoal2;
         
         /// <summary>
         /// TextArea2 control.
@@ -166,40 +112,13 @@ namespace BioPM {
         protected global::System.Web.UI.WebControls.TextBox TextArea2;
         
         /// <summary>
-        /// R34 control.
+        /// txtSoal3 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton R34;
-        
-        /// <summary>
-        /// R33 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton R33;
-        
-        /// <summary>
-        /// R32 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton R32;
-        
-        /// <summary>
-        /// R31 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton R31;
+        protected global::System.Web.UI.WebControls.TextBox txtSoal3;
         
         /// <summary>
         /// TextArea3 control.
@@ -308,23 +227,5 @@ namespace BioPM {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnSubmit;
-        
-        /// <summary>
-        /// btnAdd control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAdd;
-        
-        /// <summary>
-        /// btnCancel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCancel;
     }
 }

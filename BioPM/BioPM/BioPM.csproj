@@ -113,6 +113,7 @@
     <Content Include="FormApprove.aspx" />
     <Content Include="FormConfirmRequest.aspx" />
     <Content Include="FormEvaluasiImplementasi.aspx" />
+    <Content Include="PageEvaluasiTiga.aspx" />
     <Content Include="Scripts\bootstrap-reset.css" />
     <Content Include="Scripts\bootstrap.min.css" />
     <Content Include="Scripts\Feature\jquery.nestable.css" />
@@ -626,6 +627,13 @@
     </Compile>
     <Compile Include="PageEmployeeQualification.aspx.designer.cs">
       <DependentUpon>PageEmployeeQualification.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageEvaluasiTiga.aspx.cs">
+      <DependentUpon>PageEvaluasiTiga.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageEvaluasiTiga.aspx.designer.cs">
+      <DependentUpon>PageEvaluasiTiga.aspx</DependentUpon>
     </Compile>
     <Compile Include="PageEventMethod.aspx.cs">
       <DependentUpon>PageEventMethod.aspx</DependentUpon>

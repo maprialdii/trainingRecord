@@ -4,25 +4,34 @@
 <script runat="server">
     protected void Page_Load(object sender, EventArgs e)
     {
-        //if (Session["username"] == null && Session["password"] == null) Response.Redirect("PageLogin.aspx");
-        //if (!IsPostBack)
-        //    txtCpyID.Text = (BioPM.ClassObjects.CompetencyCatalog.GetCompetencyMaxID() + 1).ToString();
+        if (Session["username"] == null && Session["password"] == null) Response.Redirect("PageLogin.aspx");
     }
 
-    protected void InsertCompetencyIntoDatabase()
+    protected void InsertAnswersIntoDatabase()
     {
-        //BioPM.ClassObjects.CompetencyCatalog.InsertCompetency(txtCpyID.Text, txtCpyCode.Text, txtCpyName.Text, Session["username"].ToString());
+        int ANSID;
+        ANSID = BioPM.ClassObjects.Survey.GetAnswersMaxID() + 1;
+        BioPM.ClassObjects.Survey.SubmitAnswers(ANSID.ToString(), Request.QueryString["key"].ToString(), "8", rbSoal1.SelectedValue, Session["username"].ToString());
+        ANSID = BioPM.ClassObjects.Survey.GetAnswersMaxID() + 1;
+        BioPM.ClassObjects.Survey.SubmitAnswers(ANSID.ToString(), Request.QueryString["key"].ToString(), "9", rbSoal2.SelectedValue, Session["username"].ToString());
+        ANSID = BioPM.ClassObjects.Survey.GetAnswersMaxID() + 1;
+        BioPM.ClassObjects.Survey.SubmitAnswers(ANSID.ToString(), Request.QueryString["key"].ToString(), "10", rbSoal3.SelectedValue, Session["username"].ToString());
+        ANSID = BioPM.ClassObjects.Survey.GetAnswersMaxID() + 1;
+        BioPM.ClassObjects.Survey.SubmitAnswers(ANSID.ToString(), Request.QueryString["key"].ToString(), "11", rbSoal4.SelectedValue, Session["username"].ToString());
+        ANSID = BioPM.ClassObjects.Survey.GetAnswersMaxID() + 1;
+        BioPM.ClassObjects.Survey.SubmitAnswers(ANSID.ToString(), Request.QueryString["key"].ToString(), "12", TextArea1.Text, Session["username"].ToString());
+
     }
 
     protected void btnAdd_Click(object sender, EventArgs e)
     {
-        //if (IsPostBack) InsertCompetencyIntoDatabase();
-        //Response.Redirect("PageCompetencyParameter.aspx");
+        if (IsPostBack) InsertAnswersIntoDatabase();
+        Response.Redirect("PageTrainingSurvey.aspx");
     }
 
     protected void btnCancel_Click(object sender, EventArgs e)
     {
-        //Response.Redirect("PageUserPanel.aspx");
+        Response.Redirect("PageUserPanel.aspx");
     }
 
     protected void btnSave_Click(object sender, EventArgs e)
@@ -138,100 +147,60 @@
                             <tr>
                                 <td>1</td>
                                 <td>Dalam melaksanakan tugasnya apakah hasil pelatihan sudah diaplikasikan dalam pekerjaannya?</td>
-                                <td><div class="radio disable">
-	                                <asp:RadioButton id="R11" runat="server" GroupName="Soal1" value="1"/>
-                                    <label>1</label>
-                                    </div></td>
-                                <td><div class="radio disable">
-	                                <asp:RadioButton id="R12" runat="server" GroupName="Soal1" value="2"/>
-                                    <label>2</label>
-                                    </div></td>
-                                <td><div class="radio disable">
-	                                <asp:RadioButton id="R13" runat="server" GroupName="Soal1" value="3"/>
-                                    <label>3</label>
-                                    </div></td>
-                                <td><div class="radio disable">
-	                                <asp:RadioButton id="R14" runat="server" GroupName="Soal1" value="4"/>
-                                    <label>4</label>
-                                    </div></td>
-                                <td><div class="radio disable">
-	                                <asp:RadioButton id="R15" runat="server" GroupName="Soal1" value="5"/>
-                                    <label>5</label>
+                                <td>
+                                    <div class="radio disable">
+                                        <asp:RadioButtonList ID="rbSoal1" runat="server" RepeatDirection="Horizontal">
+                                            <asp:ListItem Text ="1" Value="1" />
+                                            <asp:ListItem Text ="2" Value="2" />
+                                            <asp:ListItem Text ="3" Value="3" />
+                                            <asp:ListItem Text ="4" Value="4" />
+                                            <asp:ListItem Text ="5" Value="5" />
+                                        </asp:RadioButtonList>
                                     </div></td>
                             </tr>
                             <tr>
                                 <td>2</td>
                                 <td>Dalam melaksanakan tugasnya apakah sudah ada perbaikan dalam pekerjaannya?</td>
-                                <td><div class="radio disable">
-	                                <asp:RadioButton id="RadioButton1" runat="server" GroupName="Soal2" value="1"/>
-                                    <label>1</label>
-                                    </div></td>
-                                <td><div class="radio disable">
-	                                <asp:RadioButton id="RadioButton2" runat="server" GroupName="Soal2" value="2"/>
-                                    <label>2</label>
-                                    </div></td>
-                                <td><div class="radio disable">
-	                                <asp:RadioButton id="RadioButton3" runat="server" GroupName="Soal2" value="3"/>
-                                    <label>3</label>
-                                    </div></td>
-                                <td><div class="radio disable">
-	                                <asp:RadioButton id="RadioButton4" runat="server" GroupName="Soal2" value="4"/>
-                                    <label>4</label>
-                                    </div></td>
-                                <td><div class="radio disable">
-	                                <asp:RadioButton id="RadioButton5" runat="server" GroupName="Soal2" value="5"/>
-                                    <label>5</label>
-                                    </div></td>
+                                <td>
+                                    <div class="radio disable">
+	                                    <asp:RadioButtonList ID="rbSoal2" runat="server" RepeatDirection="Horizontal">
+                                            <asp:ListItem Text ="1" Value="1" />
+                                            <asp:ListItem Text ="2" Value="2" />
+                                            <asp:ListItem Text ="3" Value="3" />
+                                            <asp:ListItem Text ="4" Value="4" />
+                                            <asp:ListItem Text ="5" Value="5" />
+                                        </asp:RadioButtonList>
+                                    </div></td>                                
                             </tr>
                             <tr>
                                 <td>3</td>
                                 <td>Dalam melaksanakan tugasnya apakah ada peningkatan kualitas dalam bekerja?</td>
-                                <td><div class="radio disable">
-	                                <asp:RadioButton id="RadioButton6" runat="server" GroupName="Soal3" value="1"/>
-                                    <label>1</label>
-                                    </div></td>
-                                <td><div class="radio disable">
-	                                <asp:RadioButton id="RadioButton7" runat="server" GroupName="Soal3" value="2"/>
-                                    <label>2</label>
-                                    </div></td>
-                                <td><div class="radio disable">
-	                                <asp:RadioButton id="RadioButton8" runat="server" GroupName="Soal3" value="3"/>
-                                    <label>3</label>
-                                    </div></td>
-                                <td><div class="radio disable">
-	                                <asp:RadioButton id="RadioButton9" runat="server" GroupName="Soal3" value="4"/>
-                                    <label>4</label>
-                                    </div></td>
-                                <td><div class="radio disable">
-	                                <asp:RadioButton id="RadioButton10" runat="server" GroupName="Soal3" value="5"/>
-                                    <label>5</label>
-                                    </div></td>
+                                <td>
+                                    <div class="radio disable">
+	                                    <asp:RadioButtonList ID="rbSoal3" runat="server" RepeatDirection="Horizontal">
+                                            <asp:ListItem Text ="1" Value="1" />
+                                            <asp:ListItem Text ="2" Value="2" />
+                                            <asp:ListItem Text ="3" Value="3" />
+                                            <asp:ListItem Text ="4" Value="4" />
+                                            <asp:ListItem Text ="5" Value="5" />
+                                        </asp:RadioButtonList>
+                                    </div></td>                                
                             </tr>
                             <tr>
                                 <td>4</td>
                                 <td>Setelah mengikuti pelatihan, apakah ada perubahan sikap dan perilaku kerja dalam
                                     menjalankan perannya sebagai karyawan secara keseluruhan?
                                 </td>
-                                <td><div class="radio disable">
-	                                <asp:RadioButton id="RadioButton11" runat="server" GroupName="Soal4" value="1"/>
-                                    <label>1</label>
-                                    </div></td>
-                                <td><div class="radio disable">
-	                                <asp:RadioButton id="RadioButton12" runat="server" GroupName="Soal4" value="2"/>
-                                    <label>2</label>
-                                    </div></td>
-                                <td><div class="radio disable">
-	                                <asp:RadioButton id="RadioButton13" runat="server" GroupName="Soal4" value="3"/>
-                                    <label>3</label>
-                                    </div></td>
-                                <td><div class="radio disable">
-	                                <asp:RadioButton id="RadioButton14" runat="server" GroupName="Soal4" value="4"/>
-                                    <label>4</label>
-                                    </div></td>
-                                <td><div class="radio disable">
-	                                <asp:RadioButton id="RadioButton15" runat="server" GroupName="Soal4" value="5"/>
-                                    <label>5</label>
-                                    </div></td>
+                                <td>
+                                    <div class="radio disable">
+	                                    <asp:RadioButtonList ID="rbSoal4" runat="server" RepeatDirection="Horizontal">
+                                            <asp:ListItem Text ="1" Value="1" />
+                                            <asp:ListItem Text ="2" Value="2" />
+                                            <asp:ListItem Text ="3" Value="3" />
+                                            <asp:ListItem Text ="4" Value="4" />
+                                            <asp:ListItem Text ="5" Value="5" />
+                                        </asp:RadioButtonList>
+                                    </div></td>                                
                             </tr>
                         </table>
 
@@ -240,7 +209,7 @@
                         <div class="form-group">
                             <label class="col-sm-3 control-label"> Saran: </label>
                             <div class="col-lg-3 col-md-4">
-                                <textarea id="TextArea4" cols="60" name="S1" rows="3"></textarea>
+                                <asp:TextBox id="TextArea1" TextMode="multiline" Columns="60" Rows="3" runat="server" />
                                 </div>
                         </div>
 
@@ -270,7 +239,7 @@
                         <div class="form-group">
                             <label class="col-sm-3 control-label"> </label>
                             <div class="col-lg-3 col-md-3">
-                                <asp:LinkButton data-toggle="modal" class="btn btn-round btn-primary" ID="btnAction" runat="server" Text="Add" href="#myModal"/>
+                                <asp:Button class="btn btn-round btn-primary" ID="btnAdd" runat="server" Text="Add" OnClick="btnAdd_Click"/>
                                 <asp:Button class="btn btn-round btn-primary" ID="btnCancel" runat="server" Text="Cancel" OnClick="btnCancel_Click"/>
                             </div>
                         </div>
