@@ -45,7 +45,7 @@ namespace BioPM.ClassScripts
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("<!-- Form Style -->");
-            sb.Append("<link rel='stylesheet' href='Scripts/UserPanel/assets/bootstrap-switch-master/build/css/bootstrap3/bootstrap-switch.css' /> ");
+            //sb.Append("<link rel='stylesheet' href='Scripts/UserPanel/assets/bootstrap-switch-master/build/css/bootstrap3/bootstrap-switch.css' /> ");
             sb.Append("<link rel='stylesheet' type='text/css' href='Scripts/UserPanel/assets/bootstrap-fileupload/bootstrap-fileupload.css' />     ");
             sb.Append("<link rel='stylesheet' type='text/css' href='Scripts/UserPanel/assets/bootstrap-wysihtml5/bootstrap-wysihtml5.css' />       ");
             sb.Append("<link rel='stylesheet' type='text/css' href='Scripts/UserPanel/assets/bootstrap-datepicker/css/datepicker.css' />           ");
