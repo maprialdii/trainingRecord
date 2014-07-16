@@ -92,8 +92,18 @@
                     <div class="panel-body">
                         <form id="Form1" class="form-horizontal " runat="server" >
                             <table class="table table-striped table-hover table-bordered" id="survey" >
+                                <thead>
+                                    <tr>
+                                    <th>No</th>
+                                    <th>Pertanyaan</th>
+                                    <th></th>
+                                    <th>Alasan</th>
+                                    </tr>                                    
+                                </thead>
+                                <tbody>
                                 <tr>
-                                    <td colspan="6">1. Tujuan pelaksanaan pelatihan</td>
+                                    <td>1. </td>
+                                    <td>Tujuan pelaksanaan pelatihan</td>
                                 </tr>
                                 <tr>
                                     <td>Tidak tercapai</td>
@@ -162,7 +172,8 @@
                                     </td>
                                     <td>Tercapai</td>
                                 </tr>
-                            </table>
+                                </tbody>
+                             </table>
                         </form>
                     </div>
                     

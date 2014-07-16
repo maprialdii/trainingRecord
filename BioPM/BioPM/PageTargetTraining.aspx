@@ -4,7 +4,7 @@
 <script runat="server">
     string evtId = "";
     string eventName = null;
-    string method = null;/
+    string method = null;
     protected void Page_Load(object sender, EventArgs e)
     {
         if (Session["username"] == null && Session["password"] == null) Response.Redirect("PageLogin.aspx");
