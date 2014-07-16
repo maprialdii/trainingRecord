@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="FormEvaluasiTiga.aspx.cs" Inherits="BioPM.FormEvaluasiIII" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="FormEvaluasiPerilaku.aspx.cs" Inherits="BioPM.FormEvaluasiIII" %>
 
 <!DOCTYPE html>
 <script runat="server">

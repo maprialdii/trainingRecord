@@ -372,3 +372,13 @@ ul {
 }
 
 
+.RBL label
+{
+    display: block;
+}
+
+.RBL td
+{
+    text-align: center;
+    width: 20px;
+}

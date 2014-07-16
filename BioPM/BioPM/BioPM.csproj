@@ -109,10 +109,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="CSS\Feature\jquery.nestable.css" />
     <Content Include="FormApprove.aspx" />
     <Content Include="FormConfirmRequest.aspx" />
+    <Content Include="FormDataEvaluasi.aspx" />
     <Content Include="FormEvaluasiImplementasi.aspx" />
+    <Content Include="FormEvaluasiPelaksanaan.aspx" />
+    <Content Include="FormEvaluasiReaksiPeserta.aspx" />
     <Content Include="Scripts\bootstrap-reset.css" />
     <Content Include="Scripts\bootstrap.min.css" />
     <Content Include="Scripts\Feature\jquery.nestable.css" />
@@ -120,7 +122,7 @@
     <Content Include="Scripts\style.css" />
     <Content Include="FormEvaluasiSatu.aspx" />
     <Content Include="FormEvaluasiDua.aspx" />
-    <Content Include="FormEvaluasiTiga.aspx" />
+    <Content Include="FormEvaluasiPerilaku.aspx" />
     <Content Include="FormInputAllQualification.aspx" />
     <Content Include="FormInputCompetencyRelation.aspx" />
     <Content Include="FormInputEmployeeQualification.aspx" />
@@ -340,12 +342,33 @@
     <Compile Include="FormConfirmRequest.aspx.designer.cs">
       <DependentUpon>FormConfirmRequest.aspx</DependentUpon>
     </Compile>
+    <Compile Include="FormDataEvaluasi.aspx.cs">
+      <DependentUpon>FormDataEvaluasi.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FormDataEvaluasi.aspx.designer.cs">
+      <DependentUpon>FormDataEvaluasi.aspx</DependentUpon>
+    </Compile>
     <Compile Include="FormEvaluasiImplementasi.aspx.cs">
       <DependentUpon>FormEvaluasiImplementasi.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="FormEvaluasiImplementasi.aspx.designer.cs">
       <DependentUpon>FormEvaluasiImplementasi.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FormEvaluasiPelaksanaan.aspx.cs">
+      <DependentUpon>FormEvaluasiPelaksanaan.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FormEvaluasiPelaksanaan.aspx.designer.cs">
+      <DependentUpon>FormEvaluasiPelaksanaan.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FormEvaluasiReaksiPeserta.aspx.cs">
+      <DependentUpon>FormEvaluasiReaksiPeserta.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FormEvaluasiReaksiPeserta.aspx.designer.cs">
+      <DependentUpon>FormEvaluasiReaksiPeserta.aspx</DependentUpon>
     </Compile>
     <Compile Include="FormEvaluasiSatu.aspx.cs">
       <DependentUpon>FormEvaluasiSatu.aspx</DependentUpon>
@@ -361,12 +384,12 @@
     <Compile Include="FormEvaluasiDua.aspx.designer.cs">
       <DependentUpon>FormEvaluasiDua.aspx</DependentUpon>
     </Compile>
-    <Compile Include="FormEvaluasiTiga.aspx.cs">
-      <DependentUpon>FormEvaluasiTiga.aspx</DependentUpon>
+    <Compile Include="FormEvaluasiPerilaku.aspx.cs">
+      <DependentUpon>FormEvaluasiPerilaku.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="FormEvaluasiTiga.aspx.designer.cs">
-      <DependentUpon>FormEvaluasiTiga.aspx</DependentUpon>
+    <Compile Include="FormEvaluasiPerilaku.aspx.designer.cs">
+      <DependentUpon>FormEvaluasiPerilaku.aspx</DependentUpon>
     </Compile>
     <Compile Include="FormInputAllQualification.aspx.cs">
       <DependentUpon>FormInputAllQualification.aspx</DependentUpon>
