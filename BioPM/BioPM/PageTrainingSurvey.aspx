@@ -13,13 +13,11 @@
 
         foreach (object[] data in BioPM.ClassObjects.ComDevExecution.GetComdevExecutionByUserId(Session["username"].ToString()))
         {
-            htmlelement += "<tr class=''><td>" + data[1].ToString() + "</td><td>" + data[2].ToString() + "</td><td><a class='edit' href='#.aspx?key=" + data[0].ToString() + "&type=1'>Survey 1</a></td><td><a class='edit' href='#.aspx?key=" + data[0].ToString() + "&type=2'>Survey 2</a></td><td><a class='delete' href='#.aspx?key=" + data[0].ToString() + "&type=3'>Survey</a></td></tr>";
+            htmlelement += "<tr class=''><td>" + data[1].ToString() + "</td><td>" + data[2].ToString() + "</td><td><a class='edit' href='PageSurvey.aspx?key=" + data[0].ToString() + "&type=SR-01-Q-'>Survey 1</a></td><td><a class='edit' href='PageSurvey.aspx?key=" + data[0].ToString() + "&type=2'>Survey 2</a></td><td><a class='delete' href='#.aspx?key=" + data[0].ToString() + "&type=3'>Survey</a></td></tr>";
         }
         
         return htmlelement;
     }
-
-   
 </script>
 
 <html lang="en">
@@ -93,6 +91,8 @@
                                 </tbody>
                             </table>
                         </div>
+                        
+
                     </div>
                     
                 </section>

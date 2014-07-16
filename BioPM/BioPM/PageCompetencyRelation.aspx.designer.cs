@@ -8,21 +8,32 @@
 //------------------------------------------------------------------------------
 
 namespace BioPM {
-    
-    
-    public partial class PageCompetencyRelation {
-        
+
+
+    public partial class PageCompetencyRelation
+    {
+
         /// <summary>
         /// Form1 control.
         /// Form2 control.
+<<<<<<< HEAD
+
         /// List control.
+
+=======
+        /// List control.
+>>>>>>> origin/master
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
+<<<<<<< HEAD
+
+=======
+>>>>>>> origin/master
         protected global::System.Web.UI.HtmlControls.HtmlForm Form2;
-        
+
         /// <summary>
         /// ddlCompParent control.
         /// </summary>
@@ -31,7 +42,7 @@ namespace BioPM {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlCompParent;
-        
+
         /// <summary>
         /// ddlCompChild control.
         /// </summary>
@@ -40,19 +51,19 @@ namespace BioPM {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlCompChild;
-        
+
         /// <summary>
 
         /// txtCompLevel control.
 
         /// TextBox1 control.
         //protected global::System.Web.UI.HtmlControls.HtmlForm Form2;
-        
+
         /// <summary>
         /// txtConfirmation control.
 
         //protected global::System.Web.UI.HtmlControls.HtmlForm Form2;
-        
+
         /// <summary>
         /// txtConfirmation control.
         /// </summary>
@@ -62,7 +73,7 @@ namespace BioPM {
         /// </remarks>
 
         protected global::System.Web.UI.WebControls.TextBox txtCompLevel;
-        
+
         /// <summary>
         /// btnAdd control.
 
@@ -72,7 +83,7 @@ namespace BioPM {
         //protected global::System.Web.UI.WebControls.TextBox txtConfirmation;
         //protected global::System.Web.UI.WebControls.TextBox txtConfirmation;
 
-        
+
         /// <summary>
         /// btnClose control.
         /// </summary>
@@ -82,7 +93,7 @@ namespace BioPM {
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button Button1;
         protected global::System.Web.UI.WebControls.Button btnClose;
-        
+
         /// <summary>
         /// btnSubmit control.
         /// </summary>
@@ -93,7 +104,7 @@ namespace BioPM {
         protected global::System.Web.UI.WebControls.Button btnSubmit;
         //protected global::System.Web.UI.WebControls.Button btnSubmit;
 
-        
+
         /// <summary>
         /// ddlCompParent control.
         /// </summary>
@@ -102,7 +113,7 @@ namespace BioPM {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         //protected global::System.Web.UI.WebControls.DropDownList ddlCompParent;
-        
+
         /// <summary>
         /// ddlCompChild control.
         /// </summary>
@@ -111,7 +122,7 @@ namespace BioPM {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         //protected global::System.Web.UI.WebControls.DropDownList ddlCompChild;
-        
+
         /// <summary>
         /// txtCompLevel control.
         /// </summary>
@@ -123,7 +134,7 @@ namespace BioPM {
         //protected global::System.Web.UI.WebControls.TextBox txtCompLevel;
 
         //protected global::System.Web.UI.WebControls.TextBox txtCompLevel;
-        
+
         /// <summary>
         /// btnAction control.
         /// </summary>

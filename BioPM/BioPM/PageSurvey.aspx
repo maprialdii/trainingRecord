@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 
 <script runat="server">
+    object[] prmid = null;
     protected void Page_Load(object sender, EventArgs e)
     {
         if (Session["username"] == null && Session["password"] == null) Response.Redirect("PageLogin.aspx");
@@ -11,76 +12,71 @@
            
         }
     }
-    
-    protected void sessionCreator()
+
+    protected String GenerateSurvey()
     {
-        Session["username"] = "K495";
-        Session["name"] = "ALLAN PRAKOSA";
-        Session["password"] = "admin1234";
-        Session["role"] = "111111";
+        string htmlelement = "";
+        int i = 1;
+        foreach (object[] data in BioPM.ClassObjects.Survey.GetQuestions(Request.QueryString["type"].ToString()))
+        {
+            prmid[i] = data[0].ToString();                      
+            if (data[2].ToString() == "R")
+            {
+                htmlelement += "<tr class=''><td rowspan='3'><label>" + i + "</label></td>";  
+                htmlelement += "<td colspan='4'><label>" + data[1].ToString() + "</label></td></tr>";  
+                htmlelement += "<tr class=''>";
+                foreach (object[] values in BioPM.ClassObjects.Survey.GetOptionAnswers(data[0].ToString()))
+                {
+                    int j = 1;
+                    htmlelement += "<td colspan='2'><input type='radio' ID=radio" +i+ " value=" + values[0].ToString() + ">" + values[0].ToString() + "</td>";
+                    j++;
+                }
+                htmlelement += "</tr>";
+                htmlelement += "<tr class=''><td colspan='4'><label>Alasan</label><br><input type='text' ID='txtAnswer" +i+ "'></td></tr>";
+            }
+
+            else if (data[2].ToString() == "T")
+            {
+                htmlelement += "<tr class=''><td rowspan='2'><label>" + i + "</label></td>";
+                htmlelement += "<td colspan='4'><label>" + data[1].ToString() + "</label><br><input type='text' ID='txtAnswer"+i+"'></td></tr>";
+            }
+            i++;                     
+        }
+
+        return htmlelement;
     }
 
-    protected void InsertEHSValueIntoDatabase(string ORGID, string STSPE, string DOKID, string PRMID, string VALUE, string USRDT)
+    protected void InsertDataIntoDatabase()
     {
-        BioPM.ClassObjects.EHSValue.InsertEHSValue(ORGID, STSPE, DOKID, PRMID, VALUE, USRDT);
+        int numOfQuestion = BioPM.ClassObjects.Survey.GetNumOfQuestion(Request.QueryString["type"].ToString());
+        for(int i=1; i<=numOfQuestion; i++)
+        {
+            int ANSID = BioPM.ClassObjects.Survey.GetAnswersMaxID() + 1;
+            BioPM.ClassObjects.Survey.SubmitAnswers(ANSID, Request.QueryString["key"].ToString(), prmid[i].ToString(), txt, Session["username"].ToString());
+        }        
     }
 
     protected void btnAdd_Click(object sender, EventArgs e)
     {
-        if (IsPostBack)
-        {
-            string orgid = ddlorgid.SelectedValue;
-            string stspe = "Executing";
-            string dokid = (BioEHS.ClassObjects.EHSValue.GetMaxDOKID() + 1).ToString();
-            string usrdt = Session["username"].ToString();
-            InsertEHSValueIntoDatabase(orgid, stspe, dokid, "12", "Penanganan Kecelakaan Kerja", usrdt);
-            InsertEHSValueIntoDatabase(orgid, stspe, dokid, "20", "Laporan Kecelakaan", usrdt);
-            InsertEHSValueIntoDatabase(orgid, stspe, dokid, "41", dokid, usrdt);
-            InsertEHSValueIntoDatabase(orgid, stspe, dokid, "1", txtnama.Text , usrdt);
-            InsertEHSValueIntoDatabase(orgid, stspe, dokid, "2", txtpanggilan.Text, usrdt);
-            InsertEHSValueIntoDatabase(orgid, stspe, dokid, "5", txtdate.Text, usrdt);
-            InsertEHSValueIntoDatabase(orgid, stspe, dokid, "6", txttime.Text, usrdt);
-            InsertEHSValueIntoDatabase(orgid, stspe, dokid, "4", ddlorgid.SelectedValue, usrdt);
-            InsertEHSValueIntoDatabase(orgid, stspe, dokid, "7", ddltipe.SelectedValue, usrdt);
-            InsertEHSValueIntoDatabase(orgid, stspe, dokid, "8", txtcidera.Text, usrdt);
-            InsertEHSValueIntoDatabase(orgid, stspe, dokid, "9", txtdeskripsi.Text, usrdt);
-            InsertEHSValueIntoDatabase(orgid, stspe, dokid, "10", txtlokasi.Text, usrdt);
-            if (RadioButton1.Checked == true)
-                InsertEHSValueIntoDatabase(orgid, stspe, dokid, "3", "L", usrdt);
-            if (RadioButton2.Checked == true)
-                InsertEHSValueIntoDatabase(orgid, stspe, dokid, "3", "P", usrdt);
-            if (txtsaksi1.Text != "")
-            {
-                string saksi1 = txtsaksi1.Text + " - " + txtnosaksi1.Text;
-                InsertEHSValueIntoDatabase(orgid, stspe, dokid, "11", saksi1, usrdt);
-            }
-            else InsertEHSValueIntoDatabase(orgid, stspe, dokid, "11", "", usrdt);
-            if (txtsaksi2.Text != "")
-            {
-                string saksi2 = txtsaksi2.Text + " - " + txtnosaksi2.Text;
-                InsertEHSValueIntoDatabase(orgid, stspe, dokid, "11", saksi2, usrdt);
-            }
-            else InsertEHSValueIntoDatabase(orgid, stspe, dokid, "11", "", usrdt);
-        }
-
-        Response.Redirect("PageUserPanel.aspx");
+        //InsertDataIntoDatabase();
+        Response.Redirect("PageTrainingSurvey.aspx");
     }
 
     protected void btnCancel_Click(object sender, EventArgs e)
     {
-        Response.Redirect("DaftarLaporanKecelakaan.aspx");
+        Response.Redirect("PageUserPanel.aspx");
     }
 </script>
 
 <html lang="en">
 <head>
-    <% Response.Write(BioEHS.ClassScripts.BasicScripts.GetMetaScript()); %>
+    <% Response.Write(BioPM.ClassScripts.BasicScripts.GetMetaScript()); %>
 
-    <title>Formulir-02</title>
+    <title>Event Method</title>
 
-    <% Response.Write(BioEHS.ClassScripts.StyleScripts.GetCoreStyle()); %>
-    <% /*Response.Write(BioEHS.ClassScripts.StyleScripts.GetFormStyle()); */%>
-    <% Response.Write(BioEHS.ClassScripts.StyleScripts.GetCustomStyle()); %>
+    <% Response.Write(BioPM.ClassScripts.StyleScripts.GetCoreStyle()); %>
+<% Response.Write(BioPM.ClassScripts.StyleScripts.GetTableStyle()); %>
+<% Response.Write(BioPM.ClassScripts.StyleScripts.GetCustomStyle()); %>
 </head>
 
 <body>
@@ -88,11 +84,11 @@
 <section id="container" >
  
 <!--header start--> 
- <%Response.Write( BioEHS.ClassScripts.SideBarMenu.TopMenuElement(Session["name"].ToString()) ); %> 
+ <%Response.Write( BioPM.ClassScripts.SideBarMenu.TopMenuElement(Session["name"].ToString())); %> 
 <!--header end-->
    
 <!--left side bar start-->
- <%Response.Write(BioEHS.ClassScripts.SideBarMenu.LeftSidebarMenuElementAutoGenerated(Session["username"].ToString())); %> 
+ <%Response.Write(BioPM.ClassScripts.SideBarMenu.LeftSidebarMenuElementAutoGenerated(Session["username"].ToString())); %> 
 <!--left side bar end-->
 
     <!--main content start-->
@@ -104,79 +100,50 @@
             <div class="col-sm-12">
                 <section class="panel">
                     <header class="panel-heading">
-                        FORMULIR-02 LAPORAN KECELAKAAN 
+                        Survey 1
                           <span class="tools pull-right">
                             <a class="fa fa-chevron-down" href="javascript:;"></a>
                             <a class="fa fa-times" href="javascript:;"></a>
                          </span>
                     </header>
-
                     <div class="panel-body">
-                        <form id="Form2" class="form-horizontal " runat="server" >
-                      
-                       <div class="form-group">
-                            <label class="col-sm-3 control-label">Divisi yang melaporkan</label>
-                            <div class="col-lg-3 col-md-4">
-                                <asp:DropDownList ID="ddlorgid" runat="server"  class="form-control m-bot15">
-                                <asp:ListItem Text="1" Value="1"></asp:ListItem>
-                                </asp:DropDownList> 
-                            </div>
+
+                        <div class="adv-table">
+                            <table class="table table-striped table-hover table-bordered" id="dynamic-table" >
+                                <tbody>
+                                    <% Response.Write(GenerateSurvey()); %>
+                                </tbody>
+                            </table>
                         </div>
+                        <form id="Form1" class="form-horizontal " runat="server" >                                             
 
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">Nama</label>
-                            <div class="col-lg-3 col-md-4">
-                                <asp:TextBox ID="txtnama" runat="server" class="form-control m-bot15" placeholder="Nama yang cidera"></asp:TextBox>
-                            </div>
-                            <div class="col-lg-3 col-md-4">
-                                <asp:TextBox ID="txtpanggilan" runat="server" class="form-control m-bot15" placeholder="Nama Panggilan"></asp:TextBox>
+                            <label class="col-sm-3 control-label"> </label>
+                            <div class="col-lg-3 col-md-3">
+                                <asp:Button class="btn btn-round btn-primary" ID="btnAdd" runat="server" Text="Submit" OnClick="btnAdd_Click"/>
+                                <asp:Button class="btn btn-round btn-primary" ID="btnCancel" runat="server" Text="Cancel" OnClick="btnCancel_Click"/>
                             </div>
                         </div>
+                            
+                        </form>
+                    </div>
+                    
+                </section>
+            </div>
+        </div>
 
-                        <div class="form-group">
-                            <label class="col-sm-3 control-label">Tanggal Kejadian</label>
-                            <div class="col-md-4 col-lg-3">
-                                <asp:TextBox ID="txtdate" value="" size="16" class="form-control form-control-inline input-medium default-date-picker" runat="server" placeholder="tanggal"></asp:TextBox>
-                                <span class="help-block">Format : month/day/year e.g. 01/31/2014</span>
-                            </div>
-                            <div class="col-lg-3 col-md-4">
-                                <asp:TextBox ID="txttime" runat="server" class="form-control m-bot15" placeholder="Waktu"></asp:TextBox>
-                            </div>
-                        </div>
+        <!-- page end-->
+        </section>
+    </section>
+    <!--main content end-->
+<!--right sidebar start-->
+    <%Response.Write( BioPM.ClassScripts.SideBarMenu.RightSidebarMenuElement() ); %> 
+<!--right sidebar end-->
+</section>
 
-                        <div class="form-group">
-                            <label class="col-sm-3 control-label">Jenis Kelamin</label>
-                            <div class="col-lg-3 col-md-4">
-                               <div class="radio" >
-	                               <asp:RadioButton id="RadioButton1" runat="server" GroupName="Gender" value="L"/>
-                                   <label>Laki-laki</label>
-                                </div>
-                                <div class="radio">
-	                              <asp:RadioButton id="RadioButton2" runat="server" GroupName="Gender" value="P"/>
-                                  <label>Perempuan</label>
-                                </div>  
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="col-sm-3 control-label">Tipe Kasus</label>
-                             <div class="col-lg-3 col-md-4">
-                                <asp:DropDownList ID="ddltipe" runat="server"  class="form-control m-bot15">
-                                    <asp:ListItem Text="Ringan" Value="Ringan"></asp:ListItem>
-                                    <asp:ListItem Text="Sedang" Value="Ringan"></asp:ListItem>
-                                    <asp:ListItem Text="Sedang, rujukan ke Rumah Sakit" Value="Sedang, rujukan ke Rumah Sakit"></asp:ListItem>
-                                    <asp:ListItem Text="Berat" Value="Berat"></asp:ListItem>
-                                    <asp:ListItem Text="Kematian" Value="Kematian"></asp:ListItem>
-                                </asp:DropDownList> 
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="col-sm-3 control-label"> Tipe Cidera </label>
-                            <div class="col-lg-3 col-md-4">
-                                <asp:TextBox ID="txtcidera" runat="server" class="form-control m-bot15" placeholder="Tipe Cidera" ></asp:TextBox>
-                                <span class="help-block">Misal: Terbakar, terjepit, dll.</span>
-                            </div>
-                        </div>
-
-                        <div class="for
+<!-- Placed js at the end of the document so the pages load faster -->
+    <% Response.Write(BioPM.ClassScripts.JS.GetCoreScript()); %>
+<% Response.Write(BioPM.ClassScripts.JS.GetDynamicTableScript()); %>
+<% Response.Write(BioPM.ClassScripts.JS.GetInitialisationScript()); %>
+</body>
+</html>
