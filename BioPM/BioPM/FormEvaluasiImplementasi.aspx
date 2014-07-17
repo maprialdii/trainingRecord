@@ -150,11 +150,11 @@
                                 <td>
                                     <div class="radio disable">
                                         <asp:RadioButtonList ID="rbSoal1" runat="server" RepeatDirection="Horizontal">
-                                            <asp:ListItem Text ="1" Value="1" />
-                                            <asp:ListItem Text ="2" Value="2" />
-                                            <asp:ListItem Text ="3" Value="3" />
-                                            <asp:ListItem Text ="4" Value="4" />
-                                            <asp:ListItem Text ="5" Value="5" />
+                                            <asp:ListItem Text ="1&nbsp;&nbsp;&nbsp;" Value="1" />
+                                            <asp:ListItem Text ="2&nbsp;&nbsp;&nbsp;" Value="2" />
+                                            <asp:ListItem Text ="3&nbsp;&nbsp;&nbsp;" Value="3" />
+                                            <asp:ListItem Text ="4&nbsp;&nbsp;&nbsp;" Value="4" />
+                                            <asp:ListItem Text ="5&nbsp;&nbsp;&nbsp;" Value="5" />
                                         </asp:RadioButtonList>
                                     </div></td>
                             </tr>
@@ -164,11 +164,11 @@
                                 <td>
                                     <div class="radio disable">
 	                                    <asp:RadioButtonList ID="rbSoal2" runat="server" RepeatDirection="Horizontal">
-                                            <asp:ListItem Text ="1" Value="1" />
-                                            <asp:ListItem Text ="2" Value="2" />
-                                            <asp:ListItem Text ="3" Value="3" />
-                                            <asp:ListItem Text ="4" Value="4" />
-                                            <asp:ListItem Text ="5" Value="5" />
+                                            <asp:ListItem Text ="1&nbsp;&nbsp;&nbsp;" Value="1" />
+                                            <asp:ListItem Text ="2&nbsp;&nbsp;&nbsp;" Value="2" />
+                                            <asp:ListItem Text ="3&nbsp;&nbsp;&nbsp;" Value="3" />
+                                            <asp:ListItem Text ="4&nbsp;&nbsp;&nbsp;" Value="4" />
+                                            <asp:ListItem Text ="5&nbsp;&nbsp;&nbsp;" Value="5" />
                                         </asp:RadioButtonList>
                                     </div></td>                                
                             </tr>
@@ -178,11 +178,11 @@
                                 <td>
                                     <div class="radio disable">
 	                                    <asp:RadioButtonList ID="rbSoal3" runat="server" RepeatDirection="Horizontal">
-                                            <asp:ListItem Text ="1" Value="1" />
-                                            <asp:ListItem Text ="2" Value="2" />
-                                            <asp:ListItem Text ="3" Value="3" />
-                                            <asp:ListItem Text ="4" Value="4" />
-                                            <asp:ListItem Text ="5" Value="5" />
+                                            <asp:ListItem Text ="1&nbsp;&nbsp;&nbsp;" Value="1" />
+                                            <asp:ListItem Text ="2&nbsp;&nbsp;&nbsp;" Value="2" />
+                                            <asp:ListItem Text ="3&nbsp;&nbsp;&nbsp;" Value="3" />
+                                            <asp:ListItem Text ="4&nbsp;&nbsp;&nbsp;" Value="4" />
+                                            <asp:ListItem Text ="5&nbsp;&nbsp;&nbsp;" Value="5" />
                                         </asp:RadioButtonList>
                                     </div></td>                                
                             </tr>
@@ -194,11 +194,11 @@
                                 <td>
                                     <div class="radio disable">
 	                                    <asp:RadioButtonList ID="rbSoal4" runat="server" RepeatDirection="Horizontal">
-                                            <asp:ListItem Text ="1" Value="1" />
-                                            <asp:ListItem Text ="2" Value="2" />
-                                            <asp:ListItem Text ="3" Value="3" />
-                                            <asp:ListItem Text ="4" Value="4" />
-                                            <asp:ListItem Text ="5" Value="5" />
+                                            <asp:ListItem Text ="1&nbsp;&nbsp;&nbsp;" Value="1" />
+                                            <asp:ListItem Text ="2&nbsp;&nbsp;&nbsp;" Value="2" />
+                                            <asp:ListItem Text ="3&nbsp;&nbsp;&nbsp;" Value="3" />
+                                            <asp:ListItem Text ="4&nbsp;&nbsp;&nbsp;" Value="4" />
+                                            <asp:ListItem Text ="5&nbsp;&nbsp;&nbsp;" Value="5" />
                                         </asp:RadioButtonList>
                                     </div></td>                                
                             </tr>
