@@ -1,65 +1,58 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="FormEvaluasiPelaksanaan.aspx.cs" Inherits="BioPM.FormEvaluasiPelaksanaan" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="PageEvaluasiPelaksanaan.aspx.cs" Inherits="BioPM.PageEvaluasiPelaksanaan" %>
 
 <!DOCTYPE html>
 <script runat="server">
     protected void Page_Load(object sender, EventArgs e)
     {
         if (Session["username"] == null && Session["password"] == null) Response.Redirect("PageLogin.aspx");
+        if (!IsPostBack)
+            SetDataToPage();
     }
 
-    protected void InsertAnswersIntoDatabase()
+    protected void SetDataToPage()
     {
-        int ANSID;
-        ANSID = BioPM.ClassObjects.Survey.GetAnswersMaxID() + 1;
-        BioPM.ClassObjects.Survey.SubmitAnswers(ANSID.ToString(), Request.QueryString["key"].ToString(), "13", RBL11.SelectedValue, Session["username"].ToString());
-        ANSID = BioPM.ClassObjects.Survey.GetAnswersMaxID() + 1;
-        BioPM.ClassObjects.Survey.SubmitAnswers(ANSID.ToString(), Request.QueryString["key"].ToString(), "14", RBL12.SelectedValue, Session["username"].ToString());
-        ANSID = BioPM.ClassObjects.Survey.GetAnswersMaxID() + 1;
-        BioPM.ClassObjects.Survey.SubmitAnswers(ANSID.ToString(), Request.QueryString["key"].ToString(), "15", RBL13.SelectedValue, Session["username"].ToString());
-        ANSID = BioPM.ClassObjects.Survey.GetAnswersMaxID() + 1;
-        BioPM.ClassObjects.Survey.SubmitAnswers(ANSID.ToString(), Request.QueryString["key"].ToString(), "16", RBL14.SelectedValue, Session["username"].ToString());
-        ANSID = BioPM.ClassObjects.Survey.GetAnswersMaxID() + 1;
-        BioPM.ClassObjects.Survey.SubmitAnswers(ANSID.ToString(), Request.QueryString["key"].ToString(), "17", RBL21.SelectedValue, Session["username"].ToString());
-        ANSID = BioPM.ClassObjects.Survey.GetAnswersMaxID() + 1;
-        BioPM.ClassObjects.Survey.SubmitAnswers(ANSID.ToString(), Request.QueryString["key"].ToString(), "18", RBL22.SelectedValue, Session["username"].ToString());
-        ANSID = BioPM.ClassObjects.Survey.GetAnswersMaxID() + 1;
-        BioPM.ClassObjects.Survey.SubmitAnswers(ANSID.ToString(), Request.QueryString["key"].ToString(), "19", RBL23.SelectedValue, Session["username"].ToString());
-        ANSID = BioPM.ClassObjects.Survey.GetAnswersMaxID() + 1;
-        BioPM.ClassObjects.Survey.SubmitAnswers(ANSID.ToString(), Request.QueryString["key"].ToString(), "20", RBL24.SelectedValue, Session["username"].ToString());
-        ANSID = BioPM.ClassObjects.Survey.GetAnswersMaxID() + 1;
-        BioPM.ClassObjects.Survey.SubmitAnswers(ANSID.ToString(), Request.QueryString["key"].ToString(), "21", RBL25.SelectedValue, Session["username"].ToString());
-        ANSID = BioPM.ClassObjects.Survey.GetAnswersMaxID() + 1;
-        BioPM.ClassObjects.Survey.SubmitAnswers(ANSID.ToString(), Request.QueryString["key"].ToString(), "22", RBL31.SelectedValue, Session["username"].ToString());
-        ANSID = BioPM.ClassObjects.Survey.GetAnswersMaxID() + 1;
-        BioPM.ClassObjects.Survey.SubmitAnswers(ANSID.ToString(), Request.QueryString["key"].ToString(), "23", RBL32.SelectedValue, Session["username"].ToString());
-        ANSID = BioPM.ClassObjects.Survey.GetAnswersMaxID() + 1;
-        BioPM.ClassObjects.Survey.SubmitAnswers(ANSID.ToString(), Request.QueryString["key"].ToString(), "24", RBL41.SelectedValue, Session["username"].ToString());
-        ANSID = BioPM.ClassObjects.Survey.GetAnswersMaxID() + 1;
-        BioPM.ClassObjects.Survey.SubmitAnswers(ANSID.ToString(), Request.QueryString["key"].ToString(), "25", RBL42.SelectedValue, Session["username"].ToString());
-        ANSID = BioPM.ClassObjects.Survey.GetAnswersMaxID() + 1;
-        BioPM.ClassObjects.Survey.SubmitAnswers(ANSID.ToString(), Request.QueryString["key"].ToString(), "26", RBL43.SelectedValue, Session["username"].ToString());
-        ANSID = BioPM.ClassObjects.Survey.GetAnswersMaxID() + 1;
-        BioPM.ClassObjects.Survey.SubmitAnswers(ANSID.ToString(), Request.QueryString["key"].ToString(), "27", RBL51.SelectedValue, Session["username"].ToString());
-        ANSID = BioPM.ClassObjects.Survey.GetAnswersMaxID() + 1;
-        BioPM.ClassObjects.Survey.SubmitAnswers(ANSID.ToString(), Request.QueryString["key"].ToString(), "28", RBL52.SelectedValue, Session["username"].ToString());
-        ANSID = BioPM.ClassObjects.Survey.GetAnswersMaxID() + 1;
-        BioPM.ClassObjects.Survey.SubmitAnswers(ANSID.ToString(), Request.QueryString["key"].ToString(), "29", TextArea1.Text, Session["username"].ToString());
-        ANSID = BioPM.ClassObjects.Survey.GetAnswersMaxID() + 1;
-        BioPM.ClassObjects.Survey.SubmitAnswers(ANSID.ToString(), Request.QueryString["key"].ToString(), "30", TextArea2.Text, Session["username"].ToString());
-        ANSID = BioPM.ClassObjects.Survey.GetAnswersMaxID() + 1;
-        BioPM.ClassObjects.Survey.SubmitAnswers(ANSID.ToString(), Request.QueryString["key"].ToString(), "31", TextArea3.Text, Session["username"].ToString());
+        string excid = Request.QueryString["key"].ToString();
+        object[] data = null;
+        data = BioPM.ClassObjects.Survey.GetAnswerById(excid, "13");
+        txt11.Text = data[1].ToString();
+        data = BioPM.ClassObjects.Survey.GetAnswerById(excid, "14");
+        txt12.Text = data[1].ToString();
+        data = BioPM.ClassObjects.Survey.GetAnswerById(excid, "15");
+        txt13.Text = data[1].ToString();
+        data = BioPM.ClassObjects.Survey.GetAnswerById(excid, "16");
+        txt14.Text = data[1].ToString();
+        data = BioPM.ClassObjects.Survey.GetAnswerById(excid, "17");
+        txt21.Text = data[1].ToString();
+        data = BioPM.ClassObjects.Survey.GetAnswerById(excid, "18");
+        txt22.Text = data[1].ToString();
+        data = BioPM.ClassObjects.Survey.GetAnswerById(excid, "19");
+        txt23.Text = data[1].ToString();
+        data = BioPM.ClassObjects.Survey.GetAnswerById(excid, "20");
+        txt24.Text = data[1].ToString();
+        data = BioPM.ClassObjects.Survey.GetAnswerById(excid, "21");
+        txt25.Text = data[1].ToString();
+        data = BioPM.ClassObjects.Survey.GetAnswerById(excid, "22");
+        txt31.Text = data[1].ToString();
+        data = BioPM.ClassObjects.Survey.GetAnswerById(excid, "23");
+        txt32.Text = data[1].ToString();
+        data = BioPM.ClassObjects.Survey.GetAnswerById(excid, "24");
+        txt41.Text = data[1].ToString();
+        data = BioPM.ClassObjects.Survey.GetAnswerById(excid, "25");
+        txt42.Text = data[1].ToString();
+        data = BioPM.ClassObjects.Survey.GetAnswerById(excid, "26");
+        txt43.Text = data[1].ToString();
+        data = BioPM.ClassObjects.Survey.GetAnswerById(excid, "27");
+        txt51.Text = data[1].ToString();
+        data = BioPM.ClassObjects.Survey.GetAnswerById(excid, "28");
+        txt52.Text = data[1].ToString();
+        data = BioPM.ClassObjects.Survey.GetAnswerById(excid, "29");
+        TextArea1.Text = data[1].ToString();
+        data = BioPM.ClassObjects.Survey.GetAnswerById(excid, "30");
+        TextArea2.Text = data[1].ToString();
+        data = BioPM.ClassObjects.Survey.GetAnswerById(excid, "31");
+        TextArea3.Text = data[1].ToString();
     }
 
-    protected void btnAdd_Click(object sender, EventArgs e)
-    {
-        if (IsPostBack) InsertAnswersIntoDatabase();
-        Response.Redirect("PageTrainingSurvey.aspx");
-    }
-
-    protected void btnCancel_Click(object sender, EventArgs e)
-    {
-        Response.Redirect("PageUserPanel.aspx");
-    }
 
     protected void btnSave_Click(object sender, EventArgs e)
     {
@@ -75,7 +68,7 @@
     }
 </script>
 
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <% Response.Write(BioPM.ClassScripts.BasicScripts.GetMetaScript()); %>
 
@@ -85,7 +78,6 @@
     <% Response.Write(BioPM.ClassScripts.StyleScripts.GetFormStyle()); %>
     <% Response.Write(BioPM.ClassScripts.StyleScripts.GetCustomStyle()); %>
 </head>
-
 <body>
 
 <section id="container" >
@@ -190,15 +182,7 @@
                                         (1) <br />
                                         Kejelasan bahasa materi pelatihan</label></h4>
                                         <div class="col-lg-3 col-md-4">
-                                            <div class="radio disable">
-                                                <asp:RadioButtonList ID="RBL11" runat="server" RepeatDirection="Horizontal">
-                                                    <asp:ListItem Text="1&nbsp;&nbsp;&nbsp;" Value="1" />
-                                                    <asp:ListItem Text="2&nbsp;&nbsp;&nbsp;" Value="2" />
-                                                    <asp:ListItem Text="3&nbsp;&nbsp;&nbsp;" Value="3" />
-                                                    <asp:ListItem Text="4&nbsp;&nbsp;&nbsp;" Value="4" />
-                                                    <asp:ListItem Text="5&nbsp;&nbsp;&nbsp;" Value="5" />
-                                                </asp:RadioButtonList>
-                                            </div>
+                                            <asp:TextBox id="txt11" runat="server" ReadOnly="true" />
                                         </div>
                                     </div>
 
@@ -208,15 +192,7 @@
                                         (2) <br />
                                         Sistematika penulisan materi</label></h4>
                                         <div class="col-lg-3 col-md-4">
-                                            <div class="radio disable">
-                                                <asp:RadioButtonList ID="RBL12" runat="server" RepeatDirection="Horizontal">
-                                                    <asp:ListItem Text="1&nbsp;&nbsp;&nbsp;" Value="1" />
-                                                    <asp:ListItem Text="2&nbsp;&nbsp;&nbsp;" Value="2" />
-                                                    <asp:ListItem Text="3&nbsp;&nbsp;&nbsp;" Value="3" />
-                                                    <asp:ListItem Text="4&nbsp;&nbsp;&nbsp;" Value="4" />
-                                                    <asp:ListItem Text="5&nbsp;&nbsp;&nbsp;" Value="5" />
-                                                </asp:RadioButtonList>
-                                            </div>
+                                            <asp:TextBox id="txt12" runat="server" ReadOnly="true" />
                                         </div>
                                     </div>
 
@@ -226,15 +202,7 @@
                                         (3) <br />
                                         Kemudahan dalam memahami materi pelatihan secara keseluruhan</label></h4>
                                         <div class="col-lg-3 col-md-4">
-                                            <div class="radio disable">
-                                                <asp:RadioButtonList ID="RBL13" runat="server" RepeatDirection="Horizontal">
-                                                    <asp:ListItem Text="1&nbsp;&nbsp;&nbsp;" Value="1" />
-                                                    <asp:ListItem Text="2&nbsp;&nbsp;&nbsp;" Value="2" />
-                                                    <asp:ListItem Text="3&nbsp;&nbsp;&nbsp;" Value="3" />
-                                                    <asp:ListItem Text="4&nbsp;&nbsp;&nbsp;" Value="4" />
-                                                    <asp:ListItem Text="5&nbsp;&nbsp;&nbsp;" Value="5" />
-                                                </asp:RadioButtonList>
-                                            </div>
+                                            <asp:TextBox id="txt13" runat="server" ReadOnly="true" />
                                         </div>
                                     </div>
 
@@ -244,15 +212,7 @@
                                         (4) <br />
                                         Kualitas materi pelatihan & kedalaman materi pelatihan</label></h4>
                                         <div class="col-lg-3 col-md-4">
-                                            <div class="radio disable">
-                                                <asp:RadioButtonList ID="RBL14" runat="server" RepeatDirection="Horizontal">
-                                                    <asp:ListItem Text="1&nbsp;&nbsp;&nbsp;" Value="1" />
-                                                    <asp:ListItem Text="2&nbsp;&nbsp;&nbsp;" Value="2" />
-                                                    <asp:ListItem Text="3&nbsp;&nbsp;&nbsp;" Value="3" />
-                                                    <asp:ListItem Text="4&nbsp;&nbsp;&nbsp;" Value="4" />
-                                                    <asp:ListItem Text="5&nbsp;&nbsp;&nbsp;" Value="5" />
-                                                </asp:RadioButtonList>
-                                            </div>
+                                            <asp:TextBox id="txt14" runat="server" ReadOnly="true" />
                                         </div>
                                     </div>
                                 </td>
@@ -264,15 +224,7 @@
                                         (1) <br />
                                         Pengetahuan teoritis atas materi pelatihan</label></h4>
                                         <div class="col-lg-3 col-md-4">
-                                            <div class="radio disable">
-                                                <asp:RadioButtonList ID="RBL21" runat="server" RepeatDirection="Horizontal">
-                                                    <asp:ListItem Text="1&nbsp;&nbsp;&nbsp;" Value="1" />
-                                                    <asp:ListItem Text="2&nbsp;&nbsp;&nbsp;" Value="2" />
-                                                    <asp:ListItem Text="3&nbsp;&nbsp;&nbsp;" Value="3" />
-                                                    <asp:ListItem Text="4&nbsp;&nbsp;&nbsp;" Value="4" />
-                                                    <asp:ListItem Text="5&nbsp;&nbsp;&nbsp;" Value="5" />
-                                                </asp:RadioButtonList>
-                                            </div>
+                                            <asp:TextBox id="txt21" runat="server" ReadOnly="true" />
                                         </div>
                                     </div>
 
@@ -282,15 +234,7 @@
                                         (2) <br />
                                         Pengalaman yang mendukung atas materi pelatihan</label></h4>
                                         <div class="col-lg-3 col-md-4">
-                                            <div class="radio disable">
-                                                <asp:RadioButtonList ID="RBL22" runat="server" RepeatDirection="Horizontal">
-                                                    <asp:ListItem Text="1&nbsp;&nbsp;&nbsp;" Value="1" />
-                                                    <asp:ListItem Text="2&nbsp;&nbsp;&nbsp;" Value="2" />
-                                                    <asp:ListItem Text="3&nbsp;&nbsp;&nbsp;" Value="3" />
-                                                    <asp:ListItem Text="4&nbsp;&nbsp;&nbsp;" Value="4" />
-                                                    <asp:ListItem Text="5&nbsp;&nbsp;&nbsp;" Value="5" />
-                                                </asp:RadioButtonList>
-                                            </div>
+                                            <asp:TextBox id="txt22" runat="server" ReadOnly="true" />
                                         </div>
                                     </div>
 
@@ -300,15 +244,7 @@
                                         (3) <br />
                                         Kemampuan menguasai audiens (peserta pelatihan)</label></h4>
                                         <div class="col-lg-3 col-md-4">
-                                            <div class="radio disable">
-                                                <asp:RadioButtonList ID="RBL23" runat="server" RepeatDirection="Horizontal">
-                                                    <asp:ListItem Text="1&nbsp;&nbsp;&nbsp;" Value="1" />
-                                                    <asp:ListItem Text="2&nbsp;&nbsp;&nbsp;" Value="2" />
-                                                    <asp:ListItem Text="3&nbsp;&nbsp;&nbsp;" Value="3" />
-                                                    <asp:ListItem Text="4&nbsp;&nbsp;&nbsp;" Value="4" />
-                                                    <asp:ListItem Text="5&nbsp;&nbsp;&nbsp;" Value="5" />
-                                                </asp:RadioButtonList>
-                                            </div>
+                                            <asp:TextBox id="txt23" runat="server" ReadOnly="true" />
                                         </div>
                                     </div>
 
@@ -318,15 +254,7 @@
                                         (4) <br />
                                         Kemampuan menjawab pertanyaan dari peserta pelatihan</label></h4>
                                         <div class="col-lg-3 col-md-4">
-                                            <div class="radio disable">
-                                                <asp:RadioButtonList ID="RBL24" runat="server" RepeatDirection="Horizontal">
-                                                    <asp:ListItem Text="1&nbsp;&nbsp;&nbsp;" Value="1" />
-                                                    <asp:ListItem Text="2&nbsp;&nbsp;&nbsp;" Value="2" />
-                                                    <asp:ListItem Text="3&nbsp;&nbsp;&nbsp;" Value="3" />
-                                                    <asp:ListItem Text="4&nbsp;&nbsp;&nbsp;" Value="4" />
-                                                    <asp:ListItem Text="5&nbsp;&nbsp;&nbsp;" Value="5" />
-                                                </asp:RadioButtonList>
-                                            </div>
+                                            <asp:TextBox id="txt24" runat="server" ReadOnly="true" />
                                         </div>
                                     </div>
 
@@ -336,15 +264,7 @@
                                         (5) <br />
                                         Cara penyampaian materi pelatihan</label></h4>
                                         <div class="col-lg-3 col-md-4">
-                                            <div class="radio disable">
-                                                <asp:RadioButtonList ID="RBL25" runat="server" RepeatDirection="Horizontal">
-                                                    <asp:ListItem Text="1&nbsp;&nbsp;&nbsp;" Value="1" />
-                                                    <asp:ListItem Text="2&nbsp;&nbsp;&nbsp;" Value="2" />
-                                                    <asp:ListItem Text="3&nbsp;&nbsp;&nbsp;" Value="3" />
-                                                    <asp:ListItem Text="4&nbsp;&nbsp;&nbsp;" Value="4" />
-                                                    <asp:ListItem Text="5&nbsp;&nbsp;&nbsp;" Value="5" />
-                                                </asp:RadioButtonList>
-                                            </div>
+                                            <asp:TextBox id="txt25" runat="server" ReadOnly="true" />
                                         </div>
                                     </div>
                                 </td>
@@ -359,15 +279,7 @@
                                         (1) <br />
                                         Tempat/lokasi pelatihan/makanan</label></h4>
                                         <div class="col-lg-3 col-md-4">
-                                            <div class="radio disable">
-                                                <asp:RadioButtonList ID="RBL31" runat="server" RepeatDirection="Horizontal">
-                                                    <asp:ListItem Text="1&nbsp;&nbsp;&nbsp;" Value="1" />
-                                                    <asp:ListItem Text="2&nbsp;&nbsp;&nbsp;" Value="2" />
-                                                    <asp:ListItem Text="3&nbsp;&nbsp;&nbsp;" Value="3" />
-                                                    <asp:ListItem Text="4&nbsp;&nbsp;&nbsp;" Value="4" />
-                                                    <asp:ListItem Text="5&nbsp;&nbsp;&nbsp;" Value="5" />
-                                                </asp:RadioButtonList>
-                                            </div>
+                                            <asp:TextBox id="txt31" runat="server" ReadOnly="true" />
                                         </div>
                                     </div>
 
@@ -377,15 +289,7 @@
                                         (2) <br />
                                         Media pelatihan</label></h4>
                                         <div class="col-lg-3 col-md-4">
-                                            <div class="radio disable">
-                                                <asp:RadioButtonList ID="RBL32" runat="server" RepeatDirection="Horizontal">
-                                                    <asp:ListItem Text="1&nbsp;&nbsp;&nbsp;" Value="1" />
-                                                    <asp:ListItem Text="2&nbsp;&nbsp;&nbsp;" Value="2" />
-                                                    <asp:ListItem Text="3&nbsp;&nbsp;&nbsp;" Value="3" />
-                                                    <asp:ListItem Text="4&nbsp;&nbsp;&nbsp;" Value="4" />
-                                                    <asp:ListItem Text="5&nbsp;&nbsp;&nbsp;" Value="5" />
-                                                </asp:RadioButtonList>
-                                            </div>
+                                            <asp:TextBox id="txt32" runat="server" ReadOnly="true" />
                                         </div>
                                     </div>
 
@@ -398,15 +302,7 @@
                                         (1) <br />
                                         Tanggal/hari pelaksanaan pelatihan</label></h4>
                                         <div class="col-lg-3 col-md-4">
-                                            <div class="radio disable">
-                                                <asp:RadioButtonList ID="RBL41" runat="server" RepeatDirection="Horizontal">
-                                                    <asp:ListItem Text="1&nbsp;&nbsp;&nbsp;" Value="1" />
-                                                    <asp:ListItem Text="2&nbsp;&nbsp;&nbsp;" Value="2" />
-                                                    <asp:ListItem Text="3&nbsp;&nbsp;&nbsp;" Value="3" />
-                                                    <asp:ListItem Text="4&nbsp;&nbsp;&nbsp;" Value="4" />
-                                                    <asp:ListItem Text="5&nbsp;&nbsp;&nbsp;" Value="5" />
-                                                </asp:RadioButtonList>
-                                            </div>
+                                            <asp:TextBox id="txt41" runat="server" ReadOnly="true" />
                                         </div>
                                     </div>
 
@@ -416,15 +312,7 @@
                                         (2) <br />
                                         Total waktu pelaksanaan pelatihan</label></h4>
                                         <div class="col-lg-3 col-md-4">
-                                            <div class="radio disable">
-                                                <asp:RadioButtonList ID="RBL42" runat="server" RepeatDirection="Horizontal">
-                                                    <asp:ListItem Text="1&nbsp;&nbsp;&nbsp;" Value="1" />
-                                                    <asp:ListItem Text="2&nbsp;&nbsp;&nbsp;" Value="2" />
-                                                    <asp:ListItem Text="3&nbsp;&nbsp;&nbsp;" Value="3" />
-                                                    <asp:ListItem Text="4&nbsp;&nbsp;&nbsp;" Value="4" />
-                                                    <asp:ListItem Text="5&nbsp;&nbsp;&nbsp;" Value="5" />
-                                                </asp:RadioButtonList>
-                                            </div>
+                                            <asp:TextBox id="txt42" runat="server" ReadOnly="true" />
                                         </div>
                                     </div>
 
@@ -434,15 +322,7 @@
                                         (3) <br />
                                         Pengalokasian waktu/susunan acara pelatihan</label></h4>
                                         <div class="col-lg-3 col-md-4">
-                                            <div class="radio disable">
-                                                <asp:RadioButtonList ID="RBL43" runat="server" RepeatDirection="Horizontal">
-                                                    <asp:ListItem Text="1&nbsp;&nbsp;&nbsp;" Value="1" />
-                                                    <asp:ListItem Text="2&nbsp;&nbsp;&nbsp;" Value="2" />
-                                                    <asp:ListItem Text="3&nbsp;&nbsp;&nbsp;" Value="3" />
-                                                    <asp:ListItem Text="4&nbsp;&nbsp;&nbsp;" Value="4" />
-                                                    <asp:ListItem Text="5&nbsp;&nbsp;&nbsp;" Value="5" />
-                                                </asp:RadioButtonList>
-                                            </div>
+                                            <asp:TextBox id="txt43" runat="server" ReadOnly="true" />
                                         </div>
                                     </div>
 
@@ -457,15 +337,7 @@
                                         (1) <br />
                                         Kesesuaian isi program terhadap sasaran pelatihan</label></h4>
                                         <div class="col-lg-3 col-md-4">
-                                            <div class="radio disable">
-                                                <asp:RadioButtonList ID="RBL51" runat="server" RepeatDirection="Horizontal">
-                                                    <asp:ListItem Text="1&nbsp;&nbsp;&nbsp;" Value="1" />
-                                                    <asp:ListItem Text="2&nbsp;&nbsp;&nbsp;" Value="2" />
-                                                    <asp:ListItem Text="3&nbsp;&nbsp;&nbsp;" Value="3" />
-                                                    <asp:ListItem Text="4&nbsp;&nbsp;&nbsp;" Value="4" />
-                                                    <asp:ListItem Text="5&nbsp;&nbsp;&nbsp;" Value="5" />
-                                                </asp:RadioButtonList>
-                                            </div>
+                                            <asp:TextBox id="txt51" runat="server" ReadOnly="true" />
                                         </div>
                                     </div>
 
@@ -475,15 +347,7 @@
                                         (2) <br />
                                         Apakah program pelatihan ini memenuhi harapan?</label></h4>
                                         <div class="col-lg-3 col-md-4">
-                                            <div class="radio disable">
-                                                <asp:RadioButtonList ID="RBL52" runat="server" RepeatDirection="Horizontal">
-                                                    <asp:ListItem Text="1&nbsp;&nbsp;&nbsp;" Value="1" />
-                                                    <asp:ListItem Text="2&nbsp;&nbsp;&nbsp;" Value="2" />
-                                                    <asp:ListItem Text="3&nbsp;&nbsp;&nbsp;" Value="3" />
-                                                    <asp:ListItem Text="4&nbsp;&nbsp;&nbsp;" Value="4" />
-                                                    <asp:ListItem Text="5&nbsp;&nbsp;&nbsp;" Value="5" />
-                                                </asp:RadioButtonList>
-                                            </div>
+                                            <asp:TextBox id="txt52" runat="server" ReadOnly="true" />
                                         </div>
                                     </div>
                                 </td>

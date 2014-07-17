@@ -10,7 +10,7 @@
 namespace BioPM {
     
     
-    public partial class FormEvaluasiPelaksanaan {
+    public partial class PageEvaluasiPelaksanaan {
         
         /// <summary>
         /// Form1 control.
@@ -76,148 +76,148 @@ namespace BioPM {
         protected global::System.Web.UI.WebControls.TextBox TextBox1;
         
         /// <summary>
-        /// RBL11 control.
+        /// txt11 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList RBL11;
+        protected global::System.Web.UI.WebControls.TextBox txt11;
         
         /// <summary>
-        /// RBL12 control.
+        /// txt12 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList RBL12;
+        protected global::System.Web.UI.WebControls.TextBox txt12;
         
         /// <summary>
-        /// RBL13 control.
+        /// txt13 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList RBL13;
+        protected global::System.Web.UI.WebControls.TextBox txt13;
         
         /// <summary>
-        /// RBL14 control.
+        /// txt14 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList RBL14;
+        protected global::System.Web.UI.WebControls.TextBox txt14;
         
         /// <summary>
-        /// RBL21 control.
+        /// txt21 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList RBL21;
+        protected global::System.Web.UI.WebControls.TextBox txt21;
         
         /// <summary>
-        /// RBL22 control.
+        /// txt22 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList RBL22;
+        protected global::System.Web.UI.WebControls.TextBox txt22;
         
         /// <summary>
-        /// RBL23 control.
+        /// txt23 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList RBL23;
+        protected global::System.Web.UI.WebControls.TextBox txt23;
         
         /// <summary>
-        /// RBL24 control.
+        /// txt24 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList RBL24;
+        protected global::System.Web.UI.WebControls.TextBox txt24;
         
         /// <summary>
-        /// RBL25 control.
+        /// txt25 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList RBL25;
+        protected global::System.Web.UI.WebControls.TextBox txt25;
         
         /// <summary>
-        /// RBL31 control.
+        /// txt31 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList RBL31;
+        protected global::System.Web.UI.WebControls.TextBox txt31;
         
         /// <summary>
-        /// RBL32 control.
+        /// txt32 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList RBL32;
+        protected global::System.Web.UI.WebControls.TextBox txt32;
         
         /// <summary>
-        /// RBL41 control.
+        /// txt41 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList RBL41;
+        protected global::System.Web.UI.WebControls.TextBox txt41;
         
         /// <summary>
-        /// RBL42 control.
+        /// txt42 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList RBL42;
+        protected global::System.Web.UI.WebControls.TextBox txt42;
         
         /// <summary>
-        /// RBL43 control.
+        /// txt43 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList RBL43;
+        protected global::System.Web.UI.WebControls.TextBox txt43;
         
         /// <summary>
-        /// RBL51 control.
+        /// txt51 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList RBL51;
+        protected global::System.Web.UI.WebControls.TextBox txt51;
         
         /// <summary>
-        /// RBL52 control.
+        /// txt52 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList RBL52;
+        protected global::System.Web.UI.WebControls.TextBox txt52;
         
         /// <summary>
         /// TextArea1 control.

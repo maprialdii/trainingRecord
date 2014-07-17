@@ -13,7 +13,7 @@
 
         foreach (object[] data in BioPM.ClassObjects.ComDevExecution.GetComdevExecutionByUserId(Session["username"].ToString()))
         {
-            htmlelement += "<tr class=''><td>" + data[1].ToString() + "</td><td>" + data[2].ToString() + "</td><td><a class='edit' href='FormEvaluasiSatu.aspx?key=" + data[0].ToString() + "&type=SR-01-Q-'>Survey 1</a></td><td><a class='edit' href='FormEvaluasiDua.aspx?key=" + data[0].ToString() + "&type=2'>Survey 2</a></td><td><a class='edit' href='FormEvaluasiTiga.aspx?key=" + data[0].ToString() + "&type=3'>Survey</a></td></tr>";
+            htmlelement += "<tr class=''><td>" + data[1].ToString() + "</td><td>" + data[2].ToString() + "</td><td><a class='edit' href='FormEvaluasiReaksiPeserta.aspx?key=" + data[0].ToString() + "&type=SR-01-Q-'>Survey 1</a></td><td><a class='edit' href='FormEvaluasiDua.aspx?key=" + data[0].ToString() + "&type=2'>Survey 2</a></td><td><a class='edit' href='FormEvaluasiPerilaku.aspx?key=" + data[0].ToString() + "&type=3'>Survey</a></td></tr>";
         }
         
         return htmlelement;
@@ -62,10 +62,6 @@
 
                         <div class="adv-table">
                             <div class="clearfix">
-                                <div class="btn-group">
-                                    <button id="editable-sample_new" onclick="document.location.href='FormInputTrainingExecution.aspx';" class="btn btn-primary"> Add New <i class="fa fa-plus"></i>
-                                    </button>
-                                </div>
                                 <div class="btn-group pull-right">
                                     <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">Tools <i class="fa fa-angle-down"></i>
                                     </button>

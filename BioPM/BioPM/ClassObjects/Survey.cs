@@ -40,7 +40,7 @@ namespace BioPM.ClassObjects
             string date = DateTime.Now.ToString("MM/dd/yyyy HH:mm");
             string maxdate = DateTime.MaxValue.ToString("MM/dd/yyyy HH:mm");
             SqlConnection conn = GetConnection();
-            string sqlCmd = @"INSERT INTO trrcd.SURVEY_ANSWERS (BEGDA, ENDDA, ANSID, EXCID, PRMID, VALUE, CHUSR, CHGDT)
+            string sqlCmd = @"INSERT INTO trrcd.SURVEY_ANSWERS (BEGDA, ENDDA, ANSID, EXCID, PRMID, VALUE, USRDT, CHGDT)
                             VALUES ('" + date + "','" + maxdate + "'," + ANSID + ",'" + EXCID + "'," + PRMID + ",'" + VALUE + "','" + CHUSR + "','" + date + "');";
 
             SqlCommand cmd = DatabaseFactory.GetCommand(conn, sqlCmd);
@@ -108,7 +108,7 @@ namespace BioPM.ClassObjects
             SqlConnection conn = GetConnection();
             string sqlCmd = @"SELECT SA.PRMID, SA.VALUE
                             FROM trrcd.SURVEY_ANSWERS SA
-                            WHERE SA.PRMID='" + prmid + "' AND SA.EXCID='"+ excid +"' ORDER BY SA.ANSID ASC;";
+                            WHERE SA.PRMID=" + prmid + " AND SA.EXCID="+ excid +" ORDER BY SA.ANSID ASC;";
             SqlCommand cmd = GetCommand(conn, sqlCmd);
 
             try

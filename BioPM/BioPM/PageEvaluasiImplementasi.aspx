@@ -1,33 +1,30 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="FormDataEvaluasi.aspx.cs" Inherits="BioPM.FormDataEvaluasi" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="PageEvaluasiImplementasi.aspx.cs" Inherits="BioPM.PageEvaluasiImplementasi" %>
 
 <!DOCTYPE html>
 <script runat="server">
     protected void Page_Load(object sender, EventArgs e)
     {
         if (Session["username"] == null && Session["password"] == null) Response.Redirect("PageLogin.aspx");
+        if (!IsPostBack)
+            SetDataToPage();
     }
 
-    protected void InsertAnswersIntoDatabase()
+    protected void SetDataToPage()
     {
-        int ANSID;
-        ANSID = BioPM.ClassObjects.Survey.GetAnswersMaxID() + 1;
-        BioPM.ClassObjects.Survey.SubmitAnswers(ANSID.ToString(), Request.QueryString["key"].ToString(), "50", TextArea4.Text, Session["username"].ToString());
-        ANSID = BioPM.ClassObjects.Survey.GetAnswersMaxID() + 1;
-        BioPM.ClassObjects.Survey.SubmitAnswers(ANSID.ToString(), Request.QueryString["key"].ToString(), "51", TextArea1.Text, Session["username"].ToString());
-        ANSID = BioPM.ClassObjects.Survey.GetAnswersMaxID() + 1;
-        BioPM.ClassObjects.Survey.SubmitAnswers(ANSID.ToString(), Request.QueryString["key"].ToString(), "52", TextArea2.Text, Session["username"].ToString());
+        string excid = Request.QueryString["key"].ToString();
+        object[] data = null;
+        data = BioPM.ClassObjects.Survey.GetAnswerById(excid, "8");
+        txtSoal1.Text = data[1].ToString();
+        data = BioPM.ClassObjects.Survey.GetAnswerById(excid, "9");
+        txtSoal2.Text = data[1].ToString();
+        data = BioPM.ClassObjects.Survey.GetAnswerById(excid, "10");
+        txtSoal3.Text = data[1].ToString();
+        data = BioPM.ClassObjects.Survey.GetAnswerById(excid, "11");
+        txtSoal4.Text = data[1].ToString();
+        data = BioPM.ClassObjects.Survey.GetAnswerById(excid, "12");
+        TextArea1.Text = data[1].ToString();
     }
 
-    protected void btnAdd_Click(object sender, EventArgs e)
-    {
-        if (IsPostBack) InsertAnswersIntoDatabase();
-        Response.Redirect("PageTrainingSurvey.aspx");
-    }
-
-    protected void btnCancel_Click(object sender, EventArgs e)
-    {
-        Response.Redirect("PageUserPanel.aspx");
-    }
 
     protected void btnSave_Click(object sender, EventArgs e)
     {
@@ -43,11 +40,11 @@
     }
 </script>
 
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <% Response.Write(BioPM.ClassScripts.BasicScripts.GetMetaScript()); %>
 
-    <title>Formulir Data - Lembar Evaluasi Pelatihan</title>
+    <title>Evaluasi III (Implementasi)</title>
 
     <% Response.Write(BioPM.ClassScripts.StyleScripts.GetCoreStyle()); %>
     <% Response.Write(BioPM.ClassScripts.StyleScripts.GetFormStyle()); %>
@@ -75,7 +72,7 @@
             <div class="col-sm-12">
                 <section class="panel">
                     <header class="panel-heading">
-                        Lembar Evaluasi Pelatihan
+                        Evaluasi III (EVALUASI IMPLEMENTASI PELATIHAN)
                           <span class="tools pull-right">
                             <a class="fa fa-chevron-down" href="javascript:;"></a>
                             <a class="fa fa-times" href="javascript:;"></a>
@@ -86,67 +83,93 @@
                         <form id="Form1" class="form-horizontal " runat="server" >
                         
                         <div class="form-group">
-                            <label class="col-sm-3 control-label"> Nama </label>
+                            <label class="col-sm-3 control-label"> Topik Pelatihan </label>
                             <div class="col-lg-3 col-md-4">
-                                <asp:TextBox ID="txtNama" runat="server" class="form-control m-bot15" placeholder="Nama"></asp:TextBox>
+                                <asp:TextBox ID="txtTopik" runat="server" class="form-control m-bot15" placeholder="Topik Pelatihan"></asp:TextBox>
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label class="col-sm-3 control-label"> Bentuk Pelatihan </label>
+                            <label class="col-sm-3 control-label"> Nama Peserta Pelatihan </label>
                             <div class="col-lg-3 col-md-4">
-                                <asp:TextBox ID="txtBentukPelatihan" runat="server" class="form-control m-bot15" placeholder="Bentuk Pelatihan" ></asp:TextBox>
+                                <asp:TextBox ID="txtNama" runat="server" class="form-control m-bot15" placeholder="Nama Peserta Pelatihan" ></asp:TextBox>
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label class="col-sm-3 control-label"> Pelatih </label>
+                            <label class="col-sm-3 control-label"> Nama & Jabatan Pengevaluasi Pelatihan </label>
                             <div class="col-lg-3 col-md-4">
-                                <asp:TextBox ID="txtPelatih" runat="server" class="form-control m-bot15" placeholder="Pelatih" ></asp:TextBox>
+                                <asp:TextBox ID="txtNamaJabatan" runat="server" class="form-control m-bot15" placeholder="Nama & Jabatan Pengevaluasi Pelatihan" ></asp:TextBox>
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label class="col-sm-3 control-label"> Bagian </label>
+                            <label class="col-sm-3 control-label"> Tanggal </label>
                             <div class="col-lg-3 col-md-4">
-                                <asp:TextBox ID="txtBagian" runat="server" class="form-control m-bot15" placeholder="Bagian" ></asp:TextBox>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="col-sm-3 control-label"> Tanggal Pelatihan </label>
-                            <div class="col-lg-3 col-md-4">
-                                <asp:TextBox ID="txtTanggal" runat="server" class="form-control m-bot15" placeholder="Tanggal Pelatihan" ></asp:TextBox>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="col-sm-3 control-label"> Asal Unit Kerja </label>
-                            <div class="col-lg-3 col-md-4">
-                                <asp:TextBox ID="txtAsal" runat="server" class="form-control m-bot15" placeholder="Asal Unit Kerja" ></asp:TextBox>
+                                <asp:TextBox ID="txtTanggal" runat="server" class="form-control m-bot15" placeholder="Tanggal pelaksanaan" ></asp:TextBox>
                             </div>
                         </div>
 
                         <hr />
 
-                        <div class="form-group">
-                            <label class="col-sm-3 control-label"> Apakah judul/topik pelatihan? </label>
-                            <div class="col-lg-3 col-md-4">
-                                <asp:TextBox id="TextArea4" TextMode="multiline" Columns="60" Rows="3" runat="server" />
-                                </div>
-                        </div>
+                        <label>SKALA NILAI</label>
+                        <table class="table table-striped table-hover table-bordered" id="Table1" >
+                            <tr>
+                                <th>1</th>
+                                <th>2</th>
+                                <th>3</th>
+                                <th>4</th>
+                                <th>5</th>
+                            </tr>
+                            <tr>
+                                <td>Kurang</td>
+                                <td>Sedikit</td>
+                                <td>Cukup</td>
+                                <td>Banyak</td>
+                                <td>Sangat Banyak</td>
+                            </tr>
+                        </table>
+
+                        <table class="table table-striped table-hover table-bordered" id="survey" >
+                            <tr>
+                                <th>No</th>
+                                <th>ASPEK</th>
+                                <th colspan="5">EVALUASI</th>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>Dalam melaksanakan tugasnya apakah hasil pelatihan sudah diaplikasikan dalam pekerjaannya?</td>
+                                <td>
+                                    <asp:TextBox id="txtSoal1" runat="server" ReadOnly="true" /></td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Dalam melaksanakan tugasnya apakah sudah ada perbaikan dalam pekerjaannya?</td>
+                                <td>
+                                    <asp:TextBox id="txtSoal2" runat="server" ReadOnly="true" /></td>                                
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>Dalam melaksanakan tugasnya apakah ada peningkatan kualitas dalam bekerja?</td>
+                                <td>
+                                    <asp:TextBox id="txtSoal3" runat="server" ReadOnly="true" /></td>                                
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>Setelah mengikuti pelatihan, apakah ada perubahan sikap dan perilaku kerja dalam
+                                    menjalankan perannya sebagai karyawan secara keseluruhan?
+                                </td>
+                                <td>
+                                    <asp:TextBox id="txtSoal4" runat="server" ReadOnly="true" /></td>                                
+                            </tr>
+                        </table>
+
+                        <hr />
 
                         <div class="form-group">
-                            <label class="col-sm-3 control-label"> Jelaskan secara singkat isi/materi pelatihan </label>
+                            <label class="col-sm-3 control-label"> Saran: </label>
                             <div class="col-lg-3 col-md-4">
-                                <asp:TextBox id="TextArea1" TextMode="multiline" Columns="60" Rows="10" runat="server" />
-                                </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="col-sm-3 control-label"> Penilaian pelatih/kepala bagian </label>
-                            <div class="col-lg-3 col-md-4">
-                                <asp:TextBox id="TextArea2" TextMode="multiline" Columns="60" Rows="3" runat="server" />
+                                <asp:TextBox id="TextArea1" TextMode="multiline" Columns="60" Rows="3" runat="server" />
                                 </div>
                         </div>
 
@@ -176,7 +199,7 @@
                         <div class="form-group">
                             <label class="col-sm-3 control-label"> </label>
                             <div class="col-lg-3 col-md-3">
-                                <asp:LinkButton data-toggle="modal" class="btn btn-round btn-primary" ID="btnAction" runat="server" Text="Add" href="#myModal"/>
+                                <asp:Button class="btn btn-round btn-primary" ID="btnAdd" runat="server" Text="Add" OnClick="btnAdd_Click"/>
                                 <asp:Button class="btn btn-round btn-primary" ID="btnCancel" runat="server" Text="Cancel" OnClick="btnCancel_Click"/>
                             </div>
                         </div>

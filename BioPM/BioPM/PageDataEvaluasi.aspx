@@ -1,33 +1,26 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="FormDataEvaluasi.aspx.cs" Inherits="BioPM.FormDataEvaluasi" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="PageDataEvaluasi.aspx.cs" Inherits="BioPM.PageDataEvaluasi" %>
 
 <!DOCTYPE html>
 <script runat="server">
     protected void Page_Load(object sender, EventArgs e)
     {
         if (Session["username"] == null && Session["password"] == null) Response.Redirect("PageLogin.aspx");
+        if (!IsPostBack)
+            SetDataToPage();
     }
 
-    protected void InsertAnswersIntoDatabase()
+    protected void SetDataToPage()
     {
-        int ANSID;
-        ANSID = BioPM.ClassObjects.Survey.GetAnswersMaxID() + 1;
-        BioPM.ClassObjects.Survey.SubmitAnswers(ANSID.ToString(), Request.QueryString["key"].ToString(), "50", TextArea4.Text, Session["username"].ToString());
-        ANSID = BioPM.ClassObjects.Survey.GetAnswersMaxID() + 1;
-        BioPM.ClassObjects.Survey.SubmitAnswers(ANSID.ToString(), Request.QueryString["key"].ToString(), "51", TextArea1.Text, Session["username"].ToString());
-        ANSID = BioPM.ClassObjects.Survey.GetAnswersMaxID() + 1;
-        BioPM.ClassObjects.Survey.SubmitAnswers(ANSID.ToString(), Request.QueryString["key"].ToString(), "52", TextArea2.Text, Session["username"].ToString());
+        string excid = Request.QueryString["key"].ToString();
+        object[] data = null;
+        data = BioPM.ClassObjects.Survey.GetAnswerById(excid, "50");
+        TextArea4.Text = data[1].ToString();
+        data = BioPM.ClassObjects.Survey.GetAnswerById(excid, "51");
+        TextArea1.Text = data[1].ToString();
+        data = BioPM.ClassObjects.Survey.GetAnswerById(excid, "52");
+        TextArea2.Text = data[1].ToString();
     }
 
-    protected void btnAdd_Click(object sender, EventArgs e)
-    {
-        if (IsPostBack) InsertAnswersIntoDatabase();
-        Response.Redirect("PageTrainingSurvey.aspx");
-    }
-
-    protected void btnCancel_Click(object sender, EventArgs e)
-    {
-        Response.Redirect("PageUserPanel.aspx");
-    }
 
     protected void btnSave_Click(object sender, EventArgs e)
     {
@@ -43,7 +36,9 @@
     }
 </script>
 
-<html lang="en">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <% Response.Write(BioPM.ClassScripts.BasicScripts.GetMetaScript()); %>
 
@@ -132,21 +127,21 @@
                         <div class="form-group">
                             <label class="col-sm-3 control-label"> Apakah judul/topik pelatihan? </label>
                             <div class="col-lg-3 col-md-4">
-                                <asp:TextBox id="TextArea4" TextMode="multiline" Columns="60" Rows="3" runat="server" />
+                                <asp:TextBox id="TextArea4" TextMode="multiline" Columns="60" Rows="3" runat="server" ReadOnly="true" />
                                 </div>
                         </div>
 
                         <div class="form-group">
                             <label class="col-sm-3 control-label"> Jelaskan secara singkat isi/materi pelatihan </label>
                             <div class="col-lg-3 col-md-4">
-                                <asp:TextBox id="TextArea1" TextMode="multiline" Columns="60" Rows="10" runat="server" />
+                                <asp:TextBox id="TextArea1" TextMode="multiline" Columns="60" Rows="10" runat="server" ReadOnly="true" />
                                 </div>
                         </div>
 
                         <div class="form-group">
                             <label class="col-sm-3 control-label"> Penilaian pelatih/kepala bagian </label>
                             <div class="col-lg-3 col-md-4">
-                                <asp:TextBox id="TextArea2" TextMode="multiline" Columns="60" Rows="3" runat="server" />
+                                <asp:TextBox id="TextArea2" TextMode="multiline" Columns="60" Rows="3" runat="server" ReadOnly="true" />
                                 </div>
                         </div>
 
@@ -172,15 +167,7 @@
                             </div>
                         </div>
                         <!-- modal -->
-
-                        <div class="form-group">
-                            <label class="col-sm-3 control-label"> </label>
-                            <div class="col-lg-3 col-md-3">
-                                <asp:LinkButton data-toggle="modal" class="btn btn-round btn-primary" ID="btnAction" runat="server" Text="Add" href="#myModal"/>
-                                <asp:Button class="btn btn-round btn-primary" ID="btnCancel" runat="server" Text="Cancel" OnClick="btnCancel_Click"/>
-                            </div>
-                        </div>
-                            
+                                                                              
                         </form>
                     </div>
                     

@@ -1,10 +1,12 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="PageEvaluasiTiga.aspx.cs" Inherits="BioPM.PageEvaluasiTiga" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="PageEvaluasiPerilaku.aspx.cs" Inherits="BioPM.PageEvaluasiTiga" %>
 
 <!DOCTYPE html>
 <script runat="server">
     protected void Page_Load(object sender, EventArgs e)
     {
         if (Session["username"] == null && Session["password"] == null) Response.Redirect("PageLogin.aspx");
+        if (!IsPostBack)
+            SetDataToPage();
     }
 
     protected void SetDataToPage()

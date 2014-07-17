@@ -113,7 +113,11 @@
     <Content Include="FormConfirmRequest.aspx" />
     <Content Include="FormDataEvaluasi.aspx" />
     <Content Include="FormEvaluasiImplementasi.aspx" />
-    <Content Include="PageEvaluasiTiga.aspx" />
+    <Content Include="PageDataEvaluasi.aspx" />
+    <Content Include="PageEvaluasiImplementasi.aspx" />
+    <Content Include="PageEvaluasiPelaksanaan.aspx" />
+    <Content Include="PageEvaluasiReaksiPeserta.aspx" />
+    <Content Include="PageEvaluasiPerilaku.aspx" />
     <Content Include="FormEvaluasiPelaksanaan.aspx" />
     <Content Include="FormEvaluasiReaksiPeserta.aspx" />
     <Content Include="Scripts\bootstrap-reset.css" />
@@ -637,6 +641,13 @@
     <Compile Include="PageCompetencyRelationTable.aspx.designer.cs">
       <DependentUpon>PageCompetencyRelationTable.aspx</DependentUpon>
     </Compile>
+    <Compile Include="PageDataEvaluasi.aspx.cs">
+      <DependentUpon>PageDataEvaluasi.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageDataEvaluasi.aspx.designer.cs">
+      <DependentUpon>PageDataEvaluasi.aspx</DependentUpon>
+    </Compile>
     <Compile Include="PageEmployeeDetail.aspx.cs">
       <DependentUpon>PageEmployeeDetail.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -651,12 +662,33 @@
     <Compile Include="PageEmployeeQualification.aspx.designer.cs">
       <DependentUpon>PageEmployeeQualification.aspx</DependentUpon>
     </Compile>
-    <Compile Include="PageEvaluasiTiga.aspx.cs">
-      <DependentUpon>PageEvaluasiTiga.aspx</DependentUpon>
+    <Compile Include="PageEvaluasiImplementasi.aspx.cs">
+      <DependentUpon>PageEvaluasiImplementasi.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="PageEvaluasiTiga.aspx.designer.cs">
-      <DependentUpon>PageEvaluasiTiga.aspx</DependentUpon>
+    <Compile Include="PageEvaluasiImplementasi.aspx.designer.cs">
+      <DependentUpon>PageEvaluasiImplementasi.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageEvaluasiPelaksanaan.aspx.cs">
+      <DependentUpon>PageEvaluasiPelaksanaan.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageEvaluasiPelaksanaan.aspx.designer.cs">
+      <DependentUpon>PageEvaluasiPelaksanaan.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageEvaluasiReaksiPeserta.aspx.cs">
+      <DependentUpon>PageEvaluasiReaksiPeserta.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageEvaluasiReaksiPeserta.aspx.designer.cs">
+      <DependentUpon>PageEvaluasiReaksiPeserta.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageEvaluasiPerilaku.aspx.cs">
+      <DependentUpon>PageEvaluasiPerilaku.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageEvaluasiPerilaku.aspx.designer.cs">
+      <DependentUpon>PageEvaluasiPerilaku.aspx</DependentUpon>
     </Compile>
     <Compile Include="PageEventMethod.aspx.cs">
       <DependentUpon>PageEventMethod.aspx</DependentUpon>

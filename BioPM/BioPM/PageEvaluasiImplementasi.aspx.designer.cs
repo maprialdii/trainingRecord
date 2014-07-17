@@ -10,7 +10,7 @@
 namespace BioPM {
     
     
-    public partial class FormDataEvaluasi {
+    public partial class PageEvaluasiImplementasi {
         
         /// <summary>
         /// Form1 control.
@@ -22,6 +22,15 @@ namespace BioPM {
         protected global::System.Web.UI.HtmlControls.HtmlForm Form1;
         
         /// <summary>
+        /// txtTopik control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtTopik;
+        
+        /// <summary>
         /// txtNama control.
         /// </summary>
         /// <remarks>
@@ -31,31 +40,13 @@ namespace BioPM {
         protected global::System.Web.UI.WebControls.TextBox txtNama;
         
         /// <summary>
-        /// txtBentukPelatihan control.
+        /// txtNamaJabatan control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtBentukPelatihan;
-        
-        /// <summary>
-        /// txtPelatih control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtPelatih;
-        
-        /// <summary>
-        /// txtBagian control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtBagian;
+        protected global::System.Web.UI.WebControls.TextBox txtNamaJabatan;
         
         /// <summary>
         /// txtTanggal control.
@@ -67,22 +58,40 @@ namespace BioPM {
         protected global::System.Web.UI.WebControls.TextBox txtTanggal;
         
         /// <summary>
-        /// txtAsal control.
+        /// txtSoal1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAsal;
+        protected global::System.Web.UI.WebControls.TextBox txtSoal1;
         
         /// <summary>
-        /// TextArea4 control.
+        /// txtSoal2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextArea4;
+        protected global::System.Web.UI.WebControls.TextBox txtSoal2;
+        
+        /// <summary>
+        /// txtSoal3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtSoal3;
+        
+        /// <summary>
+        /// txtSoal4 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtSoal4;
         
         /// <summary>
         /// TextArea1 control.
@@ -92,15 +101,6 @@ namespace BioPM {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TextArea1;
-        
-        /// <summary>
-        /// TextArea2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextArea2;
         
         /// <summary>
         /// txtConfirmation control.
@@ -130,13 +130,13 @@ namespace BioPM {
         protected global::System.Web.UI.WebControls.Button btnSubmit;
         
         /// <summary>
-        /// btnAction control.
+        /// btnAdd control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton btnAction;
+        protected global::System.Web.UI.WebControls.Button btnAdd;
         
         /// <summary>
         /// btnCancel control.
