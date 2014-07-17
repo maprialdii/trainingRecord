@@ -130,14 +130,14 @@
                         <div class="form-group">
                             <label class="col-sm-3 control-label"> SPEAKER </label>
                             <div class="col-lg-3 col-md-4">
-                                <asp:TextBox ID="txtPembicara" runat="server" class="form-control m-bot15" placeholder="PEMBICARA" ></asp:TextBox>
+                                <asp:TextBox ID="txtPembicara" runat="server" class="form-control m-bot15" placeholder="SPEAKER" ></asp:TextBox>
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label class="col-sm-3 control-label"> COST </label>
                             <div class="col-lg-3 col-md-4">
-                                <asp:TextBox ID="txtCost" runat="server" class="form-control m-bot15" placeholder="PEMBICARA" ></asp:TextBox>
+                                <asp:TextBox ID="txtCost" runat="server" class="form-control m-bot15" placeholder="COST" ></asp:TextBox>
                             </div>
                         </div>
 
