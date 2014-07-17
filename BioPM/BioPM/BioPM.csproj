@@ -129,7 +129,6 @@
     <Content Include="FormEvaluasiSatu.aspx" />
     <Content Include="FormEvaluasiDua.aspx" />
     <Content Include="FormEvaluasiPerilaku.aspx" />
-    <Content Include="FormInputAllQualification.aspx" />
     <Content Include="FormInputCompetencyRelation.aspx" />
     <Content Include="FormInputEmployeeQualification.aspx" />
     <Content Include="FormInputEventMethod.aspx" />
@@ -145,8 +144,6 @@
     <Content Include="FormRequestTraining.aspx" />
     <Content Include="FormSuggestTraining.aspx" />
     <Content Include="FormInputTrainingExecution.aspx" />
-    <Content Include="FormInputTrainingSurvey.aspx" />
-    <Content Include="FormUpdateAllQualification.aspx" />
     <Content Include="FormUpdateCompetency.aspx" />
     <Content Include="FormUpdateCompetencyRelation.aspx" />
     <Content Include="FormUpdateEmployeeQualification.aspx" />
@@ -398,13 +395,6 @@
     <Compile Include="FormEvaluasiPerilaku.aspx.designer.cs">
       <DependentUpon>FormEvaluasiPerilaku.aspx</DependentUpon>
     </Compile>
-    <Compile Include="FormInputAllQualification.aspx.cs">
-      <DependentUpon>FormInputAllQualification.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="FormInputAllQualification.aspx.designer.cs">
-      <DependentUpon>FormInputAllQualification.aspx</DependentUpon>
-    </Compile>
     <Compile Include="FormInputCompetencyRelation.aspx.cs">
       <DependentUpon>FormInputCompetencyRelation.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -509,20 +499,6 @@
     </Compile>
     <Compile Include="FormInputTrainingExecution.aspx.designer.cs">
       <DependentUpon>FormInputTrainingExecution.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="FormInputTrainingSurvey.aspx.cs">
-      <DependentUpon>FormInputTrainingSurvey.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="FormInputTrainingSurvey.aspx.designer.cs">
-      <DependentUpon>FormInputTrainingSurvey.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="FormUpdateAllQualification.aspx.cs">
-      <DependentUpon>FormUpdateAllQualification.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="FormUpdateAllQualification.aspx.designer.cs">
-      <DependentUpon>FormUpdateAllQualification.aspx</DependentUpon>
     </Compile>
     <Compile Include="FormUpdateCompetency.aspx.cs">
       <DependentUpon>FormUpdateCompetency.aspx</DependentUpon>

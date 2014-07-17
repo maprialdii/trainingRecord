@@ -76,7 +76,7 @@
 <head>
     <% Response.Write(BioPM.ClassScripts.BasicScripts.GetMetaScript()); %>
 
-    <title>POSITION REQUIREMENTS UPDATE FORM</title>
+    <title>Training Execution Update Form</title>
 
     <% Response.Write(BioPM.ClassScripts.StyleScripts.GetCoreStyle()); %>
     <% Response.Write(BioPM.ClassScripts.StyleScripts.GetFormStyle()); %>
@@ -162,7 +162,7 @@
                         <div class="form-group">
                             <label class="col-sm-3 control-label"> SPEAKER </label>
                             <div class="col-lg-3 col-md-4">
-                                <asp:TextBox ID="txtPembicara" runat="server" class="form-control m-bot15" placeholder="PEMBICARA" ></asp:TextBox>
+                                <asp:TextBox ID="txtPembicara" runat="server" class="form-control m-bot15" placeholder="SPEAKER" ></asp:TextBox>
                             </div>
                         </div>
 

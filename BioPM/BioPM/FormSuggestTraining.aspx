@@ -79,7 +79,7 @@
 <head>
     <% Response.Write(BioPM.ClassScripts.BasicScripts.GetMetaScript()); %>
 
-    <title>Training Request</title>
+    <title>Competency Development Event Suggestion</title>
 
     <% Response.Write(BioPM.ClassScripts.StyleScripts.GetCoreStyle()); %>
 <% Response.Write(BioPM.ClassScripts.StyleScripts.GetFormStyle()); %>
@@ -107,7 +107,7 @@
             <div class="col-sm-12">
                 <section class="panel">
                     <header class="panel-heading">
-                        Suggest Training
+                        Competency Development Event Suggestion
                           <span class="tools pull-right">
                             <a class="fa fa-chevron-down" href="javascript:;"></a>
                             <a class="fa fa-times" href="javascript:;"></a>

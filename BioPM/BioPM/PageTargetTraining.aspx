@@ -10,8 +10,8 @@
         if (Session["username"] == null && Session["password"] == null) Response.Redirect("PageLogin.aspx");
         evtId = Request.QueryString["key"].ToString();
         object[] data = BioPM.ClassObjects.ComDevEvent.GetComdevEventById(evtId);
-        eventName = data[2].ToString();
-        method = data[5].ToString();
+        eventName = data[1].ToString();
+        method = data[3].ToString();
     }
 
     protected String GenerateDataTargetTraining()
@@ -34,7 +34,7 @@
 <head>
     <% Response.Write(BioPM.ClassScripts.BasicScripts.GetMetaScript()); %>
 
-    <title>Target Training</title>
+    <title>Comdev Event Target</title>
 
     <% Response.Write(BioPM.ClassScripts.StyleScripts.GetCoreStyle()); %>
 <% Response.Write(BioPM.ClassScripts.StyleScripts.GetTableStyle()); %>
@@ -62,28 +62,28 @@
             <div class="col-sm-12">
                 <section class="panel">
                     <header class="panel-heading">
-                        Training Target
+                        Comdev Event Target
                           <span class="tools pull-right">
                             <a class="fa fa-chevron-down" href="javascript:;"></a>
                             <a class="fa fa-times" href="javascript:;"></a>
                          </span>
                     </header>
                     <div class="panel-body">
+                        <form id="Form1" class="form-horizontal " runat="server" >
                         <div class="form-group">
                             <label class="col-sm-3 control-label"> EVENT NAME </label>
                             <div class="col-lg-3 col-md-4">
-                                <asp:Label ID="txtEvtName" runat="server" class="form-control m-bot15">   
-                                </asp:Label> 
+                                <asp:TextBox ID="txtEventName" runat="server" class="form-control m-bot15" placeholder="EVENT NAME" OnLoad="Page_Load" ReadOnly="true" ></asp:TextBox>
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label class="col-sm-3 control-label"> EVENT METHOD </label>
                             <div class="col-lg-3 col-md-4">
-                                <asp:Label ID="txtMethod" runat="server" class="form-control m-bot15">   
-                                </asp:Label> 
+                                <asp:TextBox ID="txtEventMethod" runat="server" class="form-control m-bot15" placeholder="EVENT METHOD" OnLoad="Page_Load" ReadOnly="true" ></asp:TextBox>
                             </div>
                         </div>
+
                         <div class="adv-table">
                             <div class="clearfix">
                                 <div class="btn-group">
@@ -115,6 +115,7 @@
                                 </tbody>
                             </table>
                         </div>
+                            </form>
                     </div>
                     
                 </section>

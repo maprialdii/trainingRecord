@@ -44,7 +44,7 @@
 <head>
     <% Response.Write(BioPM.ClassScripts.BasicScripts.GetMetaScript()); %>
 
-    <title>Training Execution</title>
+    <title>Comdev Event Evaluation</title>
 
     <% Response.Write(BioPM.ClassScripts.StyleScripts.GetCoreStyle()); %>
 <% Response.Write(BioPM.ClassScripts.StyleScripts.GetTableStyle()); %>
@@ -72,7 +72,7 @@
             <div class="col-sm-12">
                 <section class="panel">
                     <header class="panel-heading">
-                        Competency Parameter
+                        Comdev Event Evaluation
                           <span class="tools pull-right">
                             <a class="fa fa-chevron-down" href="javascript:;"></a>
                             <a class="fa fa-times" href="javascript:;"></a>

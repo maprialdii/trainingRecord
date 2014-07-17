@@ -210,7 +210,7 @@ namespace BioPM.ClassObjects
                 object[] data = null;
                 while (reader.Read())
                 {
-                    object[] values = { reader[0].ToString(), reader[1].ToString(), reader[2].ToString(), reader[3].ToString() };
+                    object[] values = { reader[0].ToString(), reader[1].ToString(), reader[2].ToString(), reader[3].ToString(), reader[4].ToString() };
                     data=values;
                 }
                 return data;

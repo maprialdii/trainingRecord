@@ -71,7 +71,7 @@
 <head>
     <% Response.Write(BioPM.ClassScripts.BasicScripts.GetMetaScript()); %>
 
-    <title>POSITION REQUIREMENTS UPDATE FORM</title>
+    <title>EMPLOYEE QUALIFICATION UPDATE FORM</title>
 
     <% Response.Write(BioPM.ClassScripts.StyleScripts.GetCoreStyle()); %>
     <% Response.Write(BioPM.ClassScripts.StyleScripts.GetFormStyle()); %>
