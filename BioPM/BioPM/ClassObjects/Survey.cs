@@ -129,6 +129,49 @@ namespace BioPM.ClassObjects
             }
         }
 
+        public static string GetJumlahJawaban(string excid, string kode)
+        {
+            int lowerBound=0, upperBound=0;
+            String status = null;
+            if (kode == "3")
+            {
+                lowerBound = 1;
+                upperBound = 7;
+            }
+            else if (kode == "1")
+            {
+                lowerBound = 14;
+                upperBound = 31;
+            }
+            int sum=0;
+            SqlConnection conn = GetConnection();
+            string sqlCmd = @"SELECT COUNT(ANSID) AS JUMLAH_NGISI
+                            FROM trrcd.SURVEY_ANSWERS
+                            WHERE PRMID>=" + lowerBound + " AND PRMID<=" + upperBound + " AND EXCID=" + excid + ";";
+            SqlCommand cmd = GetCommand(conn, sqlCmd);
+            string jumlah = "0";
+
+            try
+            {
+                conn.Open();
+                SqlDataReader reader = GetDataReader(cmd);
+                while (reader.Read())
+                {
+                    if (!reader.IsDBNull(0)) jumlah = reader[0].ToString() + "";
+                }
+                sum=Convert.ToInt16(jumlah);
+            }
+            finally
+            {
+                conn.Close();
+            }
+            if (sum == 0)
+                status = "Belum Diisi";
+            else
+                status = "Selesai";
+            return status;
+        }
+
         public static int GetAnswersMaxID()
         {
             SqlConnection conn = GetConnection();

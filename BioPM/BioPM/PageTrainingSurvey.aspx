@@ -10,10 +10,30 @@
     protected String GenerateDataEksekusi()
     {
         string htmlelement = "";
-
+        string status1, status2, status3 = null;
+        string html1=null, html2=null, html3 = null;
         foreach (object[] data in BioPM.ClassObjects.ComDevExecution.GetComdevExecutionByUserId(Session["username"].ToString()))
         {
-            htmlelement += "<tr class=''><td>" + data[1].ToString() + "</td><td>" + data[2].ToString() + "</td><td><a class='edit' href='FormEvaluasiReaksiPeserta.aspx?key=" + data[0].ToString() + "&type=SR-01-Q-'>Survey 1</a></td><td><a class='edit' href='FormEvaluasiDua.aspx?key=" + data[0].ToString() + "&type=2'>Survey 2</a></td><td><a class='edit' href='FormEvaluasiPerilaku.aspx?key=" + data[0].ToString() + "&type=3'>Survey</a></td></tr>";
+
+            status1 = BioPM.ClassObjects.Survey.GetJumlahJawaban(data[0].ToString(), "1");
+            status2 = BioPM.ClassObjects.Survey.GetJumlahJawaban(data[0].ToString(), "2");
+            status3 = BioPM.ClassObjects.Survey.GetJumlahJawaban(data[0].ToString(), "3");
+            if (status1 == "Selesai")
+                html1 = "Sudah Selesai";
+            else if (status1 == "Belum Diisi")
+                html1 = "<a class='edit' href='FormEvaluasiReaksiPeserta.aspx?key=" + data[0].ToString() + "'>Survey 1</a>";
+
+            if (status2 == "Selesai")
+                html2 = "Sudah Selesai";
+            else if (status2 == "Belum Diisi")
+                html2 = "<a class='edit' href='#.aspx?key=" + data[0].ToString() + "'>Survey 2</a>";
+
+            if (status3 == "Selesai")
+                html3 = "Sudah Selesai";
+            else if (status3 == "Belum Diisi")
+                html3 = "<a class='edit' href='FormEvaluasiPerilaku.aspx?key=" + data[0].ToString() + "'>Survey 3</a>";
+
+            htmlelement += "<tr class=''><td>" + data[1].ToString() + "</td><td>" + data[2].ToString() + "</td><td>" + html1 + "</td><td>" + html2 + "</td><td>" + html3 + "</td></tr>";
         }
         
         return htmlelement;

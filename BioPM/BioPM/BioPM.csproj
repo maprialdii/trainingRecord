@@ -120,6 +120,7 @@
     <Content Include="PageEvaluasiPerilaku.aspx" />
     <Content Include="FormEvaluasiPelaksanaan.aspx" />
     <Content Include="FormEvaluasiReaksiPeserta.aspx" />
+    <Content Include="PageSurveyAnswers.aspx" />
     <Content Include="Scripts\bootstrap-reset.css" />
     <Content Include="Scripts\bootstrap.min.css" />
     <Content Include="Scripts\Feature\jquery.nestable.css" />
@@ -321,6 +322,7 @@
     <Compile Include="ClassObjects\Jabatan.cs" />
     <Compile Include="ClassObjects\Organization.cs" />
     <Compile Include="ClassObjects\QC.cs" />
+    <Compile Include="ClassObjects\Reason.cs" />
     <Compile Include="ClassObjects\Survey.cs" />
     <Compile Include="ClassScripts\BasicScripts.cs" />
     <Compile Include="ClassScripts\JS.cs" />
@@ -862,6 +864,13 @@
     </Compile>
     <Compile Include="PageSurvey.aspx.designer.cs">
       <DependentUpon>PageSurvey.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageSurveyAnswers.aspx.cs">
+      <DependentUpon>PageSurveyAnswers.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageSurveyAnswers.aspx.designer.cs">
+      <DependentUpon>PageSurveyAnswers.aspx</DependentUpon>
     </Compile>
     <Compile Include="PageTargetTraining.aspx.cs">
       <DependentUpon>PageTargetTraining.aspx</DependentUpon>
