@@ -13,12 +13,23 @@
 
         foreach (object[] data in BioPM.ClassObjects.Jabatan.GetAllJabatan())
         {
-            htmlelement += "<tr class=''><td>" + data[0].ToString() + "</td><td>" + data[1].ToString() + "</td><td><a class='edit' href='PagePositionRequirements.aspx?key=" + data[0].ToString() + "'>Requirements</a></td><td><a class='edit' href='FormUpdateRequirements.aspx?key=" + data[0].ToString() + "'>Edit</a></td><td><a class='edit' href='PageInformation.aspx?key=" + data[0].ToString() + "&type=000'>Delete</a></td></tr>";
+            htmlelement += "<tr class=''><td>" + data[0].ToString() + "</td><td>" + data[1].ToString() + "</td><td><a class='edit' href='PagePositionRequirements.aspx?key=" + data[0].ToString() + "'>Requirements</a></td><td><a class='edit' href='FormUpdateRequirements.aspx?key=" + data[0].ToString() + "'>Edit</a></td><td><a data-toggle='modal' ID='btnAction' runat='server' Text='Delete' href='#myModal'>Delete</a></td></tr>";
         }
         
         return htmlelement;
     }
 
+    protected void btnDel_Click(object sender, EventArgs e)
+    {
+        if (Session["password"].ToString() == BioPM.ClassEngines.CryptographFactory.Encrypt(txtConfirmation.Text, true))
+        {
+            Response.Redirect("PageInformation.aspx?key=" + trgId + "&type=000");
+        }
+        else
+        {
+            ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('" + "YOUR PASSWORD IS INCORRECT" + "');", true);
+        }
+    }
    
 </script>
 
@@ -92,6 +103,28 @@
                                 <% Response.Write(GenerateDataPositionReq()); %>
                                 </tbody>
                             </table>
+                            <!-- Modal -->
+                        <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModal" class="modal fade">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                        <h4 class="modal-title">Approver Confirmation</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>You Are Logged In As <% Response.Write(Session["name"].ToString()); %></p><br />
+                                        <p>Are you sure to insert into database?</p>
+                                        <asp:TextBox ID="txtConfirmation" runat="server" TextMode="Password" placeholder="Confirmation Password" class="form-control placeholder-no-fix"></asp:TextBox>
+                                        <asp:TextBox ID="txtReason" TextMode="multiline" Columns="30" Rows="3" runat="server" placeholder="Reason" class="form-control placeholder-no-fix"></asp:TextBox>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <asp:Button ID="btnClose" runat="server" data-dismiss="modal" class="btn btn-default" Text="Cancel"></asp:Button>
+                                        <asp:Button ID="btnSubmit" runat="server" class="btn btn-success" Text="Confirm" OnClick="btnDel_Click"></asp:Button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- modal -->  
                         </div>
                     </div>
                     

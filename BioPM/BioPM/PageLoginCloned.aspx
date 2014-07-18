@@ -63,7 +63,7 @@
                       <div class="modal-body">
                           <p>Enter your e-mail address below to reset your password.</p>
                           <asp:TextBox ID="txtEmail" runat="server" placeholder="Email" class="form-control placeholder-no-fix"></asp:TextBox>
-
+                          <asp:TextBox ID="txtReason" TextMode="multiline" Columns="30" Rows="3" runat="server" placeholder="Reason" class="form-control placeholder-no-fix"></asp:TextBox>
                       </div>
                       <div class="modal-footer">
                           <asp:Button ID="btnCancel" runat="server" data-dismiss="modal" class="btn btn-default" Text="Cancel"></asp:Button>

@@ -113,7 +113,7 @@
                                 <tr>
                                     <th>Event Name</th>
                                     <th>Event Method</th>
-                                    <th>Request This Training</th>
+                                    <th>Request This Event</th>
                                 </tr>
                                 </thead>
                                 <tbody>
