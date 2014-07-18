@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="PageTrainingSurvey.aspx.cs" Inherits="BioPM.PageTrainingSurvey" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="FormAppEvaluasi3.aspx.cs" Inherits="BioPM.FormAppEvaluasi3" %>
 
 <!DOCTYPE html>
 <script runat="server">
@@ -97,13 +97,10 @@
                                 <tr>
                                     <th>Employee ID</th>
                                     <th>Employee Name</th>
-                                    <th>Position</th>
-                                    <th>Unit</th>
                                     <th>Event Title</th>
                                     <th>Batch</th>
-                                    <th>Evaluasi 1</th>                                       
-                                    <th>Evaluasi 2</th>
                                     <th>Evaluasi 3</th>
+                                    <th>Approve</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -111,10 +108,7 @@
                                 </tbody>
                             </table>
                         </div>
-                        
-
                     </div>
-                    
                 </section>
             </div>
         </div>

@@ -109,6 +109,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="FormAppEvaluasi3.aspx" />
+    <Content Include="FormAppRequestHR.aspx" />
     <Content Include="FormApprove.aspx" />
     <Content Include="FormConfirmRequest.aspx" />
     <Content Include="FormDataEvaluasi.aspx" />
@@ -333,6 +335,20 @@
     <Compile Include="Controller\Helper\ITreeNode.cs" />
     <Compile Include="Controller\Object\Competency.cs" />
     <Compile Include="Controller\Object\Menu.cs" />
+    <Compile Include="FormAppEvaluasi3.aspx.cs">
+      <DependentUpon>FormAppEvaluasi3.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FormAppEvaluasi3.aspx.designer.cs">
+      <DependentUpon>FormAppEvaluasi3.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FormAppRequestHR.aspx.cs">
+      <DependentUpon>FormAppRequestHR.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FormAppRequestHR.aspx.designer.cs">
+      <DependentUpon>FormAppRequestHR.aspx</DependentUpon>
+    </Compile>
     <Compile Include="FormApprove.aspx.cs">
       <DependentUpon>FormApprove.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
