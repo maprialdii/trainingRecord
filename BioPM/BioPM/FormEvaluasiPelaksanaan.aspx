@@ -122,6 +122,7 @@
                             <div class="col-lg-3 col-md-4">
                                 <asp:TextBox ID="txtTopik" runat="server" class="form-control m-bot15" placeholder="Topik Pelatihan"></asp:TextBox>
                             </div>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" ControlToValidate="txtTopik" runat="server" ErrorMessage="This field is required." ForeColor="Red"></asp:RequiredFieldValidator>
                         </div>
 
                         <div class="form-group">
@@ -129,6 +130,7 @@
                             <div class="col-lg-3 col-md-4">
                                 <asp:TextBox ID="txtNama" runat="server" class="form-control m-bot15" placeholder="Nama Peserta Pelatihan" ></asp:TextBox>
                             </div>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator2" ControlToValidate="txtNama" runat="server" ErrorMessage="This field is required." ForeColor="Red"></asp:RequiredFieldValidator>
                         </div>
 
                         <div class="form-group">
@@ -136,6 +138,7 @@
                             <div class="col-lg-3 col-md-4">
                                 <asp:TextBox ID="txtJabatan" runat="server" class="form-control m-bot15" placeholder="Jabatan Peserta Pelatihan" ></asp:TextBox>
                             </div>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator3" ControlToValidate="txtJabatan" runat="server" ErrorMessage="This field is required." ForeColor="Red"></asp:RequiredFieldValidator>
                         </div>
 
                         <div class="form-group">
@@ -143,6 +146,7 @@
                             <div class="col-lg-3 col-md-4">
                                 <asp:TextBox ID="txtTanggal" runat="server" class="form-control m-bot15" placeholder="Tanggal Pelatihan" ></asp:TextBox>
                             </div>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator4" ControlToValidate="txtTanggal" runat="server" ErrorMessage="This field is required." ForeColor="Red"></asp:RequiredFieldValidator>
                         </div>
 
                         <div class="form-group">
@@ -150,6 +154,7 @@
                             <div class="col-lg-3 col-md-4">
                                 <asp:TextBox ID="txtTempat" runat="server" class="form-control m-bot15" placeholder="Tempat Pelaksanaan Pelatihan " ></asp:TextBox>
                             </div>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator5" ControlToValidate="txtTempat" runat="server" ErrorMessage="This field is required." ForeColor="Red"></asp:RequiredFieldValidator>
                         </div>
 
                         <div class="form-group">
@@ -157,6 +162,7 @@
                             <div class="col-lg-3 col-md-4">
                                 <asp:TextBox id="TextBox1" TextMode="multiline" Columns="60" Rows="5" runat="server" placeholder="Pisahkan dengan tanda koma (,)" />
                             </div>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator6" ControlToValidate="TextBox1" runat="server" ErrorMessage="This field is required." ForeColor="Red"></asp:RequiredFieldValidator>
                         </div>
 
                         <hr />
@@ -189,6 +195,7 @@
                                         <h4><label class="col-sm-3 control-label">
                                         (1) <br />
                                         Kejelasan bahasa materi pelatihan</label></h4>
+                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator7" ControlToValidate="RBL11" runat="server" ErrorMessage="This field is required." ForeColor="Red"></asp:RequiredFieldValidator>
                                         <div class="col-lg-3 col-md-4">
                                             <div class="radio disable">
                                                 <asp:RadioButtonList ID="RBL11" runat="server" RepeatDirection="Horizontal">
@@ -207,6 +214,7 @@
                                         <h4><label class="col-sm-3 control-label">
                                         (2) <br />
                                         Sistematika penulisan materi</label></h4>
+                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator8" ControlToValidate="RBL12" runat="server" ErrorMessage="This field is required." ForeColor="Red"></asp:RequiredFieldValidator>
                                         <div class="col-lg-3 col-md-4">
                                             <div class="radio disable">
                                                 <asp:RadioButtonList ID="RBL12" runat="server" RepeatDirection="Horizontal">
@@ -225,6 +233,7 @@
                                         <h4><label class="col-sm-3 control-label">
                                         (3) <br />
                                         Kemudahan dalam memahami materi pelatihan secara keseluruhan</label></h4>
+                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator9" ControlToValidate="RBL13" runat="server" ErrorMessage="This field is required." ForeColor="Red"></asp:RequiredFieldValidator>
                                         <div class="col-lg-3 col-md-4">
                                             <div class="radio disable">
                                                 <asp:RadioButtonList ID="RBL13" runat="server" RepeatDirection="Horizontal">
@@ -243,6 +252,7 @@
                                         <h4><label class="col-sm-3 control-label">
                                         (4) <br />
                                         Kualitas materi pelatihan & kedalaman materi pelatihan</label></h4>
+                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator10" ControlToValidate="RBL14" runat="server" ErrorMessage="This field is required." ForeColor="Red"></asp:RequiredFieldValidator>
                                         <div class="col-lg-3 col-md-4">
                                             <div class="radio disable">
                                                 <asp:RadioButtonList ID="RBL14" runat="server" RepeatDirection="Horizontal">
@@ -263,6 +273,7 @@
                                         <h4><label class="col-sm-3 control-label">
                                         (1) <br />
                                         Pengetahuan teoritis atas materi pelatihan</label></h4>
+                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator11" ControlToValidate="RBL21" runat="server" ErrorMessage="This field is required." ForeColor="Red"></asp:RequiredFieldValidator>
                                         <div class="col-lg-3 col-md-4">
                                             <div class="radio disable">
                                                 <asp:RadioButtonList ID="RBL21" runat="server" RepeatDirection="Horizontal">
@@ -281,6 +292,7 @@
                                         <h4><label class="col-sm-3 control-label">
                                         (2) <br />
                                         Pengalaman yang mendukung atas materi pelatihan</label></h4>
+                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator12" ControlToValidate="RBL22" runat="server" ErrorMessage="This field is required." ForeColor="Red"></asp:RequiredFieldValidator>
                                         <div class="col-lg-3 col-md-4">
                                             <div class="radio disable">
                                                 <asp:RadioButtonList ID="RBL22" runat="server" RepeatDirection="Horizontal">
@@ -299,6 +311,7 @@
                                         <h4><label class="col-sm-3 control-label">
                                         (3) <br />
                                         Kemampuan menguasai audiens (peserta pelatihan)</label></h4>
+                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator13" ControlToValidate="RBL23" runat="server" ErrorMessage="This field is required." ForeColor="Red"></asp:RequiredFieldValidator>
                                         <div class="col-lg-3 col-md-4">
                                             <div class="radio disable">
                                                 <asp:RadioButtonList ID="RBL23" runat="server" RepeatDirection="Horizontal">
@@ -317,6 +330,7 @@
                                         <h4><label class="col-sm-3 control-label">
                                         (4) <br />
                                         Kemampuan menjawab pertanyaan dari peserta pelatihan</label></h4>
+                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator14" ControlToValidate="RBL24" runat="server" ErrorMessage="This field is required." ForeColor="Red"></asp:RequiredFieldValidator>
                                         <div class="col-lg-3 col-md-4">
                                             <div class="radio disable">
                                                 <asp:RadioButtonList ID="RBL24" runat="server" RepeatDirection="Horizontal">
@@ -335,6 +349,7 @@
                                         <h4><label class="col-sm-3 control-label">
                                         (5) <br />
                                         Cara penyampaian materi pelatihan</label></h4>
+                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator15" ControlToValidate="RBL25" runat="server" ErrorMessage="This field is required." ForeColor="Red"></asp:RequiredFieldValidator>
                                         <div class="col-lg-3 col-md-4">
                                             <div class="radio disable">
                                                 <asp:RadioButtonList ID="RBL25" runat="server" RepeatDirection="Horizontal">
@@ -358,6 +373,7 @@
                                         <h4><label class="col-sm-3 control-label">
                                         (1) <br />
                                         Tempat/lokasi pelatihan/makanan</label></h4>
+                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator16" ControlToValidate="RBL31" runat="server" ErrorMessage="This field is required." ForeColor="Red"></asp:RequiredFieldValidator>
                                         <div class="col-lg-3 col-md-4">
                                             <div class="radio disable">
                                                 <asp:RadioButtonList ID="RBL31" runat="server" RepeatDirection="Horizontal">
@@ -376,6 +392,7 @@
                                         <h4><label class="col-sm-3 control-label">
                                         (2) <br />
                                         Media pelatihan</label></h4>
+                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator17" ControlToValidate="RBL32" runat="server" ErrorMessage="This field is required." ForeColor="Red"></asp:RequiredFieldValidator>
                                         <div class="col-lg-3 col-md-4">
                                             <div class="radio disable">
                                                 <asp:RadioButtonList ID="RBL32" runat="server" RepeatDirection="Horizontal">
@@ -397,6 +414,7 @@
                                         <h4><label class="col-sm-3 control-label">
                                         (1) <br />
                                         Tanggal/hari pelaksanaan pelatihan</label></h4>
+                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator18" ControlToValidate="RBL41" runat="server" ErrorMessage="This field is required." ForeColor="Red"></asp:RequiredFieldValidator>
                                         <div class="col-lg-3 col-md-4">
                                             <div class="radio disable">
                                                 <asp:RadioButtonList ID="RBL41" runat="server" RepeatDirection="Horizontal">
@@ -415,6 +433,7 @@
                                         <h4><label class="col-sm-3 control-label">
                                         (2) <br />
                                         Total waktu pelaksanaan pelatihan</label></h4>
+                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator19" ControlToValidate="RBL42" runat="server" ErrorMessage="This field is required." ForeColor="Red"></asp:RequiredFieldValidator>
                                         <div class="col-lg-3 col-md-4">
                                             <div class="radio disable">
                                                 <asp:RadioButtonList ID="RBL42" runat="server" RepeatDirection="Horizontal">
@@ -433,6 +452,7 @@
                                         <h4><label class="col-sm-3 control-label">
                                         (3) <br />
                                         Pengalokasian waktu/susunan acara pelatihan</label></h4>
+                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator20" ControlToValidate="RBL43" runat="server" ErrorMessage="This field is required." ForeColor="Red"></asp:RequiredFieldValidator>
                                         <div class="col-lg-3 col-md-4">
                                             <div class="radio disable">
                                                 <asp:RadioButtonList ID="RBL43" runat="server" RepeatDirection="Horizontal">
@@ -456,6 +476,7 @@
                                         <h4><label class="col-sm-3 control-label">
                                         (1) <br />
                                         Kesesuaian isi program terhadap sasaran pelatihan</label></h4>
+                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator21" ControlToValidate="RBL51" runat="server" ErrorMessage="This field is required." ForeColor="Red"></asp:RequiredFieldValidator>
                                         <div class="col-lg-3 col-md-4">
                                             <div class="radio disable">
                                                 <asp:RadioButtonList ID="RBL51" runat="server" RepeatDirection="Horizontal">
@@ -474,6 +495,7 @@
                                         <h4><label class="col-sm-3 control-label">
                                         (2) <br />
                                         Apakah program pelatihan ini memenuhi harapan?</label></h4>
+                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator22" ControlToValidate="RBL52" runat="server" ErrorMessage="This field is required." ForeColor="Red"></asp:RequiredFieldValidator>
                                         <div class="col-lg-3 col-md-4">
                                             <div class="radio disable">
                                                 <asp:RadioButtonList ID="RBL52" runat="server" RepeatDirection="Horizontal">
@@ -496,6 +518,7 @@
                                     <div class="col-lg-3 col-md-4">
                                         <asp:TextBox id="TextArea1" TextMode="multiline" Columns="100" Rows="5" runat="server" />
                                     </div>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator23" ControlToValidate="TextArea1" runat="server" ErrorMessage="This field is required." ForeColor="Red"></asp:RequiredFieldValidator>
                                 </td>
                             </tr>
                             <tr>
@@ -506,6 +529,7 @@
                                     <div class="col-lg-3 col-md-4">
                                         <asp:TextBox id="TextArea2" TextMode="multiline" Columns="100" Rows="5" runat="server" />
                                     </div>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator24" ControlToValidate="TextArea2" runat="server" ErrorMessage="This field is required." ForeColor="Red"></asp:RequiredFieldValidator>
                                 </td>
                             </tr>
                         </table>

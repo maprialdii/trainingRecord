@@ -95,6 +95,7 @@
                             <div class="col-lg-3 col-md-4">
                                 <asp:TextBox ID="txtTopik" runat="server" class="form-control m-bot15" placeholder="Topik Pelatihan"></asp:TextBox>
                             </div>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator8" ControlToValidate="txtTopik" runat="server" ErrorMessage="This field is required." ForeColor="Red"></asp:RequiredFieldValidator>
                         </div>
 
                         <div class="form-group">
@@ -102,6 +103,7 @@
                             <div class="col-lg-3 col-md-4">
                                 <asp:TextBox ID="txtNama" runat="server" class="form-control m-bot15" placeholder="Nama Peserta Pelatihan" ></asp:TextBox>
                             </div>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" ControlToValidate="txtNama" runat="server" ErrorMessage="This field is required." ForeColor="Red"></asp:RequiredFieldValidator>
                         </div>
 
                         <div class="form-group">
@@ -109,6 +111,7 @@
                             <div class="col-lg-3 col-md-4">
                                 <asp:TextBox ID="txtNamaJabatan" runat="server" class="form-control m-bot15" placeholder="Nama & Jabatan Pengevaluasi Pelatihan" ></asp:TextBox>
                             </div>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator2" ControlToValidate="txtNamaJabatan" runat="server" ErrorMessage="This field is required." ForeColor="Red"></asp:RequiredFieldValidator>
                         </div>
 
                         <div class="form-group">
@@ -116,6 +119,7 @@
                             <div class="col-lg-3 col-md-4">
                                 <asp:TextBox ID="txtTanggal" runat="server" class="form-control m-bot15" placeholder="Tanggal pelaksanaan" ></asp:TextBox>
                             </div>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator3" ControlToValidate="txtTanggal" runat="server" ErrorMessage="This field is required." ForeColor="Red"></asp:RequiredFieldValidator>
                         </div>
 
                         <hr />
@@ -156,7 +160,9 @@
                                             <asp:ListItem Text ="4&nbsp;&nbsp;&nbsp;" Value="4" />
                                             <asp:ListItem Text ="5&nbsp;&nbsp;&nbsp;" Value="5" />
                                         </asp:RadioButtonList>
-                                    </div></td>
+                                    </div>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator4" ControlToValidate="rbSoal1" runat="server" ErrorMessage="This field is required." ForeColor="Red"></asp:RequiredFieldValidator>
+                                </td>
                             </tr>
                             <tr>
                                 <td>2</td>
@@ -170,7 +176,9 @@
                                             <asp:ListItem Text ="4&nbsp;&nbsp;&nbsp;" Value="4" />
                                             <asp:ListItem Text ="5&nbsp;&nbsp;&nbsp;" Value="5" />
                                         </asp:RadioButtonList>
-                                    </div></td>                                
+                                    </div>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator5" ControlToValidate="rbSoal2" runat="server" ErrorMessage="This field is required." ForeColor="Red"></asp:RequiredFieldValidator>
+                                </td>                                
                             </tr>
                             <tr>
                                 <td>3</td>
@@ -184,7 +192,9 @@
                                             <asp:ListItem Text ="4&nbsp;&nbsp;&nbsp;" Value="4" />
                                             <asp:ListItem Text ="5&nbsp;&nbsp;&nbsp;" Value="5" />
                                         </asp:RadioButtonList>
-                                    </div></td>                                
+                                    </div>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator6" ControlToValidate="rbSoal3" runat="server" ErrorMessage="This field is required." ForeColor="Red"></asp:RequiredFieldValidator>
+                                </td>                                
                             </tr>
                             <tr>
                                 <td>4</td>
@@ -200,7 +210,9 @@
                                             <asp:ListItem Text ="4&nbsp;&nbsp;&nbsp;" Value="4" />
                                             <asp:ListItem Text ="5&nbsp;&nbsp;&nbsp;" Value="5" />
                                         </asp:RadioButtonList>
-                                    </div></td>                                
+                                    </div>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator7" ControlToValidate="rbSoal4" runat="server" ErrorMessage="This field is required." ForeColor="Red"></asp:RequiredFieldValidator>
+                                </td>                                
                             </tr>
                         </table>
 

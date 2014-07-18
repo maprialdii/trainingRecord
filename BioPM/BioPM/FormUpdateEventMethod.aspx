@@ -99,6 +99,7 @@
                             <div class="col-lg-3 col-md-4">
                                 <asp:TextBox ID="txtMtdName" runat="server" class="form-control m-bot15" placeholder="METHOD NAME" ></asp:TextBox>
                             </div>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator8" ControlToValidate="txtMtdName" runat="server" ErrorMessage="This field is required." ForeColor="Red"></asp:RequiredFieldValidator>
                         </div>
 
                         <!-- Modal -->
