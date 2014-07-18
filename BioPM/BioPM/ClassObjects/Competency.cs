@@ -74,7 +74,7 @@ namespace BioPM.ClassObjects
             SqlConnection conn = GetConnection();
             string sqlCmd = @"SELECT RK.PRMID, RK.PRMKD, RK.PRMNM
                             FROM bioumum.PARAMETER RK 
-                            WHERE RK.BEGDA <= GETDATE() AND RK.ENDDA >= GETDATE() AND PRMTY='CM' ORDER BY RK.PRMID ASC;";
+                            WHERE RK.BEGDA <= GETDATE() AND RK.ENDDA >= GETDATE() AND PRMKD LIKE 'CP%' ORDER BY RK.PRMID ASC;";
             SqlCommand cmd = GetCommand(conn, sqlCmd);
 
             try
