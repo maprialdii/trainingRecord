@@ -6,9 +6,12 @@
     protected void Page_Load(object sender, EventArgs e)
     {
         if (Session["username"] == null && Session["password"] == null) Response.Redirect("PageLogin.aspx");
-        if (!IsPostBack) SetEmployee();
-        ddlExecution.Visible = false;
-        ddlKodeSurvey.Visible = false;
+        if (!IsPostBack)
+        {
+            SetEmployee();
+            ddlExecution.Visible = false;
+            ddlKodeSurvey.Visible = false;
+        }
     }
 
     protected void SetEmployee()
@@ -18,11 +21,20 @@
         {
             ddlEmployeeName.Items.Add(new ListItem(data[1].ToString(), data[0].ToString()));
         }
+        ddlExecution.Items.Insert(0, new ListItem("Select Employee", "NA"));
     }
 
     protected void btnCancel_Click(object sender, EventArgs e)
     {
         Response.Redirect("PageUserPanel.aspx");
+    }
+
+    protected void btnAdd_Click(object sender, EventArgs e)
+    {
+        if(ddlKodeSurvey.SelectedValue=="1")
+            Response.Redirect("PageEvaluasiReaksiPeserta.aspx?key=" + ddlExecution.SelectedValue + "");
+        else if (ddlKodeSurvey.SelectedValue == "3")
+            Response.Redirect("PageEvaluasiPerilaku.aspx?key=" + ddlExecution.SelectedValue + "");
     }
    
 </script>
@@ -71,7 +83,7 @@
                             <asp:UpdatePanel runat="server" ID="UpdatePanel1" UpdateMode="Conditional">
                                 <ContentTemplate>
                                     <fieldset>
-                                        <legend>Consecutive Dropdown List</legend>
+                                        <legend>Evaluation Responses</legend>
                                         <div class="form-group">
                                             <label class="col-sm-3 control-label" > EMPLOYEE NAME </label>
                                             <div class="col-lg-3 col-md-4">
@@ -92,9 +104,9 @@
                             <label class="col-sm-3 control-label"> SURVEY </label>
                             <div class="col-lg-3 col-md-4">
                                 <asp:DropDownList ID="ddlKodeSurvey" runat="server" class="form-control m-bot15" Visible="False">
-                                    <asp:ListItem Value="1">Survey 1</asp:ListItem>   
-                                    <asp:ListItem Value="2">Survey 2</asp:ListItem>   
-                                    <asp:ListItem Value="3">Survey 3</asp:ListItem>   
+                                    <asp:ListItem value="1">Survey 1</asp:ListItem>   
+                                    <asp:ListItem value="2">Survey 2</asp:ListItem>   
+                                    <asp:ListItem value="3">Survey 3</asp:ListItem>   
                                 </asp:DropDownList> 
                             </div>
                         </div>
@@ -105,7 +117,7 @@
                        <div class="form-group">
                             <label class="col-sm-3 control-label"> </label>
                             <div class="col-lg-3 col-md-3">
-                                <asp:LinkButton data-toggle="modal" class="btn btn-round btn-primary" ID="btnAction" runat="server" Text="View" OnClick="btnAction_Click"/>
+                                <asp:Button class="btn btn-round btn-primary" ID="btnAdd" runat="server" Text="View" OnClick="btnAdd_Click"/>
                                 <asp:Button class="btn btn-round btn-primary" ID="btnCancel" runat="server" Text="Cancel" OnClick="btnCancel_Click"/>
                             </div>
                         </div>

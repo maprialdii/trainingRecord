@@ -120,6 +120,7 @@
     <Content Include="PageEvaluasiPerilaku.aspx" />
     <Content Include="FormEvaluasiPelaksanaan.aspx" />
     <Content Include="FormEvaluasiReaksiPeserta.aspx" />
+    <Content Include="PageEvaluation.aspx" />
     <Content Include="PageEventRequestDetail.aspx" />
     <Content Include="PageSurveyAnswers.aspx" />
     <Content Include="Scripts\bootstrap-reset.css" />
@@ -668,6 +669,13 @@
     </Compile>
     <Compile Include="PageEvaluasiPerilaku.aspx.designer.cs">
       <DependentUpon>PageEvaluasiPerilaku.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageEvaluation.aspx.cs">
+      <DependentUpon>PageEvaluation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageEvaluation.aspx.designer.cs">
+      <DependentUpon>PageEvaluation.aspx</DependentUpon>
     </Compile>
     <Compile Include="PageEventMethod.aspx.cs">
       <DependentUpon>PageEventMethod.aspx</DependentUpon>

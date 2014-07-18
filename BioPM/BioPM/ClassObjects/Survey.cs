@@ -35,6 +35,60 @@ namespace BioPM.ClassObjects
             }
         }
 
+        public static List<object[]> GetSurveys()
+        {
+            SqlConnection conn = GetConnection();
+            string sqlCmd = @"SELECT SR.SURID, SR.SURTL, ST.SRTNM
+                            FROM trrcd.SURVEY SR, trrcd.SURVEY_TYPE ST
+                            WHERE SR.BEGDA <= GETDATE() AND SR.ENDDA >= GETDATE()
+                            AND ST.BEGDA <= GETDATE() AND ST.ENDDA >= GETDATE();";
+            SqlCommand cmd = GetCommand(conn, sqlCmd);
+
+            try
+            {
+                conn.Open();
+                SqlDataReader reader = GetDataReader(cmd);
+                List<object[]> batchs = new List<object[]>();
+                while (reader.Read())
+                {
+                    object[] values = { reader[0].ToString(), reader[1].ToString(), reader[2].ToString() };
+                    batchs.Add(values);
+                }
+                return batchs;
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+
+        public static List<object[]> GetQuestionSurveys(string surid)
+        {
+            SqlConnection conn = GetConnection();
+            string sqlCmd = @"SELECT QS.QSTID, , ST.SRTNM
+                            FROM trrcd.SURVEY SR, trrcd.QUESTION_ANSWER QA,
+                            WHERE SR.BEGDA <= GETDATE() AND SR.ENDDA >= GETDATE()
+                            AND ST.BEGDA <= GETDATE() AND ST.ENDDA >= GETDATE();";
+            SqlCommand cmd = GetCommand(conn, sqlCmd);
+
+            try
+            {
+                conn.Open();
+                SqlDataReader reader = GetDataReader(cmd);
+                List<object[]> batchs = new List<object[]>();
+                while (reader.Read())
+                {
+                    object[] values = { reader[0].ToString(), reader[1].ToString(), reader[2].ToString() };
+                    batchs.Add(values);
+                }
+                return batchs;
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+
         public static void SubmitAnswers(string ANSID, string EXCID, string PRMID, string VALUE, string CHUSR)
         {
             string date = DateTime.Now.ToString("MM/dd/yyyy HH:mm");
