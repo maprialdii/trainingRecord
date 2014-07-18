@@ -105,6 +105,7 @@
                             <table class="table table-striped table-hover table-bordered" id="dynamic-table" >
                                 <thead>
                                 <tr>
+                                    <th>Employee ID</th>
                                     <th>Employee Name</th>
                                     <th>Requested Competency Development Event</th>                                   
                                     <th>Approve</th>
