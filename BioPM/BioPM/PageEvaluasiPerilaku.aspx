@@ -255,7 +255,7 @@
                                         <p>You Are Logged In As <% Response.Write(Session["name"].ToString()); %></p><br />
                                         <p>Are you sure to insert into database?</p>
                                         <asp:TextBox ID="txtConfirmation" runat="server" TextMode="Password" placeholder="Confirmation Password" class="form-control placeholder-no-fix"></asp:TextBox>
-
+                                        <asp:TextBox ID="txtReason" TextMode="multiline" Columns="30" Rows="3" runat="server" placeholder="Reason" class="form-control placeholder-no-fix"></asp:TextBox>
                                     </div>
                                     <div class="modal-footer">
                                         <asp:Button ID="btnClose" runat="server" data-dismiss="modal" class="btn btn-default" Text="Cancel"></asp:Button>
