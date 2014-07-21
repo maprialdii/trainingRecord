@@ -78,7 +78,7 @@
                          </span>
                     </header>
                     <div class="panel-body">
-
+                        <form id="form1" runat="server">
                         <div class="adv-table">
                             <div class="clearfix">
                                 <div class="btn-group">
@@ -130,7 +130,8 @@
                             </div>
                         </div>
                         <!-- modal -->  
-                        </div>
+                        </div>                            
+                        </form>
                     </div>
                     
                 </section>

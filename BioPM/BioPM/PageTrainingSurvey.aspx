@@ -31,9 +31,10 @@
             if (status3 == "Selesai")
                 html3 = "Sudah Selesai";
             else if (status3 == "Belum Diisi")
-                html3 = "<a class='edit' href='FormEvaluasiPerilaku.aspx?key=" + data[0].ToString() + "'>Survey 3</a>";
+                html3 = "Belum Diisi";
 
-            htmlelement += "<tr class=''><td>" + data[1].ToString() + "</td><td>" + data[2].ToString() + "</td><td>" + html1 + "</td><td>" + html2 + "</td><td>" + html3 + "</td></tr>";
+            object[] values = BioPM.ClassObjects.EmployeeCatalog.GetEmployeeByID(Session["username"].ToString());
+            htmlelement += "<tr class=''><td>" + data[1].ToString() + "</td><td>" + values[1].ToString() + "</td><td>" + values[2].ToString() + "</td><td>" + values[3].ToString() + "</td><td>" + data[2].ToString() + "</td><td>" + data[3].ToString() + "</td><td>" + html1 + "</td><td>" + html2 + "</td><td>" + html3 + "</td></tr>";
         }
         
         return htmlelement;
