@@ -14,6 +14,11 @@
         BioPM.ClassObjects.CompetencyCatalog.InsertCompetency(txtCpyID.Text, txtCpyCode.Text, txtCpyName.Text, Session["username"].ToString());
     }
 
+    protected void InsertReasonIntoDatabase()
+    {
+        BioPM.ClassObjects.Reason.InsertReason(txtReason.Text, "Input Competency", Session["username"].ToString());
+    }
+    
     protected void btnAdd_Click(object sender, EventArgs e)
     {
         if (IsPostBack) InsertCompetencyIntoDatabase();
@@ -30,6 +35,7 @@
         if (Session["password"].ToString() == BioPM.ClassEngines.CryptographFactory.Encrypt(txtConfirmation.Text, true))
         {
             InsertCompetencyIntoDatabase();
+            InsertReasonIntoDatabase();
             Response.Redirect("PageCompetencyParameter.aspx");
         }
         else
@@ -119,6 +125,7 @@
                                         <asp:Button ID="btnClose" runat="server" data-dismiss="modal" class="btn btn-default" Text="Cancel"></asp:Button>
                                         <asp:Button ID="btnSubmit" runat="server" class="btn btn-success" Text="Confirm" OnClick="btnSave_Click"></asp:Button>
                                     </div>
+                                 
                                 </div>
                             </div>
                         </div>
@@ -130,8 +137,7 @@
                                 <asp:LinkButton data-toggle="modal" class="btn btn-round btn-primary" ID="btnAction" runat="server" Text="Add" href="#myModal"/>
                                 <asp:Button class="btn btn-round btn-primary" ID="btnCancel" runat="server" Text="Cancel" OnClick="btnCancel_Click"/>
                             </div>
-                        </div>
-                            
+                        </div>                            
                         </form>
                     </div>
                     

@@ -5,39 +5,28 @@
     protected void Page_Load(object sender, EventArgs e)
     {
         if (Session["username"] == null && Session["password"] == null) Response.Redirect("PageLogin.aspx");
+        if (Request.QueryString["key"].ToString() != null)
+        {
+            foreach (object[] data in BioPM.ClassObjects.Survey.GetAnswersBySurvey(Request.QueryString["key"].ToString(), "3"))
+            {
+                BioPM.ClassObjects.Survey.UpdateStatus(data[0].ToString(), "Approved", Session["username"].ToString());
+            }
+        }
     }
+    
 
-    protected String GenerateDataEksekusi()
+    protected String GenerateData()
     {
         string htmlelement = "";
-        string status1, status2, status3 = null;
-        string html1=null, html2=null, html3 = null;
-        foreach (object[] data in BioPM.ClassObjects.ComDevExecution.GetComdevExecutionByUserId(Session["username"].ToString()))
+
+        foreach (object[] data in BioPM.ClassObjects.ComDevExecution.GetComdevExecution())
         {
-
-            status1 = BioPM.ClassObjects.Survey.GetJumlahJawaban(data[0].ToString(), "1");
-            status2 = BioPM.ClassObjects.Survey.GetJumlahJawaban(data[0].ToString(), "2");
-            status3 = BioPM.ClassObjects.Survey.GetJumlahJawaban(data[0].ToString(), "3");
-            if (status1 == "Selesai")
-                html1 = "Sudah Selesai";
-            else if (status1 == "Belum Diisi")
-                html1 = "<a class='edit' href='FormEvaluasiReaksiPeserta.aspx?key=" + data[0].ToString() + "'>Survey 1</a>";
-
-            if (status2 == "Selesai")
-                html2 = "Sudah Selesai";
-            else if (status2 == "Belum Diisi")
-                html2 = "<a class='edit' href='#.aspx?key=" + data[0].ToString() + "'>Survey 2</a>";
-
-            if (status3 == "Selesai")
-                html3 = "Sudah Selesai";
-            else if (status3 == "Belum Diisi")
-                html3 = "<a class='edit' href='FormEvaluasiPerilaku.aspx?key=" + data[0].ToString() + "'>Survey 3</a>";
-
-            htmlelement += "<tr class=''><td>" + data[1].ToString() + "</td><td>" + data[2].ToString() + "</td><td>" + html1 + "</td><td>" + html2 + "</td><td>" + html3 + "</td></tr>";
+            htmlelement += "<tr class=''><td>" + data[1].ToString() + "</td><td>" + data[2].ToString() + "</td><td>" + data[3].ToString() + "</td><td>" + data[4].ToString() + "</td><td><a class='edit' href='PageEvaluasiPerilaku.aspx?key=" + data[0].ToString() + "'>Response</a></td><td><a class='edit' href='FormApprove.aspx?key=" + data[0].ToString() + "'>Approve</a></td><td><a class='edit' href='PageInformation.aspx?key=" + data[0].ToString() + "&type=000'>Reject</a></td></tr>";
         }
-        
+
         return htmlelement;
     }
+    
 </script>
 
 <html lang="en">
@@ -101,10 +90,11 @@
                                     <th>Batch</th>
                                     <th>Evaluasi 3</th>
                                     <th>Approve</th>
+                                    <th>Reject</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <% Response.Write(GenerateDataEksekusi()); %>
+                                <% Response.Write(GenerateData()); %>
                                 </tbody>
                             </table>
                         </div>

@@ -6,13 +6,11 @@
     {
         if (Session["username"] == null && Session["password"] == null) Response.Redirect("PageLogin.aspx");
     }
-    //protected void sessionCreator()
-    //{
-    //    Session["username"] = "K495";
-    //    Session["name"] = "ALLAN PRAKOSA";
-    //    Session["password"] = "admin1234";
-    //    Session["role"] = "111111";
-    //}
+    
+    protected void InsertReasonIntoDatabase()
+    {
+        BioPM.ClassObjects.Reason.InsertReason(txtReason.Text, "Input Method", Session["username"].ToString());
+    }
     
     protected void InsertMethodIntoDatabase()
     {
@@ -36,6 +34,7 @@
         if (Session["password"].ToString() == BioPM.ClassEngines.CryptographFactory.Encrypt(txtConfirmation.Text, true))
         {
             InsertMethodIntoDatabase();
+            InsertReasonIntoDatabase();
             Response.Redirect("PageEventMethod.aspx");
         }
         else

@@ -2,29 +2,30 @@
 
 <!DOCTYPE html>
 <script runat="server">
+    string evtId;
     protected void Page_Load(object sender, EventArgs e)
     {
         if (Session["username"] == null && Session["password"] == null) Response.Redirect("PageLogin.aspx");
         if (!IsPostBack)
         {
-            GetDataEvent();
+            SetDataToForm();
             txtExcid.Text = (BioPM.ClassObjects.ComDevExecution.GetComDevExecutionMaxID() + 1).ToString();    
         }
     }
     
    
-    protected void GetDataEvent()
+    protected void SetDataToForm()
     {
-        ddlEventMethod.Items.Clear();
-        foreach(object[] data in BioPM.ClassObjects.ComDevEvent.GetAllComdevEvent())
-        {
-            ddlEventMethod.Items.Add(new ListItem(data[1].ToString(), data[0].ToString()));
-        }
+        object[] data = BioPM.ClassObjects.ComDevPlan.GetComdevPlanById(Request.QueryString["key"].ToString());
+        txtCost.Text = data[3].ToString();
+        txtEmployeeName.Text = data[6].ToString();
+        txtEventName.Text = data[8].ToString();
+        evtId = data[0].ToString();
     }
     
     protected void InsertDataIntoDatabase()
     {
-        BioPM.ClassObjects.ComDevExecution.InsertComDevExecution(txtExcid.Text, Session["username"].ToString(), ddlEventMethod.SelectedValue, txtEventTitle.Text, txtBatch.Text, txtPembicara.Text, txtCost.Text, txtInsti.Text, txtAdrin.Text, TxtCitin.Text, txtCouin.Text, " ", "0", Session["username"].ToString(), txtBegda.Text, txtEndda.Text);
+        BioPM.ClassObjects.ComDevExecution.InsertComDevExecution(txtExcid.Text, Session["username"].ToString(), evtId, txtEventTitle.Text, txtBatch.Text, txtPembicara.Text, txtCost.Text, txtInsti.Text, txtAdrin.Text, TxtCitin.Text, txtCouin.Text, " ", "0", Session["username"].ToString(), txtBegda.Text, txtEndda.Text);
     }
 
     protected void btnAdd_Click(object sender, EventArgs e)
@@ -87,12 +88,18 @@
                                 <asp:TextBox ID="txtExcid" runat="server" class="form-control m-bot15" placeholder="EXECUTION ID" ></asp:TextBox>
                             </div>
                         </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label"> EMPLOYEE NAME </label>
+                            <div class="col-lg-3 col-md-4">
+                                <asp:TextBox ID="txtEmployeeName" runat="server" class="form-control m-bot15" ReadOnly="true"></asp:TextBox>
+                            </div>
+                        </div>
                          
                         <div class="form-group">
                             <label class="col-sm-3 control-label"> EVENT NAME </label>
                             <div class="col-lg-3 col-md-4">
-                                <asp:DropDownList ID="ddlEventMethod" runat="server" class="form-control m-bot15">   
-                                </asp:DropDownList> 
+                                <asp:TextBox ID="txtEventName" runat="server" class="form-control m-bot15" ReadOnly="true"></asp:TextBox> 
                             </div>
                         </div>
 

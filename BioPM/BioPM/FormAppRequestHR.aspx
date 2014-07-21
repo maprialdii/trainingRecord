@@ -10,39 +10,15 @@
     protected String GenerateRequestedPlan()
     {
         string htmlelement = "";
-
-        foreach (object[] data in BioPM.ClassObjects.ComDevPlan.GetComdevPlanByStatus("Belum Disetujui") )
+        object[] values = null;
+        foreach (object[] data in BioPM.ClassObjects.ComDevPlan.GetComdevPlanByStatus("Confirmed") )
         {
-            htmlelement += "<tr class=''><td>" + data[5].ToString() + "</td><td>" + data[1].ToString() + "</td><td><a class='edit' href='FormConfirmRequest.aspx?key=" + data[0].ToString() + "'>Confirm</a></td></tr>";
+            values = BioPM.ClassObjects.EmployeeCatalog.GetEmployeeByID(data[8].ToString());
+            htmlelement += "<tr class=''><td>" + data[7].ToString() + "</td><td>" + data[5].ToString() + "</td>><td>" + data[1].ToString() + "</td>><td>" + data[3].ToString() + "</td>><td>" + values[1].ToString() + "</td>><td>" + values[2].ToString() + "</td><td><a class='edit' href='FormApprove.aspx?key=" + data[0].ToString() + "'>Approve</a></td><td><a class='edit' href='PageInformation.aspx?key=" + data[0].ToString() + "&type=000'>Reject</a></td></tr>";
         }
         
         return htmlelement;
     }
-
-    protected String GenerateApprovedPlan()
-    {
-        string htmlelement = "";
-
-        foreach (object[] data in BioPM.ClassObjects.ComDevPlan.GetComdevPlanByStatus("Disetujui"))
-        {
-            htmlelement += "<tr class=''><td>" + data[5].ToString() + "</td><td>" + data[1].ToString() + "</td><td><a class='edit' href='#.aspx?key=" + data[0].ToString() + "'>Edit</a></td><td><a class='delete' href='#.aspx?key=" + data[0].ToString() + "&type=000'>Delete</a></td></tr>";
-        }
-
-        return htmlelement;
-    }
-
-    protected String GenerateRejectedPlan()
-    {
-        string htmlelement = "";
-
-        foreach (object[] data in BioPM.ClassObjects.ComDevPlan.GetComdevPlanByStatus("Tidak Disetujui"))
-        {
-            htmlelement += "<tr class=''><td>" + data[5].ToString() + "</td><td>" + data[1].ToString() + "</td><td><a class='edit' href='#.aspx?key=" + data[0].ToString() + "'>Edit</a></td><td><a class='delete' href='#.aspx?key=" + data[0].ToString() + "&type=000'>Delete</a></td></tr>";
-        }
-
-        return htmlelement;
-    }
-   
 </script>
 
 <html lang="en">
@@ -107,9 +83,12 @@
                                 <tr>
                                     <th>Employee ID</th>
                                     <th>Employee Name</th>
-                                    <th>Requested Competency Development Event</th>                                   
+                                    <th>Competency Development Event</th>
+                                    <th>Event Cost</th>
+                                    <th>Position</th>
+                                    <th>Unit</th>                                     
                                     <th>Approve</th>
-                                    
+                                    <th>Reject</th>                                    
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -117,35 +96,6 @@
                                 </tbody>
                             </table>
                             </div>
-                        </div>
-
-                            Approved Request
-                            <table class="table table-striped table-hover table-bordered" id="Table2" >
-                                <thead>
-                                <tr>
-                                    <th>Employee Name</th>
-                                    <th>Competency Development Event</th>                                   
-                                    <th>Edit</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <% Response.Write(GenerateApprovedPlan()); %>
-                                </tbody>
-                            </table>
-
-                            Rejected Request
-                            <table class="table table-striped table-hover table-bordered" id="Table3" >
-                                <thead>
-                                <tr>
-                                    <th>Employee Name</th>
-                                    <th>Competency Development Event</th>                                   
-                                    <th>Edit</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <% Response.Write(GenerateRejectedPlan()); %>
-                                </tbody>
-                            </table>
                         </div>
                     </div>
                     

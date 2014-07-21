@@ -19,11 +19,17 @@
         return htmlelement;
     }
 
+    protected void InsertReasonIntoDatabase()
+    {
+        BioPM.ClassObjects.Reason.InsertReason(txtReason.Text, "Delete Event", Session["username"].ToString());
+    }
+
     protected void btnDel_Click(object sender, EventArgs e)
     {
         if (Session["password"].ToString() == BioPM.ClassEngines.CryptographFactory.Encrypt(txtConfirmation.Text, true))
         {
-            Response.Redirect("PageInformation.aspx?key=" + trgId + "&type=24");
+            InsertReasonIntoDatabase();
+            Response.Redirect("PageInformation.aspx?key=24");
         }
         else
         {
@@ -60,7 +66,7 @@
     <section id="main-content">
         <section class="wrapper">
         <!-- page start-->
-
+        <form id="form1" runat="server">
         <div class="row">
             <div class="col-sm-12">
                 <section class="panel">
@@ -132,7 +138,7 @@
                 </section>
             </div>
         </div>
-
+        </form>
         <!-- page end-->
         </section>
     </section>

@@ -23,8 +23,9 @@
    
     protected void InsertDataIntoDatabase()
     {
+        string month = BioPM.ClassEngines.DateFormatFactory.GetMonth(txtMonth.Text);
         BioPM.ClassObjects.ComDevPlan.UpdateComDevPlan(RECID, EMPID, EVTID, txtMonth.Text, txtCost.Text, txtDuration.Text, Session["username"].ToString());
-        BioPM.ClassObjects.ComDevPlan.UpdateComDevPlanStatus(RECID, "Disetujui", Session["username"].ToString(), Session["username"].ToString());
+        BioPM.ClassObjects.ComDevPlan.UpdateComDevPlanStatus(RECID, "Confirmed", Session["username"].ToString(), Session["username"].ToString());
     }
 
     protected void btnAdd_Click(object sender, EventArgs e)
@@ -112,8 +113,8 @@
                         <div class="form-group">
                             <label class="col-sm-3 control-label"> EVENT MONTH </label>
                             <div class="col-lg-3 col-md-4">
-                                <asp:TextBox ID="txtMonth" runat="server" class="form-control m-bot15">   
-                                </asp:TextBox> 
+                                <asp:TextBox ID="txtMonth" value="" size="16" class="form-control form-control-inline input-medium default-date-picker" runat="server"></asp:TextBox>
+                                <span class="help-block">Begin Date Format : month-day-year e.g. 01-31-2014</span>
                             <a href="PageJadwal.aspx" target="_blank"> LIHAT JADWAL </a>   
                             </div>
                         </div>

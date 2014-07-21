@@ -9,6 +9,11 @@
             SetDataToPage();
     }
 
+    protected void InsertReasonIntoDatabase()
+    {
+        BioPM.ClassObjects.Reason.InsertReason(txtReason.Text, "Submit Evaluasi 1", Session["username"].ToString());
+    }
+
     protected void SetDataToPage()
     {
         string excid = Request.QueryString["key"].ToString();
@@ -54,15 +59,15 @@
 
     protected void btnSave_Click(object sender, EventArgs e)
     {
-        //if (Session["password"].ToString() == BioPM.ClassEngines.CryptographFactory.Encrypt(txtConfirmation.Text, true))
-        //{
-        //    InsertCompetencyIntoDatabase();
-        //    Response.Redirect("PageCompetencyParameter.aspx");
-        //}
-        //else
-        //{
-        //    ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('" + "YOUR PASSWORD IS INCORRECT" + "');", true);
-        //}
+        if (Session["password"].ToString() == BioPM.ClassEngines.CryptographFactory.Encrypt(txtConfirmation.Text, true))
+        {
+            InsertReasonIntoDatabase();
+            Response.Redirect("PageCompetencyParameter.aspx");
+        }
+        else
+        {
+            ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('" + "YOUR PASSWORD IS INCORRECT" + "');", true);
+        }
     }
 </script>
 

@@ -7,6 +7,11 @@
         if (Session["username"] == null && Session["password"] == null) Response.Redirect("PageLogin.aspx");
     }
 
+    protected void InsertReasonIntoDatabase()
+    {
+        BioPM.ClassObjects.Reason.InsertReason(txtReason.Text, "Delete Training", Session["username"].ToString());
+    }
+
     protected String GenerateDataEksekusi()
     {
         string htmlelement = "";
@@ -23,7 +28,8 @@
     {
         if (Session["password"].ToString() == BioPM.ClassEngines.CryptographFactory.Encrypt(txtConfirmation.Text, true))
         {
-            Response.Redirect("PageInformation.aspx?key=" + trgId + "&type=26");
+            InsertReasonIntoDatabase();
+            Response.Redirect("PageInformation.aspx?type=26");
         }
         else
         {
@@ -72,7 +78,7 @@
                          </span>
                     </header>
                     <div class="panel-body">
-
+                        <form id="form1" runat="server">
                         <div class="adv-table">
                             <div class="clearfix">
                                 <div class="btn-group">
@@ -132,7 +138,8 @@
                             </div>
                         </div>
                         <!-- modal -->  
-                        </div>
+                        </div>                            
+                        </form>
                     </div>
                     
                 </section>

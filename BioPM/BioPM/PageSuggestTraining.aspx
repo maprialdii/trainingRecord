@@ -7,6 +7,11 @@
         if (Session["username"] == null && Session["password"] == null) Response.Redirect("PageLogin.aspx");
     }
 
+    protected void InsertReasonIntoDatabase()
+    {
+        //BioPM.ClassObjects.Reason.InsertReason(txtReason.Text, "Delete Suggest Training", Session["username"].ToString());
+    }
+
     protected String GenerateSuggestedPlan()
     {
         string htmlelement = "";
@@ -23,7 +28,8 @@
     {
         if (Session["password"].ToString() == BioPM.ClassEngines.CryptographFactory.Encrypt(txtConfirmation.Text, true))
         {
-            Response.Redirect("PageInformation.aspx?key=" + trgId + "&type=27");
+            InsertReasonIntoDatabase();
+            Response.Redirect("PageInformation.aspx?type=27");
         }
         else
         {

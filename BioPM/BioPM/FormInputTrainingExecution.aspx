@@ -7,18 +7,22 @@
         if (Session["username"] == null && Session["password"] == null) Response.Redirect("PageLogin.aspx");
         if (!IsPostBack)
         {
-            GetDataEvent();
+            GetDataEventAndEmployee();
             txtExcid.Text = (BioPM.ClassObjects.ComDevExecution.GetComDevExecutionMaxID() + 1).ToString();    
         }
-    }
-    
+    }    
    
-    protected void GetDataEvent()
+    protected void GetDataEventAndEmployee()
     {
         ddlEventMethod.Items.Clear();
         foreach(object[] data in BioPM.ClassObjects.ComDevEvent.GetAllComdevEvent())
         {
             ddlEventMethod.Items.Add(new ListItem(data[1].ToString(), data[0].ToString()));
+        }
+        ddlEmployeeName.Items.Clear();
+        foreach (object[] data in BioPM.ClassObjects.EmployeeCatalog.GetAllEmployee())
+        {
+            ddlEmployeeName.Items.Add(new ListItem(data[1].ToString(), data[0].ToString()));
         }
     }
     
@@ -85,6 +89,14 @@
                             <label class="col-sm-3 control-label"> EXECUTION ID </label>
                             <div class="col-lg-3 col-md-4">
                                 <asp:TextBox ID="txtExcid" runat="server" class="form-control m-bot15" placeholder="EXECUTION ID" ></asp:TextBox>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label"> EMPLOYEE NAME </label>
+                            <div class="col-lg-3 col-md-4">
+                                <asp:DropDownList ID="ddlEmployeeName" runat="server" class="form-control m-bot15">   
+                                </asp:DropDownList> 
                             </div>
                         </div>
                          

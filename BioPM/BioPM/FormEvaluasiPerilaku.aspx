@@ -38,19 +38,19 @@
         if (R34.Checked)
             answerNumThree = 4;
         ANSID = BioPM.ClassObjects.Survey.GetAnswersMaxID() + 1;   
-        BioPM.ClassObjects.Survey.SubmitAnswers(ANSID.ToString(), Request.QueryString["key"].ToString(), "1", answerNumOne.ToString(), Session["username"].ToString());
+        BioPM.ClassObjects.Survey.SubmitAnswers(ANSID.ToString(), Request.QueryString["key"].ToString(), "1", answerNumOne.ToString(), "Waiting for Approval", Session["username"].ToString());
         ANSID = BioPM.ClassObjects.Survey.GetAnswersMaxID() + 1;
-        BioPM.ClassObjects.Survey.SubmitAnswers(ANSID.ToString(), Request.QueryString["key"].ToString(), "2", TextArea1.Text, Session["username"].ToString());
+        BioPM.ClassObjects.Survey.SubmitAnswers(ANSID.ToString(), Request.QueryString["key"].ToString(), "2", TextArea1.Text, "Waiting for Approval", Session["username"].ToString());
         ANSID = BioPM.ClassObjects.Survey.GetAnswersMaxID() + 1;
-        BioPM.ClassObjects.Survey.SubmitAnswers(ANSID.ToString(), Request.QueryString["key"].ToString(), "3", answerNumTwo.ToString(), Session["username"].ToString());
+        BioPM.ClassObjects.Survey.SubmitAnswers(ANSID.ToString(), Request.QueryString["key"].ToString(), "3", answerNumTwo.ToString(), "Waiting for Approval", Session["username"].ToString());
         ANSID = BioPM.ClassObjects.Survey.GetAnswersMaxID() + 1;
-        BioPM.ClassObjects.Survey.SubmitAnswers(ANSID.ToString(), Request.QueryString["key"].ToString(), "4", TextArea2.Text, Session["username"].ToString());
+        BioPM.ClassObjects.Survey.SubmitAnswers(ANSID.ToString(), Request.QueryString["key"].ToString(), "4", TextArea2.Text, "Waiting for Approval",  Session["username"].ToString());
         ANSID = BioPM.ClassObjects.Survey.GetAnswersMaxID() + 1;
-        BioPM.ClassObjects.Survey.SubmitAnswers(ANSID.ToString(), Request.QueryString["key"].ToString(), "5", answerNumThree.ToString(), Session["username"].ToString());
+        BioPM.ClassObjects.Survey.SubmitAnswers(ANSID.ToString(), Request.QueryString["key"].ToString(), "5", answerNumThree.ToString(), "Waiting for Approval",  Session["username"].ToString());
         ANSID = BioPM.ClassObjects.Survey.GetAnswersMaxID() + 1;
-        BioPM.ClassObjects.Survey.SubmitAnswers(ANSID.ToString(), Request.QueryString["key"].ToString(), "6", TextArea3.Text, Session["username"].ToString());
+        BioPM.ClassObjects.Survey.SubmitAnswers(ANSID.ToString(), Request.QueryString["key"].ToString(), "6", TextArea3.Text, "Waiting for Approval",  Session["username"].ToString());
         ANSID = BioPM.ClassObjects.Survey.GetAnswersMaxID() + 1;
-        BioPM.ClassObjects.Survey.SubmitAnswers(ANSID.ToString(), Request.QueryString["key"].ToString(), "7", TextArea4.Text, Session["username"].ToString());
+        BioPM.ClassObjects.Survey.SubmitAnswers(ANSID.ToString(), Request.QueryString["key"].ToString(), "7", TextArea4.Text, "Waiting for Approval",  Session["username"].ToString());
     }
 
     protected void btnAdd_Click(object sender, EventArgs e)

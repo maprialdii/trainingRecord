@@ -141,6 +141,32 @@ namespace BioPM.ClassObjects
             }
         }
 
+        public static object[] GetEmployeeByID(string pernr)
+        {
+            SqlConnection conn = GetConnection();
+            string sqlCmd = @"SELECT US.PERNR, US.CNAME, US.PRPOS, US.PRORG
+                            FROM bioumum.USER_DATA US 
+                            WHERE US.PERNR='"+ pernr +"' ORDER BY US.PERNR;";
+            SqlCommand cmd = GetCommand(conn, sqlCmd);
+
+            try
+            {
+                conn.Open();
+                SqlDataReader reader = GetDataReader(cmd);
+                object[] data = null;
+                while (reader.Read())
+                {
+                    object[] values = { reader[0].ToString(), reader[1].ToString(), reader[2].ToString(), reader[3].ToString() };
+                    data = values;
+                }
+                return data;
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+
         public static List<object[]> GetEmployeeByPosition(string posid)
         {
             SqlConnection conn = GetConnection();

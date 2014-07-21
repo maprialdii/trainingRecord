@@ -23,7 +23,7 @@
     {
         if (Session["password"].ToString() == BioPM.ClassEngines.CryptographFactory.Encrypt(txtConfirmation.Text, true))
         {
-            Response.Redirect("PageInformation.aspx?key=" + trgId + "&type=25");
+            Response.Redirect("PageInformation.aspx?type=25");
         }
         else
         {
@@ -72,7 +72,7 @@
                          </span>
                     </header>
                     <div class="panel-body">
-
+                        <form id="form1" runat="server">
                         <div class="adv-table">
                             <div class="clearfix">
                                 <div class="btn-group">
@@ -127,9 +127,9 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- modal -->  
-                    </div>
-                    
+                        <!-- modal -->
+                        </form>
+                     </div>
                 </section>
             </div>
         </div>

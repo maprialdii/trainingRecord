@@ -12,6 +12,11 @@
         }
     }
 
+    protected void InsertReasonIntoDatabase()
+    {
+        BioPM.ClassObjects.Reason.InsertReason(txtReason.Text, "Update Event", Session["username"].ToString());
+    }
+
     protected void SetDataToForm()
     {
         object[] values = BioPM.ClassObjects.ComDevEvent.GetComdevEventById(Request.QueryString["key"].ToString());
@@ -52,6 +57,7 @@
         if (Session["password"].ToString() == BioPM.ClassEngines.CryptographFactory.Encrypt(txtConfirmation.Text, true))
         {
             UpdateEventIntoDatabase();
+            InsertReasonIntoDatabase();
             Response.Redirect("PageCompetencyDevelopmentEvent.aspx");
         }
         else
