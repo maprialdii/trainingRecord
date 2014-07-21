@@ -8,6 +8,11 @@
         if(!IsPostBack) SetDataToForm()
     }
 
+    protected void InsertReasonIntoDatabase()
+    {
+        BioPM.ClassObjects.Reason.InsertReason(txtReason.Text, "Update Method", Session["username"].ToString());
+    }
+
     protected void SetDataToForm()
     {
         object[] values = BioPM.ClassObjects.EventMethod.GetEventMethodById(Request.QueryString["key"].ToString());
@@ -36,6 +41,7 @@
         if (Session["password"].ToString() == BioPM.ClassEngines.CryptographFactory.Encrypt(txtConfirmation.Text, true))
         {
             UpdateMethodInDatabase();
+            InsertReasonIntoDatabase();
             Response.Redirect("PageEventMethod.aspx");
         }
         else

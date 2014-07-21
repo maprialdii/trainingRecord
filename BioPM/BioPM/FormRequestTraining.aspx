@@ -10,6 +10,11 @@
             GetDataEvent();
         }
     }
+
+    protected void InsertReasonIntoDatabase()
+    {
+        BioPM.ClassObjects.Reason.InsertReason(txtReason.Text, "Request Training", Session["username"].ToString());
+    }
     
     protected void GetDataEvent()
     {
@@ -56,6 +61,7 @@
         if (Session["password"].ToString() == BioPM.ClassEngines.CryptographFactory.Encrypt(txtConfirmation.Text, true))
         {
             InsertDataIntoDatabase();
+            InsertReasonIntoDatabase();
             Response.Redirect("PageRequestTraining.aspx");
         }
         else

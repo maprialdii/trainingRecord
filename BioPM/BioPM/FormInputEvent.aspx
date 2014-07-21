@@ -9,6 +9,11 @@
         if (!IsPostBack) SetExistingMethod();
     }
 
+    protected void InsertReasonIntoDatabase()
+    {
+        BioPM.ClassObjects.Reason.InsertReason(txtReason.Text, "Input Event", Session["username"].ToString());
+    }
+
     protected void SetExistingMethod()
     {
         ddlEventMethod.Items.Clear();
@@ -40,6 +45,7 @@
         if (Session["password"].ToString() == BioPM.ClassEngines.CryptographFactory.Encrypt(txtConfirmation.Text, true))
         {
             InsertEventIntoDatabase();
+            InsertReasonIntoDatabase();
             Response.Redirect("FormInputTargetTraining.aspx?key=" + EVTID + "");
         }
         else

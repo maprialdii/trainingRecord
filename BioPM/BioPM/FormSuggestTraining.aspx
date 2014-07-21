@@ -29,11 +29,17 @@
             ddlEmployeeName.Items.Add(new ListItem(data[1].ToString(), data[0].ToString()));
         }
     }
+
+    protected void InsertReasonIntoDatabase()
+    {
+        BioPM.ClassObjects.Reason.InsertReason(txtReason.Text, "Suggest Training", Session["username"].ToString());
+    }
     
     protected void InsertDataIntoDatabase()
     {
         string RECID = (BioPM.ClassObjects.ComDevPlan.GetComDevPlanMaxID() + 1).ToString();
-        BioPM.ClassObjects.ComDevPlan.InsertComDevPlan(RECID, ddlEmployeeName.SelectedValue, ddlEventName.SelectedValue, txtMonth.Text, txtCost.Text, txtDuration.Text, Session["username"].ToString());
+        string month = BioPM.ClassEngines.DateFormatFactory.GetMonth(txtMonth.Text);
+        BioPM.ClassObjects.ComDevPlan.InsertComDevPlan(RECID, ddlEmployeeName.SelectedValue, ddlEventName.SelectedValue, month, txtCost.Text, txtDuration.Text, Session["username"].ToString());
         BioPM.ClassObjects.ComDevPlan.InsertComDevPlanStatus(RECID, "Diusulkan", " ", Session["username"].ToString());
     }
 
@@ -66,6 +72,7 @@
         if (Session["password"].ToString() == BioPM.ClassEngines.CryptographFactory.Encrypt(txtConfirmation.Text, true))
         {
             InsertDataIntoDatabase();
+            InsertReasonIntoDatabase();
             Response.Redirect("PageSuggestTraining.aspx");
         }
         else
@@ -135,8 +142,8 @@
                         <div class="form-group">
                             <label class="col-sm-3 control-label"> EVENT MONTH </label>
                             <div class="col-lg-3 col-md-4">
-                                <asp:TextBox ID="txtMonth" runat="server" class="form-control m-bot15">   
-                                </asp:TextBox> 
+                                <asp:TextBox ID="txtMonth" value="" size="16" class="form-control form-control-inline input-medium default-date-picker" runat="server"></asp:TextBox>
+                                <span class="help-block">Begin Date Format : month-day-year e.g. 01-31-2014</span> 
                             </div>
                         </div>
 

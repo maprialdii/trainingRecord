@@ -9,8 +9,12 @@
         {
             SetDataToForm();
         }
-    }  
-   
+    }
+
+    protected void InsertReasonIntoDatabase()
+    {
+        BioPM.ClassObjects.Reason.InsertReason(txtReason.Text, "Update Competency", Session["username"].ToString());
+    }   
     
     protected void SetDataToForm()
     {
@@ -41,6 +45,7 @@
         if (Session["password"].ToString() == BioPM.ClassEngines.CryptographFactory.Encrypt(txtConfirmation.Text, true))
         {
             UpdateCompetencyOnDatabase();
+            InsertReasonIntoDatabase();
             Response.Redirect("PageCompetencyParameter.aspx");
         }
         else

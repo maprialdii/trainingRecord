@@ -12,6 +12,11 @@
         }
     }
 
+    protected void InsertReasonIntoDatabase()
+    {
+        BioPM.ClassObjects.Reason.InsertReason(txtReason.Text, "Update Position Requirement", Session["username"].ToString());
+    }
+
     protected void SetDataToForm()
     {
         object[] values = BioPM.ClassObjects.Jabatan.GetKualifikasiJabatanById(Request.QueryString["key"].ToString());
@@ -57,6 +62,7 @@
         if (Session["password"].ToString() == BioPM.ClassEngines.CryptographFactory.Encrypt(txtConfirmation.Text, true))
         {
             UpdatePositionReqIntoDatabase();
+            InsertReasonIntoDatabase();
             Response.Redirect("PagePositionRequirements.aspx?key=" + ddlJabatan.SelectedValue + "");
         }
         else

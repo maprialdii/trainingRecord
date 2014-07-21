@@ -23,6 +23,11 @@
         }
     }
 
+    protected void InsertReasonIntoDatabase()
+    {
+        BioPM.ClassObjects.Reason.InsertReason(txtReason.Text, "Input Target Training", Session["username"].ToString());
+    }
+
     protected void InsertTargetIntoDatabase()
     {
         string TRGID = (BioPM.ClassObjects.ComDevEvent.GetComDevEventTargetMaxID() + 1).ToString();
@@ -61,7 +66,7 @@
     {
         if (Session["password"].ToString() == BioPM.ClassEngines.CryptographFactory.Encrypt(txtConfirmation.Text, true))
         {
-            Response.Redirect("PageInformation.aspx?key=" + trgId + "&type=23");
+            Response.Redirect("PageInformation.aspx?type=23");
         }
         else
         {

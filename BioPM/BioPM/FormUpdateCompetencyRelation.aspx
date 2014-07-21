@@ -11,12 +11,10 @@
             SetDataToForm();
         }
     }
-    protected void sessionCreator()
+    
+    protected void InsertReasonIntoDatabase()
     {
-        Session["username"] = "K495";
-        Session["name"] = "ALLAN PRAKOSA";
-        Session["password"] = "admin1234";
-        Session["role"] = "111111";
+        BioPM.ClassObjects.Reason.InsertReason(txtReason.Text, "Update Competency Relation", Session["username"].ToString());
     }
     
     protected void SetDataToForm()
@@ -59,6 +57,7 @@
         if (Session["password"].ToString() == BioPM.ClassEngines.CryptographFactory.Encrypt(txtConfirmation.Text, true))
         {
             UpdateCompetencyRelationIntoDatabase();
+            InsertReasonIntoDatabase();
             Response.Redirect("PageCompetencyRelation.aspx");
         }
         else

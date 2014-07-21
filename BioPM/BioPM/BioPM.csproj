@@ -178,7 +178,6 @@
     <Content Include="PageEmployeeQualification.aspx" />
     <Content Include="PageEventMethod.aspx" />
     <Content Include="PageEventTargetDetail.aspx" />
-    <Content Include="PageExecutionPlanning.aspx" />
     <Content Include="PageInstitutionDetail.aspx" />
     <Content Include="PageJabatan.aspx" />
     <Content Include="PageJadwal.aspx" />
@@ -261,7 +260,6 @@
     <Content Include="PageSurvey.aspx" />
     <Content Include="PageTargetTraining.aspx" />
     <Content Include="PageTrainingExecution.aspx" />
-    <Content Include="PageTrainingHours.aspx" />
     <Content Include="PageTrainingReport.aspx" />
     <Content Include="PageTrainingSurvey.aspx" />
     <Content Include="PageUserActiveAccount.aspx" />
@@ -714,13 +712,6 @@
     <Compile Include="PageEventTargetDetail.aspx.designer.cs">
       <DependentUpon>PageEventTargetDetail.aspx</DependentUpon>
     </Compile>
-    <Compile Include="PageExecutionPlanning.aspx.cs">
-      <DependentUpon>PageExecutionPlanning.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="PageExecutionPlanning.aspx.designer.cs">
-      <DependentUpon>PageExecutionPlanning.aspx</DependentUpon>
-    </Compile>
     <Compile Include="PageInstitutionDetail.aspx.cs">
       <DependentUpon>PageInstitutionDetail.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -893,13 +884,6 @@
     </Compile>
     <Compile Include="PageTrainingExecution.aspx.designer.cs">
       <DependentUpon>PageTrainingExecution.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="PageTrainingHours.aspx.cs">
-      <DependentUpon>PageTrainingHours.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="PageTrainingHours.aspx.designer.cs">
-      <DependentUpon>PageTrainingHours.aspx</DependentUpon>
     </Compile>
     <Compile Include="PageTrainingReport.aspx.cs">
       <DependentUpon>PageTrainingReport.aspx</DependentUpon>

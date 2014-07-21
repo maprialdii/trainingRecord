@@ -7,12 +7,10 @@
         if (Session["username"] == null && Session["password"] == null) Response.Redirect("PageLogin.aspx");
         if (!IsPostBack) SetExistingCompetencyRelation();
     }
-    protected void sessionCreator()
+    
+    protected void InsertReasonIntoDatabase()
     {
-        Session["username"] = "K495";
-        Session["name"] = "ALLAN PRAKOSA";
-        Session["password"] = "admin1234";
-        Session["role"] = "111111";
+        BioPM.ClassObjects.Reason.InsertReason(txtReason.Text, "Input Competency Relation", Session["username"].ToString());
     }
 
     protected void SetExistingCompetencyRelation()
@@ -48,6 +46,7 @@
         if (Session["password"].ToString() == BioPM.ClassEngines.CryptographFactory.Encrypt(txtConfirmation.Text, true))
         {
             InsertRelationIntoDatabase();
+            InsertReasonIntoDatabase();
             Response.Redirect("PageCompetencyRelation.aspx");
         }
         else

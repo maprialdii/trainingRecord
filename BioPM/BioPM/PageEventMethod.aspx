@@ -7,6 +7,11 @@
         if (Session["username"] == null && Session["password"] == null) Response.Redirect("PageLogin.aspx");
     }
 
+    protected void InsertReasonIntoDatabase()
+    {
+        BioPM.ClassObjects.Reason.InsertReason(txtReason.Text, "Delete Method", Session["username"].ToString());
+    }
+
     protected String GenerateDataMethod()
     {
         string htmlelement = "";
@@ -23,7 +28,8 @@
     {
         if (Session["password"].ToString() == BioPM.ClassEngines.CryptographFactory.Encrypt(txtConfirmation.Text, true))
         {
-            Response.Redirect("PageInformation.aspx?key=" + trgId + "&type=23");
+            InsertReasonIntoDatabase();
+            Response.Redirect("PageInformation.aspx?type=23");
         }
         else
         {
@@ -60,7 +66,7 @@
     <section id="main-content">
         <section class="wrapper">
         <!-- page start-->
-
+        <form id="form1" runat="server">
         <div class="row">
             <div class="col-sm-12">
                 <section class="panel">
@@ -129,7 +135,7 @@
                 </section>
             </div>
         </div>
-
+        </form>
         <!-- page end-->
         </section>
     </section>

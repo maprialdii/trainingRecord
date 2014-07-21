@@ -32,7 +32,7 @@
     {
         if (Session["password"].ToString() == BioPM.ClassEngines.CryptographFactory.Encrypt(txtConfirmation.Text, true))
         {
-            Response.Redirect("PageInformation.aspx?key=" + trgId + "&type=22");
+            Response.Redirect("PageInformation.aspx?type=22");
         }
         else
         {
@@ -107,7 +107,7 @@
     <section id="main-content">
         <section class="wrapper">
         <!-- page start-->
-
+         <form id="Form2" class="form-horizontal " runat="server" >
          <div class="row">
             <div class="col-sm-12">
                 <section class="panel">
@@ -118,6 +118,7 @@
                             <a class="fa fa-times" href="javascript:;"></a>
                          </span>
                     </header>
+                    
                     <div class="panel-body">
                         <div class="adv-table">
                             <!-- class="clearfix">
@@ -136,7 +137,7 @@
                                 </div>
                             </div>
                         INSERT NEW
-                        <form id="Form2" class="form-horizontal " runat="server" >
+                        
                             <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModal" class="modal fade">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
@@ -174,7 +175,6 @@
                                     </tr>
                                 </tbody>
                             </table>
-                          </form>
                         </div>
                 </section>
             </div>
@@ -224,7 +224,7 @@
                             </table>
                         <!-- Modal -->
                         <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="Div1" class="modal fade">
-                            <div class="modal-dialog">
+                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -248,7 +248,7 @@
                 </section>
             </div>
         </div>
-
+        </form>
         <!-- page end-->
         </section>
     </section>

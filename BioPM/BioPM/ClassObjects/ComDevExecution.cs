@@ -98,6 +98,34 @@ namespace BioPM.ClassObjects
             }
         }
 
+        public static List<object[]> GetComdevExecution()
+        {
+            SqlConnection conn = GetConnection();
+            string sqlCmd = @"SELECT DISTINCT CE.EXCID, CE.PERNR, UD.CNAME, CE.TITLE, CE.BATCH
+                            FROM trrcd.COMDEV_EVENT_EXECUTION CE WITH(INDEX(COMDEV_EVENT_EXECUTION_IDX_BEGDA_ENDDA_ID)), trrcd.SURVEY_ANSWERS SA, bioumum.USER_DATA UD, trrcd.SURVEY_ANSWERS SA
+                            WHERE CE.EXCID=SA.EXCID AND CE.PERNR=UD.PERNR
+                            AND SA.BEGDA <= GETDATE() AND SA.ENDDA >= GETDATE()
+                            AND SA.ANSST='Waiting for Approval' ORDER BY CE.EXCID DESC;";
+            SqlCommand cmd = GetCommand(conn, sqlCmd);
+
+            try
+            {
+                conn.Open();
+                SqlDataReader reader = GetDataReader(cmd);
+                List<object[]> batchs = new List<object[]>();
+                while (reader.Read())
+                {
+                    object[] values = { reader[0].ToString(), reader[1].ToString(), reader[2].ToString(), reader[3].ToString(), reader[4].ToString() };
+                    batchs.Add(values);
+                }
+                return batchs;
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+
         public static object[] GetComdevExecutionById(string excid)
         {
             SqlConnection conn = GetConnection();

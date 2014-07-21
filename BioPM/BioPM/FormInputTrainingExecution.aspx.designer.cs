@@ -31,13 +31,21 @@ namespace BioPM {
         protected global::System.Web.UI.WebControls.TextBox txtExcid;
         
         /// <summary>
+<<<<<<< HEAD
+        /// ddlEmployeeName control.
+=======
         /// RequiredFieldValidator1 control.
+>>>>>>> origin/master
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
+<<<<<<< HEAD
+        protected global::System.Web.UI.WebControls.DropDownList ddlEmployeeName;
+=======
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
+>>>>>>> origin/master
         
         /// <summary>
         /// ddlEventMethod control.

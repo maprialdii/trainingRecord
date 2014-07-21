@@ -16,6 +16,11 @@
         method = data[3].ToString();
     }
 
+    protected void InsertReasonIntoDatabase()
+    {
+        BioPM.ClassObjects.Reason.InsertReason(txtReason.Text, "Delete Event", Session["username"].ToString());
+    }
+
     protected String GenerateDataTargetTraining()
     {
         string htmlelement = "";
@@ -34,6 +39,7 @@
     {
         if (Session["password"].ToString() == BioPM.ClassEngines.CryptographFactory.Encrypt(txtConfirmation.Text, true))
         {
+            InsertReasonIntoDatabase();
             Response.Redirect("PageInformation.aspx?key=" + trgId + "&type=25");
         }
         else
