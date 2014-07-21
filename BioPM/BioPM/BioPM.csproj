@@ -124,6 +124,7 @@
     <Content Include="FormEvaluasiReaksiPeserta.aspx" />
     <Content Include="PageEvaluation.aspx" />
     <Content Include="PageEventRequestDetail.aspx" />
+    <Content Include="PageListEvaluasi3.aspx" />
     <Content Include="PageSurveyAnswers.aspx" />
     <Content Include="Scripts\bootstrap-reset.css" />
     <Content Include="Scripts\bootstrap.min.css" />
@@ -732,6 +733,13 @@
     </Compile>
     <Compile Include="PageJadwal.aspx.designer.cs">
       <DependentUpon>PageJadwal.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageListEvaluasi3.aspx.cs">
+      <DependentUpon>PageListEvaluasi3.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageListEvaluasi3.aspx.designer.cs">
+      <DependentUpon>PageListEvaluasi3.aspx</DependentUpon>
     </Compile>
     <Compile Include="PageOrganization.aspx.cs">
       <DependentUpon>PageOrganization.aspx</DependentUpon>
