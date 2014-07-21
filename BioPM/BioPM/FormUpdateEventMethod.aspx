@@ -5,7 +5,7 @@
     protected void Page_Load(object sender, EventArgs e)
     {
         if (Session["username"] == null && Session["password"] == null) Response.Redirect("PageLogin.aspx");
-        if(!IsPostBack) SetDataToForm()
+        //if(!IsPostBack) SetDataToForm()
     }
 
     protected void InsertReasonIntoDatabase()
