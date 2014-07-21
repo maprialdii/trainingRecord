@@ -276,12 +276,12 @@ namespace BioPM.ClassObjects
         public static List<object[]> GetComdevEventTargetByEvent(string evtid)
         {
             SqlConnection conn = GetConnection();
-            string sqlCmd = @"SELECT CT.TRGID, CT.EVTID, CE.EVTNM, RK.CPYNM, CT.PRLVL, EM.EVTMT
-                            FROM trrcd.COMDEV_EVENT_TARGET CT WITH(INDEX(COMDEV_EVENT_TARGET_IDX_BEGDA_ENDDA_ID)), trrcd.COMDEV_EVENT CE WITH(INDEX(COMDEV_EVENT_IDX_BEGDA_ENDDA_ID)), trrcd.REFERENSI_KOMPETENSI RK WITH(INDEX(REFERENSI_KOMPETENSI_IDX_BEGDA_ENDDA_ID)), trrcd.EVENT_METHOD EM
-                            WHERE CE.EVTID=CT.EVTID AND RK.CPYID=CT.CPYID AND CE.EMTID=EM.EMTID
+            string sqlCmd = @"SELECT CT.TRGID, CT.EVTID, CE.EVTNM, PR.PRMNM, CT.PRLVL, EM.EVTMT
+                            FROM trrcd.COMDEV_EVENT_TARGET CT WITH(INDEX(COMDEV_EVENT_TARGET_IDX_BEGDA_ENDDA_ID)), trrcd.COMDEV_EVENT CE WITH(INDEX(COMDEV_EVENT_IDX_BEGDA_ENDDA_ID)), bioumum.PARAMETER PR, trrcd.EVENT_METHOD EM
+                            WHERE CE.EVTID=CT.EVTID AND PR.PRMID=CT.CPYID AND CE.EMTID=EM.EMTID
                             AND CT.BEGDA <= GETDATE() AND CT.ENDDA >= GETDATE()
                             AND CE.BEGDA <= GETDATE() AND CE.ENDDA >= GETDATE()
-                            AND RK.BEGDA <= GETDATE() AND RK.ENDDA >= GETDATE()
+                            AND PR.BEGDA <= GETDATE() AND PR.ENDDA >= GETDATE()
                             AND EM.BEGDA <= GETDATE() AND EM.ENDDA >= GETDATE()
                             AND CE.EVTID=" + evtid + " ORDER BY CE.EVTID ASC;";
             SqlCommand cmd = GetCommand(conn, sqlCmd);

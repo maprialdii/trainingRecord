@@ -10,7 +10,6 @@
     protected String GenerateDataEksekusi()
     {
         string htmlelement = "";
-        string html3 = null;
         foreach (object[] data in BioPM.ClassObjects.ComDevExecution.GetComdevExecutionByPosition(Session["username"].ToString()))
         {
             htmlelement += "<tr class=''><td>" + data[6].ToString() + "</td><td>" + data[5].ToString() + "</td><td>" + data[4].ToString() + "</td><td>" + data[2].ToString() + "</td><td>" + data[3].ToString() + "</td><a class='edit' href='FormEvaluasiPerilaku.aspx?key=" + data[0].ToString() + "'>Answer</a><td></td></tr>";

@@ -13,14 +13,10 @@
         ddlCompetency.Items.Clear();
         foreach (object[] data in BioPM.ClassObjects.CompetencyCatalog.GetAllCompetency())
         {
-            ddlCompetency.Items.Add(new ListItem(data[1].ToString(), data[0].ToString()));
+            ddlCompetency.Items.Add(new ListItem(data[2].ToString(), data[0].ToString()));
         }
-
-        ddlEvtName.Items.Clear();
-        foreach (object[] data in BioPM.ClassObjects.ComDevEvent.GetAllComdevEvent())
-        {
-            ddlEvtName.Items.Add(new ListItem(data[1].ToString(), data[0].ToString()));
-        }
+        object[] values = BioPM.ClassObjects.ComDevEvent.GetComdevEventById(Request.QueryString["key"].ToString());
+        lblEvtName.Text = values[1].ToString();
     }
 
     protected void InsertReasonIntoDatabase()
@@ -31,7 +27,7 @@
     protected void InsertTargetIntoDatabase()
     {
         string TRGID = (BioPM.ClassObjects.ComDevEvent.GetComDevEventTargetMaxID() + 1).ToString();
-        BioPM.ClassObjects.ComDevEvent.InsertComDevEventTarget(TRGID, ddlEvtName.SelectedValue, ddlCompetency.SelectedValue, txtLevelTarget.Text, Session["username"].ToString());
+        BioPM.ClassObjects.ComDevEvent.InsertComDevEventTarget(TRGID, Request.QueryString["key"].ToString(), ddlCompetency.SelectedValue, txtLevelTarget.Text, Session["username"].ToString());
     }
 
     protected void btnAdd_Click(object sender, EventArgs e)
@@ -42,7 +38,7 @@
     protected void btnAddComp_Click(object sender, EventArgs e)
     {
         if (IsPostBack) InsertTargetIntoDatabase();
-        Response.Redirect("FormInputTargetTraining.aspx?key=" + ddlEvtName.SelectedValue + "");
+        Response.Redirect("FormInputTargetTraining.aspx?key=" + Request.QueryString["key"].ToString() + "");
     }
 
     protected void btnCancel_Click(object sender, EventArgs e)
@@ -56,7 +52,7 @@
 
         foreach (object[] data in BioPM.ClassObjects.ComDevEvent.GetComdevEventTargetByEvent(Request.QueryString["key"].ToString()))
         {
-            htmlelement += "<tr class=''><td>" + data[3].ToString() + "</td><td>" + data[4].ToString() + "</td><td><a class='edit' href='FormUpdateEventMethod.aspx?key=" + data[0].ToString() + "'>Edit</a></td><td><a data-toggle='modal' ID='btnAction' runat='server' Text='Delete' href='#myModal'>Delete</a></td></tr>";
+            htmlelement += "<tr class=''><td>" + data[3].ToString() + "</td><td>" + data[4].ToString() + "</td><td><a class='edit' href='FormUpdateTargetTraining.aspx?key=" + data[0].ToString() + "'>Edit</a></td><td><a data-toggle='modal' ID='btnAction' runat='server' Text='Delete' href='#myModal'>Delete</a></td></tr>";
         }
 
         return htmlelement;
@@ -122,8 +118,7 @@
                         <div class="form-group">
                             <label class="col-sm-3 control-label"> EVENT NAME </label>
                             <div class="col-lg-3 col-md-4">
-                                <asp:DropDownList ID="ddlEvtName" runat="server" class="form-control m-bot15">   
-                                </asp:DropDownList> 
+                                <asp:Label ID="lblEvtName" runat="server"></asp:Label>
                             </div>
                         </div>
 
@@ -149,6 +144,7 @@
                                 <thead>
                                 <tr>
                                     <th>Competency Name</th>
+                                    <th>Proficiency Level Target</th>
                                     <th>Proficiency Level Target</th>
                                     <th>Delete</th>
                                 </tr>

@@ -10,15 +10,15 @@
     protected void Page_Load(object sender, EventArgs e)
     {
         if (Session["username"] == null && Session["password"] == null) Response.Redirect("PageLogin.aspx");
-        evtId = Request.QueryString["key"].ToString();
-        object[] data = BioPM.ClassObjects.ComDevEvent.GetComdevEventById(evtId);
-        eventName = data[1].ToString();
-        method = data[3].ToString();
+        else Initialize();
     }
 
-    protected void InsertReasonIntoDatabase()
+    protected void Initialize()
     {
-        BioPM.ClassObjects.Reason.InsertReason(txtReason.Text, "Delete Event", Session["username"].ToString());
+        evtId = Request.QueryString["key"].ToString();
+        object[] data = BioPM.ClassObjects.ComDevEvent.GetComdevEventById(evtId);
+        lblEventName.Text = data[1].ToString();
+        lblEventMethod.Text = data[3].ToString();
     }
 
     protected String GenerateDataTargetTraining()
@@ -35,17 +35,9 @@
         return htmlelement;
     }
 
-    protected void btnDel_Click(object sender, EventArgs e)
+    protected void btnAddNew_click()
     {
-        if (Session["password"].ToString() == BioPM.ClassEngines.CryptographFactory.Encrypt(txtConfirmation.Text, true))
-        {
-            InsertReasonIntoDatabase();
-            Response.Redirect("PageInformation.aspx?key=" + trgId + "&type=25");
-        }
-        else
-        {
-            ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('" + "YOUR PASSWORD IS INCORRECT" + "');", true);
-        }
+        Response.Redirect("FormInputTargetTraining.aspx?key="+"evtId");
     }
 
    
@@ -90,21 +82,21 @@
                          </span>
                     </header>
                     <div class="panel-body">
-                        <form id="Form1" class="form-horizontal " runat="server" >
+                        <center>
                         <div class="form-group">
                             <label class="col-sm-3 control-label"> EVENT NAME </label>
                             <div class="col-lg-3 col-md-4">
-                                <asp:TextBox ID="txtEventName" runat="server" class="form-control m-bot15" placeholder="EVENT NAME" OnLoad="Page_Load" ReadOnly="true" ></asp:TextBox>
+                                <asp:Label ID="lblEventName" runat="server"></asp:Label>
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label class="col-sm-3 control-label"> EVENT METHOD </label>
                             <div class="col-lg-3 col-md-4">
-                                <asp:TextBox ID="txtEventMethod" runat="server" class="form-control m-bot15" placeholder="EVENT METHOD" OnLoad="Page_Load" ReadOnly="true" ></asp:TextBox>
+                                <asp:Label ID="lblEventMethod" runat="server"></asp:Label>                                
                             </div>
                         </div>
-
+                        </center>
                         <div class="adv-table">
                             <div class="clearfix">
                                 <div class="btn-group">
@@ -136,31 +128,6 @@
                                 </tbody>
                             </table>
                         </div>
-
-                            <!-- Modal -->
-                        <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModal" class="modal fade">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                        <h4 class="modal-title">Approver Confirmation</h4>
-                                    </div>
-                                    <div class="modal-body">
-                                        <p>You Are Logged In As <% Response.Write(Session["name"].ToString()); %></p><br />
-                                        <p>Are you sure to insert into database?</p>
-                                        <asp:TextBox ID="txtConfirmation" runat="server" TextMode="Password" placeholder="Confirmation Password" class="form-control placeholder-no-fix"></asp:TextBox>
-                                        <asp:TextBox ID="txtReason" TextMode="multiline" Columns="30" Rows="3" runat="server" placeholder="Reason" class="form-control placeholder-no-fix"></asp:TextBox>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <asp:Button ID="btnClose" runat="server" data-dismiss="modal" class="btn btn-default" Text="Cancel"></asp:Button>
-                                        <asp:Button ID="btnSubmit" runat="server" class="btn btn-success" Text="Confirm" OnClick="btnDel_Click"></asp:Button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- modal -->  
-
-                            </form>
                     </div>
                     
                 </section>

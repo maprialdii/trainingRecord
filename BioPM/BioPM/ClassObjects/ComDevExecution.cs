@@ -105,7 +105,7 @@ namespace BioPM.ClassObjects
                             FROM trrcd.COMDEV_EVENT_EXECUTION CE WITH(INDEX(COMDEV_EVENT_EXECUTION_IDX_BEGDA_ENDDA_ID)), trrcd.COMDEV_EVENT CV WITH(INDEX(COMDEV_EVENT_IDX_BEGDA_ENDDA_ID)), bioumum.USER_DATA UD
                             WHERE CV.EVTID=CE.EVTID AND CE.PERNR=UD.PERNR
                             AND CV.BEGDA <= GETDATE() AND CV.ENDDA >= GETDATE()
-                            AND UD.PRORG=(SELECT PRORG FROM bioumum.USER_DATA WHERE PERNR='"+pernr+"') AND PERNR!='"+pernr+"';";
+                            AND UD.PRORG=(SELECT PRORG FROM bioumum.USER_DATA WHERE PERNR='"+pernr+"') AND CE.PERNR!='"+pernr+"';";
             SqlCommand cmd = GetCommand(conn, sqlCmd);
 
             try
