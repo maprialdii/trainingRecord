@@ -66,7 +66,6 @@
     <section id="main-content">
         <section class="wrapper">
         <!-- page start-->
-        <form id="form1" runat="server">
         <div class="row">
             <div class="col-sm-12">
                 <section class="panel">
@@ -113,6 +112,7 @@
                         </div>
                         <!-- Modal -->
                         <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModal" class="modal fade">
+                          <form id="form1" runat="server">
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -131,6 +131,7 @@
                                     </div>
                                 </div>
                             </div>
+                          </form>
                         </div>
                         <!-- modal -->  
                     </div>
@@ -138,7 +139,6 @@
                 </section>
             </div>
         </div>
-        </form>
         <!-- page end-->
         </section>
     </section>

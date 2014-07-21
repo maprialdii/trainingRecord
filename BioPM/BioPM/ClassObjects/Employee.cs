@@ -167,13 +167,13 @@ namespace BioPM.ClassObjects
             }
         }
 
-        public static List<object[]> GetEmployeeByPosition(string posid)
+        public static List<object[]> GetEmployeeByPosition(string pernr)
         {
             SqlConnection conn = GetConnection();
-            string sqlCmd = @"SELECT US.PERNR, US.CNAME
-                            FROM bioumum.USER_DATA US 
-                            WHERE US.BEGDA <= GETDATE() AND US.ENDDA >= GETDATE()
-                            AND US.POSID='" + posid + "' ORDER BY US.PERNR;";
+            string sqlCmd = @"SELECT PERNR, CNAME 
+                            FROM bioumum.USER_DATA 
+                            WHERE PRORG=(SELECT PRORG 
+                            FROM bioumum.USER_DATA WHERE PERNR='" + pernr + "') AND PERNR != '" + pernr + "';";
             SqlCommand cmd = GetCommand(conn, sqlCmd);
 
             try

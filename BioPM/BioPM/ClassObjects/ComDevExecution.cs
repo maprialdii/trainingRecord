@@ -98,11 +98,39 @@ namespace BioPM.ClassObjects
             }
         }
 
+        public static List<object[]> GetComdevExecutionByPosition(string pernr)
+        {
+            SqlConnection conn = GetConnection();
+            string sqlCmd = @"SELECT CE.EXCID, CV.EVTNM, CE.TITLE, CE.BATCH, UD.PRPOS, UD.CNAME, CE.PERNR
+                            FROM trrcd.COMDEV_EVENT_EXECUTION CE WITH(INDEX(COMDEV_EVENT_EXECUTION_IDX_BEGDA_ENDDA_ID)), trrcd.COMDEV_EVENT CV WITH(INDEX(COMDEV_EVENT_IDX_BEGDA_ENDDA_ID)), bioumum.USER_DATA UD
+                            WHERE CV.EVTID=CE.EVTID AND CE.PERNR=UD.PERNR
+                            AND CV.BEGDA <= GETDATE() AND CV.ENDDA >= GETDATE()
+                            AND UD.PRORG=(SELECT PRORG FROM bioumum.USER_DATA WHERE PERNR='"+pernr+"') AND PERNR!='"+pernr+"';";
+            SqlCommand cmd = GetCommand(conn, sqlCmd);
+
+            try
+            {
+                conn.Open();
+                SqlDataReader reader = GetDataReader(cmd);
+                List<object[]> batchs = new List<object[]>();
+                while (reader.Read())
+                {
+                    object[] values = { reader[0].ToString(), reader[1].ToString(), reader[2].ToString(), reader[3].ToString(), reader[4].ToString(), reader[5].ToString(), reader[6].ToString() };
+                    batchs.Add(values);
+                }
+                return batchs;
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+
         public static List<object[]> GetComdevExecution()
         {
             SqlConnection conn = GetConnection();
             string sqlCmd = @"SELECT DISTINCT CE.EXCID, CE.PERNR, UD.CNAME, CE.TITLE, CE.BATCH
-                            FROM trrcd.COMDEV_EVENT_EXECUTION CE WITH(INDEX(COMDEV_EVENT_EXECUTION_IDX_BEGDA_ENDDA_ID)), trrcd.SURVEY_ANSWERS SA, bioumum.USER_DATA UD, trrcd.SURVEY_ANSWERS SA
+                            FROM trrcd.COMDEV_EVENT_EXECUTION CE WITH(INDEX(COMDEV_EVENT_EXECUTION_IDX_BEGDA_ENDDA_ID)), trrcd.SURVEY_ANSWERS SA, bioumum.USER_DATA UD
                             WHERE CE.EXCID=SA.EXCID AND CE.PERNR=UD.PERNR
                             AND SA.BEGDA <= GETDATE() AND SA.ENDDA >= GETDATE()
                             AND SA.ANSST='Waiting for Approval' ORDER BY CE.EXCID DESC;";

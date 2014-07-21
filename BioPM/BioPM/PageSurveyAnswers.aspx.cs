@@ -56,7 +56,7 @@ namespace BioPM
             ddlExecution.DataTextField = "TITLE";
             ddlExecution.DataValueField = "EXCID";
             ddlExecution.DataBind();
-            ddlExecution.Visible = true;
+            ddlExecution.Enabled = true;
             ddlExecution.Items.Insert(0, new ListItem("Select Execution","NA"));
         }
 
@@ -72,7 +72,7 @@ namespace BioPM
         {
             ddlEmployeeName.AutoPostBack = true;
             ddlExecution.AutoPostBack = true;
-            ddlKodeSurvey.Visible = true;
+            ddlKodeSurvey.Enabled = true;
             ddlExecution.Items.Insert(0, new ListItem("Select Evaluation", "NA"));
         }
     }

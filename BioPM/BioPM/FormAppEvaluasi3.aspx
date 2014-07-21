@@ -5,15 +5,16 @@
     protected void Page_Load(object sender, EventArgs e)
     {
         if (Session["username"] == null && Session["password"] == null) Response.Redirect("PageLogin.aspx");
-        if (Request.QueryString["key"].ToString() != null)
-        {
-            foreach (object[] data in BioPM.ClassObjects.Survey.GetAnswersBySurvey(Request.QueryString["key"].ToString(), "3"))
-            {
-                BioPM.ClassObjects.Survey.UpdateStatus(data[0].ToString(), "Approved", Session["username"].ToString());
-            }
-        }
     }
-    
+
+    protected void Approve_Click()
+    {
+        foreach (object[] data in BioPM.ClassObjects.Survey.GetAnswersBySurvey(Request.QueryString["key"].ToString(), "3"))
+        {
+            BioPM.ClassObjects.Survey.UpdateStatus(data[0].ToString(), "Approved", Session["username"].ToString());
+        }
+        Response.Redirect("FormAppEvaluasi3.aspx");
+    }
 
     protected String GenerateData()
     {
@@ -21,7 +22,7 @@
 
         foreach (object[] data in BioPM.ClassObjects.ComDevExecution.GetComdevExecution())
         {
-            htmlelement += "<tr class=''><td>" + data[1].ToString() + "</td><td>" + data[2].ToString() + "</td><td>" + data[3].ToString() + "</td><td>" + data[4].ToString() + "</td><td><a class='edit' href='PageEvaluasiPerilaku.aspx?key=" + data[0].ToString() + "'>Response</a></td><td><a class='edit' href='FormApprove.aspx?key=" + data[0].ToString() + "'>Approve</a></td><td><a class='edit' href='PageInformation.aspx?key=" + data[0].ToString() + "&type=000'>Reject</a></td></tr>";
+            htmlelement += "<tr class=''><td>" + data[1].ToString() + "</td><td>" + data[2].ToString() + "</td><td>" + data[3].ToString() + "</td><td>" + data[4].ToString() + "</td><td><a class='edit' href='PageEvaluasiPerilaku.aspx?key=" + data[0].ToString() + "'>Response</a></td><td><a class='edit' onclick='Approve_Click()' href='FormApprove.aspx?key=" + data[0].ToString() + "'>Approve</a></td><td><a class='edit' href='PageInformation.aspx?key=" + data[0].ToString() + "&type=000'>Reject</a></td></tr>";
         }
 
         return htmlelement;

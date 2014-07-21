@@ -24,7 +24,7 @@
     protected void GetDataEmployee()
     {
         ddlEmployeeName.Items.Clear();
-        foreach (object[] data in BioPM.ClassObjects.EmployeeCatalog.GetAllEmployee())
+        foreach (object[] data in BioPM.ClassObjects.EmployeeCatalog.GetEmployeeByPosition(Session["username"].ToString()))
         {
             ddlEmployeeName.Items.Add(new ListItem(data[1].ToString(), data[0].ToString()));
         }

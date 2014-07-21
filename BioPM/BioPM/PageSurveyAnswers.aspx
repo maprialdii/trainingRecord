@@ -9,8 +9,6 @@
         if (!IsPostBack)
         {
             SetEmployee();
-            ddlExecution.Visible = false;
-            ddlKodeSurvey.Visible = false;
         }
     }
 
@@ -21,7 +19,7 @@
         {
             ddlEmployeeName.Items.Add(new ListItem(data[1].ToString(), data[0].ToString()));
         }
-        ddlExecution.Items.Insert(0, new ListItem("Select Employee", "NA"));
+        ddlEmployeeName.Items.Insert(0, new ListItem("Select Employee", "NA"));
     }
 
     protected void btnCancel_Click(object sender, EventArgs e)
@@ -95,7 +93,7 @@
                         <div class="form-group">
                             <label class="col-sm-3 control-label"> COMDEV EXECUTION </label>
                             <div class="col-lg-3 col-md-4">
-                                <asp:DropDownList ID="ddlExecution" runat="server" class="form-control m-bot15" OnSelectedIndexChanged="ddlExecution_SelectedIndexChanged" Visible="False" AutoPostBack="true">   
+                                <asp:DropDownList ID="ddlExecution" runat="server" class="form-control m-bot15" OnSelectedIndexChanged="ddlExecution_SelectedIndexChanged" AutoPostBack="true" Enabled="False">   
                                 </asp:DropDownList> 
                             </div>
                         </div>
@@ -103,7 +101,7 @@
                         <div class="form-group">
                             <label class="col-sm-3 control-label"> SURVEY </label>
                             <div class="col-lg-3 col-md-4">
-                                <asp:DropDownList ID="ddlKodeSurvey" runat="server" class="form-control m-bot15" Visible="False">
+                                <asp:DropDownList ID="ddlKodeSurvey" runat="server" class="form-control m-bot15" Enabled="False">
                                     <asp:ListItem value="1">Survey 1</asp:ListItem>   
                                     <asp:ListItem value="2">Survey 2</asp:ListItem>   
                                     <asp:ListItem value="3">Survey 3</asp:ListItem>   

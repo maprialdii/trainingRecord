@@ -12,13 +12,6 @@
             DeleteDataOnDatabase(id, Request.QueryString["type"]);
         }
     }
-    protected void sessionCreator()
-    {
-        Session["username"] = "K495";
-        Session["name"] = "ALLAN PRAKOSA";
-        Session["password"] = "admin1234";
-        Session["role"] = "111111";
-    }
     
     protected void DeleteDataOnDatabase(string ID, string KEY)
     {
@@ -218,6 +211,8 @@
                     message = "UPDATE SUCCESS! REQUEST HAS BEEN APPROVED. <a href='PageComdevPlan.aspx'>BACK</a>.";
                     break;
                 }
+                
+
             
             default :
                 {

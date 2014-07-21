@@ -266,6 +266,28 @@ namespace BioPM.ClassObjects
             }
         }
 
+        public static int GetLevel(string prmid)
+        {
+            SqlConnection conn = GetConnection();
+            string sqlCmd = @"SELECT PRMLV+1 AS LEVEL FROM bioumum.RELASI_PARAMETER WHERE PRMCH='" + prmid + "'";
+            SqlCommand cmd = GetCommand(conn, sqlCmd);
+            string level = "0";
+            try
+            {
+                conn.Open();
+                SqlDataReader reader = GetDataReader(cmd);
+                while (reader.Read())
+                {
+                    if (!reader.IsDBNull(0)) level = reader[0].ToString() + "";
+                }
+                return Convert.ToInt16(level);
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+
         public static int GetCompetencyRelationMaxID()
         {
             SqlConnection conn = GetConnection();
