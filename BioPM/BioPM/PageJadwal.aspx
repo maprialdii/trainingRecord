@@ -45,7 +45,7 @@
 <head>
     <% Response.Write(BioPM.ClassScripts.BasicScripts.GetMetaScript()); %>
 
-    <title>Requested Competency Development Event</title>
+    <title>Competency Development Event Schedule</title>
 
     <% Response.Write(BioPM.ClassScripts.StyleScripts.GetCoreStyle()); %>
 <% Response.Write(BioPM.ClassScripts.StyleScripts.GetTableStyle()); %>
@@ -78,7 +78,7 @@
             <div class="col-sm-12">                
             <section class="panel">
                     <header class="panel-heading">
-                        Requested Competency Development Event
+                        Competency Development Event Schedule
                           <span class="tools pull-right">
                             <a class="fa fa-chevron-down" href="javascript:;"></a>
                             <a class="fa fa-times" href="javascript:;"></a>

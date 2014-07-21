@@ -41,7 +41,7 @@
 <head>
     <% Response.Write(BioPM.ClassScripts.BasicScripts.GetMetaScript()); %>
 
-    <title>COMPETENCY DEVELOPMENT EVENT ENTRY FORM</title>
+    <title>Evaluation Answers</title>
 
     <% Response.Write(BioPM.ClassScripts.StyleScripts.GetCoreStyle()); %>
     <% Response.Write(BioPM.ClassScripts.StyleScripts.GetFormStyle()); %>
@@ -69,7 +69,7 @@
             <div class="col-sm-12">
                 <section class="panel">
                     <header class="panel-heading">
-                        Competency Development Event Entry Form
+                        Evaluation Answers
                           <span class="tools pull-right">
                             <a class="fa fa-chevron-down" href="javascript:;"></a>
                             <a class="fa fa-times" href="javascript:;"></a>
@@ -99,12 +99,12 @@
                         </div>
 
                         <div class="form-group">
-                            <label class="col-sm-3 control-label"> SURVEY </label>
+                            <label class="col-sm-3 control-label"> EVALUATION </label>
                             <div class="col-lg-3 col-md-4">
                                 <asp:DropDownList ID="ddlKodeSurvey" runat="server" class="form-control m-bot15" Enabled="False">
-                                    <asp:ListItem value="1">Survey 1</asp:ListItem>   
-                                    <asp:ListItem value="2">Survey 2</asp:ListItem>   
-                                    <asp:ListItem value="3">Survey 3</asp:ListItem>   
+                                    <asp:ListItem value="1">Evaluation 1</asp:ListItem>   
+                                    <asp:ListItem value="2">Evaluation 2</asp:ListItem>   
+                                    <asp:ListItem value="3">Evaluation 3</asp:ListItem>   
                                 </asp:DropDownList> 
                             </div>
                         </div>
