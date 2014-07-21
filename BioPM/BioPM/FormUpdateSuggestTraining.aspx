@@ -124,6 +124,7 @@
                             <div class="col-lg-3 col-md-4">
                                 <asp:TextBox ID="txtEvtMonth" runat="server" class="form-control m-bot15" placeholder="EVENT MONTH"></asp:TextBox>
                             </div>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator8" ControlToValidate="txtEvtMonth" runat="server" ErrorMessage="This field is required." ForeColor="Red"></asp:RequiredFieldValidator>
                         </div>
 
                         <div class="form-group">
@@ -131,6 +132,7 @@
                             <div class="col-lg-3 col-md-4">
                                 <asp:TextBox ID="txtEvtCost" runat="server" class="form-control m-bot15" placeholder="COST ESTIMATION"></asp:TextBox>
                             </div>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" ControlToValidate="txtEvtCost" runat="server" ErrorMessage="This field is required." ForeColor="Red"></asp:RequiredFieldValidator>
                         </div>
 
                        

@@ -90,6 +90,7 @@
                             <div class="col-lg-3 col-md-4">
                                 <asp:TextBox ID="txtExcid" runat="server" class="form-control m-bot15" placeholder="EXECUTION ID" ></asp:TextBox>
                             </div>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" ControlToValidate="txtExcid" runat="server" ErrorMessage="This field is required." ForeColor="Red"></asp:RequiredFieldValidator>
                         </div>
 
                         <div class="form-group">
@@ -113,6 +114,7 @@
                             <div class="col-lg-3 col-md-4">
                                 <asp:TextBox ID="txtEventTitle" runat="server" class="form-control m-bot15" placeholder="EVENT TITLE" ></asp:TextBox>
                             </div>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator2" ControlToValidate="txtEventTitle" runat="server" ErrorMessage="This field is required." ForeColor="Red"></asp:RequiredFieldValidator>
                         </div>
                         
                         <div class="form-group">
@@ -120,6 +122,7 @@
                             <div class="col-lg-3 col-md-4">
                                 <asp:TextBox ID="txtBatch" runat="server" class="form-control m-bot15" placeholder="BATCH" ></asp:TextBox>
                             </div>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator3" ControlToValidate="txtBatch" runat="server" ErrorMessage="This field is required." ForeColor="Red"></asp:RequiredFieldValidator>
                         </div>
 
 
@@ -129,6 +132,7 @@
                                 <asp:TextBox ID="txtBegda" value="" size="16" class="form-control form-control-inline input-medium default-date-picker" runat="server"></asp:TextBox>
                                 <span class="help-block">Begin Date Format : month-day-year e.g. 01-31-2014</span>
                             </div>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator4" ControlToValidate="txtBegda" runat="server" ErrorMessage="This field is required." ForeColor="Red"></asp:RequiredFieldValidator>
                         </div>
 
                         <div class="form-group">
@@ -137,6 +141,7 @@
                                 <asp:TextBox ID="txtEndda" value="" size="16" class="form-control form-control-inline input-medium default-date-picker" runat="server"></asp:TextBox>
                                 <span class="help-block">End Date Format : month-day-year e.g. 01-31-2014</span>
                             </div>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator5" ControlToValidate="txtEndda" runat="server" ErrorMessage="This field is required." ForeColor="Red"></asp:RequiredFieldValidator>
                         </div>
 
                         <div class="form-group">
@@ -144,6 +149,7 @@
                             <div class="col-lg-3 col-md-4">
                                 <asp:TextBox ID="txtPembicara" runat="server" class="form-control m-bot15" placeholder="SPEAKER" ></asp:TextBox>
                             </div>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator6" ControlToValidate="txtPembicara" runat="server" ErrorMessage="This field is required." ForeColor="Red"></asp:RequiredFieldValidator>
                         </div>
 
                         <div class="form-group">
@@ -151,6 +157,7 @@
                             <div class="col-lg-3 col-md-4">
                                 <asp:TextBox ID="txtCost" runat="server" class="form-control m-bot15" placeholder="COST" ></asp:TextBox>
                             </div>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator7" ControlToValidate="txtCost" runat="server" ErrorMessage="This field is required." ForeColor="Red"></asp:RequiredFieldValidator>
                         </div>
 
                         <div class="form-group">
@@ -158,6 +165,7 @@
                             <div class="col-lg-3 col-md-4">
                                 <asp:TextBox ID="txtInsti" runat="server" class="form-control m-bot15" placeholder="INSTITUTION" ></asp:TextBox>
                             </div>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator8" ControlToValidate="txtInsti" runat="server" ErrorMessage="This field is required." ForeColor="Red"></asp:RequiredFieldValidator>
                         </div>
 
                         <div class="form-group">
@@ -165,6 +173,7 @@
                             <div class="col-lg-3 col-md-4">
                                 <asp:TextBox ID="txtAdrin" runat="server" class="form-control m-bot15" placeholder="INSTITUTION ADDRESS" ></asp:TextBox>
                             </div>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator9" ControlToValidate="txtAdrin" runat="server" ErrorMessage="This field is required." ForeColor="Red"></asp:RequiredFieldValidator>
                         </div>
 
                         <div class="form-group">
@@ -172,6 +181,7 @@
                             <div class="col-lg-3 col-md-4">
                                 <asp:TextBox ID="TxtCitin" runat="server" class="form-control m-bot15" placeholder="INSTITUTION CITY" ></asp:TextBox>
                             </div>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator10" ControlToValidate="txtCitin" runat="server" ErrorMessage="This field is required." ForeColor="Red"></asp:RequiredFieldValidator>
                         </div>
 
                         <div class="form-group">
@@ -179,6 +189,7 @@
                             <div class="col-lg-3 col-md-4">
                                 <asp:TextBox ID="txtCouin" runat="server" class="form-control m-bot15" placeholder="INSTITUTION COUNTRY" ></asp:TextBox>
                             </div>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator11" ControlToValidate="txtCouin" runat="server" ErrorMessage="This field is required." ForeColor="Red"></asp:RequiredFieldValidator>
                         </div>
 
                         <div class="form-group">
@@ -196,6 +207,7 @@
                             <div class="col-lg-3 col-md-4">
                                 <asp:TextBox ID="txtScore" runat="server" class="form-control m-bot15" placeholder="SCORE" ></asp:TextBox>
                             </div>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator12" ControlToValidate="txtScore" runat="server" ErrorMessage="This field is required." ForeColor="Red"></asp:RequiredFieldValidator>
                         </div>
 
                         <div class="form-group">

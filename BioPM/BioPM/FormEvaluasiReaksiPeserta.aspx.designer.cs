@@ -31,6 +31,15 @@ namespace BioPM {
         protected global::System.Web.UI.WebControls.TextBox txtTopik;
         
         /// <summary>
+        /// RequiredFieldValidator1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
+        
+        /// <summary>
         /// txtHariTanggal control.
         /// </summary>
         /// <remarks>
@@ -38,6 +47,15 @@ namespace BioPM {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtHariTanggal;
+        
+        /// <summary>
+        /// RequiredFieldValidator2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator2;
         
         /// <summary>
         /// txtPembicara control.
@@ -49,6 +67,15 @@ namespace BioPM {
         protected global::System.Web.UI.WebControls.TextBox txtPembicara;
         
         /// <summary>
+        /// RequiredFieldValidator3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator3;
+        
+        /// <summary>
         /// txtNama control.
         /// </summary>
         /// <remarks>
@@ -56,6 +83,15 @@ namespace BioPM {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtNama;
+        
+        /// <summary>
+        /// RequiredFieldValidator4 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator4;
         
         /// <summary>
         /// txtBagian control.
@@ -67,6 +103,15 @@ namespace BioPM {
         protected global::System.Web.UI.WebControls.TextBox txtBagian;
         
         /// <summary>
+        /// RequiredFieldValidator5 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator5;
+        
+        /// <summary>
         /// RBL11 control.
         /// </summary>
         /// <remarks>
@@ -74,6 +119,15 @@ namespace BioPM {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RadioButtonList RBL11;
+        
+        /// <summary>
+        /// RequiredFieldValidator6 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator6;
         
         /// <summary>
         /// TB11 control.
@@ -85,6 +139,15 @@ namespace BioPM {
         protected global::System.Web.UI.WebControls.TextBox TB11;
         
         /// <summary>
+        /// RequiredFieldValidator7 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator7;
+        
+        /// <summary>
         /// RBL12 control.
         /// </summary>
         /// <remarks>
@@ -92,6 +155,15 @@ namespace BioPM {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RadioButtonList RBL12;
+        
+        /// <summary>
+        /// RequiredFieldValidator8 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator8;
         
         /// <summary>
         /// TB12 control.
@@ -103,6 +175,15 @@ namespace BioPM {
         protected global::System.Web.UI.WebControls.TextBox TB12;
         
         /// <summary>
+        /// RequiredFieldValidator9 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator9;
+        
+        /// <summary>
         /// RBL21 control.
         /// </summary>
         /// <remarks>
@@ -110,6 +191,15 @@ namespace BioPM {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RadioButtonList RBL21;
+        
+        /// <summary>
+        /// RequiredFieldValidator10 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator10;
         
         /// <summary>
         /// TB21 control.
@@ -121,6 +211,15 @@ namespace BioPM {
         protected global::System.Web.UI.WebControls.TextBox TB21;
         
         /// <summary>
+        /// RequiredFieldValidator11 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator11;
+        
+        /// <summary>
         /// RBL22 control.
         /// </summary>
         /// <remarks>
@@ -128,6 +227,15 @@ namespace BioPM {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RadioButtonList RBL22;
+        
+        /// <summary>
+        /// RequiredFieldValidator12 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator12;
         
         /// <summary>
         /// TB22 control.
@@ -139,6 +247,15 @@ namespace BioPM {
         protected global::System.Web.UI.WebControls.TextBox TB22;
         
         /// <summary>
+        /// RequiredFieldValidator13 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator13;
+        
+        /// <summary>
         /// RBL23 control.
         /// </summary>
         /// <remarks>
@@ -146,6 +263,15 @@ namespace BioPM {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RadioButtonList RBL23;
+        
+        /// <summary>
+        /// RequiredFieldValidator14 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator14;
         
         /// <summary>
         /// TB23 control.
@@ -157,6 +283,15 @@ namespace BioPM {
         protected global::System.Web.UI.WebControls.TextBox TB23;
         
         /// <summary>
+        /// RequiredFieldValidator15 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator15;
+        
+        /// <summary>
         /// RBL31 control.
         /// </summary>
         /// <remarks>
@@ -164,6 +299,15 @@ namespace BioPM {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RadioButtonList RBL31;
+        
+        /// <summary>
+        /// RequiredFieldValidator16 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator16;
         
         /// <summary>
         /// TB31 control.
@@ -184,6 +328,15 @@ namespace BioPM {
         protected global::System.Web.UI.WebControls.RadioButtonList RBL32;
         
         /// <summary>
+        /// RequiredFieldValidator17 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator17;
+        
+        /// <summary>
         /// TB32 control.
         /// </summary>
         /// <remarks>
@@ -191,6 +344,15 @@ namespace BioPM {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TB32;
+        
+        /// <summary>
+        /// RequiredFieldValidator18 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator18;
         
         /// <summary>
         /// RBL41 control.
@@ -202,6 +364,15 @@ namespace BioPM {
         protected global::System.Web.UI.WebControls.RadioButtonList RBL41;
         
         /// <summary>
+        /// RequiredFieldValidator19 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator19;
+        
+        /// <summary>
         /// TB41 control.
         /// </summary>
         /// <remarks>
@@ -209,6 +380,15 @@ namespace BioPM {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TB41;
+        
+        /// <summary>
+        /// RequiredFieldValidator20 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator20;
         
         /// <summary>
         /// RBL42 control.
@@ -220,6 +400,15 @@ namespace BioPM {
         protected global::System.Web.UI.WebControls.RadioButtonList RBL42;
         
         /// <summary>
+        /// RequiredFieldValidator21 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator21;
+        
+        /// <summary>
         /// TB42 control.
         /// </summary>
         /// <remarks>
@@ -227,6 +416,15 @@ namespace BioPM {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TB42;
+        
+        /// <summary>
+        /// RequiredFieldValidator22 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator22;
         
         /// <summary>
         /// RBL43 control.
@@ -238,6 +436,15 @@ namespace BioPM {
         protected global::System.Web.UI.WebControls.RadioButtonList RBL43;
         
         /// <summary>
+        /// RequiredFieldValidator23 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator23;
+        
+        /// <summary>
         /// TB43 control.
         /// </summary>
         /// <remarks>
@@ -245,6 +452,15 @@ namespace BioPM {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TB43;
+        
+        /// <summary>
+        /// RequiredFieldValidator24 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator24;
         
         /// <summary>
         /// RBL44 control.
@@ -256,6 +472,15 @@ namespace BioPM {
         protected global::System.Web.UI.WebControls.RadioButtonList RBL44;
         
         /// <summary>
+        /// RequiredFieldValidator25 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator25;
+        
+        /// <summary>
         /// TB44 control.
         /// </summary>
         /// <remarks>
@@ -263,6 +488,15 @@ namespace BioPM {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TB44;
+        
+        /// <summary>
+        /// RequiredFieldValidator26 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator26;
         
         /// <summary>
         /// RBL51 control.
@@ -274,6 +508,15 @@ namespace BioPM {
         protected global::System.Web.UI.WebControls.RadioButtonList RBL51;
         
         /// <summary>
+        /// RequiredFieldValidator27 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator27;
+        
+        /// <summary>
         /// TB51 control.
         /// </summary>
         /// <remarks>
@@ -281,6 +524,15 @@ namespace BioPM {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TB51;
+        
+        /// <summary>
+        /// RequiredFieldValidator28 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator28;
         
         /// <summary>
         /// RBL52 control.
@@ -292,6 +544,15 @@ namespace BioPM {
         protected global::System.Web.UI.WebControls.RadioButtonList RBL52;
         
         /// <summary>
+        /// RequiredFieldValidator29 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator29;
+        
+        /// <summary>
         /// TB52 control.
         /// </summary>
         /// <remarks>
@@ -299,6 +560,15 @@ namespace BioPM {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TB52;
+        
+        /// <summary>
+        /// RequiredFieldValidator30 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator30;
         
         /// <summary>
         /// RBL61 control.
@@ -310,6 +580,15 @@ namespace BioPM {
         protected global::System.Web.UI.WebControls.RadioButtonList RBL61;
         
         /// <summary>
+        /// RequiredFieldValidator31 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator31;
+        
+        /// <summary>
         /// TB61 control.
         /// </summary>
         /// <remarks>
@@ -317,6 +596,15 @@ namespace BioPM {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TB61;
+        
+        /// <summary>
+        /// RequiredFieldValidator32 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator32;
         
         /// <summary>
         /// RBL62 control.
@@ -328,6 +616,15 @@ namespace BioPM {
         protected global::System.Web.UI.WebControls.RadioButtonList RBL62;
         
         /// <summary>
+        /// RequiredFieldValidator33 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator33;
+        
+        /// <summary>
         /// TB62 control.
         /// </summary>
         /// <remarks>
@@ -335,6 +632,15 @@ namespace BioPM {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TB62;
+        
+        /// <summary>
+        /// RequiredFieldValidator34 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator34;
         
         /// <summary>
         /// TextBox2 control.
@@ -353,6 +659,15 @@ namespace BioPM {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RadioButtonList RBL7;
+        
+        /// <summary>
+        /// RequiredFieldValidator35 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator35;
         
         /// <summary>
         /// TextBox1 control.

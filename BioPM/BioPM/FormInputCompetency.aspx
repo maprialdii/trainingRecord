@@ -98,6 +98,7 @@
                             <div class="col-lg-3 col-md-4">
                                 <asp:TextBox ID="txtCpyCode" runat="server" class="form-control m-bot15" placeholder="COMPETENCY CODE" ></asp:TextBox>
                             </div>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" ControlToValidate="txtCpyCode" runat="server" ErrorMessage="This field is required." ForeColor="Red"></asp:RequiredFieldValidator>
                         </div>
                              
                         <div class="form-group">
@@ -105,6 +106,7 @@
                             <div class="col-lg-3 col-md-4">
                                 <asp:TextBox ID="txtCpyName" runat="server" class="form-control m-bot15" placeholder="COMPETENCY NAME" ></asp:TextBox>
                             </div>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator2" ControlToValidate="txtCpyName" runat="server" ErrorMessage="This field is required." ForeColor="Red"></asp:RequiredFieldValidator>
                         </div>
 
                         <!-- Modal -->

@@ -119,6 +119,7 @@
                             <div class="col-lg-3 col-md-4">
                                 <asp:TextBox ID="txtTopik" runat="server" class="form-control m-bot15" placeholder="Topik Pelatihan"></asp:TextBox>
                             </div>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" ControlToValidate="txtTopik" runat="server" ErrorMessage="This field is required." ForeColor="Red"></asp:RequiredFieldValidator>
                         </div>
 
                         <div class="form-group">
@@ -126,6 +127,7 @@
                             <div class="col-lg-3 col-md-4">
                                 <asp:TextBox ID="txtHariTanggal" runat="server" class="form-control m-bot15" placeholder="Hari/Tanggal" ></asp:TextBox>
                             </div>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator2" ControlToValidate="txtHariTanggal" runat="server" ErrorMessage="This field is required." ForeColor="Red"></asp:RequiredFieldValidator>
                         </div>
 
                         <div class="form-group">
@@ -133,6 +135,7 @@
                             <div class="col-lg-3 col-md-4">
                                 <asp:TextBox ID="txtPembicara" runat="server" class="form-control m-bot15" placeholder="Pembicara" ></asp:TextBox>
                             </div>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator3" ControlToValidate="txtPembicara" runat="server" ErrorMessage="This field is required." ForeColor="Red"></asp:RequiredFieldValidator>
                         </div>
 
                         <hr />
@@ -142,6 +145,7 @@
                             <div class="col-lg-3 col-md-4">
                                 <asp:TextBox ID="txtNama" runat="server" class="form-control m-bot15" placeholder="Nama" ></asp:TextBox>
                             </div>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator4" ControlToValidate="txtNama" runat="server" ErrorMessage="This field is required." ForeColor="Red"></asp:RequiredFieldValidator>
                         </div>
 
                         <div class="form-group">
@@ -149,6 +153,7 @@
                             <div class="col-lg-3 col-md-4">
                                 <asp:TextBox ID="txtBagian" runat="server" class="form-control m-bot15" placeholder="Bagian" ></asp:TextBox>
                             </div>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator5" ControlToValidate="txtBagian" runat="server" ErrorMessage="This field is required." ForeColor="Red"></asp:RequiredFieldValidator>
                         </div>
 
                         <hr />
@@ -173,12 +178,14 @@
                                     </asp:RadioButtonList>
                                 </div>
                             </div>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator6" ControlToValidate="RBL11" runat="server" ErrorMessage="This field is required." ForeColor="Red"></asp:RequiredFieldValidator>
                         </div>
                         <div class="form-group">
                             <label class="col-sm-3 control-label"> Alasan: </label>
                             <div class="col-lg-3 col-md-4">
                                 <asp:TextBox id="TB11" TextMode="multiline" Columns="60" Rows="5" runat="server" />
                                 </div>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator7" ControlToValidate="TB11" runat="server" ErrorMessage="This field is required." ForeColor="Red"></asp:RequiredFieldValidator>
                         </div>
 
                         <!-- Nomor 1.2 -->
@@ -196,12 +203,14 @@
                                     </asp:RadioButtonList>
                                 </div>
                             </div>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator8" ControlToValidate="RBL12" runat="server" ErrorMessage="This field is required." ForeColor="Red"></asp:RequiredFieldValidator>
                         </div>
                         <div class="form-group">
                             <label class="col-sm-3 control-label"> Alasan: </label>
                             <div class="col-lg-3 col-md-4">
                                 <asp:TextBox id="TB12" TextMode="multiline" Columns="60" Rows="5" runat="server" />
                                 </div>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator9" ControlToValidate="TB12" runat="server" ErrorMessage="This field is required." ForeColor="Red"></asp:RequiredFieldValidator>
                         </div>
 
                         <h3>Materi Pelatihan</h3>
@@ -221,12 +230,14 @@
                                     </asp:RadioButtonList>
                                 </div>
                             </div>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator10" ControlToValidate="RBL21" runat="server" ErrorMessage="This field is required." ForeColor="Red"></asp:RequiredFieldValidator>
                         </div>
                         <div class="form-group">
                             <label class="col-sm-3 control-label"> Alasan: </label>
                             <div class="col-lg-3 col-md-4">
                                 <asp:TextBox id="TB21" TextMode="multiline" Columns="60" Rows="5" runat="server" />
                                 </div>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator11" ControlToValidate="TB21" runat="server" ErrorMessage="This field is required." ForeColor="Red"></asp:RequiredFieldValidator>
                         </div>
 
                         <!-- Nomor 2.2 -->
@@ -244,12 +255,14 @@
                                     </asp:RadioButtonList>
                                 </div>
                             </div>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator12" ControlToValidate="RBL22" runat="server" ErrorMessage="This field is required." ForeColor="Red"></asp:RequiredFieldValidator>
                         </div>
                         <div class="form-group">
                             <label class="col-sm-3 control-label"> Alasan: </label>
                             <div class="col-lg-3 col-md-4">
                                 <asp:TextBox id="TB22" TextMode="multiline" Columns="60" Rows="5" runat="server" />
                                 </div>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator13" ControlToValidate="TB22" runat="server" ErrorMessage="This field is required." ForeColor="Red"></asp:RequiredFieldValidator>
                         </div>
 
                         <!-- Nomor 2.3 -->
@@ -267,12 +280,14 @@
                                     </asp:RadioButtonList>
                                 </div>
                             </div>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator14" ControlToValidate="RBL23" runat="server" ErrorMessage="This field is required." ForeColor="Red"></asp:RequiredFieldValidator>
                         </div>
                         <div class="form-group">
                             <label class="col-sm-3 control-label"> Alasan: </label>
                             <div class="col-lg-3 col-md-4">
                                 <asp:TextBox id="TB23" TextMode="multiline" Columns="60" Rows="5" runat="server" />
                                 </div>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator15" ControlToValidate="TB23" runat="server" ErrorMessage="This field is required." ForeColor="Red"></asp:RequiredFieldValidator>
                         </div>
 
                         <h3>Alokasi Waktu</h3>
@@ -292,6 +307,7 @@
                                     </asp:RadioButtonList>
                                 </div>
                             </div>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator16" ControlToValidate="RBL31" runat="server" ErrorMessage="This field is required." ForeColor="Red"></asp:RequiredFieldValidator>
                         </div>
                         <div class="form-group">
                             <label class="col-sm-3 control-label"> Alasan: </label>
@@ -315,12 +331,14 @@
                                     </asp:RadioButtonList>
                                 </div>
                             </div>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator17" ControlToValidate="RBL32" runat="server" ErrorMessage="This field is required." ForeColor="Red"></asp:RequiredFieldValidator>
                         </div>
                         <div class="form-group">
                             <label class="col-sm-3 control-label"> Alasan: </label>
                             <div class="col-lg-3 col-md-4">
                                 <asp:TextBox id="TB32" TextMode="multiline" Columns="60" Rows="5" runat="server" />
                                 </div>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator18" ControlToValidate="TB32" runat="server" ErrorMessage="This field is required." ForeColor="Red"></asp:RequiredFieldValidator>
                         </div>
 
                         <h3>Instruktur</h3>
@@ -340,12 +358,14 @@
                                     </asp:RadioButtonList>
                                 </div>
                             </div>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator19" ControlToValidate="RBL41" runat="server" ErrorMessage="This field is required." ForeColor="Red"></asp:RequiredFieldValidator>
                         </div>
                         <div class="form-group">
                             <label class="col-sm-3 control-label"> Alasan: </label>
                             <div class="col-lg-3 col-md-4">
                                 <asp:TextBox id="TB41" TextMode="multiline" Columns="60" Rows="5" runat="server" />
                                 </div>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator20" ControlToValidate="TB41" runat="server" ErrorMessage="This field is required." ForeColor="Red"></asp:RequiredFieldValidator>
                         </div>
 
                         <!-- Nomor 4.2 -->
@@ -363,12 +383,14 @@
                                     </asp:RadioButtonList>
                                 </div>
                             </div>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator21" ControlToValidate="RBL42" runat="server" ErrorMessage="This field is required." ForeColor="Red"></asp:RequiredFieldValidator>
                         </div>
                         <div class="form-group">
                             <label class="col-sm-3 control-label"> Alasan: </label>
                             <div class="col-lg-3 col-md-4">
                                 <asp:TextBox id="TB42" TextMode="multiline" Columns="60" Rows="5" runat="server" />
                                 </div>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator22" ControlToValidate="TB42" runat="server" ErrorMessage="This field is required." ForeColor="Red"></asp:RequiredFieldValidator>
                         </div>
 
                         <!-- Nomor 4.3 -->
@@ -386,12 +408,14 @@
                                     </asp:RadioButtonList>
                                 </div>
                             </div>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator23" ControlToValidate="RBL43" runat="server" ErrorMessage="This field is required." ForeColor="Red"></asp:RequiredFieldValidator>
                         </div>
                         <div class="form-group">
                             <label class="col-sm-3 control-label"> Alasan: </label>
                             <div class="col-lg-3 col-md-4">
                                 <asp:TextBox id="TB43" TextMode="multiline" Columns="60" Rows="5" runat="server" />
                                 </div>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator24" ControlToValidate="TB43" runat="server" ErrorMessage="This field is required." ForeColor="Red"></asp:RequiredFieldValidator>
                         </div>
 
                         <!-- Nomor 4.4 -->
@@ -409,12 +433,14 @@
                                     </asp:RadioButtonList>
                                 </div>
                             </div>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator25" ControlToValidate="RBL44" runat="server" ErrorMessage="This field is required." ForeColor="Red"></asp:RequiredFieldValidator>
                         </div>
                         <div class="form-group">
                             <label class="col-sm-3 control-label"> Alasan: </label>
                             <div class="col-lg-3 col-md-4">
                                 <asp:TextBox id="TB44" TextMode="multiline" Columns="60" Rows="5" runat="server" />
                                 </div>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator26" ControlToValidate="TB44" runat="server" ErrorMessage="This field is required." ForeColor="Red"></asp:RequiredFieldValidator>
                         </div>
 
                         <h3>Fasilitas Pelatihan</h3>
@@ -434,12 +460,14 @@
                                     </asp:RadioButtonList>
                                 </div>
                             </div>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator27" ControlToValidate="RBL51" runat="server" ErrorMessage="This field is required." ForeColor="Red"></asp:RequiredFieldValidator>
                         </div>
                         <div class="form-group">
                             <label class="col-sm-3 control-label"> Alasan: </label>
                             <div class="col-lg-3 col-md-4">
                                 <asp:TextBox id="TB51" TextMode="multiline" Columns="60" Rows="5" runat="server" />
                                 </div>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator28" ControlToValidate="TB51" runat="server" ErrorMessage="This field is required." ForeColor="Red"></asp:RequiredFieldValidator>
                         </div>
 
                         <!-- Nomor 5.2 -->
@@ -457,12 +485,14 @@
                                     </asp:RadioButtonList>
                                 </div>
                             </div>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator29" ControlToValidate="RBL52" runat="server" ErrorMessage="This field is required." ForeColor="Red"></asp:RequiredFieldValidator>
                         </div>
                         <div class="form-group">
                             <label class="col-sm-3 control-label"> Alasan: </label>
                             <div class="col-lg-3 col-md-4">
                                 <asp:TextBox id="TB52" TextMode="multiline" Columns="60" Rows="5" runat="server" />
                                 </div>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator30" ControlToValidate="TB52" runat="server" ErrorMessage="This field is required." ForeColor="Red"></asp:RequiredFieldValidator>
                         </div>
 
                         <h3>Hasil Pelatihan</h3>
@@ -482,12 +512,14 @@
                                     </asp:RadioButtonList>
                                 </div>
                             </div>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator31" ControlToValidate="RBL61" runat="server" ErrorMessage="This field is required." ForeColor="Red"></asp:RequiredFieldValidator>
                         </div>
                         <div class="form-group">
                             <label class="col-sm-3 control-label"> Alasan: </label>
                             <div class="col-lg-3 col-md-4">
                                 <asp:TextBox id="TB61" TextMode="multiline" Columns="60" Rows="5" runat="server" />
                                 </div>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator32" ControlToValidate="TB61" runat="server" ErrorMessage="This field is required." ForeColor="Red"></asp:RequiredFieldValidator>
                         </div>
 
                         <!-- Nomor 6.2 -->
@@ -505,12 +537,14 @@
                                     </asp:RadioButtonList>
                                 </div>
                             </div>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator33" ControlToValidate="RBL62" runat="server" ErrorMessage="This field is required." ForeColor="Red"></asp:RequiredFieldValidator>
                         </div>
                         <div class="form-group">
                             <label class="col-sm-3 control-label"> Alasan: </label>
                             <div class="col-lg-3 col-md-4">
                                 <asp:TextBox id="TB62" TextMode="multiline" Columns="60" Rows="5" runat="server" />
                                 </div>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator34" ControlToValidate="TB62" runat="server" ErrorMessage="This field is required." ForeColor="Red"></asp:RequiredFieldValidator>
                         </div>
 
                         <hr />
@@ -538,6 +572,7 @@
                                     </asp:RadioButtonList>
                                 </div>
                             </div>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator35" ControlToValidate="RBL7" runat="server" ErrorMessage="This field is required." ForeColor="Red"></asp:RequiredFieldValidator>
                         </div>
 
                         <hr />

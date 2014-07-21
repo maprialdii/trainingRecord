@@ -102,6 +102,7 @@
                             <div class="col-lg-3 col-md-4">
                                 <asp:TextBox ID="txtEvtName" runat="server" class="form-control m-bot15" placeholder="EVENT NAME" ></asp:TextBox>
                             </div>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" ControlToValidate="txtEvtName" runat="server" ErrorMessage="This field is required." ForeColor="Red"></asp:RequiredFieldValidator>
                         </div>
 
                         <div class="form-group">
@@ -117,6 +118,7 @@
                             <div class="col-lg-3 col-md-4">
                                 <asp:TextBox ID="txtEventGroup" runat="server" class="form-control m-bot15" placeholder="EVENT NAME" ></asp:TextBox>
                             </div>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator2" ControlToValidate="txtEventGroup" runat="server" ErrorMessage="This field is required." ForeColor="Red"></asp:RequiredFieldValidator>
                         </div>
 
                         <!-- Modal -->

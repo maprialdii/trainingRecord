@@ -105,6 +105,7 @@
                             <div class="col-lg-3 col-md-4">
                                 <asp:TextBox ID="txtLevelTarget" runat="server" class="form-control m-bot15" placeholder="PROFICIENCY LEVEL TARGET" ></asp:TextBox>
                             </div>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" ControlToValidate="txtLevelTarget" runat="server" ErrorMessage="This field is required." ForeColor="Red"></asp:RequiredFieldValidator>
                         </div>
 
                         <table class="table table-striped table-hover table-bordered" id="dynamic-table" >
