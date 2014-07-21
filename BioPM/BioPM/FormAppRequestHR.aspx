@@ -14,7 +14,7 @@
         foreach (object[] data in BioPM.ClassObjects.ComDevPlan.GetComdevPlanByStatus("Confirmed") )
         {
             values = BioPM.ClassObjects.EmployeeCatalog.GetEmployeeByID(data[8].ToString());
-            htmlelement += "<tr class=''><td>" + data[7].ToString() + "</td><td>" + data[5].ToString() + "</td>><td>" + data[1].ToString() + "</td>><td>" + data[3].ToString() + "</td>><td>" + values[1].ToString() + "</td>><td>" + values[2].ToString() + "</td><td><a class='edit' href='FormApprove.aspx?key=" + data[0].ToString() + "'>Approve</a></td><td><a class='edit' href='PageInformation.aspx?key=" + data[0].ToString() + "&type=000'>Reject</a></td></tr>";
+            htmlelement += "<tr class=''><td>" + data[7].ToString() + "</td><td>" + data[5].ToString() + "</td><td>" + data[1].ToString() + "</td><td>" + data[3].ToString() + "</td><td>" + values[1].ToString() + "</td><td>" + values[2].ToString() + "</td><td><a class='edit' href='FormApprove.aspx?key=" + data[0].ToString() + "'>Approve</a></td><td><a class='edit' href='PageInformation.aspx?key=" + data[0].ToString() + "&type=000'>Reject</a></td></tr>";
         }
         
         return htmlelement;
