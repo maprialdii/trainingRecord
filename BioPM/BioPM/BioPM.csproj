@@ -115,6 +115,9 @@
     <Content Include="FormConfirmRequest.aspx" />
     <Content Include="FormDataEvaluasi.aspx" />
     <Content Include="FormEvaluasiImplementasi.aspx" />
+    <Content Include="PageCompetencyDevelopmentEventK.aspx" />
+    <Content Include="PageCompetencyParameterK.aspx" />
+    <Content Include="PageCompetencyRelationK.aspx" />
     <Content Include="PageDataEvaluasi.aspx" />
     <Content Include="PageEvaluasiImplementasi.aspx" />
     <Content Include="PageEvaluasiPelaksanaan.aspx" />
@@ -123,9 +126,12 @@
     <Content Include="FormEvaluasiPelaksanaan.aspx" />
     <Content Include="FormEvaluasiReaksiPeserta.aspx" />
     <Content Include="PageEvaluation.aspx" />
+    <Content Include="PageEventMethodK.aspx" />
     <Content Include="PageEventRequestDetail.aspx" />
     <Content Include="PageListEvaluasi3.aspx" />
     <Content Include="PageSurveyAnswers.aspx" />
+    <Content Include="PageTargetTrainingK.aspx" />
+    <Content Include="PageTrainingExecutionK.aspx" />
     <Content Include="Scripts\bootstrap-reset.css" />
     <Content Include="Scripts\bootstrap.min.css" />
     <Content Include="Scripts\Feature\jquery.nestable.css" />
@@ -615,6 +621,13 @@
     <Compile Include="PageCompetencyDevelopmentEvent.aspx.designer.cs">
       <DependentUpon>PageCompetencyDevelopmentEvent.aspx</DependentUpon>
     </Compile>
+    <Compile Include="PageCompetencyDevelopmentEventK.aspx.cs">
+      <DependentUpon>PageCompetencyDevelopmentEventK.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageCompetencyDevelopmentEventK.aspx.designer.cs">
+      <DependentUpon>PageCompetencyDevelopmentEventK.aspx</DependentUpon>
+    </Compile>
     <Compile Include="PageCompetencyParameter.aspx.cs">
       <DependentUpon>PageCompetencyParameter.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -622,12 +635,26 @@
     <Compile Include="PageCompetencyParameter.aspx.designer.cs">
       <DependentUpon>PageCompetencyParameter.aspx</DependentUpon>
     </Compile>
+    <Compile Include="PageCompetencyParameterK.aspx.cs">
+      <DependentUpon>PageCompetencyParameterK.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageCompetencyParameterK.aspx.designer.cs">
+      <DependentUpon>PageCompetencyParameterK.aspx</DependentUpon>
+    </Compile>
     <Compile Include="PageCompetencyRelation.aspx.cs">
       <DependentUpon>PageCompetencyRelation.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="PageCompetencyRelation.aspx.designer.cs">
       <DependentUpon>PageCompetencyRelation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageCompetencyRelationK.aspx.cs">
+      <DependentUpon>PageCompetencyRelationK.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageCompetencyRelationK.aspx.designer.cs">
+      <DependentUpon>PageCompetencyRelationK.aspx</DependentUpon>
     </Compile>
     <Compile Include="PageCompetencyRelationTable.aspx.cs">
       <DependentUpon>PageCompetencyRelationTable.aspx</DependentUpon>
@@ -698,6 +725,13 @@
     </Compile>
     <Compile Include="PageEventMethod.aspx.designer.cs">
       <DependentUpon>PageEventMethod.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageEventMethodK.aspx.cs">
+      <DependentUpon>PageEventMethodK.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageEventMethodK.aspx.designer.cs">
+      <DependentUpon>PageEventMethodK.aspx</DependentUpon>
     </Compile>
     <Compile Include="PageEventRequestDetail.aspx.cs">
       <DependentUpon>PageEventRequestDetail.aspx</DependentUpon>
@@ -886,12 +920,26 @@
     <Compile Include="PageTargetTraining.aspx.designer.cs">
       <DependentUpon>PageTargetTraining.aspx</DependentUpon>
     </Compile>
+    <Compile Include="PageTargetTrainingK.aspx.cs">
+      <DependentUpon>PageTargetTrainingK.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageTargetTrainingK.aspx.designer.cs">
+      <DependentUpon>PageTargetTrainingK.aspx</DependentUpon>
+    </Compile>
     <Compile Include="PageTrainingExecution.aspx.cs">
       <DependentUpon>PageTrainingExecution.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="PageTrainingExecution.aspx.designer.cs">
       <DependentUpon>PageTrainingExecution.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageTrainingExecutionK.aspx.cs">
+      <DependentUpon>PageTrainingExecutionK.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageTrainingExecutionK.aspx.designer.cs">
+      <DependentUpon>PageTrainingExecutionK.aspx</DependentUpon>
     </Compile>
     <Compile Include="PageTrainingReport.aspx.cs">
       <DependentUpon>PageTrainingReport.aspx</DependentUpon>

@@ -1,8 +1,8 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="PageCompetencyParameter.aspx.cs" Inherits="BioPM.PageCompetencyParameter" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="PageTrainingExecutionK.aspx.cs" Inherits="BioPM.PageTrainingExecutionK" %>
 
 <!DOCTYPE html>
+<!-- Page Training Execution untuk karyawan -->
 <script runat="server">
-    string trgId = null;
     protected void Page_Load(object sender, EventArgs e)
     {
         if (Session["username"] == null && Session["password"] == null) Response.Redirect("PageLogin.aspx");
@@ -10,16 +10,16 @@
 
     protected void InsertReasonIntoDatabase()
     {
-        BioPM.ClassObjects.Reason.InsertReason(txtReason.Text, "Delete Kompetensi", Session["username"].ToString());
+        BioPM.ClassObjects.Reason.InsertReason(txtReason.Text, "Delete Training", Session["username"].ToString());
     }
 
-    protected String GenerateDataKompetensi()
+    protected String GenerateDataEksekusi()
     {
         string htmlelement = "";
 
-        foreach (object[] data in BioPM.ClassObjects.CompetencyCatalog.GetAllCompetency())
+        foreach (object[] data in BioPM.ClassObjects.ComDevExecution.GetComdevExecutionByUserId(Session["username"].ToString()))
         {
-            htmlelement += "<tr class=''><td>" + data[1].ToString() + "</td><td>" + data[2].ToString() + "</td><td><a class='edit' href='FormUpdateCompetency.aspx?key=" + data[0].ToString() + "'>Edit</a></td><td><a class='delete' href='PageInformation.aspx?key=" + data[0].ToString() + "&type=21'>Delete</a></td></tr>";
+            htmlelement += "<tr class=''><td>" + data[1].ToString() + "</td><td>" + data[2].ToString() + "</td><td>" + data[3].ToString() + "</td><td>" + data[4].ToString() + "</td><td>" + data[10].ToString() + "</td><td><a class='edit' href='PageInstitutionDetail.aspx?key=" + data[0].ToString() + "'>" + data[5].ToString() + "</a></td><td>" + data[6].ToString() + "</td><td>" + data[7].ToString() + "</td><td>" + data[8].ToString() + "</td><td>" + data[9].ToString() + "</td></tr>";
         }
         
         return htmlelement;
@@ -30,14 +30,13 @@
         if (Session["password"].ToString() == BioPM.ClassEngines.CryptographFactory.Encrypt(txtConfirmation.Text, true))
         {
             InsertReasonIntoDatabase();
-            Response.Redirect("PageInformation.aspx?key=" + trgId + "&type=21");
+            Response.Redirect("PageInformation.aspx?type=26");
         }
         else
         {
             ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('" + "YOUR PASSWORD IS INCORRECT" + "');", true);
         }
     }
-
    
 </script>
 
@@ -45,7 +44,7 @@
 <head>
     <% Response.Write(BioPM.ClassScripts.BasicScripts.GetMetaScript()); %>
 
-    <title>Competency Parameter</title>
+    <title>Comdev Event Execution</title>
 
     <% Response.Write(BioPM.ClassScripts.StyleScripts.GetCoreStyle()); %>
 <% Response.Write(BioPM.ClassScripts.StyleScripts.GetTableStyle()); %>
@@ -73,20 +72,15 @@
             <div class="col-sm-12">
                 <section class="panel">
                     <header class="panel-heading">
-                        Competency Parameter
+                        Comdev Event Execution
                           <span class="tools pull-right">
                             <a class="fa fa-chevron-down" href="javascript:;"></a>
                             <a class="fa fa-times" href="javascript:;"></a>
                          </span>
                     </header>
                     <div class="panel-body">
-
                         <div class="adv-table">
                             <div class="clearfix">
-                                <div class="btn-group">
-                                    <button id="editable-sample_new" onclick="document.location.href='FormInputCompetency.aspx';" class="btn btn-primary"> Add New <i class="fa fa-plus"></i>
-                                    </button>
-                                </div>
                                 <div class="btn-group pull-right">
                                     <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">Tools <i class="fa fa-angle-down"></i>
                                     </button>
@@ -100,41 +94,47 @@
                             <table class="table table-striped table-hover table-bordered" id="dynamic-table" >
                                 <thead>
                                 <tr>
-                                    <th>Competency Code</th>
-                                    <th>Competency Name</th>                                     
-                                    <th>Edit</th>
-                                    <th>Delete</th>
+                                    <th>Event Name</th>
+                                    <th>Title</th>
+                                    <th>Batch</th>
+                                    <th>Speaker</th> 
+                                    <th>Cost</th>    
+                                    <th>Institution</th>  
+                                    <th>Start Date</th>  
+                                    <th>End Date</th>
+                                    <th>Status</th>  
+                                    <th>Score</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <% Response.Write(GenerateDataKompetensi()); %>
+                                <% Response.Write(GenerateDataEksekusi()); %>
                                 </tbody>
                             </table>
-                        </div>
-                        <!-- Modal -->
+                            <!-- Modal -->
                         <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModal" class="modal fade">
+                          <form id="form1" runat="server">
                             <div class="modal-dialog">
                                 <div class="modal-content">
-                                    <form id="formModal" runat="server">
                                     <div class="modal-header">
                                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                                         <h4 class="modal-title">Approver Confirmation</h4>
                                     </div>
-                                    <div class="modal-body">                                        
-                                            <p>You Are Logged In As <% Response.Write(Session["name"].ToString()); %></p><br />
-                                            <p>Are you sure to insert into database?</p>
-                                            <asp:TextBox ID="txtConfirmation" runat="server" TextMode="Password" placeholder="Confirmation Password" class="form-control placeholder-no-fix"></asp:TextBox>
-                                            <asp:TextBox ID="txtReason" TextMode="multiline" Columns="30" Rows="3" runat="server" placeholder="Reason" class="form-control placeholder-no-fix"></asp:TextBox>
+                                    <div class="modal-body">
+                                        <p>You Are Logged In As <% Response.Write(Session["name"].ToString()); %></p><br />
+                                        <p>Are you sure to insert into database?</p>
+                                        <asp:TextBox ID="txtConfirmation" runat="server" TextMode="Password" placeholder="Confirmation Password" class="form-control placeholder-no-fix"></asp:TextBox>
+                                        <asp:TextBox ID="txtReason" TextMode="multiline" Columns="30" Rows="3" runat="server" placeholder="Reason" class="form-control placeholder-no-fix"></asp:TextBox>
                                     </div>
                                     <div class="modal-footer">
                                         <asp:Button ID="btnClose" runat="server" data-dismiss="modal" class="btn btn-default" Text="Cancel"></asp:Button>
                                         <asp:Button ID="btnSubmit" runat="server" class="btn btn-success" Text="Confirm" OnClick="btnDel_Click"></asp:Button>
                                     </div>
-                                    </form>
                                 </div>
                             </div>
+                          </form>
                         </div>
                         <!-- modal -->  
+                        </div>                            
                     </div>
                     
                 </section>

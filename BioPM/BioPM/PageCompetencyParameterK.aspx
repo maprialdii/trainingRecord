@@ -1,16 +1,12 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="PageCompetencyParameter.aspx.cs" Inherits="BioPM.PageCompetencyParameter" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="PageCompetencyParameterK.aspx.cs" Inherits="BioPM.PageCompetencyParameterK" %>
 
 <!DOCTYPE html>
+<!-- Page Competency Parameter untuk karyawan -->
 <script runat="server">
     string trgId = null;
     protected void Page_Load(object sender, EventArgs e)
     {
         if (Session["username"] == null && Session["password"] == null) Response.Redirect("PageLogin.aspx");
-    }
-
-    protected void InsertReasonIntoDatabase()
-    {
-        BioPM.ClassObjects.Reason.InsertReason(txtReason.Text, "Delete Kompetensi", Session["username"].ToString());
     }
 
     protected String GenerateDataKompetensi()
@@ -19,26 +15,12 @@
 
         foreach (object[] data in BioPM.ClassObjects.CompetencyCatalog.GetAllCompetency())
         {
-            htmlelement += "<tr class=''><td>" + data[1].ToString() + "</td><td>" + data[2].ToString() + "</td><td><a class='edit' href='FormUpdateCompetency.aspx?key=" + data[0].ToString() + "'>Edit</a></td><td><a class='delete' href='PageInformation.aspx?key=" + data[0].ToString() + "&type=21'>Delete</a></td></tr>";
+            htmlelement += "<tr class=''><td>" + data[1].ToString() + "</td><td>" + data[2].ToString() + "</td></tr>";
         }
         
         return htmlelement;
     }
-
-    protected void btnDel_Click(object sender, EventArgs e)
-    {
-        if (Session["password"].ToString() == BioPM.ClassEngines.CryptographFactory.Encrypt(txtConfirmation.Text, true))
-        {
-            InsertReasonIntoDatabase();
-            Response.Redirect("PageInformation.aspx?key=" + trgId + "&type=21");
-        }
-        else
-        {
-            ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('" + "YOUR PASSWORD IS INCORRECT" + "');", true);
-        }
-    }
-
-   
+       
 </script>
 
 <html lang="en">
@@ -83,10 +65,6 @@
 
                         <div class="adv-table">
                             <div class="clearfix">
-                                <div class="btn-group">
-                                    <button id="editable-sample_new" onclick="document.location.href='FormInputCompetency.aspx';" class="btn btn-primary"> Add New <i class="fa fa-plus"></i>
-                                    </button>
-                                </div>
                                 <div class="btn-group pull-right">
                                     <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">Tools <i class="fa fa-angle-down"></i>
                                     </button>
@@ -101,9 +79,7 @@
                                 <thead>
                                 <tr>
                                     <th>Competency Code</th>
-                                    <th>Competency Name</th>                                     
-                                    <th>Edit</th>
-                                    <th>Delete</th>
+                                    <th>Competency Name</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -111,30 +87,6 @@
                                 </tbody>
                             </table>
                         </div>
-                        <!-- Modal -->
-                        <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModal" class="modal fade">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <form id="formModal" runat="server">
-                                    <div class="modal-header">
-                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                        <h4 class="modal-title">Approver Confirmation</h4>
-                                    </div>
-                                    <div class="modal-body">                                        
-                                            <p>You Are Logged In As <% Response.Write(Session["name"].ToString()); %></p><br />
-                                            <p>Are you sure to insert into database?</p>
-                                            <asp:TextBox ID="txtConfirmation" runat="server" TextMode="Password" placeholder="Confirmation Password" class="form-control placeholder-no-fix"></asp:TextBox>
-                                            <asp:TextBox ID="txtReason" TextMode="multiline" Columns="30" Rows="3" runat="server" placeholder="Reason" class="form-control placeholder-no-fix"></asp:TextBox>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <asp:Button ID="btnClose" runat="server" data-dismiss="modal" class="btn btn-default" Text="Cancel"></asp:Button>
-                                        <asp:Button ID="btnSubmit" runat="server" class="btn btn-success" Text="Confirm" OnClick="btnDel_Click"></asp:Button>
-                                    </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- modal -->  
                     </div>
                     
                 </section>

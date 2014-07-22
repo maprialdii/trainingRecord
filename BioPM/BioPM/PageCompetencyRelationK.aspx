@@ -1,7 +1,7 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="PageCompetencyRelation.aspx.cs" Inherits="BioPM.PageCompetencyRelation" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="PageCompetencyRelationK.aspx.cs" Inherits="BioPM.PageCompetencyRelationK" %>
 
 <!DOCTYPE html>
-
+<!-- Page Competency Relation untuk karyawan -->
 <html lang="en">
 <head>
 <% Response.Write(BioPM.ClassScripts.BasicScripts.GetMetaScript()); %>
@@ -44,10 +44,6 @@
                          </span>
                     </header>
                     <div class="panel-body">
-                        <div class="btn-group">
-                              <button id="editable-sample_new" onclick="document.location.href='PageCompetencyRelationTable.aspx';" class="btn btn-primary"> Table View
-                              </button>
-                            </div>
                             <div class="row">
                                 <div class="col-lg-12">
                                     <section class="panel">
