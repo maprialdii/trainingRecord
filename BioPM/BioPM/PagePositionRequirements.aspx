@@ -3,9 +3,11 @@
 <!DOCTYPE html>
 <script runat="server">
     string posisi=null;
+    string PRQID = null;
     protected void Page_Load(object sender, EventArgs e)
     {
         if (Session["username"] == null && Session["password"] == null) Response.Redirect("PageLogin.aspx");
+        if (!IsPostBack) SetPositionAndCompetencyList();
     }
     
 
@@ -23,6 +25,56 @@
         return htmlelement;
     }
 
+    protected void SetPositionAndCompetencyList()
+    {
+        ddlJabatan.Items.Clear();
+        foreach (object[] data in BioPM.ClassObjects.Jabatan.GetAllJabatan())
+        {
+            ddlJabatan.Items.Add(new ListItem(data[1].ToString(), data[0].ToString()));
+        }
+
+        ddlCompetency.Items.Clear();
+        foreach (object[] data in BioPM.ClassObjects.CompetencyCatalog.GetAllCompetency())
+        {
+            ddlCompetency.Items.Add(new ListItem(data[2].ToString(), data[0].ToString()));
+        }
+    }
+
+    protected void InsertReasonIntoDatabase()
+    {
+        BioPM.ClassObjects.Reason.InsertReason(txtReason.Text, "Input Position Requirement", Session["username"].ToString());
+    }
+
+    protected void InsertPositionReqIntoDatabase()
+    {
+        PRQID = (BioPM.ClassObjects.Jabatan.GetPositionRequirementMaxID() + 1).ToString();
+        BioPM.ClassObjects.Jabatan.InsertJabatan(PRQID, ddlJabatan.SelectedValue, ddlCompetency.SelectedValue, txtLevel.Text, Session["username"].ToString());
+    }
+
+    protected void btnAdd_Click(object sender, EventArgs e)
+    {
+        if (IsPostBack) InsertPositionReqIntoDatabase();
+        Response.Redirect("PagePositionRequirements.aspx?key=" + ddlJabatan.SelectedValue + "");
+    }
+
+    protected void btnCancel_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("PageUserPanel.aspx");
+    }
+
+    protected void btnSave_Click(object sender, EventArgs e)
+    {
+        if (Session["password"].ToString() == BioPM.ClassEngines.CryptographFactory.Encrypt(txtConfirmation.Text, true))
+        {
+            InsertPositionReqIntoDatabase();
+            InsertReasonIntoDatabase();
+            Response.Redirect("PagePositionRequirements.aspx?key=" + ddlJabatan.SelectedValue + "");
+        }
+        else
+        {
+            ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('" + "YOUR PASSWORD IS INCORRECT" + "');", true);
+        }
+    }
    
 </script>
 
@@ -65,6 +117,65 @@
                          </span>
                     </header>
                     <div class="panel-body">
+                        <form id="Form2" class="form-horizontal " runat="server" >
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label"> POSITION NAME </label>
+                            <div class="col-lg-3 col-md-4">
+                                <asp:DropDownList ID="ddlJabatan" runat="server" class="form-control m-bot15">   
+                                </asp:DropDownList> 
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label"> COMPETENCY NAME </label>
+                            <div class="col-lg-3 col-md-4">
+                                <asp:DropDownList ID="ddlCompetency" runat="server" class="form-control m-bot15">   
+                                </asp:DropDownList> 
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label"> REQUIRED LEVEL </label>
+                            <div class="col-lg-3 col-md-4">
+                                <asp:TextBox ID="txtLevel" runat="server" class="form-control m-bot15" placeholder="PROFICIENCY LEVEL TARGET" ></asp:TextBox>
+                            </div>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" ControlToValidate="txtLevel" runat="server" ErrorMessage="This field is required." ForeColor="Red"></asp:RequiredFieldValidator>
+                        </div>
+
+                        <!-- Modal -->
+                        <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModal" class="modal fade">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                        <h4 class="modal-title">Approver Confirmation</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>You Are Logged In As <% Response.Write(Session["name"].ToString()); %></p><br />
+                                        <p>Are you sure to insert into database?</p>
+                                        <asp:TextBox ID="txtConfirmation" runat="server" TextMode="Password" placeholder="Confirmation Password" class="form-control placeholder-no-fix"></asp:TextBox>
+                                        <asp:TextBox ID="txtReason" TextMode="multiline" Columns="30" Rows="3" runat="server" placeholder="Reason" class="form-control placeholder-no-fix"></asp:TextBox>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <asp:Button ID="btnClose" runat="server" data-dismiss="modal" class="btn btn-default" Text="Cancel"></asp:Button>
+                                        <asp:Button ID="btnSubmit" runat="server" class="btn btn-success" Text="Confirm" OnClick="btnSave_Click"></asp:Button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- modal -->
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label"> </label>
+                            <div class="col-lg-3 col-md-3">
+                                <asp:LinkButton data-toggle="modal" class="btn btn-round btn-primary" ID="btnAction" runat="server" Text="Add" href="#myModal"/>
+                                <asp:Button class="btn btn-round btn-primary" ID="btnCancel" runat="server" Text="Cancel" OnClick="btnCancel_Click"/>
+                            </div>
+                        </div>
+                            
+                        </form>
+
                         <div class="adv-table">
                             <div class="clearfix">
                                 <div class="btn-group">
