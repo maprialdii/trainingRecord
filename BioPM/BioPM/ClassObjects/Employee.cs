@@ -265,7 +265,7 @@ namespace BioPM.ClassObjects
                             AND PR.BEGDA <= GETDATE() AND PR.ENDDA >= GETDATE()
                             AND PM.BEGDA <= GETDATE() AND PM.ENDDA >= GETDATE()
                             AND UD.BEGDA <= GETDATE() AND UD.ENDDA >= GETDATE()
-                            AND CG.PERNR=UD.PERNR and PR.CPYID=CG.CPYID and CG.CPYID=PM.PRMID and PR.POSID=UD.POSID and UD.PERNR='" + pernr + "';";
+                            AND CG.PERNR=UD.PERNR and PR.CPYID=CG.CPYID and CG.CPYID=PM.PRMID and PR.POSID=UD.POSID and PM.PRMTY='CP' and UD.PERNR='" + pernr + "';";
             SqlCommand cmd = GetCommand(conn, sqlCmd);
 
             try

@@ -8,6 +8,7 @@
         if (!IsPostBack)
         {
             GetDataEventAndEmployee();
+            ddlRecID.Enabled = false;
             txtExcid.Text = (BioPM.ClassObjects.ComDevExecution.GetComDevExecutionMaxID() + 1).ToString();    
         }
     }    
@@ -20,15 +21,17 @@
             ddlEventMethod.Items.Add(new ListItem(data[1].ToString(), data[0].ToString()));
         }
         ddlEmployeeName.Items.Clear();
+        
         foreach (object[] data in BioPM.ClassObjects.EmployeeCatalog.GetAllEmployee())
         {
             ddlEmployeeName.Items.Add(new ListItem(data[1].ToString(), data[0].ToString()));
         }
+        ddlEmployeeName.Items.Insert(0, new ListItem("Select Employee", "NA"));
     }
     
     protected void InsertDataIntoDatabase()
     {
-        BioPM.ClassObjects.ComDevExecution.InsertComDevExecution(txtExcid.Text, Session["username"].ToString(), ddlEventMethod.SelectedValue, txtEventTitle.Text, txtBatch.Text, txtPembicara.Text, txtCost.Text, txtInsti.Text, txtAdrin.Text, TxtCitin.Text, txtCouin.Text, ddlStatus.SelectedValue.ToString(), txtScore.Text, Session["username"].ToString(), txtBegda.Text, txtEndda.Text);
+        BioPM.ClassObjects.ComDevExecution.InsertComDevExecution(txtExcid.Text, ddlEmployeeName.SelectedValue, ddlEventMethod.SelectedValue, txtEventTitle.Text, txtBatch.Text, txtPembicara.Text, txtCost.Text, txtInsti.Text, txtAdrin.Text, TxtCitin.Text, txtCouin.Text, ddlStatus.SelectedValue.ToString(), txtScore.Text, Session["username"].ToString(), txtBegda.Text, txtEndda.Text, ddlRecID.SelectedValue);
     }
 
     protected void btnAdd_Click(object sender, EventArgs e)
@@ -83,8 +86,7 @@
                          </span>
                     </header>
                     <div class="panel-body">
-                        <form id="Form1" class="form-horizontal " runat="server" >
-
+                        <form id="Form1" class="form-horizontal " runat="server" >                        
                         <div class="form-group">
                             <label class="col-sm-3 control-label"> EXECUTION ID </label>
                             <div class="col-lg-3 col-md-4">
@@ -96,11 +98,24 @@
                         <div class="form-group">
                             <label class="col-sm-3 control-label"> EMPLOYEE NAME </label>
                             <div class="col-lg-3 col-md-4">
-                                <asp:DropDownList ID="ddlEmployeeName" runat="server" class="form-control m-bot15">   
+                                <asp:DropDownList ID="ddlEmployeeName" runat="server" class="form-control m-bot15" OnSelectedIndexChanged="ddlEmployeeName_SelectedIndexChanged" AutoPostBack="true">   
                                 </asp:DropDownList> 
                             </div>
                         </div>
-                         
+                        <asp:ScriptManager runat="server" ID="ScriptManager1"></asp:ScriptManager>
+                            <asp:UpdatePanel runat="server" ID="UpdatePanel1" UpdateMode="Conditional">
+                                <ContentTemplate>
+                                    <fieldset>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label"> APPROVAL CODE </label>
+                            <div class="col-lg-3 col-md-4">
+                                <asp:DropDownList ID="ddlRecID" runat="server" class="form-control m-bot15">   
+                                </asp:DropDownList> 
+                            </div>
+                        </div>
+                     </fieldset>
+                    </ContentTemplate>
+                        </asp:UpdatePanel>    
                         <div class="form-group">
                             <label class="col-sm-3 control-label"> EVENT NAME </label>
                             <div class="col-lg-3 col-md-4">
@@ -216,8 +231,7 @@
                                 <asp:Button class="btn btn-round btn-primary" ID="btnAdd" runat="server" Text="Add" OnClick="btnAdd_Click"/>
                                 <asp:Button class="btn btn-round btn-primary" ID="btnCancel" runat="server" Text="Cancel" OnClick="btnCancel_Click"/>
                             </div>
-                        </div>
-                            
+                        </div>  
                         </form>
                     </div>
                     

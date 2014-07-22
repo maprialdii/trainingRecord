@@ -101,9 +101,9 @@ namespace BioPM.ClassObjects
         public static List<object[]> GetKualifikasiJabatan(string posid)
         {
             SqlConnection conn = GetConnection();
-            string sqlCmd = @"SELECT DISTINCT PR.PRQID, RK.CPYNM, PR.PRLVL, UD.PRPOS+' '+UD.PRORG AS POSISI
-                            FROM BIOFARMA.bioumum.USER_DATA UD, BIOFARMA.trrcd.POSITION_REQ PR WITH(INDEX(POSITION_REQ_IDX_BEGDA_ENDDA_ID)), BIOFARMA.trrcd.REFERENSI_KOMPETENSI RK WITH(INDEX(REFERENSI_KOMPETENSI_IDX_BEGDA_ENDDA_ID))
-                            WHERE UD.POSID IS NOT NULL AND UD.POSID!='' AND RK.CPYID=PR.CPYID AND UD.POSID=PR.POSID 
+            string sqlCmd = @"SELECT DISTINCT PR.PRQID, RK.PRMNM, PR.PRLVL, UD.PRPOS+' '+UD.PRORG AS POSISI
+                            FROM BIOFARMA.bioumum.USER_DATA UD, BIOFARMA.trrcd.POSITION_REQ PR WITH(INDEX(POSITION_REQ_IDX_BEGDA_ENDDA_ID)), BIOFARMA.bioumum.PARAMETER RK
+                            WHERE UD.POSID IS NOT NULL AND UD.POSID!='' AND RK.PRMID=PR.CPYID AND UD.POSID=PR.POSID
                             AND UD.BEGDA <= GETDATE() AND UD.ENDDA >= GETDATE()
                             AND PR.BEGDA <= GETDATE() AND PR.ENDDA >= GETDATE()
                             AND RK.BEGDA <= GETDATE() AND RK.ENDDA >= GETDATE()

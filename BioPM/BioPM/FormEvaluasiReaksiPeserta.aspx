@@ -5,6 +5,19 @@
     protected void Page_Load(object sender, EventArgs e)
     {
         if (Session["username"] == null && Session["password"] == null) Response.Redirect("PageLogin.aspx");
+        if (!IsPostBack)
+            SetData();
+    }
+
+    protected void SetData()
+    {
+        object[] dataEksekusi = BioPM.ClassObjects.ComDevExecution.GetComdevExecutionById(Request.QueryString["key"].ToString());
+        lblTopik.Text = dataEksekusi[2].ToString();
+        lblTgl.Text = dataEksekusi[7].ToString() + "-" + dataEksekusi[8].ToString();
+        lblSpeaker.Text = dataEksekusi[5].ToString();
+        object[] dataApprover = BioPM.ClassObjects.EmployeeCatalog.GetEmployeeByID(Session["username"].ToString());
+        lblNama.Text = dataApprover[1].ToString();
+        lblDivisi.Text = dataApprover[3].ToString();
     }
 
     protected void InsertAnswersIntoDatabase()
@@ -117,25 +130,22 @@
                         <div class="form-group">
                             <label class="col-sm-3 control-label"> Topik </label>
                             <div class="col-lg-3 col-md-4">
-                                <asp:TextBox ID="txtTopik" runat="server" class="form-control m-bot15" placeholder="Topik Pelatihan"></asp:TextBox>
-                            </div>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" ControlToValidate="txtTopik" runat="server" ErrorMessage="This field is required." ForeColor="Red"></asp:RequiredFieldValidator>
+                                <asp:Label ID="lblTopik" runat="server"></asp:Label>                                
+                            </div>                            
                         </div>
 
                         <div class="form-group">
                             <label class="col-sm-3 control-label"> Hari/Tanggal </label>
                             <div class="col-lg-3 col-md-4">
-                                <asp:TextBox ID="txtHariTanggal" runat="server" class="form-control m-bot15" placeholder="Hari/Tanggal" ></asp:TextBox>
-                            </div>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator2" ControlToValidate="txtHariTanggal" runat="server" ErrorMessage="This field is required." ForeColor="Red"></asp:RequiredFieldValidator>
+                                <asp:Label ID="lblTgl" runat="server"></asp:Label>
+                            </div>                            
                         </div>
 
                         <div class="form-group">
                             <label class="col-sm-3 control-label"> Pembicara </label>
                             <div class="col-lg-3 col-md-4">
-                                <asp:TextBox ID="txtPembicara" runat="server" class="form-control m-bot15" placeholder="Pembicara" ></asp:TextBox>
-                            </div>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator3" ControlToValidate="txtPembicara" runat="server" ErrorMessage="This field is required." ForeColor="Red"></asp:RequiredFieldValidator>
+                                <asp:Label ID="lblSpeaker" runat="server"></asp:Label>
+                            </div>                            
                         </div>
 
                         <hr />
@@ -143,17 +153,15 @@
                         <div class="form-group">
                             <label class="col-sm-3 control-label"> Nama </label>
                             <div class="col-lg-3 col-md-4">
-                                <asp:TextBox ID="txtNama" runat="server" class="form-control m-bot15" placeholder="Nama" ></asp:TextBox>
-                            </div>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator4" ControlToValidate="txtNama" runat="server" ErrorMessage="This field is required." ForeColor="Red"></asp:RequiredFieldValidator>
+                                <asp:Label ID="lblNama" runat="server"></asp:Label>
+                            </div>                            
                         </div>
 
                         <div class="form-group">
                             <label class="col-sm-3 control-label"> Bagian </label>
                             <div class="col-lg-3 col-md-4">
-                                <asp:TextBox ID="txtBagian" runat="server" class="form-control m-bot15" placeholder="Bagian" ></asp:TextBox>
-                            </div>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator5" ControlToValidate="txtBagian" runat="server" ErrorMessage="This field is required." ForeColor="Red"></asp:RequiredFieldValidator>
+                                <asp:Label ID="lblDivisi" runat="server"></asp:Label>
+                            </div>                            
                         </div>
 
                         <hr />
