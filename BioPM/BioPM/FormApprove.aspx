@@ -2,7 +2,7 @@
 
 <!DOCTYPE html>
 <script runat="server">
-    string evtId;
+    string evtId=null;
     protected void Page_Load(object sender, EventArgs e)
     {
         if (Session["username"] == null && Session["password"] == null) Response.Redirect("PageLogin.aspx");
@@ -11,8 +11,7 @@
             SetDataToForm();
             txtExcid.Text = (BioPM.ClassObjects.ComDevExecution.GetComDevExecutionMaxID() + 1).ToString();    
         }
-    }
-    
+    }    
    
     protected void SetDataToForm()
     {
@@ -20,12 +19,14 @@
         txtCost.Text = data[3].ToString();
         txtEmployeeName.Text = data[6].ToString();
         txtEventName.Text = data[8].ToString();
-        evtId = data[0].ToString();
+        evtId = data[1].ToString();
     }
     
     protected void InsertDataIntoDatabase()
     {
-        BioPM.ClassObjects.ComDevExecution.InsertComDevExecution(txtExcid.Text, Session["username"].ToString(), evtId, txtEventTitle.Text, txtBatch.Text, txtPembicara.Text, txtCost.Text, txtInsti.Text, txtAdrin.Text, TxtCitin.Text, txtCouin.Text, " ", "0", Session["username"].ToString(), txtBegda.Text, txtEndda.Text);
+        object[] data = BioPM.ClassObjects.ComDevPlan.GetComdevPlanById(Request.QueryString["key"].ToString());
+        BioPM.ClassObjects.ComDevExecution.InsertComDevExecution(txtExcid.Text, data[5].ToString(), data[1].ToString(), txtEventTitle.Text, txtBatch.Text, txtPembicara.Text, txtCost.Text, txtInsti.Text, txtAdrin.Text, TxtCitin.Text, txtCouin.Text, "", "0", Session["username"].ToString(), txtBegda.Text, txtEndda.Text, Request.QueryString["key"].ToString());
+        BioPM.ClassObjects.ComDevPlan.UpdateComDevPlanStatus(Request.QueryString["key"].ToString(), "Approved", Session["username"].ToString(), Session["username"].ToString());
     }
 
     protected void btnAdd_Click(object sender, EventArgs e)

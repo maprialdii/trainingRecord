@@ -15,11 +15,12 @@
     protected void SetEmployee()
     {
         ddlEmployeeName.Items.Clear();
+        ddlEmployeeName.Items.Insert(0, new ListItem("Select Employee", "NA"));
         foreach (object[] data in BioPM.ClassObjects.EmployeeCatalog.GetAllEmployee())
         {
             ddlEmployeeName.Items.Add(new ListItem(data[1].ToString(), data[0].ToString()));
         }
-        ddlEmployeeName.Items.Insert(0, new ListItem("Select Employee", "NA"));
+        
     }
 
     protected void btnCancel_Click(object sender, EventArgs e)

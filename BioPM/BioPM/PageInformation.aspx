@@ -195,13 +195,13 @@
                 {
                     string RECID = (BioPM.ClassObjects.ComDevPlan.GetComDevPlanMaxID() + 1).ToString();
                     BioPM.ClassObjects.ComDevPlan.InsertComDevPlan(RECID, Session["username"].ToString(), ID, " ", " ", " ", Session["username"].ToString());
-                    BioPM.ClassObjects.ComDevPlan.InsertComDevPlanStatus(RECID, "Belum Disetujui", " ", Session["username"].ToString());
+                    BioPM.ClassObjects.ComDevPlan.InsertComDevPlanStatus(RECID, "Requested", " ", Session["username"].ToString());
                     message = "REQUEST SUCCESS! REQUEST HAS BEEN ADDED. <a href='PageRequestTraining.aspx'>BACK</a>.";
                     break;
                 }
             case "31":
                 {
-                    BioPM.ClassObjects.ComDevPlan.UpdateComDevPlanStatus(ID, "Tidak Disetujui", Session["username"].ToString(), Session["username"].ToString());
+                    BioPM.ClassObjects.ComDevPlan.UpdateComDevPlanStatus(ID, "RequestRejected", Session["username"].ToString(), Session["username"].ToString());
                     message = "UPDATE SUCCESS! REQUEST HAS BEEN REJECTED. <a href='PageRequestFromEmployee.aspx'>BACK</a>.";
                     break;
                 }
@@ -209,6 +209,12 @@
                 {
                     BioPM.ClassObjects.ComDevPlan.UpdateComDevPlanStatus(ID, "Disetujui", Session["username"].ToString(), Session["username"].ToString());
                     message = "UPDATE SUCCESS! REQUEST HAS BEEN APPROVED. <a href='PageComdevPlan.aspx'>BACK</a>.";
+                    break;
+                }
+            case "33":
+                {
+                    BioPM.ClassObjects.ComDevPlan.UpdateComDevPlanStatus(ID, "ConfirmRejected", Session["username"].ToString(), Session["username"].ToString());
+                    message = "UPDATE SUCCESS! REQUEST HAS BEEN REJECTED. <a href='PageAppRequestHR.aspx'>BACK</a>.";
                     break;
                 }
                 

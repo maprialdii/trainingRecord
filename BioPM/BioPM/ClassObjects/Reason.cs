@@ -8,7 +8,7 @@ namespace BioPM.ClassObjects
 {
     public class Reason:DatabaseFactory
     {
-        public static void InsertReason(string PERNR, string ACTPG, string REASN)
+        public static void InsertReason(string REASN, string ACTPG, string PERNR)
         {
             string date = DateTime.Now.ToString("MM/dd/yyyy HH:mm");
             string maxdate = DateTime.MaxValue.ToString("MM/dd/yyyy HH:mm");

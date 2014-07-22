@@ -23,7 +23,7 @@
     {
         if (Session["password"].ToString() == BioPM.ClassEngines.CryptographFactory.Encrypt(txtConfirmation.Text, true))
         {
-            Response.Redirect("PageInformation.aspx?key=" + trgId + "&type=000");
+            Response.Redirect("PageInformation.aspx?type=000");
         }
         else
         {
@@ -104,6 +104,7 @@
                                 </tbody>
                             </table>
                             <!-- Modal -->
+                            <form id="form1" runat="server">
                         <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModal" class="modal fade">
                             <div class="modal-dialog">
                                 <div class="modal-content">
@@ -124,6 +125,7 @@
                                 </div>
                             </div>
                         </div>
+                                </form>
                         <!-- modal -->  
                         </div>
                     </div>

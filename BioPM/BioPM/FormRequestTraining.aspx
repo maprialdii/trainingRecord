@@ -29,7 +29,7 @@
     {
         string RECID = (BioPM.ClassObjects.ComDevPlan.GetComDevPlanMaxID() + 1).ToString();
         BioPM.ClassObjects.ComDevPlan.InsertComDevPlan(RECID, Session["username"].ToString(), ddlEventName.SelectedValue, " ", " ", " ", Session["username"].ToString());
-        BioPM.ClassObjects.ComDevPlan.InsertComDevPlanStatus(RECID, "Belum Disetujui", " ", Session["username"].ToString());
+        BioPM.ClassObjects.ComDevPlan.InsertComDevPlanStatus(RECID, "Requested", " ", Session["username"].ToString());
     }
 
     protected void btnAdd_Click(object sender, EventArgs e)

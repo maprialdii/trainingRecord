@@ -14,7 +14,7 @@ namespace BioPM.ClassObjects
             string sqlCmd = @"SELECT PR1.PRMID, PR1.PRMNM, SUBSTRING(PRMKD, 12, 1) AS Initial
                             FROM bioumum.PARAMETER PR1
                             WHERE PR1.BEGDA <= GETDATE() AND PR1.ENDDA >= GETDATE()
-                            AND PR1.PRMKD LIKE '%" + type + "%';";
+                            AND PR1.PRMTY= '" + type + "';";
             SqlCommand cmd = GetCommand(conn, sqlCmd);
 
             try
@@ -132,8 +132,8 @@ namespace BioPM.ClassObjects
             string date = DateTime.Now.ToString("MM/dd/yyyy HH:mm");
             string maxdate = DateTime.MaxValue.ToString("MM/dd/yyyy HH:mm");
             SqlConnection conn = GetConnection();
-            string sqlCmd = @"INSERT INTO trrcd.SURVEY_ANSWERS (BEGDA, ENDDA, ANSID, EXCID, PRMID, VALUE, APVST, USRDT, CHGDT)
-                            VALUES ('" + date + "','" + maxdate + "'," + ANSID + ",'" + EXCID + "'," + PRMID + ",'" + VALUE + "','" + APVST + "','" + CHUSR + "','" + date + "');";
+            string sqlCmd = @"INSERT INTO trrcd.SURVEY_ANSWERS (BEGDA, ENDDA, ANSID, EXCID, PRMID, VALUE, APVST, PERNR ,USRDT, CHGDT)
+                            VALUES ('" + date + "','" + maxdate + "'," + ANSID + ",'" + EXCID + "'," + PRMID + ",'" + VALUE + "','" + APVST + "','" + CHUSR + "','" + CHUSR + "','" + date + "');";
 
             SqlCommand cmd = DatabaseFactory.GetCommand(conn, sqlCmd);
 
@@ -174,7 +174,7 @@ namespace BioPM.ClassObjects
             string date = DateTime.Now.ToString("MM/dd/yyyy HH:mm");
             string yesterday = DateTime.Now.AddMinutes(-1).ToString("MM/dd/yyyy HH:mm");
             SqlConnection conn = GetConnection();
-            string sqlCmd = @"UPDATE trrcd.SURVEY_ANSWERS SET ANSST = '" + ANSST + "', CHGDT = '" + date + "', CHUSR = '" + CHUSR + "' WHERE (ANSID = '" + ANSID + "' AND BEGDA <= GETDATE() AND ENDDA >= GETDATE())";
+            string sqlCmd = @"UPDATE trrcd.SURVEY_ANSWERS SET APVPR='" + CHUSR + "', APVDT='" + date + "', ANSST = '" + ANSST + "', CHGDT = '" + date + "', CHUSR = '" + CHUSR + "' WHERE (ANSID = '" + ANSID + "' AND BEGDA <= GETDATE() AND ENDDA >= GETDATE())";
 
             SqlCommand cmd = DatabaseFactory.GetCommand(conn, sqlCmd);
 

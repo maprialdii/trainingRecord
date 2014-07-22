@@ -2,6 +2,7 @@
 
 <!DOCTYPE html>
 <script runat="server">
+    string empId = null;
     protected void Page_Load(object sender, EventArgs e)
     {
         if (Session["username"] == null && Session["password"] == null) Response.Redirect("PageLogin.aspx");
@@ -32,6 +33,20 @@
         TextArea3.Text = data[1].ToString();
         data = BioPM.ClassObjects.Survey.GetAnswerById(excid, "7");
         TextArea4.Text = data[1].ToString();
+        object[] dataEksekusi = BioPM.ClassObjects.ComDevExecution.GetComdevExecutionById(Request.QueryString["key"].ToString());
+        lblTopik.Text = dataEksekusi[2].ToString();
+        lblTanggal.Text = dataEksekusi[7].ToString() + "-" + dataEksekusi[8].ToString();
+        lblSpeaker.Text = dataEksekusi[5].ToString();
+        empId = dataEksekusi[15].ToString();
+        object[] dataApprover = BioPM.ClassObjects.EmployeeCatalog.GetEmployeeByID(Session["username"].ToString());
+        lblCname.Text = dataApprover[1].ToString();
+        lblEJabatan.Text = dataApprover[2].ToString();
+        lblPrOrg.Text = dataApprover[3].ToString();
+        object[] dataEmployee = BioPM.ClassObjects.EmployeeCatalog.GetEmployeeByID(empId);
+        lblName.Text = dataEmployee[1].ToString();
+        lblDivisi.Text = dataEmployee[3].ToString();
+        lblJabatan.Text = dataEmployee[2].ToString();
+        lblDate.Text = DateTime.Now.ToString();
     }
 
 
@@ -94,22 +109,23 @@
                         <div class="form-group">
                             <label class="col-sm-3 control-label"> Topik </label>
                             <div class="col-lg-3 col-md-4">
-                                <asp:TextBox ID="txtTopik" runat="server" class="form-control m-bot15" placeholder="Topik"></asp:TextBox>
+                                <asp:Label ID="lblTopik" runat="server"></asp:Label>
                             </div>
+                            
                         </div>
 
                         <div class="form-group">
                             <label class="col-sm-3 control-label"> Tanggal </label>
                             <div class="col-lg-3 col-md-4">
-                                <asp:TextBox ID="txtTanggal" runat="server" class="form-control m-bot15" placeholder="Tanggal pelaksanaan" ></asp:TextBox>
-                            </div>
+                                <asp:Label ID="lblTanggal" runat="server"></asp:Label>
+                            </div>                            
                         </div>
                              
                         <div class="form-group">
                             <label class="col-sm-3 control-label"> Pembicara </label>
                             <div class="col-lg-3 col-md-4">
-                                <asp:TextBox ID="txtCpyName" runat="server" class="form-control m-bot15" placeholder="Nama Pembicara" ></asp:TextBox>
-                            </div>
+                                <asp:Label ID="lblSpeaker" runat="server"></asp:Label>
+                            </div>                            
                         </div>
 
                         <hr />
@@ -117,22 +133,22 @@
                         <div class="form-group">
                             <label class="col-sm-3 control-label"> Nama Peserta </label>
                             <div class="col-lg-3 col-md-4">
-                                <asp:TextBox ID="txtPeserta" runat="server" class="form-control m-bot15" placeholder="Nama Peserta" ></asp:TextBox>
-                            </div>
+                                <asp:Label ID="lblCname" runat="server"></asp:Label>
+                            </div>                            
                         </div>
 
                         <div class="form-group">
                             <label class="col-sm-3 control-label"> Bagian </label>
                             <div class="col-lg-3 col-md-4">
-                                <asp:TextBox ID="txtBagian" runat="server" class="form-control m-bot15" placeholder="Bagian" ></asp:TextBox>
-                            </div>
+                                <asp:Label ID="lblPrOrg" runat="server"></asp:Label>
+                            </div>                            
                         </div>
 
                         <div class="form-group">
                             <label class="col-sm-3 control-label"> Jabatan </label>
                             <div class="col-lg-3 col-md-4">
-                                <asp:TextBox ID="txtJabatan" runat="server" class="form-control m-bot15" placeholder="Jabatan" ></asp:TextBox>
-                            </div>
+                                <asp:Label ID="lblEJabatan" runat="server"></asp:Label>
+                            </div>                            
                         </div>
 
                         <hr />
@@ -200,28 +216,28 @@
                         <div class="form-group">
                             <label class="col-sm-3 control-label"> Tanggal Pembuatan Evaluasi </label>
                             <div class="col-lg-3 col-md-4">
-                                <asp:TextBox ID="txtTglEval" runat="server" class="form-control m-bot15" placeholder="Tanggal evaluasi" ></asp:TextBox>
+                                <asp:Label ID="lblDate" runat="server"></asp:Label>
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label class="col-sm-3 control-label"> Nama Pengevaluasi </label>
                             <div class="col-lg-3 col-md-4">
-                                <asp:TextBox ID="txtEvaluator" runat="server" class="form-control m-bot15" placeholder="Nama pengevaluasi" ></asp:TextBox>
+                                <asp:Label ID="lblName" runat="server"></asp:Label>
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label class="col-sm-3 control-label"> Divisi/Bagian </label>
                             <div class="col-lg-3 col-md-4">
-                                <asp:TextBox ID="txtDivisiEvl" runat="server" class="form-control m-bot15" placeholder="Divisi/bagian" ></asp:TextBox>
+                                <asp:Label ID="lblDivisi" runat="server"></asp:Label>
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label class="col-sm-3 control-label"> Jabatan </label>
                             <div class="col-lg-3 col-md-4">
-                                <asp:TextBox ID="txtJabatanEvl" runat="server" class="form-control m-bot15" placeholder="Jabatan" ></asp:TextBox>
+                                <asp:Label ID="lblJabatan" runat="server"></asp:Label>
                             </div>
                         </div>
 

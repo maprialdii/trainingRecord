@@ -23,8 +23,10 @@
    
     protected void InsertDataIntoDatabase()
     {
-        string month = BioPM.ClassEngines.DateFormatFactory.GetMonth(txtMonth.Text);
-        BioPM.ClassObjects.ComDevPlan.UpdateComDevPlan(RECID, EMPID, EVTID, txtMonth.Text, txtCost.Text, txtDuration.Text, Session["username"].ToString());
+        string m = txtMonth.Text.Substring(3, 2);
+        string year = txtMonth.Text.Substring(6, 4);
+        string month = BioPM.ClassEngines.DateFormatFactory.GetMonthFromEnum(m) + " " + year;
+        BioPM.ClassObjects.ComDevPlan.UpdateComDevPlan(RECID, EMPID, EVTID, month, txtCost.Text, txtDuration.Text, Session["username"].ToString());
         BioPM.ClassObjects.ComDevPlan.UpdateComDevPlanStatus(RECID, "Confirmed", Session["username"].ToString(), Session["username"].ToString());
     }
 

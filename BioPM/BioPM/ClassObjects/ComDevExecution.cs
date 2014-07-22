@@ -8,13 +8,13 @@ namespace BioPM.ClassObjects
 {
     public class ComDevExecution:DatabaseFactory
     {
-        public static void InsertComDevExecution(string EXCID, string PERNR, string EVTID, string TITLE, string BATCH, string PMBCR, string EXCCO, string INSTI, string ADRIN, string CITIN, string COUIN, string CRTFL, string SCORE, string CHUSR, string BEGDA, string ENDDA)
+        public static void InsertComDevExecution(string EXCID, string PERNR, string EVTID, string TITLE, string BATCH, string PMBCR, string EXCCO, string INSTI, string ADRIN, string CITIN, string COUIN, string CRTFL, string SCORE, string CHUSR, string BEGDA, string ENDDA, string RECID)
         {
             string date = DateTime.Now.ToString("MM/dd/yyyy HH:mm");
             string maxdate = DateTime.MaxValue.ToString("MM/dd/yyyy HH:mm");
             SqlConnection conn = GetConnection();
-            string sqlCmd = @"INSERT INTO trrcd.COMDEV_EVENT_EXECUTION (BEGDA, ENDDA, EXCID, PERNR, EVTID, TITLE, BATCH, PMBCR, EXCCO, INSTI, ADRIN, CITIN, COUIN, CRTFL, SCORE, CHGDT, CHUSR)
-                            VALUES ('" + BEGDA + "','" + ENDDA + "'," + EXCID + ",'" + PERNR + "'," + EVTID + ",'" + TITLE + "','" + BATCH + "','" + PMBCR + "','" + EXCCO + "','" + INSTI + "','" + ADRIN + "','" + CITIN + "','" + COUIN + "','" + CRTFL + "'," + SCORE + ",'" + date + "','" + CHUSR + "');";
+            string sqlCmd = @"INSERT INTO trrcd.COMDEV_EVENT_EXECUTION (BEGDA, ENDDA, EXCID, PERNR, EVTID, TITLE, BATCH, PMBCR, EXCCO, INSTI, ADRIN, CITIN, COUIN, CRTFL, SCORE, CHGDT, CHUSR, RECID)
+                            VALUES ('" + BEGDA + "','" + ENDDA + "'," + EXCID + ",'" + PERNR + "'," + EVTID + ",'" + TITLE + "','" + BATCH + "','" + PMBCR + "'," + EXCCO + ",'" + INSTI + "','" + ADRIN + "','" + CITIN + "','" + COUIN + "','" + CRTFL + "'," + SCORE + ",'" + date + "','" + CHUSR + "','" + RECID + "');";
 
             SqlCommand cmd = DatabaseFactory.GetCommand(conn, sqlCmd);
 
@@ -46,7 +46,6 @@ namespace BioPM.ClassObjects
             finally
             {
                 conn.Close();
-                InsertComDevExecution(EXCID, PERNR, EVTID, TITLE, BATCH, PMBCR, EXCCO, INSTI, ADRIN, CITIN, COUIN, CRTFL, SCORE, CHUSR, BEGDA, ENDDA);
             }
         }
 
@@ -76,7 +75,7 @@ namespace BioPM.ClassObjects
             string sqlCmd = @"SELECT CE.EXCID, CV.EVTNM, CE.TITLE, CE.BATCH, CE.PMBCR, CE.INSTI, CE.BEGDA, CE.ENDDA, CE.CRTFL, CE.SCORE, CE.EXCCO
                             FROM trrcd.COMDEV_EVENT_EXECUTION CE WITH(INDEX(COMDEV_EVENT_EXECUTION_IDX_BEGDA_ENDDA_ID)), trrcd.COMDEV_EVENT CV WITH(INDEX(COMDEV_EVENT_IDX_BEGDA_ENDDA_ID))
                             WHERE CV.EVTID=CE.EVTID 
-                            AND CV.BEGDA <= GETDATE() AND CV.ENDDA >= GETDATE()
+                            AND CV.BEGDA <= GETDATE() AND CV.ENDDA >= GETDATE() AND CE.CRTFL!=''
                             AND CE.PERNR='" + pernr + "' ORDER BY CE.EXCID DESC;";
             SqlCommand cmd = GetCommand(conn, sqlCmd);
 
@@ -101,9 +100,10 @@ namespace BioPM.ClassObjects
         public static List<object[]> GetComdevExecutionByPosition(string pernr)
         {
             SqlConnection conn = GetConnection();
-            string sqlCmd = @"SELECT CE.EXCID, CV.EVTNM, CE.TITLE, CE.BATCH, UD.PRPOS, UD.CNAME, CE.PERNR
-                            FROM trrcd.COMDEV_EVENT_EXECUTION CE WITH(INDEX(COMDEV_EVENT_EXECUTION_IDX_BEGDA_ENDDA_ID)), trrcd.COMDEV_EVENT CV WITH(INDEX(COMDEV_EVENT_IDX_BEGDA_ENDDA_ID)), bioumum.USER_DATA UD
-                            WHERE CV.EVTID=CE.EVTID AND CE.PERNR=UD.PERNR
+            string sqlCmd = @"SELECT DISTINCT CE.EXCID, CE.PERNR, UD.CNAME, CE.TITLE, CE.BATCH, CV.EVTNM, UD.PRPOS
+                            FROM trrcd.COMDEV_EVENT_EXECUTION CE, bioumum.USER_DATA UD, trrcd.COMDEV_EVENT CV
+                            WHERE UD.PERNR=CE.PERNR AND CV.EVTID=CE.EVTID AND CE.EXCID NOT IN
+                            (SELECT DISTINCT EXCID FROM trrcd.SURVEY_ANSWERS WHERE PRMID<=7 AND PRMID>=1)
                             AND CV.BEGDA <= GETDATE() AND CV.ENDDA >= GETDATE()
                             AND UD.PRORG=(SELECT PRORG FROM bioumum.USER_DATA WHERE PERNR='"+pernr+"') AND CE.PERNR!='"+pernr+"';";
             SqlCommand cmd = GetCommand(conn, sqlCmd);
@@ -157,7 +157,7 @@ namespace BioPM.ClassObjects
         public static object[] GetComdevExecutionById(string excid)
         {
             SqlConnection conn = GetConnection();
-            string sqlCmd = @"SELECT CE.EXCID, CE.EVTID, CV.EVTNM, CE.TITLE, CE.BATCH, CE.PMBCR, CE.INSTI, CE.BEGDA, CE.ENDDA, CE.CRTFL, CE.SCORE, CE.ADRIN, CE.CITIN, CE.COUIN, CE.EXCCO
+            string sqlCmd = @"SELECT CE.EXCID, CE.EVTID, CV.EVTNM, CE.TITLE, CE.BATCH, CE.PMBCR, CE.INSTI, CE.BEGDA, CE.ENDDA, CE.CRTFL, CE.SCORE, CE.ADRIN, CE.CITIN, CE.COUIN, CE.EXCCO, CE.PERNR
                             FROM trrcd.COMDEV_EVENT_EXECUTION CE WITH(INDEX(COMDEV_EVENT_EXECUTION_IDX_BEGDA_ENDDA_ID)), trrcd.COMDEV_EVENT CV WITH(INDEX(COMDEV_EVENT_IDX_BEGDA_ENDDA_ID))
                             WHERE CV.EVTID=CE.EVTID 
                             AND CV.BEGDA <= GETDATE() AND CV.ENDDA >= GETDATE()
@@ -171,7 +171,7 @@ namespace BioPM.ClassObjects
                 object[] data = null;
                 while (reader.Read())
                 {
-                    object[] values = { reader[0].ToString(), reader[1].ToString(), reader[2].ToString(), reader[3].ToString(), reader[4].ToString(), reader[5].ToString(), reader[6].ToString(), reader[7].ToString(), reader[8].ToString(), reader[9].ToString(), reader[10].ToString(), reader[11].ToString(), reader[12].ToString(), reader[13].ToString(), reader[14].ToString() };
+                    object[] values = { reader[0].ToString(), reader[1].ToString(), reader[2].ToString(), reader[3].ToString(), reader[4].ToString(), reader[5].ToString(), reader[6].ToString(), reader[7].ToString(), reader[8].ToString(), reader[9].ToString(), reader[10].ToString(), reader[11].ToString(), reader[12].ToString(), reader[13].ToString(), reader[14].ToString(), reader[15].ToString() };
                     data = values;
                 }
                 return data;

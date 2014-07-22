@@ -72,7 +72,7 @@
                          </span>
                     </header>
                     <div class="panel-body">
-                        <form id="form1" runat="server">
+                        
                         <div class="adv-table">
                             <div class="clearfix">
                                 <div class="btn-group">
@@ -107,6 +107,7 @@
                             </table>
                         </div>
                         <!-- Modal -->
+                        <form id="form1" runat="server">
                         <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModal" class="modal fade">
                             <div class="modal-dialog">
                                 <div class="modal-content">
@@ -127,8 +128,9 @@
                                 </div>
                             </div>
                         </div>
+                            </form>
                         <!-- modal -->
-                        </form>
+                        
                      </div>
                 </section>
             </div>

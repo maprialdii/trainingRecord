@@ -152,7 +152,7 @@ namespace BioPM.ClassObjects
                             AND CE.BEGDA <= GETDATE() AND CE.ENDDA >= GETDATE()
                             AND EM.BEGDA <= GETDATE() AND EM.ENDDA >= GETDATE()
                             AND PR.BEGDA <= GETDATE() AND PR.ENDDA >= GETDATE()
-                            AND CG.CPYID=CT.CPYID and CT.EVTID=CE.EVTID and CE.EMTID=EM.EMTID and PR.CPYID=CG.CPYID AND CE.EVTID not in (SELECT CP.EVTID FROM trrcd.COMDEV_PLAN CP, trrcd.COMDEV_PLAN_STATUS CS where CS.RECID=CP.RECID AND CS.APVST!='Disetujui' AND CP.PERNR='" + PERNR + "') AND CG.GAPID>0 AND CT.PRLVL>PR.PRLVL AND CG.PERNR='" + PERNR + "'";
+                            AND CG.CPYID=CT.CPYID and CT.EVTID=CE.EVTID and CE.EMTID=EM.EMTID and PR.CPYID=CG.CPYID AND CE.EVTID not in (SELECT CP.EVTID FROM trrcd.COMDEV_PLAN CP, trrcd.COMDEV_PLAN_STATUS CS where CS.RECID=CP.RECID AND CS.APVST!='Approved' AND CP.PERNR='" + PERNR + "') AND CG.GAPLV<0 AND CG.PERNR='" + PERNR + "'";
             SqlCommand cmd = GetCommand(conn, sqlCmd);
 
             try
@@ -176,7 +176,7 @@ namespace BioPM.ClassObjects
         public static List<object[]> GetComdevPlanByStatus(string status)
         {
             SqlConnection conn = GetConnection();
-            string sqlCmd = @"SELECT DISTINCT CP.RECID, CE.EVTNM, CP.EVTMH, CP.EVTCO, CS.APVST, UD.CNAME, CP.EVDUR, EM.EVTMT, CP.PERNR
+            string sqlCmd = @"SELECT DISTINCT CP.RECID, CE.EVTNM, CP.EVTMH, CP.EVTCO, CS.APVST, UD.CNAME, CP.EVDUR, EM.EVTMT, CP.PERNR, CE.EVTID
                             FROM trrcd.COMDEV_PLAN CP WITH(INDEX(COMDEV_PLAN_IDX_BEGDA_ENDDA_ID)), trrcd.COMDEV_PLAN_STATUS CS WITH(INDEX(COMDEV_PLAN_STATUS_IDX_BEGDA_ENDDA_ID)), trrcd.COMDEV_EVENT CE WITH(INDEX(COMDEV_EVENT_IDX_BEGDA_ENDDA_ID)), bioumum.USER_DATA UD, trrcd.EVENT_METHOD EM
                             WHERE CP.BEGDA <= GETDATE() AND CP.ENDDA >= GETDATE()
                             AND CS.BEGDA <= GETDATE() AND CS.ENDDA >= GETDATE()
@@ -192,7 +192,7 @@ namespace BioPM.ClassObjects
                 List<object[]> batchs = new List<object[]>();
                 while (reader.Read())
                 {
-                    object[] values = { reader[0].ToString(), reader[1].ToString(), reader[2].ToString(), reader[3].ToString(), reader[4].ToString(), reader[5].ToString(), reader[6].ToString(), reader[7].ToString(), reader[8].ToString() };
+                    object[] values = { reader[0].ToString(), reader[1].ToString(), reader[2].ToString(), reader[3].ToString(), reader[4].ToString(), reader[5].ToString(), reader[6].ToString(), reader[7].ToString(), reader[8].ToString(), reader[9].ToString() };
                     batchs.Add(values);
                 }
                 return batchs;
