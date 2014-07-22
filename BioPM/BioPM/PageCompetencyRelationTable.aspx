@@ -192,7 +192,7 @@
                     </header>
                     <div class="panel-body">
                         <div class="adv-table">
-                            <!-- class="clearfix">
+                            <div class="clearfix">
                                 <!--div class="btn-group">
                                     <!-- button id="editable-sample_new" onclick="document.location.href='FormInputCompetencyRelation.aspx';" class="btn btn-primary"> Create New <i class="fa fa-plus"></i>
                                     </!-->
@@ -208,7 +208,7 @@
                                 </div>
                             </div>
                         EXISTING RELATION
-                            <table class="table table-striped table-hover table-bordered" id="Table1" >
+                            <table class="table table-striped table-hover table-bordered" id="dynamic-table" >
                                 <thead>
                                 <tr>
                                     <th>COMPETENCY</th>
