@@ -13,11 +13,7 @@
 
         foreach (object[] data in BioPM.ClassObjects.ComDevEvent.GetAllComdevEvent())
         {
-<<<<<<< HEAD
-            htmlelement += "<tr class=''><td>" + data[1].ToString() + "</td><td>" + data[2].ToString() + "</td>><td>" + data[3].ToString() + "</td><td><a class='edit' href='FormInputTargetTraining.aspx?key=" + data[0].ToString() + "'>View</a></td><td><a class='edit' href='FormUpdateEvent.aspx?key=" + data[0].ToString() + "'>Edit</a></td><td><a data-toggle='modal' ID='btnAction' runat='server' Text='Delete' href='#myModal'>Delete</a></td></tr>";
-=======
             htmlelement += "<tr class=''><td>" + data[1].ToString() + "</td><td>" + data[2].ToString() + "</td><td>" + data[3].ToString() + "</td><td><a class='edit' href='PageTargetTraining.aspx?key=" + data[0].ToString() + "'>View</a></td><td><a class='edit' href='FormUpdateEvent.aspx?key=" + data[0].ToString() + "'>Edit</a></td><td><a data-toggle='modal' ID='btnAction' runat='server' Text='Delete' href='#myModal'>Delete</a></td></tr>";
->>>>>>> origin/master
         }
         
         return htmlelement;
