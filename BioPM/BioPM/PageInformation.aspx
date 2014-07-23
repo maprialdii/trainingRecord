@@ -217,6 +217,18 @@
                     message = "UPDATE SUCCESS! REQUEST HAS BEEN REJECTED. <a href='PageAppRequestHR.aspx'>BACK</a>.";
                     break;
                 }
+            case "34":
+                {
+                    BioPM.ClassObjects.Survey.UpdateStatus(ID, "Approved", Session["username"].ToString());
+                    message = "UPDATE SUCCESS! EVALUATION HAS BEEN APPROVED. <a href='FormAppEvaluasi3.aspx'>BACK</a>.";
+                    break;
+                }
+            case "35":
+                {
+                    BioPM.ClassObjects.Survey.UpdateStatus(ID, "Rejected", Session["username"].ToString());
+                    message = "UPDATE SUCCESS! EVALUATION HAS BEEN REJECTED. <a href='FormAppEvaluasi3.aspx'>BACK</a>.";
+                    break;
+                }
                 
 
             

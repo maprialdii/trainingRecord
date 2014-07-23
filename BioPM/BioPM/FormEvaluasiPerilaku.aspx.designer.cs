@@ -256,33 +256,6 @@ namespace BioPM {
         protected global::System.Web.UI.WebControls.Label lblJabatan;
         
         /// <summary>
-        /// txtSetuju control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSetuju;
-        
-        /// <summary>
-        /// txtTglSetuju control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtTglSetuju;
-        
-        /// <summary>
-        /// txtNamaSetuju control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtNamaSetuju;
-        
-        /// <summary>
         /// txtConfirmation control.
         /// </summary>
         /// <remarks>

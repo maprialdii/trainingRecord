@@ -1,6 +1,16 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="FormAppEvaluasi3.aspx.cs" Inherits="BioPM.FormAppEvaluasi3" %>
 
 <!DOCTYPE html>
+<script type="text/javascript">
+    function myFunction() {
+        var x;
+        if (confirm("Press a button!") == true) {
+            x = "You pressed OK!";
+        } else {
+            x = "You pressed Cancel!";
+        }
+    }
+</script>
 <script runat="server">
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -22,7 +32,12 @@
 
         foreach (object[] data in BioPM.ClassObjects.ComDevExecution.GetComdevExecution())
         {
-            htmlelement += "<tr class=''><td>" + data[1].ToString() + "</td><td>" + data[2].ToString() + "</td><td>" + data[3].ToString() + "</td><td>" + data[4].ToString() + "</td><td><a class='edit' href='PageEvaluasiPerilaku.aspx?key=" + data[0].ToString() + "'>Response</a></td><td><a class='edit' onclick='Approve_Click()' href='FormApprove.aspx?key=" + data[0].ToString() + "'>Approve</a></td><td><a class='edit' href='PageInformation.aspx?key=" + data[0].ToString() + "&type=000'>Reject</a></td></tr>";
+            string html;
+            if (data[5].ToString() == "Waiting for Approval")
+                html = "<a class='edit' href='PageInformation.aspx?key=" + data[0].ToString() + "&type=34'>Approve</a> / <a class='edit' href='PageInformation.aspx?key=" + data[0].ToString() + "&type=35'>Reject</a>";
+            else
+                html = data[5].ToString();
+            htmlelement += "<tr class=''><td>" + data[1].ToString() + "</td><td>" + data[2].ToString() + "</td><td>" + data[3].ToString() + "</td><td>" + data[4].ToString() + "</td><td><a class='edit' href='PageEvaluasiPerilaku.aspx?key=" + data[0].ToString() + "'>Respond</a></td><td>" + html + "</td></tr>";
         }
 
         return htmlelement;
@@ -90,8 +105,7 @@
                                     <th>Event Title</th>
                                     <th>Batch</th>
                                     <th>Evaluasi 3</th>
-                                    <th>Approve</th>
-                                    <th>Reject</th>
+                                    <th>Status</th>
                                 </tr>
                                 </thead>
                                 <tbody>

@@ -111,7 +111,7 @@
                                 </tbody>
                             </table>
                         </div>
-                        <!-- Modal -->
+                        <!-- Modal -->                        
                         <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModal" class="modal fade">
                             <div class="modal-dialog">
                                 <div class="modal-content">

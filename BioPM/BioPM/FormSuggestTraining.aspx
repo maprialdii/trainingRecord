@@ -38,9 +38,9 @@
     protected void InsertDataIntoDatabase()
     {
         string RECID = (BioPM.ClassObjects.ComDevPlan.GetComDevPlanMaxID() + 1).ToString();
-        string m = txtMonth.Text.Substring(3, 2);
+        string m = txtMonth.Text.Substring(0, 2);
         string year = txtMonth.Text.Substring(6, 4);
-        string month = BioPM.ClassEngines.DateFormatFactory.GetMonthFromEnum(m)+" "+year;
+        string month = BioPM.ClassEngines.DateFormatFactory.enumToString(m)+" "+year;
         BioPM.ClassObjects.ComDevPlan.InsertComDevPlan(RECID, ddlEmployeeName.SelectedValue, ddlEventName.SelectedValue, month, txtCost.Text, txtDuration.Text, Session["username"].ToString());
         BioPM.ClassObjects.ComDevPlan.InsertComDevPlanStatus(RECID, "Suggested", " ", Session["username"].ToString());
     }

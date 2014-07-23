@@ -322,28 +322,6 @@
                         </div>
 
                         <hr />
-
-                        <div class="form-group">
-                            <label class="col-sm-3 control-label"> Disetujui  oleh: </label>
-                            <div class="col-lg-3 col-md-4">
-                                <asp:TextBox ID="txtSetuju" runat="server" class="form-control m-bot15" placeholder="Quality Assurance" ></asp:TextBox>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="col-sm-3 control-label"> Tanggal </label>
-                            <div class="col-lg-3 col-md-4">
-                                <asp:TextBox ID="txtTglSetuju" runat="server" class="form-control m-bot15" placeholder="Tanggal disetujui" ></asp:TextBox>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="col-sm-3 control-label"> Nama </label>
-                            <div class="col-lg-3 col-md-4">
-                                <asp:TextBox ID="txtNamaSetuju" runat="server" class="form-control m-bot15" placeholder="Nama penyetuju" ></asp:TextBox>
-                            </div>
-                        </div>
-
                         <!-- Modal -->
                         <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModal" class="modal fade">
                             <div class="modal-dialog">
