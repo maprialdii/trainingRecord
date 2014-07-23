@@ -23,9 +23,9 @@
    
     protected void InsertDataIntoDatabase()
     {
-        string m = txtMonth.Text.Substring(3, 2);
+        string m = txtMonth.Text.Substring(0, 2);
         string year = txtMonth.Text.Substring(6, 4);
-        string month = BioPM.ClassEngines.DateFormatFactory.GetMonthFromEnum(m) + " " + year;
+        string month = BioPM.ClassEngines.DateFormatFactory.enumToString(m) + " " + year;
         BioPM.ClassObjects.ComDevPlan.UpdateComDevPlan(RECID, EMPID, EVTID, month, txtCost.Text, txtDuration.Text, Session["username"].ToString());
         BioPM.ClassObjects.ComDevPlan.UpdateComDevPlanStatus(RECID, "Confirmed", Session["username"].ToString(), Session["username"].ToString());
     }

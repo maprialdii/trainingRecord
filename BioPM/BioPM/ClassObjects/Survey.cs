@@ -89,6 +89,38 @@ namespace BioPM.ClassObjects
             }
         }
 
+        public static List<object[]> GetRekapSurvey(string excid, string kode)
+        {
+            SqlConnection conn = GetConnection();
+            string sqlCmd = @"select SA.excid, SA.prmid, CE.EVTNM, CX.BATCH,
+                            nilai_4 = COUNT(CASE WHEN value=4 THEN 1 END), 
+                            nilai_3 = COUNT(CASE WHEN value=3 THEN 1 END), 
+                            nilai_2 = COUNT(CASE WHEN value=2 THEN 1 END), 
+                            nilai_1 = COUNT(CASE WHEN value=1 THEN 1 END) 
+                            from trrcd.SURVEY_ANSWERS SA, trrcd.COMDEV_EVENT CE, trrcd.COMDEV_EVENT_EXECUTION CX
+                            where SA.BEGDA <= GETDATE() AND SA.ENDDA >= GETDATE()
+                            and CE.BEGDA <= GETDATE() AND CE.ENDDA >= GETDATE()
+                            and sa.excid=" + excid + " and sa.prmid>=1 and sa.prmid<=7 and sa.EXCID=cx.EXCID and ce.EMTID=cx.EVTID group by SA.excid, SA.prmid, CE.EVTNM, CX.BATCH;";
+            SqlCommand cmd = GetCommand(conn, sqlCmd);
+
+            try
+            {
+                conn.Open();
+                SqlDataReader reader = GetDataReader(cmd);
+                List<object[]> batchs = new List<object[]>();
+                while (reader.Read())
+                {
+                    object[] values = { reader[0].ToString(), reader[1].ToString(), reader[2].ToString(), reader[3].ToString(), reader[4].ToString(), reader[5].ToString() };
+                    batchs.Add(values);
+                }
+                return batchs;
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+
         public static List<object[]> GetAnswersBySurvey(string excid, string kode)
         {
             int lowerBound = 0, upperBound = 0;
@@ -132,8 +164,8 @@ namespace BioPM.ClassObjects
             string date = DateTime.Now.ToString("MM/dd/yyyy HH:mm");
             string maxdate = DateTime.MaxValue.ToString("MM/dd/yyyy HH:mm");
             SqlConnection conn = GetConnection();
-            string sqlCmd = @"INSERT INTO trrcd.SURVEY_ANSWERS (BEGDA, ENDDA, ANSID, EXCID, PRMID, VALUE, APVST, PERNR ,USRDT, CHGDT)
-                            VALUES ('" + date + "','" + maxdate + "'," + ANSID + ",'" + EXCID + "'," + PRMID + ",'" + VALUE + "','" + APVST + "','" + CHUSR + "','" + CHUSR + "','" + date + "');";
+            string sqlCmd = @"INSERT INTO trrcd.SURVEY_ANSWERS (BEGDA, ENDDA, ANSID, EXCID, PRMID, VALUE, ANSST, PERNR ,CHUSR, CHGDT)
+                            VALUES ('" + date + "','" + maxdate + "'," + ANSID + "," + EXCID + "," + PRMID + ",'" + VALUE + "','" + APVST + "','" + CHUSR + "','" + CHUSR + "','" + date + "');";
 
             SqlCommand cmd = DatabaseFactory.GetCommand(conn, sqlCmd);
 
@@ -169,12 +201,12 @@ namespace BioPM.ClassObjects
             }
         }
 
-        public static void UpdateStatus(string ANSID, string ANSST, string CHUSR)
+        public static void UpdateStatus(string EXCID, string ANSST, string CHUSR)
         {
             string date = DateTime.Now.ToString("MM/dd/yyyy HH:mm");
             string yesterday = DateTime.Now.AddMinutes(-1).ToString("MM/dd/yyyy HH:mm");
             SqlConnection conn = GetConnection();
-            string sqlCmd = @"UPDATE trrcd.SURVEY_ANSWERS SET APVPR='" + CHUSR + "', APVDT='" + date + "', ANSST = '" + ANSST + "', CHGDT = '" + date + "', CHUSR = '" + CHUSR + "' WHERE (ANSID = '" + ANSID + "' AND BEGDA <= GETDATE() AND ENDDA >= GETDATE())";
+            string sqlCmd = @"UPDATE trrcd.SURVEY_ANSWERS SET APVPR='" + CHUSR + "', APVDT='" + date + "', ANSST = '" + ANSST + "', CHGDT = '" + date + "', CHUSR = '" + CHUSR + "' WHERE (EXCID = '" + EXCID + "' AND PRMID<=7 AND PRMID>=1 AND BEGDA <= GETDATE() AND ENDDA >= GETDATE())";
 
             SqlCommand cmd = DatabaseFactory.GetCommand(conn, sqlCmd);
 

@@ -129,11 +129,11 @@ namespace BioPM.ClassObjects
         public static List<object[]> GetComdevExecution()
         {
             SqlConnection conn = GetConnection();
-            string sqlCmd = @"SELECT DISTINCT CE.EXCID, CE.PERNR, UD.CNAME, CE.TITLE, CE.BATCH
+            string sqlCmd = @"SELECT DISTINCT CE.EXCID, CE.PERNR, UD.CNAME, CE.TITLE, CE.BATCH, SA.ANSST
                             FROM trrcd.COMDEV_EVENT_EXECUTION CE WITH(INDEX(COMDEV_EVENT_EXECUTION_IDX_BEGDA_ENDDA_ID)), trrcd.SURVEY_ANSWERS SA, bioumum.USER_DATA UD
                             WHERE CE.EXCID=SA.EXCID AND CE.PERNR=UD.PERNR
                             AND SA.BEGDA <= GETDATE() AND SA.ENDDA >= GETDATE()
-                            AND SA.ANSST='Waiting for Approval' ORDER BY CE.EXCID DESC;";
+                            ORDER BY CE.EXCID DESC;";
             SqlCommand cmd = GetCommand(conn, sqlCmd);
 
             try
@@ -143,7 +143,7 @@ namespace BioPM.ClassObjects
                 List<object[]> batchs = new List<object[]>();
                 while (reader.Read())
                 {
-                    object[] values = { reader[0].ToString(), reader[1].ToString(), reader[2].ToString(), reader[3].ToString(), reader[4].ToString() };
+                    object[] values = { reader[0].ToString(), reader[1].ToString(), reader[2].ToString(), reader[3].ToString(), reader[4].ToString(), reader[5].ToString() };
                     batchs.Add(values);
                 }
                 return batchs;
