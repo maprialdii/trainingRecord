@@ -57,6 +57,11 @@
     <% Response.Write(BioPM.ClassScripts.StyleScripts.GetCoreStyle()); %>
     <% Response.Write(BioPM.ClassScripts.StyleScripts.GetFormStyle()); %>
     <% Response.Write(BioPM.ClassScripts.StyleScripts.GetCustomStyle()); %>
+    <style type="text/css">
+        .auto-style1 {
+            width: 20px;
+        }
+    </style>
 </head>
 
 <body>
@@ -144,12 +149,12 @@
 
                         <table class="table table-striped table-hover table-bordered" id="survey" >
                             <tr>
-                                <th>No</th>
+                                <th class="auto-style1">No</th>
                                 <th>ASPEK</th>
                                 <th colspan="5">EVALUASI</th>
                             </tr>
                             <tr>
-                                <td>1</td>
+                                <td class="auto-style1">1</td>
                                 <td>Dalam melaksanakan tugasnya apakah hasil pelatihan sudah diaplikasikan dalam pekerjaannya?</td>
                                 <td>
                                     <div class="radio disable">
@@ -165,7 +170,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td>2</td>
+                                <td class="auto-style1">2</td>
                                 <td>Dalam melaksanakan tugasnya apakah sudah ada perbaikan dalam pekerjaannya?</td>
                                 <td>
                                     <div class="radio disable">
@@ -181,7 +186,7 @@
                                 </td>                                
                             </tr>
                             <tr>
-                                <td>3</td>
+                                <td class="auto-style1">3</td>
                                 <td>Dalam melaksanakan tugasnya apakah ada peningkatan kualitas dalam bekerja?</td>
                                 <td>
                                     <div class="radio disable">
@@ -197,7 +202,7 @@
                                 </td>                                
                             </tr>
                             <tr>
-                                <td>4</td>
+                                <td class="auto-style1">4</td>
                                 <td>Setelah mengikuti pelatihan, apakah ada perubahan sikap dan perilaku kerja dalam
                                     menjalankan perannya sebagai karyawan secara keseluruhan?
                                 </td>
