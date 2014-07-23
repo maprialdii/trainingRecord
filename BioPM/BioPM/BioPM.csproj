@@ -129,6 +129,7 @@
     <Content Include="PageEventMethodK.aspx" />
     <Content Include="PageEventRequestDetail.aspx" />
     <Content Include="PageListEvaluasi3.aspx" />
+    <Content Include="PageRekapEvaluasi.aspx" />
     <Content Include="PageSurveyAnswers.aspx" />
     <Content Include="PageTargetTrainingK.aspx" />
     <Content Include="PageTrainingExecutionK.aspx" />
@@ -840,6 +841,13 @@
     </Compile>
     <Compile Include="PageLogin.aspx.designer.cs">
       <DependentUpon>PageLogin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageRekapEvaluasi.aspx.cs">
+      <DependentUpon>PageRekapEvaluasi.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageRekapEvaluasi.aspx.designer.cs">
+      <DependentUpon>PageRekapEvaluasi.aspx</DependentUpon>
     </Compile>
     <Compile Include="PageReport.aspx.cs">
       <DependentUpon>PageReport.aspx</DependentUpon>
