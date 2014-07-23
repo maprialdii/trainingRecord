@@ -129,7 +129,10 @@
     <Content Include="PageEventMethodK.aspx" />
     <Content Include="PageEventRequestDetail.aspx" />
     <Content Include="PageListEvaluasi3.aspx" />
-    <Content Include="PageRekapEvaluasi.aspx" />
+    <Content Include="PageRekapEvaluasiPerilaku.aspx" />
+    <Content Include="PageRekapEvaluasiImplementasi.aspx" />
+    <Content Include="PageRekapEvaluasiPelaksanaan.aspx" />
+    <Content Include="PageRekapEvaluasiReaksi.aspx" />
     <Content Include="PageSurveyAnswers.aspx" />
     <Content Include="PageTargetTrainingK.aspx" />
     <Content Include="PageTrainingExecutionK.aspx" />
@@ -842,12 +845,33 @@
     <Compile Include="PageLogin.aspx.designer.cs">
       <DependentUpon>PageLogin.aspx</DependentUpon>
     </Compile>
-    <Compile Include="PageRekapEvaluasi.aspx.cs">
-      <DependentUpon>PageRekapEvaluasi.aspx</DependentUpon>
+    <Compile Include="PageRekapEvaluasiPerilaku.aspx.cs">
+      <DependentUpon>PageRekapEvaluasiPerilaku.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="PageRekapEvaluasi.aspx.designer.cs">
-      <DependentUpon>PageRekapEvaluasi.aspx</DependentUpon>
+    <Compile Include="PageRekapEvaluasiPerilaku.aspx.designer.cs">
+      <DependentUpon>PageRekapEvaluasiPerilaku.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageRekapEvaluasiImplementasi.aspx.cs">
+      <DependentUpon>PageRekapEvaluasiImplementasi.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageRekapEvaluasiImplementasi.aspx.designer.cs">
+      <DependentUpon>PageRekapEvaluasiImplementasi.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageRekapEvaluasiPelaksanaan.aspx.cs">
+      <DependentUpon>PageRekapEvaluasiPelaksanaan.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageRekapEvaluasiPelaksanaan.aspx.designer.cs">
+      <DependentUpon>PageRekapEvaluasiPelaksanaan.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageRekapEvaluasiReaksi.aspx.cs">
+      <DependentUpon>PageRekapEvaluasiReaksi.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageRekapEvaluasiReaksi.aspx.designer.cs">
+      <DependentUpon>PageRekapEvaluasiReaksi.aspx</DependentUpon>
     </Compile>
     <Compile Include="PageReport.aspx.cs">
       <DependentUpon>PageReport.aspx</DependentUpon>
