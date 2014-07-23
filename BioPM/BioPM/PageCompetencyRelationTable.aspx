@@ -168,9 +168,16 @@
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td><asp:DropDownList ID="ddlCompParent" runat="server" class="form-control m-bot15" /></td>
+                                        <td><asp:DropDownList ID="ddlCompParent" runat="server" class="form-control m-bot15" OnSelectedIndexChanged="ddlCompParent_SelectedIndexChanged" AutoPostBack="true" /></td>
                                         <td><asp:DropDownList ID="ddlCompChild" runat="server" class="form-control m-bot15" /></td>
-                                        <td><asp:TextBox ID="txtCompLevel" runat="server" class="form-control m-bot15" placeholder="e.g : 1, 2, .., n" /></td>
+                                        <td><asp:ScriptManager runat="server" ID="ScriptManager1"></asp:ScriptManager>
+                                                <asp:UpdatePanel runat="server" ID="UpdatePanel1" UpdateMode="Conditional">
+                                                    <ContentTemplate>
+                                                        <fieldset>
+                                            <asp:TextBox ID="txtCompLevel" runat="server" class="form-control m-bot15" ReadOnly="true" />
+                                                        </fieldset>
+                                                    </ContentTemplate>
+                                                </asp:UpdatePanel> </td>
                                         <td><asp:LinkButton data-toggle="modal" class="btn btn-round btn-primary" ID="btnAction" runat="server" Text="Save" href="#myModal"/></td>
                                     </tr>
                                 </tbody>
