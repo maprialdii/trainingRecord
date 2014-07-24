@@ -17,6 +17,8 @@
         {
             btnShow_Click();
             BindChart();
+            BindChart2();
+            BindChart3();
         }        
     }
 
@@ -135,10 +137,13 @@
                                         </asp:DropDownList> 
                                     </div>
                                 </div> 
-                                <div class="btn-group">
-                                      <asp:button id="btnView" runat="server" Text="View" />                                   
+                                <div class="form-group">
+                                    <div class="col-sm-3 control-label"> </div>
+                                    <div class="col-lg-3 col-md-4">
+                                          <asp:button id="btnView" runat="server" Text="View" />                                   
+                                    </div>
                                 </div>
-                            <table class="table table-striped table-hover table-bordered" id="dynamic-table">
+                            <table class="table table-striped table-hover table-bordered" id="Table1">
                                 <thead>
                                     <tr>                                
                                         <th>Aspek</th>
@@ -173,10 +178,17 @@
                                 </tbody>
                             </table>
                         </div>
+                        <div class="form-group">
                             <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
-                            <asp:BarChart ID="barchart1" runat="server" ChartHeight="300" ChartWidth="600" ChartType="Column" ChartTitle="Evaluation Recap"></asp:BarChart>
-                        </form>                            
-                        </div>                    
+                            <h4>Chart pertanyaan 1</h4>
+                            <asp:BarChart ID="barchart1" runat="server" ChartHeight="300" ChartWidth="600" ChartType="Column" ChartTitle="Evaluation Recap (Q1)"></asp:BarChart>
+                            <h4>Chart pertanyaan 2</h4>
+                            <asp:BarChart ID="barchart2" runat="server" ChartHeight="300" ChartWidth="600" ChartType="Column" ChartTitle="Evaluation Recap (Q2)"></asp:BarChart>
+                            <h4>Chart pertanyaan 3</h4>
+                            <asp:BarChart ID="barchart3" runat="server" ChartHeight="300" ChartWidth="600" ChartType="Column" ChartTitle="Evaluation Recap (Q3)"></asp:BarChart>
+                        </div>
+                     </form>                            
+                   </div>                    
                 </section>
             </div>
         </div>

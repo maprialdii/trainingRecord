@@ -1,16 +1,37 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="PageRekapEvaluasiReaksi.aspx.cs" Inherits="BioPM.PageRekapEvaluasiReaksi" %>
 
+<%@ Register assembly="AjaxControlToolkit" namespace="AjaxControlToolkit" tagprefix="asp" %>
+
 <!DOCTYPE html>
 <script runat="server">
     protected void Page_Load(object sender, EventArgs e)
     {
+        Page.Header.DataBind();
+        Page.DataBind();
         if (Session["username"] == null && Session["password"] == null) Response.Redirect("PageLogin.aspx");
         if (!IsPostBack)
         {
             GetDataEventandBatch();
         }
         if (Page.IsPostBack)
+        {
             btnShow_Click();
+            BindChart1();
+            BindChart2();
+            BindChart3();
+            BindChart4();
+            BindChart5();
+            BindChart6();
+            BindChart7();
+            BindChart8();
+            BindChart9();
+            BindChart10();
+            BindChart11();
+            BindChart12();
+            BindChart13();
+            BindChart14();
+            BindChart15();
+        }
     }
 
     protected void GetDataEventandBatch()
@@ -20,7 +41,7 @@
         {
             ddlEvent.Items.Add(new ListItem(data[1].ToString(), data[0].ToString()));
         }
-        ddlEvent.Items.Insert(0, new ListItem("Select Event", "NA"));
+        //ddlEvent.Items.Insert(0, new ListItem("Select Event", "NA"));
 
         ddlBatch.Items.Clear();
         
@@ -28,7 +49,7 @@
         {
             ddlBatch.Items.Add(new ListItem(data[0].ToString() + " - " + data[1].ToString(), data[1].ToString()));
         }
-        ddlBatch.Items.Insert(0, new ListItem("Select Execution", "NA"));
+        //ddlBatch.Items.Insert(0, new ListItem("Select Execution", "NA"));
     }
 
     protected String GenerateDataEvent()
@@ -139,14 +160,14 @@
 </script>
 
 <html lang="en">
-<head>
-    <% Response.Write(BioPM.ClassScripts.BasicScripts.GetMetaScript()); %>
+<head runat="server">
+    <%# BioPM.ClassScripts.BasicScripts.GetMetaScript() %>
 
     <title>Rekap Evaluasi Pelaksanaan</title>
 
-    <% Response.Write(BioPM.ClassScripts.StyleScripts.GetCoreStyle()); %>
-<% Response.Write(BioPM.ClassScripts.StyleScripts.GetTableStyle()); %>
-<% Response.Write(BioPM.ClassScripts.StyleScripts.GetCustomStyle()); %>
+    <%# BioPM.ClassScripts.StyleScripts.GetCoreStyle() %>
+    <%# BioPM.ClassScripts.StyleScripts.GetTableStyle() %>
+    <%# BioPM.ClassScripts.StyleScripts.GetCustomStyle() %>
 </head>
 
 <body>
@@ -358,8 +379,40 @@
                                 </tbody>
                             </table>
                         </div>
+                        <div class="form-group">
+                            <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+                            <h4>Chart pertanyaan 1</h4>
+                            <asp:BarChart ID="barchart1" runat="server" ChartHeight="300" ChartWidth="600" ChartType="Column" ChartTitle="Evaluation Recap (Q1)"></asp:BarChart>
+                            <h4>Chart pertanyaan 2</h4>
+                            <asp:BarChart ID="barchart2" runat="server" ChartHeight="300" ChartWidth="600" ChartType="Column" ChartTitle="Evaluation Recap (Q2)"></asp:BarChart>
+                            <h4>Chart pertanyaan 3</h4>
+                            <asp:BarChart ID="barchart3" runat="server" ChartHeight="300" ChartWidth="600" ChartType="Column" ChartTitle="Evaluation Recap (Q3)"></asp:BarChart>
+                            <h4>Chart pertanyaan 4</h4>
+                            <asp:BarChart ID="barchart4" runat="server" ChartHeight="300" ChartWidth="600" ChartType="Column" ChartTitle="Evaluation Recap (Q1)"></asp:BarChart>
+                            <h4>Chart pertanyaan 5</h4>
+                            <asp:BarChart ID="barchart5" runat="server" ChartHeight="300" ChartWidth="600" ChartType="Column" ChartTitle="Evaluation Recap (Q2)"></asp:BarChart>
+                            <h4>Chart pertanyaan 6</h4>
+                            <asp:BarChart ID="barchart6" runat="server" ChartHeight="300" ChartWidth="600" ChartType="Column" ChartTitle="Evaluation Recap (Q3)"></asp:BarChart>
+                            <h4>Chart pertanyaan 7</h4>
+                            <asp:BarChart ID="barchart7" runat="server" ChartHeight="300" ChartWidth="600" ChartType="Column" ChartTitle="Evaluation Recap (Q1)"></asp:BarChart>
+                            <h4>Chart pertanyaan 8</h4>
+                            <asp:BarChart ID="barchart8" runat="server" ChartHeight="300" ChartWidth="600" ChartType="Column" ChartTitle="Evaluation Recap (Q2)"></asp:BarChart>
+                            <h4>Chart pertanyaan 9</h4>
+                            <asp:BarChart ID="barchart9" runat="server" ChartHeight="300" ChartWidth="600" ChartType="Column" ChartTitle="Evaluation Recap (Q3)"></asp:BarChart>
+                            <h4>Chart pertanyaan 10</h4>
+                            <asp:BarChart ID="barchart10" runat="server" ChartHeight="300" ChartWidth="600" ChartType="Column" ChartTitle="Evaluation Recap (Q1)"></asp:BarChart>
+                            <h4>Chart pertanyaan 11</h4>
+                            <asp:BarChart ID="barchart11" runat="server" ChartHeight="300" ChartWidth="600" ChartType="Column" ChartTitle="Evaluation Recap (Q2)"></asp:BarChart>
+                            <h4>Chart pertanyaan 12</h4>
+                            <asp:BarChart ID="barchart12" runat="server" ChartHeight="300" ChartWidth="600" ChartType="Column" ChartTitle="Evaluation Recap (Q3)"></asp:BarChart>
+                            <h4>Chart pertanyaan 13</h4>
+                            <asp:BarChart ID="barchart13" runat="server" ChartHeight="300" ChartWidth="600" ChartType="Column" ChartTitle="Evaluation Recap (Q1)"></asp:BarChart>
+                            <h4>Chart pertanyaan 14</h4>
+                            <asp:BarChart ID="barchart14" runat="server" ChartHeight="300" ChartWidth="600" ChartType="Column" ChartTitle="Evaluation Recap (Q2)"></asp:BarChart>
+                            <h4>Chart pertanyaan 15</h4>
+                            <asp:BarChart ID="barchart15" runat="server" ChartHeight="300" ChartWidth="600" ChartType="Column" ChartTitle="Evaluation Recap (Q3)"></asp:BarChart>
+                        </div>
                     </div>
-                    
                 </section>
             </div>
         </div>
@@ -368,13 +421,13 @@
     </section>
     <!--main content end-->
 <!--right sidebar start-->
-    <%Response.Write( BioPM.ClassScripts.SideBarMenu.RightSidebarMenuElement() ); %> 
+    <%# BioPM.ClassScripts.SideBarMenu.RightSidebarMenuElement() %> 
 <!--right sidebar end-->
 </section>
 
 <!-- Placed js at the end of the document so the pages load faster -->
-    <% Response.Write(BioPM.ClassScripts.JS.GetCoreScript()); %>
-<% Response.Write(BioPM.ClassScripts.JS.GetDynamicTableScript()); %>
-<% Response.Write(BioPM.ClassScripts.JS.GetInitialisationScript()); %>
+    <%# BioPM.ClassScripts.JS.GetCoreScript() %>
+    <%# BioPM.ClassScripts.JS.GetDynamicTableScript() %>
+    <%# BioPM.ClassScripts.JS.GetInitialisationScript() %>
 </body>
 </html>
