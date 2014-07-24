@@ -77,24 +77,26 @@
                                     </ul>
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <label class="col-sm-3 control-label"> EVENT </label>
-                                <div class="col-lg-3 col-md-4">
-                                    <asp:DropDownList ID="ddlEvent" runat="server" class="form-control m-bot15">   
-                                    </asp:DropDownList> 
+                            <form id="Form2" class="form-horizontal " runat="server" >
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label"> EVENT </label>
+                                    <div class="col-lg-3 col-md-4">
+                                        <asp:DropDownList ID="ddlEvent" runat="server" class="form-control m-bot15">   
+                                        </asp:DropDownList> 
+                                    </div>
+                                </div> 
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label"> BATCH </label>
+                                    <div class="col-lg-3 col-md-4">
+                                        <asp:DropDownList ID="ddlBatch" runat="server" class="form-control m-bot15">   
+                                        </asp:DropDownList> 
+                                    </div>
+                                </div> 
+                                <div class="btn-group">
+                                  <button id="editable-sample_new" onclick="document.location.href='PageRekapEvaluasiPelaksanaan.aspx';" class="btn btn-primary"> View
+                                  </button>
                                 </div>
-                            </div> 
-                            <div class="form-group">
-                                <label class="col-sm-3 control-label"> BATCH </label>
-                                <div class="col-lg-3 col-md-4">
-                                    <asp:DropDownList ID="ddlBatch" runat="server" class="form-control m-bot15">   
-                                    </asp:DropDownList> 
-                                </div>
-                            </div> 
-                            <div class="btn-group">
-                              <button id="editable-sample_new" onclick="document.location.href='PageRekapEvaluasiPelaksanaan.aspx';" class="btn btn-primary"> View
-                              </button>
-                            </div>
+                            </form>
                             <table class="table table-striped table-hover table-bordered" id="dynamic-table">
                                 <thead>
                                     <tr>                                

@@ -13,7 +13,8 @@
 
         foreach (object[] data in BioPM.ClassObjects.QualificationCatalog.GetQualification(Session["username"].ToString()))
         {
-            htmlelement += "<tr class=''><td>" + data[1].ToString() + "</td><td>" + data[4].ToString() + "</td><td>" + data[5].ToString() + "</td><td>" + data[6].ToString() + "</td><td>" + data[7].ToString() + "</td><td><a class='edit' href='FormUpdateEmployeeQualification.aspx?key=" + data[0].ToString() + "'>Edit</a></td><td><a data-toggle='modal' ID='btnAction' runat='server' Text='Delete' href='#myModal'>Delete</a></td></tr>";
+            //htmlelement += "<tr class=''><td>" + data[1].ToString() + "</td><td>" + data[4].ToString() + "</td><td>" + data[5].ToString() + "</td><td>" + data[6].ToString() + "</td><td>" + data[7].ToString() + "</td><td><a class='edit' href='FormUpdateEmployeeQualification.aspx?key=" + data[0].ToString() + "'>Edit</a></td><td><a data-toggle='modal' ID='btnAction' runat='server' Text='Delete' href='#myModal'>Delete</a></td></tr>";
+            htmlelement += "<tr class=''><td>" + data[1].ToString() + "</td><td>" + data[4].ToString() + "</td><td>" + data[5].ToString() + "</td><td>" + data[6].ToString() + "</td><td>" + data[7].ToString() + "</td></tr>";
         }
         
         return htmlelement;
@@ -75,10 +76,10 @@
                         
                         <div class="adv-table">
                             <div class="clearfix">
-                                <div class="btn-group">
+<%--                                <div class="btn-group">
                                     <button id="editable-sample_new" onclick="document.location.href='FormInputEmployeeQualification.aspx';" class="btn btn-primary"> Add New <i class="fa fa-plus"></i>
                                     </button>
-                                </div>
+                                </div>--%>
                                 <div class="btn-group pull-right">
                                     <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">Tools <i class="fa fa-angle-down"></i>
                                     </button>
@@ -97,8 +98,6 @@
                                     <th>Proficiency Level</th>
                                     <th>Required Proficiency Level</th>
                                     <th>Gap</th>
-                                    <th>Edit</th>
-                                    <th>Delete</th>
                                 </tr>
                                 </thead>
                                 <tbody>
