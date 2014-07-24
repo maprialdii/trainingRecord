@@ -154,6 +154,32 @@ namespace BioPM.ClassObjects
             }
         }
 
+        public static List<object[]> GetBatch(string evtid)
+        {
+            SqlConnection conn = GetConnection();
+            string sqlCmd = @"SELECT DISTINCT CE.TITLE, CE.BATCH
+                            FROM trrcd.COMDEV_EVENT_EXECUTION CE WITH(INDEX(COMDEV_EVENT_EXECUTION_IDX_BEGDA_ENDDA_ID))
+                            WHERE CE.EVTID='" + evtid + "';";
+            SqlCommand cmd = GetCommand(conn, sqlCmd);
+
+            try
+            {
+                conn.Open();
+                SqlDataReader reader = GetDataReader(cmd);
+                List<object[]> batchs = new List<object[]>();
+                while (reader.Read())
+                {
+                    object[] values = { reader[0].ToString(), reader[1].ToString() };
+                    batchs.Add(values);
+                }
+                return batchs;
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+
         public static object[] GetComdevExecutionById(string excid)
         {
             SqlConnection conn = GetConnection();

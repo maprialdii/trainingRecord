@@ -5,6 +5,27 @@
     protected void Page_Load(object sender, EventArgs e)
     {
         if (Session["username"] == null && Session["password"] == null) Response.Redirect("PageLogin.aspx");
+        if (!IsPostBack)
+        {
+            GetDataEventandBatch();
+        }
+        if (Page.IsPostBack)
+            btnShow_Click();
+    }
+
+    protected void GetDataEventandBatch()
+    {
+        ddlEvent.Items.Clear();
+        foreach (object[] data in BioPM.ClassObjects.ComDevEvent.GetAllComdevEvent())
+        {
+            ddlEvent.Items.Add(new ListItem(data[1].ToString(), data[0].ToString()));
+        }
+
+        ddlBatch.Items.Clear();
+        foreach (object[] data in BioPM.ClassObjects.ComDevExecution.GetBatch(ddlEvent.SelectedValue))
+        {
+            ddlBatch.Items.Add(new ListItem(data[0].ToString()+" - "+data[1].ToString(), data[1].ToString()));
+        }
     }
 
     protected String GenerateDataEvent()
@@ -21,7 +42,23 @@
 
     protected void btnShow_Click()
     {
+        object[] data1 = BioPM.ClassObjects.Survey.GetRekapSurvey(ddlEvent.SelectedValue, ddlBatch.SelectedValue, "1");
+        lbl14.Text = data1[4].ToString();
+        lbl13.Text = data1[5].ToString();
+        lbl12.Text = data1[6].ToString();
+        lbl11.Text = data1[7].ToString();
 
+        object[] data2 = BioPM.ClassObjects.Survey.GetRekapSurvey(ddlEvent.SelectedValue, ddlBatch.SelectedValue, "3");
+        lbl24.Text = data2[4].ToString();
+        lbl23.Text = data2[5].ToString();
+        lbl22.Text = data2[6].ToString();
+        lbl21.Text = data2[7].ToString();
+
+        object[] data3 = BioPM.ClassObjects.Survey.GetRekapSurvey(ddlEvent.SelectedValue, ddlBatch.SelectedValue, "5");
+        lbl34.Text = data3[4].ToString();
+        lbl33.Text = data3[5].ToString();
+        lbl32.Text = data3[6].ToString();
+        lbl31.Text = data3[7].ToString();
     }
 
 </script>
@@ -93,8 +130,7 @@
                                     </div>
                                 </div> 
                                 <div class="btn-group">
-                                      <button id="editable-sample_new" onclick="document.location.href='PageRekapEvaluasiPerilaku.aspx';" class="btn btn-primary"> View
-                                      </button>
+                                      <asp:button id="btnView" runat="server" Text="View" />                                   
                                 </div>
                             </form>
                             <table class="table table-striped table-hover table-bordered" id="dynamic-table">
@@ -110,24 +146,24 @@
                                 <tbody>
                                     <tr>
                                         <td>Apakah objektif / tujuan pelatihan ini sudah tercapai oleh peserta tersebut? </td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
+                                        <td><asp:Label ID="lbl14" runat="server"></asp:Label></td>
+                                        <td><asp:Label ID="lbl13" runat="server"></asp:Label></td>
+                                        <td><asp:Label ID="lbl12" runat="server"></asp:Label></td>
+                                        <td><asp:Label ID="lbl11" runat="server"></asp:Label></td>
                                     </tr>
                                     <tr>
                                         <td>Apakah peserta pelatihan ini sudah mengaplikasikan pengetahuan yang didapat pada pekerjaannya? </td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
+                                        <td><asp:Label ID="lbl24" runat="server"></asp:Label></td>
+                                        <td><asp:Label ID="lbl23" runat="server"></asp:Label></td>
+                                        <td><asp:Label ID="lbl22" runat="server"></asp:Label></td>
+                                        <td><asp:Label ID="lbl21" runat="server"></asp:Label></td>
                                     </tr>
                                     <tr>
                                         <td>Bagaimana penilaian anda atas hasil yang telah dicapai oleh karyawan tersebut? </td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
+                                        <td><asp:Label ID="lbl34" runat="server"></asp:Label></td>
+                                        <td><asp:Label ID="lbl33" runat="server"></asp:Label></td>
+                                        <td><asp:Label ID="lbl32" runat="server"></asp:Label></td>
+                                        <td><asp:Label ID="lbl31" runat="server"></asp:Label></td>
                                     </tr>
                                 </tbody>
                             </table>
