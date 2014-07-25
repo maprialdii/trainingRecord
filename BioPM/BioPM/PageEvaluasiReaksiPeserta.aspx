@@ -19,40 +19,193 @@
         string excid = Request.QueryString["key"].ToString();
         object[] data = null;
         data = BioPM.ClassObjects.Survey.GetAnswerById(excid, "32");
-        txt11.Text = data[1].ToString();
+
+        string keterangan11 = null;
+        if (data[1].ToString() == "4")
+            keterangan11 = "Tercapai";
+        else if (data[1].ToString() == "3")
+            keterangan11 = "Cukup Tercapai";
+        else if (data[1].ToString() == "2")
+            keterangan11 = "Kurang Tercapai";
+        else if (data[1].ToString() == "1")
+            keterangan11 = "Tidak Tercapai";
+        txt11.Text = keterangan11;
         data = BioPM.ClassObjects.Survey.GetAnswerById(excid, "33");
-        txt12.Text = data[1].ToString();
+
+        string keterangan12 = null;
+        if (data[1].ToString() == "4")
+            keterangan12 = "Tercapai";
+        else if (data[1].ToString() == "3")
+            keterangan12 = "Cukup Tercapai";
+        else if (data[1].ToString() == "2")
+            keterangan12 = "Kurang Tercapai";
+        else if (data[1].ToString() == "1")
+            keterangan12 = "Tidak Tercapai";
+        txt12.Text = keterangan12;
         data = BioPM.ClassObjects.Survey.GetAnswerById(excid, "34");
-        txt21.Text = data[1].ToString();
+
+        string keterangan21 = null;
+        if (data[1].ToString() == "4")
+            keterangan21 = "Sangat lengkap";
+        else if (data[1].ToString() == "3")
+            keterangan21 = "Lengkap";
+        else if (data[1].ToString() == "2")
+            keterangan21 = "Kurang lengkap";
+        else if (data[1].ToString() == "1")
+            keterangan21 = "Tidak lengkap";
+        txt21.Text = keterangan21;
         data = BioPM.ClassObjects.Survey.GetAnswerById(excid, "35");
-        txt22.Text = data[1].ToString();
+
+        string keterangan22 = null;
+        if (data[1].ToString() == "4")
+            keterangan22 = "Sangat dalam";
+        else if (data[1].ToString() == "3")
+            keterangan22 = "Cukup dalam";
+        else if (data[1].ToString() == "2")
+            keterangan22 = "Dangkal";
+        else if (data[1].ToString() == "1")
+            keterangan22 = "Sangat dangkal";
+        txt22.Text = keterangan22;
         data = BioPM.ClassObjects.Survey.GetAnswerById(excid, "36");
-        txt23.Text = data[1].ToString();
+
+        string keterangan23 = null;
+        if (data[1].ToString() == "4")
+            keterangan23 = "Sangat menarik";
+        else if (data[1].ToString() == "3")
+            keterangan23 = "Cukup menarik";
+        else if (data[1].ToString() == "2")
+            keterangan23 = "Kurang menarik";
+        else if (data[1].ToString() == "1")
+            keterangan23 = "Sangat tidak menarik";
+        txt23.Text = keterangan23;
         data = BioPM.ClassObjects.Survey.GetAnswerById(excid, "37");
-        txt31.Text = data[1].ToString();
+
+        string keterangan31 = null;
+        if (data[1].ToString() == "4")
+            keterangan31 = "Panjang";
+        else if (data[1].ToString() == "3")
+            keterangan31 = "Cukup panjang";
+        else if (data[1].ToString() == "2")
+            keterangan31 = "Pendek";
+        else if (data[1].ToString() == "1")
+            keterangan31 = "Sangat pendek";
+        txt31.Text = keterangan31;
         data = BioPM.ClassObjects.Survey.GetAnswerById(excid, "38");
+
+        string keterangan32 = null;
+        if (data[1].ToString() == "4")
+            keterangan32 = "Banyak";
+        else if (data[1].ToString() == "3")
+            keterangan32 = "Cukup banyak";
+        else if (data[1].ToString() == "2")
+            keterangan32 = "Sedikit";
+        else if (data[1].ToString() == "1")
+            keterangan32 = "Sangat sedikit";
         txt32.Text = data[1].ToString();
         data = BioPM.ClassObjects.Survey.GetAnswerById(excid, "39");
-        txt41.Text = data[1].ToString();
+
+        string keterangan41 = null;
+        if (data[1].ToString() == "4")
+            keterangan41 = "Sangat menarik";
+        else if (data[1].ToString() == "3")
+            keterangan41 = "Cukup menarik";
+        else if (data[1].ToString() == "2")
+            keterangan41 = "Kurang menarik";
+        else if (data[1].ToString() == "1")
+            keterangan41 = "Sangat tidak menarik";
+        txt41.Text = keterangan41;
         data = BioPM.ClassObjects.Survey.GetAnswerById(excid, "40");
-        txt42.Text = data[1].ToString();
+
+        string keterangan42 = null;
+        if (data[1].ToString() == "4")
+            keterangan42 = "Sangat baik";
+        else if (data[1].ToString() == "3")
+            keterangan42 = "Baik";
+        else if (data[1].ToString() == "2")
+            keterangan42 = "Buruk";
+        else if (data[1].ToString() == "1")
+            keterangan42 = "Sangat buruk";
+        txt42.Text = keterangan42;
         data = BioPM.ClassObjects.Survey.GetAnswerById(excid, "41");
-        txt43.Text = data[1].ToString();
+
+        string keterangan43 = null;
+        if (data[1].ToString() == "4")
+            keterangan43 = "Sistematik";
+        else if (data[1].ToString() == "3")
+            keterangan43 = "Cukup sistemasik";
+        else if (data[1].ToString() == "2")
+            keterangan43 = "Kurang sistematik";
+        else if (data[1].ToString() == "1")
+            keterangan43 = "Tidak sistematik";
+        txt43.Text = keterangan43;
         data = BioPM.ClassObjects.Survey.GetAnswerById(excid, "42");
-        txt44.Text = data[1].ToString();
+
+        string keterangan44 = null;
+        if (data[1].ToString() == "4")
+            keterangan44 = "Sangat baik";
+        else if (data[1].ToString() == "3")
+            keterangan44 = "Baik";
+        else if (data[1].ToString() == "2")
+            keterangan44 = "Buruk";
+        else if (data[1].ToString() == "1")
+            keterangan44 = "Sangat buruk";
+        txt44.Text = keterangan44;
         data = BioPM.ClassObjects.Survey.GetAnswerById(excid, "43");
-        txt51.Text = data[1].ToString();
+
+        string keterangan51 = null;
+        if (data[1].ToString() == "4")
+            keterangan51 = "Sangat baik";
+        else if (data[1].ToString() == "3")
+            keterangan51 = "Baik";
+        else if (data[1].ToString() == "2")
+            keterangan51 = "Buruk";
+        else if (data[1].ToString() == "1")
+            keterangan51 = "Sangat buruk";
+        txt51.Text = keterangan51;
         data = BioPM.ClassObjects.Survey.GetAnswerById(excid, "44");
-        txt52.Text = data[1].ToString();
+
+        string keterangan52 = null;
+        if (data[1].ToString() == "4")
+            keterangan52 = "Sangat baik";
+        else if (data[1].ToString() == "3")
+            keterangan52 = "Baik";
+        else if (data[1].ToString() == "2")
+            keterangan52 = "Buruk";
+        else if (data[1].ToString() == "1")
+            keterangan52 = "Sangat buruk";
+        txt52.Text = keterangan52;
         data = BioPM.ClassObjects.Survey.GetAnswerById(excid, "45");
-        txt61.Text = data[1].ToString();
+
+        string keterangan61 = null;
+        if (data[1].ToString() == "4")
+            keterangan61 = "Sangat bermanfaat";
+        else if (data[1].ToString() == "3")
+            keterangan61 = "Cukup bermanfaat";
+        else if (data[1].ToString() == "2")
+            keterangan61 = "Kurang bermanfaat";
+        else if (data[1].ToString() == "1")
+            keterangan61 = "Tidak bermanfaat";
+        txt61.Text = keterangan61;
         data = BioPM.ClassObjects.Survey.GetAnswerById(excid, "46");
-        txt62.Text = data[1].ToString();
+
+        string keterangan62 = null;
+        if (data[1].ToString() == "4")
+            keterangan62 = "Aplikatif";
+        else if (data[1].ToString() == "3")
+            keterangan62 = "Cukup aplikatif";
+        else if (data[1].ToString() == "2")
+            keterangan62 = "Kurang aplikatif";
+        else if (data[1].ToString() == "1")
+            keterangan62 = "Tidak aplikatif";
+        txt62.Text = keterangan62;
         data = BioPM.ClassObjects.Survey.GetAnswerById(excid, "47");
+        
         TextBox2.Text = data[1].ToString();
         data = BioPM.ClassObjects.Survey.GetAnswerById(excid, "48");
+        
         txt7.Text = data[1].ToString();
         data = BioPM.ClassObjects.Survey.GetAnswerById(excid, "49");
+        
         TextBox1.Text = data[1].ToString();
     }
 
