@@ -362,7 +362,7 @@
                                         <asp:ListItem Text="4 (Sangat menarik)" Value="4" />
                                         <asp:ListItem Text="3" Value="3" />
                                         <asp:ListItem Text="2" Value="2" />
-                                        <asp:ListItem Text="1 (Tidak tidak menarik)" Value="1" />
+                                        <asp:ListItem Text="1 (Sangat tidak menarik)" Value="1" />
                                     </asp:RadioButtonList>
                                 </div>
                             </div>

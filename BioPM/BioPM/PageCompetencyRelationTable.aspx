@@ -22,7 +22,7 @@
 
         foreach (object[] data in BioPM.ClassObjects.CompetencyCatalog.GetCompetencyStructures())
         {
-            htmlelement += "<tr class=''><td>" + data[0].ToString() + "</td><td>" + data[1].ToString() + "</td><td>" + data[2].ToString() + "</td><td><a class='edit' href='FormUpdateCompetencyRelation.aspx?key=" + data[3].ToString() + "'>Edit</a></td><td><a data-toggle='modal' ID='btnAction' runat='server' Text='Delete' href='PageInformation.aspx?key=" + data[3].ToString() + "&type=22'>Delete</a></td></tr>";
+            htmlelement += "<tr class=''><td>" + data[0].ToString() + "</td><td>" + data[1].ToString() + "</td><td>" + data[2].ToString() + "</td><td><a class='edit' href='FormUpdateCompetencyRelation.aspx?key=" + data[3].ToString() + "'>Edit</a></td><td><a data-toggle='modal' ID='btnAction' runat='server' Text='Delete' href='#myModal'>Delete</a></td></tr>";
         }
         
         return htmlelement;
