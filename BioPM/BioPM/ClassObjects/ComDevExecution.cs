@@ -97,6 +97,34 @@ namespace BioPM.ClassObjects
             }
         }
 
+        public static List<object[]> GetAllComdevExecution()
+        {
+            SqlConnection conn = GetConnection();
+            string sqlCmd = @"SELECT CE.EXCID, CV.EVTNM, CE.TITLE, CE.BATCH, CE.PMBCR, CE.INSTI, CE.BEGDA, CE.ENDDA, CE.CRTFL, CE.SCORE, CE.EXCCO, UD.CNAME
+                            FROM trrcd.COMDEV_EVENT_EXECUTION CE WITH(INDEX(COMDEV_EVENT_EXECUTION_IDX_BEGDA_ENDDA_ID)), trrcd.COMDEV_EVENT CV WITH(INDEX(COMDEV_EVENT_IDX_BEGDA_ENDDA_ID)), bioumum.USER_DATA UD
+                            WHERE CV.EVTID=CE.EVTID AND UD.PERNR=CE.PERNR
+                            AND CV.BEGDA <= GETDATE() AND CV.ENDDA >= GETDATE() AND CE.CRTFL!=''
+                            ORDER BY CE.EXCID DESC;";
+            SqlCommand cmd = GetCommand(conn, sqlCmd);
+
+            try
+            {
+                conn.Open();
+                SqlDataReader reader = GetDataReader(cmd);
+                List<object[]> batchs = new List<object[]>();
+                while (reader.Read())
+                {
+                    object[] values = { reader[0].ToString(), reader[1].ToString(), reader[2].ToString(), reader[3].ToString(), reader[4].ToString(), reader[5].ToString(), reader[6].ToString(), reader[7].ToString(), reader[8].ToString(), reader[9].ToString(), reader[10].ToString(), reader[11].ToString() };
+                    batchs.Add(values);
+                }
+                return batchs;
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+
         public static List<object[]> GetComdevExecutionByPosition(string pernr)
         {
             SqlConnection conn = GetConnection();

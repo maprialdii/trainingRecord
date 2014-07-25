@@ -13,7 +13,7 @@
 
         foreach (object[] data in BioPM.ClassObjects.Jabatan.GetAllJabatan())
         {
-            htmlelement += "<tr class=''><td>" + data[0].ToString() + "</td><td>" + data[1].ToString() + "</td><td><a class='edit' href='PagePositionRequirements.aspx?key=" + data[0].ToString() + "'>Requirements</a></td><td><a class='edit' href='FormUpdateRequirements.aspx?key=" + data[0].ToString() + "'>Edit</a></td><td><a data-toggle='modal' ID='btnAction' runat='server' Text='Delete' href='#myModal'>Delete</a></td></tr>";
+            htmlelement += "<tr class=''><td>" + data[0].ToString() + "</td><td>" + data[1].ToString() + "</td><td><a class='edit' href='PagePositionRequirements.aspx?key=" + data[0].ToString() + "'>Requirements</a></td><td><a class='edit' href='FormUpdateRequirements.aspx?key=" + data[0].ToString() + "'>Edit</a></td><td><a data-toggle='modal' ID='btnAction' runat='server' Text='Delete' href='PageInformation.aspx?key" + data[0].ToString() + "&type=29'>Delete</a></td></tr>";
         }
         
         return htmlelement;

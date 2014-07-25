@@ -29,7 +29,7 @@
             trgId = data[0].ToString();
             eventName = data[2].ToString();
             method = data[5].ToString();
-            htmlelement += "<tr class=''><td>" + data[3].ToString() + "</td><td>" + data[4].ToString() + "</td><td><a class='edit' href='FormUpdateTargetTraining.aspx?key=" + data[0].ToString() + "'>Edit</a></td><td><a class='delete' data-toggle='modal' ID='btnAction' runat='server' href='#myModal'>Delete</a></td></tr>";
+            htmlelement += "<tr class=''><td>" + data[3].ToString() + "</td><td>" + data[4].ToString() + "</td><td><a class='edit' href='FormUpdateTargetTraining.aspx?key=" + data[0].ToString() + "'>Edit</a></td><td><a class='delete' data-toggle='modal' ID='btnAction' runat='server' href='PageInformation.aspx?key=" + data[0].ToString() + "&type=25'>Delete</a></td></tr>";
         }
         
         return htmlelement;
