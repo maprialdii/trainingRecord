@@ -20,6 +20,8 @@
         {
             ddlEventMethod.Items.Add(new ListItem(data[1].ToString(), data[0].ToString()));
         }
+        ddlEventMethod.Items.Insert(0, new ListItem("Select Event", "NA"));
+        
         ddlEmployeeName.Items.Clear();
         
         foreach (object[] data in BioPM.ClassObjects.EmployeeCatalog.GetAllEmployee())
@@ -90,7 +92,7 @@
                         <div class="form-group">
                             <label class="col-sm-3 control-label"> EXECUTION ID </label>
                             <div class="col-lg-3 col-md-4">
-                                <asp:TextBox ID="txtExcid" runat="server" class="form-control m-bot15" placeholder="EXECUTION ID" ></asp:TextBox>
+                                <asp:TextBox ID="txtExcid" runat="server" class="form-control m-bot15" placeholder="EXECUTION ID" ReadOnly="true"></asp:TextBox>
                             </div>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator1" ControlToValidate="txtExcid" runat="server" ErrorMessage="This field is required." ForeColor="Red"></asp:RequiredFieldValidator>
                         </div>

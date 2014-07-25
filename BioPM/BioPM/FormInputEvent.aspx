@@ -21,6 +21,7 @@
         {
             ddlEventMethod.Items.Add(new ListItem(data[1].ToString(), data[0].ToString()));
         }
+        ddlEventMethod.Items.Insert(0, new ListItem("Select Event Method", "NA"));
     }
     
     protected void InsertEventIntoDatabase()

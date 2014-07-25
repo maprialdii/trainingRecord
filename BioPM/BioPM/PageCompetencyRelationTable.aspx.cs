@@ -38,7 +38,10 @@ namespace BioPM
         protected void ddlCompParent_SelectedIndexChanged(object sender, EventArgs e)
         {
             ddlCompParent.AutoPostBack = true;
-            txtCompLevel.Text = BioPM.ClassObjects.CompetencyCatalog.GetLevel(ddlCompParent.SelectedValue).ToString();
+            if (ddlCompParent.SelectedValue == "NULL")
+                txtCompLevel.Text = "0";
+            else
+                txtCompLevel.Text = BioPM.ClassObjects.CompetencyCatalog.GetLevel(ddlCompParent.SelectedValue).ToString();
         }
     }
 }

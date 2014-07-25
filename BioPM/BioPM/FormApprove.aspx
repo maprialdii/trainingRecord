@@ -86,7 +86,7 @@
                         <div class="form-group">
                             <label class="col-sm-3 control-label"> EXECUTION ID </label>
                             <div class="col-lg-3 col-md-4">
-                                <asp:TextBox ID="txtExcid" runat="server" class="form-control m-bot15" placeholder="EXECUTION ID" ></asp:TextBox>
+                                <asp:TextBox ID="txtExcid" runat="server" class="form-control m-bot15" placeholder="EXECUTION ID" ReadOnly="true" ></asp:TextBox>
                             </div>
                         </div>
 

@@ -19,6 +19,7 @@
         {
             ddlEventName.Items.Add(new ListItem(data[1].ToString(), data[0].ToString()));
         }
+        ddlEventName.Items.Insert(0, new ListItem("Select Event", "NA"));
     }
 
     protected void GetDataEmployee()
@@ -28,6 +29,7 @@
         {
             ddlEmployeeName.Items.Add(new ListItem(data[1].ToString(), data[0].ToString()));
         }
+        ddlEmployeeName.Items.Insert(0, new ListItem("Select Employee", "NA"));
     }
 
     protected void InsertReasonIntoDatabase()

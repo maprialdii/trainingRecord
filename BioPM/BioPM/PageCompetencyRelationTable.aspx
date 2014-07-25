@@ -49,12 +49,18 @@
             ddlCompParent.Items.Add(new ListItem(data[2].ToString(), data[0].ToString()));
             ddlCompChild.Items.Add(new ListItem(data[2].ToString(), data[0].ToString()));
         }
+        ddlCompParent.Items.Insert(0, new ListItem("NULL", "NULL"));
+        ddlCompParent.Items.Insert(0, new ListItem("Select Parent", "NA"));        
+        ddlCompChild.Items.Insert(0, new ListItem("Select Child", "NA"));
     }
 
     protected void InsertRelationIntoDatabase()
     {
         string RLSID = (BioPM.ClassObjects.CompetencyCatalog.GetCompetencyRelationMaxID() + 1).ToString();
-        BioPM.ClassObjects.CompetencyCatalog.InsertCompetencyStructure(RLSID, ddlCompParent.SelectedValue, ddlCompChild.SelectedValue, txtCompLevel.Text, Session["username"].ToString());
+        if(ddlCompParent.SelectedValue=="NULL")
+            BioPM.ClassObjects.CompetencyCatalog.InsertCompetencyStructure(RLSID, "NULL", ddlCompChild.SelectedValue, "0", Session["username"].ToString());    
+        else
+            BioPM.ClassObjects.CompetencyCatalog.InsertCompetencyStructure(RLSID, ddlCompParent.SelectedValue, ddlCompChild.SelectedValue, txtCompLevel.Text, Session["username"].ToString());
     }
 
     protected void btnAdd_Click(object sender, EventArgs e)

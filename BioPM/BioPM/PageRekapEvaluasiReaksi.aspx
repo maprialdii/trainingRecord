@@ -197,7 +197,7 @@
                          </span>
                     </header>
                     <div class="panel-body">
-
+                        <form id="Form2" class="form-horizontal " runat="server" >                        
                         <div class="adv-table">
                             <div class="clearfix">
                                 <div class="btn-group pull-right">
@@ -210,7 +210,7 @@
                                     </ul>
                                 </div>
                             </div>
-                            <form id="Form2" class="form-horizontal " runat="server" >
+                            
                                 <div class="form-group">
                                     <label class="col-sm-3 control-label"> EVENT </label>
                                     <div class="col-lg-3 col-md-4">
@@ -229,7 +229,7 @@
                                   <button id="editable-sample_new" onclick="document.location.href='PageRekapEvaluasiReaksi.aspx';" class="btn btn-primary"> View
                                   </button>
                                 </div>
-                            </form>
+
                             <table class="table table-striped table-hover table-bordered" id="dynamic-table">
                                 <thead>
                                     <tr>                                
@@ -412,6 +412,7 @@
                             <h4>Chart pertanyaan 15</h4>
                             <asp:BarChart ID="barchart15" runat="server" ChartHeight="300" ChartWidth="600" ChartType="Column" ChartTitle="Evaluation Recap (Q3)"></asp:BarChart>
                         </div>
+                        </form>
                     </div>
                 </section>
             </div>

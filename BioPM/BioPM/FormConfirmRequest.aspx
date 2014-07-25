@@ -124,7 +124,7 @@
                         <div class="form-group">
                             <label class="col-sm-3 control-label"> EVENT COST ESTIMATION </label>
                             <div class="col-lg-3 col-md-4">
-                                <asp:TextBox ID="txtCost" runat="server" class="form-control m-bot15">   
+                                <asp:TextBox ID="txtCost" runat="server" class="form-control m-bot15" placeholder="EVENT COST">   
                                 </asp:TextBox> 
                             </div>
                         </div>
@@ -132,7 +132,7 @@
                         <div class="form-group">
                             <label class="col-sm-3 control-label"> EVENT DURATION </label>
                             <div class="col-lg-3 col-md-4">
-                                <asp:TextBox ID="txtDuration" runat="server" class="form-control m-bot15">   
+                                <asp:TextBox ID="txtDuration" runat="server" class="form-control m-bot15" placeholder="EVENT DURATION">   
                                 </asp:TextBox> 
                             </div>
                         </div>

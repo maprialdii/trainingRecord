@@ -20,15 +20,42 @@
         string excid = Request.QueryString["key"].ToString();
         object[] data = null;
         data = BioPM.ClassObjects.Survey.GetAnswerById(excid, "1");
-        txtSoal1.Text = data[1].ToString();
+        string keterangan1 = null;
+        if (data[1].ToString() == "4")
+            keterangan1 = "Tercapai";
+        else if (data[1].ToString() == "3")
+            keterangan1 = "Cukup Tercapai";
+        else if (data[1].ToString() == "2")
+            keterangan1 = "Kurang Tercapai";
+        else if (data[1].ToString() == "1")
+            keterangan1 = "Tidak Tercapai";
+        txtSoal1.Text = keterangan1;
         data = BioPM.ClassObjects.Survey.GetAnswerById(excid, "2");
         TextArea1.Text = data[1].ToString();
         data = BioPM.ClassObjects.Survey.GetAnswerById(excid, "3");
-        txtSoal2.Text = data[1].ToString();
+        string keterangan2 = null;
+        if (data[1].ToString() == "4")
+            keterangan2 = "Sudah diaplikasikan";
+        else if (data[1].ToString() == "3")
+            keterangan2 = "Cukup diaplikasikan";
+        else if (data[1].ToString() == "2")
+            keterangan2 = "Kurang diaplikasikan";
+        else if (data[1].ToString() == "1")
+            keterangan2 = "Belum diaplikasikan";
+        txtSoal2.Text = keterangan2;
         data = BioPM.ClassObjects.Survey.GetAnswerById(excid, "4");
         TextArea2.Text = data[1].ToString();
         data = BioPM.ClassObjects.Survey.GetAnswerById(excid, "5");
-        txtSoal3.Text = data[1].ToString();
+        string keterangan3 = null;
+        if (data[1].ToString() == "4")
+            keterangan3 = "Sangat Baik";
+        else if (data[1].ToString() == "3")
+            keterangan3 = "Baik";
+        else if (data[1].ToString() == "2")
+            keterangan3 = "Buruk";
+        else if (data[1].ToString() == "1")
+            keterangan3 = "Sangat Buruk";
+        txtSoal3.Text = keterangan3;
         data = BioPM.ClassObjects.Survey.GetAnswerById(excid, "6");
         TextArea3.Text = data[1].ToString();
         data = BioPM.ClassObjects.Survey.GetAnswerById(excid, "7");
@@ -47,6 +74,9 @@
         lblDivisi.Text = dataEmployee[3].ToString();
         lblJabatan.Text = dataEmployee[2].ToString();
         lblDate.Text = DateTime.Now.ToString();
+        object[] dataApproval = BioPM.ClassObjects.Survey.GetApprovalInfo(Request.QueryString["key"].ToString());
+        lblNamaSetuju.Text = dataApproval[1].ToString();
+        lblTglSetuju.Text = dataApproval[2].ToString();
     }
 
 
@@ -246,21 +276,21 @@
                         <div class="form-group">
                             <label class="col-sm-3 control-label"> Disetujui  oleh: </label>
                             <div class="col-lg-3 col-md-4">
-                                <asp:TextBox ID="txtSetuju" runat="server" class="form-control m-bot15" placeholder="Quality Assurance" ></asp:TextBox>
+                                <asp:Label ID="lblQA" runat="server" Text="Quality Assurance"></asp:Label>                                
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label class="col-sm-3 control-label"> Tanggal </label>
                             <div class="col-lg-3 col-md-4">
-                                <asp:TextBox ID="txtTglSetuju" runat="server" class="form-control m-bot15" placeholder="Tanggal disetujui" ></asp:TextBox>
+                                <asp:Label ID="lblTglSetuju" runat="server"></asp:Label>                                
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label class="col-sm-3 control-label"> Nama </label>
                             <div class="col-lg-3 col-md-4">
-                                <asp:TextBox ID="txtNamaSetuju" runat="server" class="form-control m-bot15" placeholder="Nama penyetuju" ></asp:TextBox>
+                                <asp:Label ID="lblNamaSetuju" runat="server"></asp:Label>                                
                             </div>
                         </div>
 

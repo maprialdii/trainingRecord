@@ -96,7 +96,7 @@
                         <div class="form-group">
                             <label class="col-sm-3 control-label"> METHOD ID </label>
                             <div class="col-lg-3 col-md-4">
-                                <asp:TextBox ID="txtEmtID" runat="server" class="form-control m-bot15" placeholder="METHOD ID" ReadOnly="true" ></asp:TextBox>
+                                <asp:TextBox ID="txtEmtID" runat="server" class="form-control m-bot15" ReadOnly="true" ></asp:TextBox>
                             </div>
                         </div>
                              

@@ -15,6 +15,7 @@
         {
             ddlCompetency.Items.Add(new ListItem(data[2].ToString(), data[0].ToString()));
         }
+        ddlCompetency.Items.Insert(0, new ListItem("Select Competency", "NA"));
         object[] values = BioPM.ClassObjects.ComDevEvent.GetComdevEventById(Request.QueryString["key"].ToString());
         lblEvtName.Text = values[1].ToString();
     }

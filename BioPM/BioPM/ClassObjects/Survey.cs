@@ -241,6 +241,33 @@ namespace BioPM.ClassObjects
             }
         }
 
+        public static object[] GetApprovalInfo(string excid)
+        {
+            SqlConnection conn = GetConnection();
+            string sqlCmd = @"SELECT DISTINCT SA.EXCID, UD.CNAME, SA.APVDT
+                            FROM TRRCD.SURVEY_ANSWERS SA, bioumum.USER_DATA UD
+                            WHERE SA.PRMID<=7 AND SA.PRMID>=1
+                            AND SA.EXCID=" + excid + " AND SA.PERNR=UD.PERNR;";
+            SqlCommand cmd = GetCommand(conn, sqlCmd);
+
+            try
+            {
+                conn.Open();
+                SqlDataReader reader = GetDataReader(cmd);
+                object[] data = null;
+                while (reader.Read())
+                {
+                    object[] values = { reader[0].ToString(), reader[1].ToString(), reader[2].ToString() };
+                    data = values;
+                }
+                return data;
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+
         public static object[] GetRekapSurvey(string evtid, string batch, string prmid)
         {
             SqlConnection conn = GetConnection();

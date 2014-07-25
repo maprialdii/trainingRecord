@@ -7,7 +7,11 @@
     protected void Page_Load(object sender, EventArgs e)
     {
         if (Session["username"] == null && Session["password"] == null) Response.Redirect("PageLogin.aspx");
-        if (!IsPostBack) SetPositionAndCompetencyList();
+        if (!IsPostBack)
+        {
+            SetPositionAndCompetencyList();
+            ddlJabatan.SelectedValue = Request.QueryString["key"].ToString();
+        }
     }
     
 
@@ -122,7 +126,7 @@
                         <div class="form-group">
                             <label class="col-sm-3 control-label"> POSITION NAME </label>
                             <div class="col-lg-3 col-md-4">
-                                <asp:DropDownList ID="ddlJabatan" runat="server" class="form-control m-bot15">   
+                                <asp:DropDownList ID="ddlJabatan" runat="server" class="form-control m-bot15" Enabled="false">   
                                 </asp:DropDownList> 
                             </div>
                         </div>
