@@ -17,8 +17,8 @@
     {
         evtId = Request.QueryString["key"].ToString();
         object[] data = BioPM.ClassObjects.ComDevEvent.GetComdevEventById(evtId);
-        lblEventName.Text = data[1].ToString();
-        lblEventMethod.Text = data[3].ToString();
+        txtEventName.Text = data[1].ToString();
+        txtEventMethod.Text = data[3].ToString();
     }
 
     protected String GenerateDataTargetTraining()
@@ -82,21 +82,22 @@
                          </span>
                     </header>
                     <div class="panel-body">
-                        <center>
+                        <form id="Form1" class="form-horizontal " runat="server" >
                         <div class="form-group">
                             <label class="col-sm-3 control-label"> EVENT NAME </label>
                             <div class="col-lg-3 col-md-4">
-                                <asp:Label ID="lblEventName" runat="server"></asp:Label>
+                                <asp:TextBox ID="txtEventName" runat="server" class="form-control m-bot15" ReadOnly="true"></asp:TextBox>
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label class="col-sm-3 control-label"> EVENT METHOD </label>
                             <div class="col-lg-3 col-md-4">
-                                <asp:Label ID="lblEventMethod" runat="server"></asp:Label>                                
+                                <asp:TextBox ID="txtEventMethod" runat="server" class="form-control m-bot15" ReadOnly="true"></asp:TextBox>
                             </div>
                         </div>
-                        </center>
+
+                        </form>
                         <div class="adv-table">
                             <div class="clearfix">
                                 <div class="btn-group">
