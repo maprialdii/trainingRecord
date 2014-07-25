@@ -45,7 +45,7 @@
 
         ddlBatch.Items.Clear();
         
-        foreach (object[] data in BioPM.ClassObjects.ComDevExecution.GetBatch(ddlEvent.SelectedValue))
+        foreach (object[] data in BioPM.ClassObjects.ComDevExecution.GetBatch())
         {
             ddlBatch.Items.Add(new ListItem(data[0].ToString() + " - " + data[1].ToString(), data[1].ToString()));
         }

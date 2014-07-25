@@ -16,9 +16,9 @@
     {
         string htmlelement = "";
 
-        foreach (object[] data in BioPM.ClassObjects.ComDevExecution.GetComdevExecutionByUserId(Session["username"].ToString()))
+        foreach (object[] data in BioPM.ClassObjects.ComDevExecution.GetAllComdevExecution())
         {
-            htmlelement += "<tr class=''><td>" + data[1].ToString() + "</td><td>" + data[2].ToString() + "</td><td>" + data[3].ToString() + "</td><td>" + data[4].ToString() + "</td><td>" + data[10].ToString() + "</td><td><a class='edit' href='PageInstitutionDetail.aspx?key=" + data[0].ToString() + "'>" + data[5].ToString() + "</a></td><td>" + data[6].ToString() + "</td><td>" + data[7].ToString() + "</td><td>" + data[8].ToString() + "</td><td>" + data[9].ToString() + "</td><td><a class='edit' href='FormUpdateTrainingExecution.aspx?key=" + data[0].ToString() + "'>Edit</a></td><td><a data-toggle='modal' ID='btnAction' runat='server' Text='Delete' href='#myModal'>Delete</a></td></tr>";
+            htmlelement += "<tr class=''><td>" + data[11].ToString() + "</td><td>" + data[2].ToString() + "-" + data[3].ToString() + "</td><td>" + data[4].ToString() + "</td><td>" + data[10].ToString() + "</td><td><a class='edit' href='PageInstitutionDetail.aspx?key=" + data[0].ToString() + "'>" + data[5].ToString() + "</a></td><td>" + data[6].ToString() + "-" + data[7].ToString() + "</td><td>" + data[8].ToString() + "</td><td>" + data[9].ToString() + "</td><td><a class='edit' href='FormUpdateTrainingExecution.aspx?key=" + data[0].ToString() + "'>Edit</a></td><td><a data-toggle='modal' ID='btnAction' runat='server' Text='Delete' href='#myModal'>Delete</a></td></tr>";
         }
         
         return htmlelement;
@@ -97,14 +97,12 @@
                             <table class="table table-striped table-hover table-bordered" id="dynamic-table" >
                                 <thead>
                                 <tr>
+                                    <th>Employee Name</th>
                                     <th>Event Name</th>
-                                    <th>Title</th>
-                                    <th>Batch</th>
                                     <th>Speaker</th> 
                                     <th>Cost</th>    
                                     <th>Institution</th>  
-                                    <th>Start Date</th>  
-                                    <th>End Date</th>
+                                    <th>Date of Execution</th>  
                                     <th>Status</th>  
                                     <th>Score</th>                                       
                                     <th>Edit</th>
